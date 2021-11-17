@@ -1,5 +1,5 @@
 digits = {
-    0 : 'zero',
+    0 : '',
     1 : 'one',
     2 : 'two',
     3 : 'three',
@@ -58,12 +58,15 @@ if num >= 100:
     elif num < 20:
         print(f'{hundred_digits[hundreds]} {digits[num]}')
 
+elif num == 0:
+    print('zero')
 
 elif num < 100:
     if num >= 20:
         tens = num // 10
         singles = num % 10
         print(f'{double_digits[tens]} {digits[singles]}')
-    elif num < 20:
+    elif num < 20 and num > 0:
         print(digits[num])
+
 
