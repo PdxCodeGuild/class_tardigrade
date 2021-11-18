@@ -13,7 +13,7 @@ Hint 2: use the digit as an index for a list of strings OR as a key for a dict o
 
 ## Version 2
 
-Handle numbers from 100-999.
+Handle numbers from 0-999.
 
 ## Version 3 (optional)
 
