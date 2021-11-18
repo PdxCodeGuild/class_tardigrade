@@ -9,8 +9,6 @@ import statistics
 
 """ VERSION 2 """
 
-# HOW DO I MAKE THE USER'S INPUT APPEND THE EMPTY NUM LIST?
-
 nums = []
 
 while True:
