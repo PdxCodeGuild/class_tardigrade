@@ -1,10 +1,19 @@
-def coin_change(dollar_amount):
-    if float(dollar_amount) <= 0:
-        print("Error. You must enter a positive amount of money.")
-    else:
-        quarter = dollar_amount // 25
-        dime = dollar_amount % 25 // 10
-        nickel = dollar_amount % 25 % 10 // 5
-        penny = dollar_amount % 5
+while True:
+    dollars = float(input("Enter a dollar amount so I can convert it to coins: "))
+    pennies = int(dollars * 100)
 
-coin_change(input("Enter a dollar amount: "))
+    quarters = pennies // 25
+    pennies = pennies % 25
+
+    dimes = pennies // 10
+    pennies = pennies % 10
+    
+    nickels = pennies // 5
+    pennies = pennies % 5
+
+    print(f"${dollars} equates to {quarters} quarters, {dimes} dimes, {nickels} nickels and {pennies} pennies.")
+
+    answer = input("Do you want to go again? ")
+    if answer == "no" or answer == "No" or answer == "nope" or answer == "Nope":    
+        print("Okay, goodbye.")
+        break
