@@ -57,7 +57,9 @@ elif num > 19 and num < 100:
     print(tens[ten_digit] + '-' + ones[one_digit])
 elif num == 100 or num == 200 or num == 300 or num == 400 or num == 500 or num == 600 or num == 700 or num == 800 or num == 900:
     print(hundreds[num])
-elif teens_digit > 10 and teens_digit < 20:
+elif teens_digit == 10:
+    print(hundreds[hun_digit] + ' and ' + ones[teens_digit])
+elif teens_digit > 11 and teens_digit < 20:
     print(hundreds[hun_digit] + ' and ' + teens[teens_digit])
 else:
     print(hundreds[hun_digit] + ' and ' + tens[ten_digit] + ' ' + ones[one_digit])
