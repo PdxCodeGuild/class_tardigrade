@@ -17,7 +17,7 @@ students = [
 V1: prints a random student name and then terminates
 """
 
-print(random.choice(students))
+# print(random.choice(students))
 
 # student = random.choice(students)
 # print(student)
@@ -25,3 +25,10 @@ print(random.choice(students))
 """
 V2: cycle through the names in a random order
 """
+
+random.shuffle(students)
+
+for student in students:
+    end_loop = input(student)
+    if end_loop:
+        break
