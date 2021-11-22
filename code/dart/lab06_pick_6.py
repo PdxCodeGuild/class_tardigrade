@@ -14,11 +14,9 @@ player_balance = 0
 
 print(f"\nPlayer beginning balance = ${player_balance}.")
 
-all_tickets = []
-
 total_matches = 0
 
-for i in range(5):
+for i in range(100000):
     winning_ticket_nums = pick6()
     print(f"\nThe winning ticket numbers are {winning_ticket_nums}.")
 
@@ -41,7 +39,7 @@ for i in range(5):
 
     player_balance += winnings[matches]
 
-print(f"\nTotal matches = {total_matches}")
+print(f"\n\nTotal matches = {total_matches}")
 
 print(f"\nPlayer ending balance = ${player_balance}.\n")
 
