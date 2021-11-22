@@ -1,31 +1,37 @@
+# years_counter = 0
 
+# population = [0,0]
+
+# while len(population) < 1000:
+#     years_counter += 1
+#     for i, age in enumerate(population):
+#         population[i] = age + 1
+#     for age in population:
+#         if age in range(4,8):
+#             population.append(0)
+#     for age in population:
+#         if age == 10:
+#             population.remove(age)
+
+# print(f"It takes {years_counter} years to reproduce {len(population)} jackalopes.")
+
+""" VERSION 2 """
+
+jackalope_characteristics = {}
 
 years_counter = 0
 
-population = [0, 0]
+population = [0,0]
 
-
-
-# while len(population) < 10:
-#     years_counter += 1
-#     for i, age in enumerate(population):
-#         population[i] += 1
-#     if age >= 4 and age <= 8:
-        
-        
-
-
-# print(population, years_counter)
-
-
-""""""""""""""""""""""""""""""""
-
-while len(population) < 10:
+while len(population) < 1000:
     years_counter += 1
     for i, age in enumerate(population):
-        population[i] += 1
-    if len(population) >= 10:
-        break
-    else:
-        print(population, years_counter)
-        years_counter += years_counter
+        population[i] = age + 1
+    for age in population:
+        if age in range(4,8):
+            population.append(0)
+    for age in population:
+        if age == 10:
+            population.remove(age)
+
+print(f"It takes {years_counter} years to reproduce {len(population)} jackalopes.")
