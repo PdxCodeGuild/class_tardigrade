@@ -1,6 +1,6 @@
 # # number to word conversion via dictionary
 
-ones = {0:'zero',
+ones = {0:'',
  1:'one',
   2:'two',
    3:'three',
@@ -26,65 +26,51 @@ tens = {2:'twenty',
 3:'thirty',
 4:'forty',
 5:'fifty',
-6:'sixty',
+6:'sixty',       #Dictionaries to pull from 0-999
 7:'seventy',
 8:'eighty',
 9:'ninety'}
 
-# hundreds = {1: 'one hundred',
-# 2: 'two hundred',
-# 3: 'three hundred',
-# 4: 'four hundred',
-# 5: 'five hundred',
-# 6: 'six hundred',
-# 7: 'seven hundred',
-# 8: 'eight hundred',
-# 9: 'nine hundred'}
+hundreds = {1: 'one hundred',
+2: 'two hundred',
+3: 'three hundred',
+4: 'four hundred',
+5: 'five hundred',
+6: 'six hundred',
+7: 'seven hundred',
+8: 'eight hundred',
+9: 'nine hundred'}
 
 
-
- 
-
-
-choice =  int(input('chose a number to convert between 0-99: '))
+choice =  int(input('chose a number to convert between 0-999: ')) #input with int conversion
 
 tens_con = choice // 10
 ones_con = choice % 10
-
+hundreds_con = choice // 100 #conversion for tens, ones, and hundreds place
 
 
 
 if 0 < choice and choice < 10:
     print(ones[choice])
-      
 elif choice >= 10 and choice < 20:
-    print(teens[choice])
-elif choice > 19:
-    if ones_con == 0:
-        print(tens[tens_con])
-    else:
-     print(f'{tens[tens_con]}-{ones[ones_con]}')
+    print(teens[choice])              # if/elif block 
+elif choice > 19 and choice <100:
+    print(f'{tens[tens_con]}-{ones[ones_con]}')
+elif choice > 99:
+    tens_int = tens_con % 10
+    
+    print(f'{hundreds[hundreds_con]}-{tens[tens_int]}-{ones[ones_con]}')
     
     
-    # print(tens[tens_con])
-    # print(ones[ones_con])
-
-    
-    
-    # print(tens_con)
-
-    # print(ones_con)
-    
-    # if choice > 100 and choice < 1000:
-#     print (ones[choice] + 'hundred')  
    
+
      
 
 
 
 
 
-
+#notes
 
 # extract tens place using //10
 # access tens dictionary
