@@ -1,28 +1,26 @@
-# # convert dollar amount
+Convert_amount = input("enter a amount: ")
+Convert_amount = float(Convert_amount)
+print(Convert_amount)
 
 
-# print(20/6)
-# print(50/7)
-# print(100/8)
+pennies = Convert_amount  * 100
+print(pennies, 'pennies')
+print(pennies // .01)
 
+dimes = Convert_amount * 40
+print(dimes, 'dimes')
+print(dimes // .10)
 
-# bills = [
-#   'one dallar bill ',
-#   'five dallar bill',
-#   'ten dollar bill',
-#   'twenty dollaer bill',
-#   'fifty dollar bill',
-#   'one hundred bill'  
-      
-# ]
-# print(bills)
+quarters = Convert_amount * 60
+print(quarters, 'quarters')
+print(quarters // .25)
 
-# 
+nickel = Convert_amount * 20
+print(nickel, 'nickel')
+print(nickel // .5)
 
-bills = ['one dallar', 'five dollar', 'ten dollar', 'twenty dollar', 'fifty dollar', 'one hundred dollar']
+half_dollar = Convert_amount * 50
+print(half_dollar, 'half dallar')
+print(half_dollar // .50)
 
-# print(bills[-1])
-# print(bills[-2])
-# print(bills[-3])
-# print(bills[-4])
-# print(bills[-5])
+print(f'{quarters}, quarters')
