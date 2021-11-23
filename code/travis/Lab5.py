@@ -10,6 +10,7 @@ first_input = input("What is your first card?")
 second_input = input("What is your second card?")
 third_input = input("What is your third card?")
 
+
 # check for face cards or ace, change to numerical values
 if first_input == "k" or first_input == "q" or first_input == "j":
     first_input = "10"
@@ -33,10 +34,13 @@ total_value = int(first_input) + int(second_input) + int(third_input)
 
 if total_value < 17:
     print(f" {total_value} You should Hit")
-elif 17 == total_value < 21:
+
+elif total_value >= 17 and total_value < 21:
     print(f" {total_value} You should Hold")
+
 elif total_value == 21:
     print(f" {total_value} Blackjack!")
+
 else:
     print(f" {total_value} Already Busted")
     
