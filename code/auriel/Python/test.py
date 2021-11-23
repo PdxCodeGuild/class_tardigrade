@@ -18,7 +18,7 @@ def cc_validation():
     print(subtract)
     sumof_subtract = sum(subtract) # Gets the sum off all the integers in the list of subtract
     print(sumof_subtract)
-    last_digit = sumof_subtract % 10
+    last_digit = sumof_subtract % 10 # Gets the second digit of the sum
     print(last_digit)
     if last_digit == cc_number[15]:
         print(f'This is a valid Credit Card!')
