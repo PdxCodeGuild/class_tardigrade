@@ -4,6 +4,7 @@ import string
 letters = string.ascii_lowercase
 message = input('What do you want to encode?: ')
 cypher = ''
+decrypt = ''
 
 for i, letter in enumerate(message):
     # print(letter)
@@ -22,6 +23,20 @@ for i, letter in enumerate(message):
 
 print(cypher)
 
+for i, letter in enumerate(cypher):
+    # print(letter)
+    # print(i)
+    i = letters.index(letter)
+    
+    if i + 13 < 26:
+        i += 13
+        print(i, letters[i])
+        decrypt += letters[i]
+    elif i + 13 >= 26:
+        i -= 13
+        print(i, letters[i])
+        decrypt += letters[i] 
+print(decrypt)
 # #Optional
 # import string
 # letters = string.ascii_lowercase
