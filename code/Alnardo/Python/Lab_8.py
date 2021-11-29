@@ -5,8 +5,8 @@ import random
 credit_card_numbers = []
 
 while len(credit_card_numbers) < 16:
-    # new_number = int(input('Please enter a number between 0-9 until it stops: '))
-    new_number = random.randint(0, 9)
+    new_number = int(input('Please enter a number between 0-9 until it stops: '))
+    # new_number = random.randint(0, 9)
     credit_card_numbers.append(new_number)
 
 print(credit_card_numbers)
