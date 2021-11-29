@@ -272,7 +272,7 @@ print(fruits.split(', ')) # ['apples', 'bananas', 'pears']
 
 ### Join: `a.join(b)`
 
-`delimeter.join(list)` combines the elements of a list into a single string, separated by the delimeter
+`delimiter.join(list)` combines the elements of a list into a single string, separated by the delimeter
 
 ```python
 print(' - '.join(['apples', 'bananas', 'pears']) # apples - bananas - pears
