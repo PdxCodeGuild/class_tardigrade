@@ -263,7 +263,7 @@ print('__%__hello_world__%__'.strip('_%')) # hello_world
 
 ### Split: `a.split(b)`
 
-`s.split(delimeter)` splits a string into a list, if no parameter is given, it'll split on whitespace
+`s.split(delimiter)` splits a string into a list, if no parameter is given, it'll split on whitespace
 
 ```python
 fruits = 'apples, bananas, pears'
