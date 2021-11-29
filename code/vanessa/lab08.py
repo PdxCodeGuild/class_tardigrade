@@ -1,4 +1,4 @@
-#Credit Card Validation 4 5 5 6 7 3 7 5 8 6 8 9 9 8 5 5 4556737586899855  
+#Credit Card Validation 4556737586899855  
 
 credit_card = input("Please enter credit card number here: ")
 listed_numbers = []
@@ -25,8 +25,6 @@ for i in range(len(listed_numbers)):
         evens= listed_numbers[i]
         doubled.append(evens)
 
-print(doubled)
-
 #Subtract nine from numbers over nine.
 nine_subtracted=[]
 for digit in doubled:
@@ -37,18 +35,17 @@ for digit in doubled:
         nine_subtracted.append(subtracted)
     if digit <= 9:
         nine_subtracted.append(digit)
-print(nine_subtracted)
+
 summed_numbers=0
 for digit in nine_subtracted:
     summed_numbers = summed_numbers + digit 
     
-print(summed_numbers)
-second_digit=slice(summed_numbers[0:1])
-print(second_digit)
-
-4556737586899855
-#4556737586899855
+digit_to_check = summed_numbers%10
 
 
-#Take the second digit of that sum.
-#If that matches the check digit, the whole card number is valid.
+if digit_to_check == check_digit:
+    print("card valid")
+if digit_to_check != check_digit:
+    print ("card is not valid")
+    
+    
