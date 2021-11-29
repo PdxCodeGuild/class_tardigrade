@@ -43,7 +43,7 @@ result = (first_card + second_card + third_card)
 
 if result < 17:
     print('Hit')
-if result == 17 < 21:
+if result >= 17 < 21:
     print('Stay')
 if result == 21:
     print('Blackjack!')

@@ -57,10 +57,20 @@ elif choice >= 10 and choice < 20:
 elif choice > 19 and choice <100:
     print(f'{tens[tens_con]}-{ones[ones_con]}')
 elif choice > 99:
-    tens_int = tens_con % 10
+    if tens
+
     
-    print(f'{hundreds[hundreds_con]}-{tens[tens_int]}-{ones[ones_con]}')
     
+   
+#105 = hundreds dict and ones dict
+# if tens digit is zero, access hundreds and ones dicts
+# 115 = hundreds dict and teens 
+# if tens digit is one exactly,
+#     
+# 
+# # 
+#tens_int = tens_con % 10
+    # print(f'{hundreds[hundreds_con]}-{tens[tens_int]}-{ones[ones_con]}')
     
    
 
