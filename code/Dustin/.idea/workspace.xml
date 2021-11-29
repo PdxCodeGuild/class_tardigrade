@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0436c532-89b4-4016-8d85-f6d1fe5733a7" name="Changes" comment="" />
+    <list default="true" id="0436c532-89b4-4016-8d85-f6d1fe5733a7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab_09.py" beforeDir="false" afterPath="$PROJECT_DIR$/Lab_09.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,7 +132,8 @@
       <workItem from="1637694146756" duration="46000" />
       <workItem from="1637694194856" duration="67000" />
       <workItem from="1637694315845" duration="68000" />
-      <workItem from="1637694385789" duration="15180000" />
+      <workItem from="1637694385789" duration="16770000" />
+      <workItem from="1638217273493" duration="648000" />
     </task>
     <servers />
   </component>
@@ -151,7 +155,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Dustin$Lab_08.coverage" NAME="Lab_08 Coverage Results" MODIFIED="1637779770474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Dustin$Lab_08__v2.coverage" NAME="Lab_08._v2 Coverage Results" MODIFIED="1637797444287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Dustin$Lab_09.coverage" NAME="Lab_09 Coverage Results" MODIFIED="1637799245466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Dustin$Lab_09.coverage" NAME="Lab_09 Coverage Results" MODIFIED="1637800250352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Dustin$lab_08.coverage" NAME="lab_08 Coverage Results" MODIFIED="1637778128492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
