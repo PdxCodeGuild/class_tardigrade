@@ -5,8 +5,8 @@ def all_3s(text):
     return True
 
 
-# print(all_3s('333333'))
-# print(all_3s('3353333'))
+print(all_3s('333333'))
+print(all_3s('3353333'))
 
 message = input('give a message to test the all_3s function: ')
 print(all_3s(message))

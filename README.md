@@ -75,10 +75,10 @@ Presentation Day: February 25th, 2022
 * [Lab 04 Number To Phrase](1%20Python/labs/04%20Number%20To%20Phrase.md)
 * [Lab 05 Blackjack Advice](1%20Python/labs/05%20Blackjack%20Advice.md)
 * [Lab 06 Pick 6](1%20Python/labs/06%20Pick%206.md)
-<!-- * [Lab 07 Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)
+* [Lab 07 Mob Jackalope](1%20Python/labs/07%20Mob%20Jackalope.md)
 * [Lab 08 Credit Card Validation](1%20Python/labs/08%20Credit%20Card%20Validation.md)
 * [Lab 09 Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)
-* [Lab 10 ROT13](1%20Python/labs/10%20ROT13.md)
+<!-- * [Lab 10 ROT13](1%20Python/labs/10%20ROT13.md)
 * [Lab 11 ARI](1%20Python/labs/11%20ARI.md)
 * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
 * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
@@ -99,7 +99,7 @@ Presentation Day: February 25th, 2022
 <!-- [Rain Data](1%20Python/labs/rain_data.md), -->
 [Random Emoticon Generator](1%20Python/labs/random_emoticon_generator.md),
 [Random Password Generator](1%20Python/labs/random_password.md),
-<!-- [Road Trip](1%20Python/labs/road_trip.md), -->
+[Road Trip](1%20Python/labs/road_trip.md),
 [Rock, Paper, Scissors](1%20Python/labs/rock_paper_scissors.md),
 [Simple Calculator](1%20Python/labs/simple_calculator.md),
 [Sock Sorter](1%20Python/labs/sock_sorter.md),
