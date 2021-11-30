@@ -57,7 +57,16 @@ elif choice >= 10 and choice < 20:
 elif choice > 19 and choice <100:
     print(f'{tens[tens_con]}-{ones[ones_con]}')
 elif choice > 99:
-    if tens
+    num2sub = hundreds_con*100
+    easynum = choice - num2sub
+    tens_con = easynum //10
+    if tens_con == 0:
+        print(f'{hundreds[hundreds_con]}-{ones[ones_con]}')
+    elif tens_con == 1:
+        print(f'{hundreds[hundreds_con]}-{teens[easynum]}')
+    else:
+        tens_int = tens_con % 10
+        print(f'{hundreds[hundreds_con]}-{tens[tens_int]}-{ones[ones_con]}')
 
     
     

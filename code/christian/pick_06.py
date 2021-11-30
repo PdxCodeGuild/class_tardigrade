@@ -12,7 +12,7 @@ def pick6():
 
 
 def num_matches(winning, ticket): 
-    matches = 0
+    matches = 0 
     for x in range(len(winning)): # range of winning ticket
      
         if winning[x] == ticket[x]:  # checking if matches with ticket
@@ -23,16 +23,12 @@ def num_matches(winning, ticket):
 
      
 
-
-
-
 # list_one = [0,3,2,3,4,5]
 # list_two = [0,1,2,3,4,5]
 # pick_six = pick6()       #test
 
 # print(random_nums,'randomnums')
 # print(num_matches(pick6(),list_two))
-
 balance = 0
 pick_six = pick6()
 
