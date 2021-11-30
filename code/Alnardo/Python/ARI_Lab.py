@@ -59,12 +59,12 @@ ari_score = int((4.71*(character_count/word_counter) + 0.5*(word_counter/sentenc
 # ari_score = math.ceil(ari_score)
 print(ari_score)
 print(ari_scale[ari_score])
-age = ari_scale[ari_score]['ages']
-# print(age)
-grade_level = ari_scale[ari_score]['grade_level']
-# print(grade_level)
+# age = ari_scale[ari_score]['ages']
+# # print(age)
+# grade_level = ari_scale[ari_score]['grade_level']
+# # print(grade_level)
 
-print(f'The ARI score for {text} is {ari_score}!\nThis corresponds to a {grade_level} level of difficulty,\nthat is suitable for {age} years old.')
+print(f"The ARI score for {text} is {ari_score}!\nThis corresponds to a {ari_scale[ari_score]['grade_level']} level of difficulty,\nthat is suitable for {ari_scale[ari_score]['ages']} years old.")
 
 
 
