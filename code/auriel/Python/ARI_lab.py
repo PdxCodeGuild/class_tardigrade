@@ -19,10 +19,11 @@ folder_path = r'code/auriel/Python/The-Magic-Pudding.txt'
 
 with open(folder_path, 'r') as f:
     full_text = f.read()
-    chars = len(full_text)
-    split = full_text.split()
-    words = len(split)
-    sentences = full_text.count('.')
+    
+chars = len(full_text)
+split = full_text.split()
+words = len(split)
+sentences = full_text.count('.')
 
 grade_level = (4.71 * (chars/words) + 0.5 * (words/sentences) - 21.43)
 rounded = round(grade_level)
@@ -32,5 +33,5 @@ if rounded > 14:
 
 print(f'''
 The ARI for The-Magic-Pudding.txt is {rounded}
-This corresponds to a {ari_scale[rounded]['grade_level']} level of difficulty
+This corresponds to a {ari_scale[rounded]['grade_level']} level of difficulty,
 that is suitable for an average person {ari_scale[rounded]['ages']} years old.''')
