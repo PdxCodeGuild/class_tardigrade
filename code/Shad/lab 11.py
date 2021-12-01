@@ -10,7 +10,7 @@ characters = 302279
 words = 210420
 sentences = 219
 m = 'code/Shad/book.txt'
-"c:/Users/skyys/OneDrive/Documents/GitHub/class_tardigrade/code/Shad/lab 11.py"
+
 score = 4.71*(characters/words) + .5*(words/sentences) - 21.43
 with open (m,'r', encoding='utf-8') as b:
     words = b.read()

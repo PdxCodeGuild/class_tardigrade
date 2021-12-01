@@ -1,16 +1,19 @@
 ist = []
 Prime = []
-def cc():
+
+while True:
+    num = input('Enter your numbers:  \ntype fin when finsh') 
+    ist.append(num)
+              
+    if num == "finins":
+        break
     
-    while True:
-        num = input( 'Enter your numbers:  \ntype fin when finsh')  
-        ist.append(num)
-        
 
-        print(ist)
-        return num
 
-            # reverse the numbers in a list without the check digit.
+
+ 
+
+# reverse the numbers in a list without the check digit.
        
     
 

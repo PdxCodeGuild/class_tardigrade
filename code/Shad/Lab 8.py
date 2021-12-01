@@ -3,7 +3,10 @@ def cc_valid( ):
     while 1 < 8:
         num = input( 'Enter your numbers:  \ntype fin when finsh')
         num = num.split(',')
-        ist.append(num)
+        ist.append(int(num))
+        ist.pop(-1)
+        print(ist)
+
         return num
         # if num == "fin":
         #     print("done")
