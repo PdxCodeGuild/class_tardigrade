@@ -14,7 +14,8 @@ def check_pali():
 
 check_pali()
 
-"""#Anagram
+"""
+#Anagram
 
 inputted_word_1 = input('What is your first word?: ')
 inputted_word_2 = input('What is your second word?: ')

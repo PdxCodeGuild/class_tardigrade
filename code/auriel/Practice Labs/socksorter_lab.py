@@ -17,6 +17,7 @@ def sock_sorter():
             count[i] = 1
         else:
             count[i] += 1
+    print(count)
     return count
 
 def sock_pairs():

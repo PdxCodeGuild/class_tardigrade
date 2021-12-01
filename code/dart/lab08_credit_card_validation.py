@@ -1,3 +1,4 @@
+
 card_number = list(input("Input your card number: ").strip())
 
 check_digit = card_number.pop()
@@ -5,7 +6,6 @@ check_digit = card_number.pop()
 card_number.reverse()
 
 doubled_digits = []
-
 
 for index, digit in enumerate(card_number):
     if index % 2 == 0:
@@ -20,7 +20,9 @@ for index, digit in enumerate(card_number):
 
 total = int(check_digit) + sum(doubled_digits)
 
-if total % 10 == 0:
-    print("Valid")
-else:
-    print("False")
+[print("Valid!") if total % 10 == 0 else print("False!")]
+
+# if total % 10 == 0:
+#     print("Valid")
+# else:
+#     print("False")
