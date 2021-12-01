@@ -10,7 +10,7 @@ quarters_remainder = every_cent % 25
 
 dimes = quarters_remainder//10
 print (f"{dimes} dimes")
-dimes_remainder = quarters_remainder % 5
+dimes_remainder = quarters_remainder % 10
 
 
 nickels = dimes_remainder//5
