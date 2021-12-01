@@ -2,8 +2,9 @@
 """winning ticket generated"""
 import random
 winning_ticket = random.sample(range(1, 99), 6)
-print(winning_ticket)
 attempts = int(input("How many times would you like to play? "))
+print(f"the winning ticket was: {winning_ticket}")
+
 """starting cash"""
 cash = 0
 
@@ -29,10 +30,16 @@ def play(winner):
 
 for i in range(attempts):
     cash += play(winning_ticket)
-print(cash)
+
 expenses = attempts * 2
-ROl = cash
-print(expenses)
+earnings = cash + attempts * 2
+return_on_investment = cash / expenses
+
+print(f"Your expenses were: {expenses}\n"
+      f"Your earnings were: {earnings}\n"
+      f"Your Return on investment was: {return_on_investment}\n")
+
+
 
 
 

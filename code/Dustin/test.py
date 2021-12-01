@@ -9,7 +9,7 @@ check_num = list_num[15]
 
 list_num = list_num[0:15:]
 list_num.reverse()
-list_num = 
+
 print(list_num)
 
 
