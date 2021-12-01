@@ -1,15 +1,17 @@
-sorted_socks = {'ankle' : 23, 'crew' : 21, 'calf' : 28, 'thigh' : 28}
+import csv
+# Version 1 of lab
+contact_list = []
+file_path = r'code/auriel/Python/contact_list_auriel.csv'
 
-if 'ankle' in sorted_socks:
-        num = sorted_socks.get('ankle')
-        if num % 2 == 0:
-            sorted_socks['ankle'] = num / 2
-        else:
-            div = (num - 1) / 2
-            sorted_socks['ankle'] = div
-            sorted_socks['ankle loners'] = num - (num - 1)
+with open(file_path, 'w') as csv_file:
+    csv_file.write('first_name,last_name,city')
+    csv_file.write('\njazmin,cofield,baltimore')
+    csv_file.write('\nauriel,cofield,atlanta')
+    csv_file.write('\nlisa,moore,edgewood')
 
-
-
-for key in sorted(sorted_socks.keys()):
-    print('%s: %s' % (key, sorted_socks[key]))
+with open(file_path, 'r') as csv_file:
+    rows = csv_file.read().split('\n')
+    print(rows)
+    for r, contact in enumerate(rows):
+        split = rows[r].split(',')
+        print(r, split)
