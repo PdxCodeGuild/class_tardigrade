@@ -18,11 +18,12 @@ def peaks(nums):
         if nums[i - 1] < nums[i] > nums[i + 1]:
             peak = i
             print(peak)
-
+peakorvalley = []
 def peaks_and_valleys(nums):
     for i in range(1, len(nums) -1):
         if nums[i - 1] < nums[i] > nums[i + 1] or nums[i + 1] > nums[i] < nums[i - 1]:
-            peakorvalley = i
+            peakorvalley.append(i)
+
             print(peakorvalley)
 
 valleys(data_set)
