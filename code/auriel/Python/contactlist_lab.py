@@ -12,16 +12,13 @@ with open(file_path, 'w') as csv_file:
 with open(file_path, 'r') as csv_file:
     rows = csv_file.read().split('\n')
     headers = rows[0].split(',')
-    contact_1 = rows[1].split(',')
-    contact_2 = rows[2].split(',')
-    contact_3 = rows[3].split(',')
     
-    entry_1 = {headers[0]: contact_1[0], headers[1]: contact_1[1], headers[2]: contact_1[2]}
-    contact_list.append(entry_1)
-    entry_2 = {headers[0]: contact_2[0], headers[1]: contact_2[1], headers[2]: contact_2[2]}
-    contact_list.append(entry_2)
-    entry_3 = {headers[0]: contact_3[0], headers[1]: contact_3[1], headers[2]: contact_3[2]}
-    contact_list.append(entry_3)
+    for r, contact in enumerate(rows):
+        split = rows[r].split(',')
+
+        if r > 0:
+            entry = {headers[0]: split[0], headers[1]: split[1], headers[2]: split[2]}
+            contact_list.append(entry)
 
 # Version 2 and 3 of lab (Create a CRUD REPL)
 while True:

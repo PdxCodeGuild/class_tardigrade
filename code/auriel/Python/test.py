@@ -1,4 +1,3 @@
-import csv
 # Version 1 of lab
 contact_list = []
 file_path = r'code/auriel/Python/contact_list_auriel.csv'
@@ -12,45 +11,58 @@ with open(file_path, 'w') as csv_file:
 with open(file_path, 'r') as csv_file:
     rows = csv_file.read().split('\n')
     headers = rows[0].split(',')
-    contact_1 = rows[1].split(',')
-    contact_2 = rows[2].split(',')
-    contact_3 = rows[3].split(',')
-    
-    entry_1 = {headers[0]: contact_1[0], headers[1]: contact_1[1], headers[2]: contact_1[2]}
-    contact_list.append(entry_1)
-    entry_2 = {headers[0]: contact_2[0], headers[1]: contact_2[1], headers[2]: contact_2[2]}
-    contact_list.append(entry_2)
-    entry_3 = {headers[0]: contact_3[0], headers[1]: contact_3[1], headers[2]: contact_3[2]}
-    contact_list.append(entry_3)
+    for r, contact in enumerate(rows):
+        split = rows[r].split(',')
+        if r > 0:
+            entry = {headers[0]: split[0], headers[1]: split[1], headers[2]: split[2]}
+            contact_list.append(entry)
 
 # Version 2 and 3 of lab (Create a CRUD REPL)
+def create():
+    with open(file_path, 'a') as csv_file:
+        csv_file.write('\n')
+        fname = input('Please enter a first name for new record: ').lower()
+        csv_file.write(f'{fname}')
+        lname = input('Please enter a last name for new record: ').lower()
+        csv_file.write(f',{lname}')
+        city = input('Please enter a city for new record: ').lower()
+        csv_file.write(f',{city}')
+
+    print(f'''The following contact has been added: \n
+    firstname: {fname} lastname: {lname} city: {city}''')
+
+def retrieve():
+    ls = []
+    retrieve_fname = input('Whos record would you like to retrieve? Please enter a first name: ').lower()
+    retrieve_lname = input('Please enter a last name: ').lower()
+    with open(file_path, 'r') as csv_file:
+        rows = csv_file.read().split('\n')
+        headers = rows[0].split(',')
+        for r, contact in enumerate(rows):
+            split = rows[r].split(',')
+            if r > 0:
+                entry = {headers[0]: split[0], headers[1]: split[1], headers[2]: split[2]}
+                ls.append(entry)
+    
+    for x in ls:
+        if retrieve_fname == x['first_name'] and retrieve_lname == x['last_name']:
+            print(f'''Contact information is as follows: \n
+            firstname: {x['first_name']} lastname: {x['last_name']} city: {x['city']}''')
+
 while True:
     user = input('''
-    Hello, would you like to:
-    Create, Retrieve, Update or Delete a record?
-    If you would like to quit, please type 'quit' ''')
+Hello, would you like to:
+Create, Retrieve, Update or Delete a record?
+If you would like to quit, please type 'quit' ''').lower()
     
-    if user == 'quit' or user == 'Quite':
+    if user == 'quit':
         break
 
-    elif user == 'create' or user == 'Create':
-        with open(file_path, 'a') as csv_file:
-            csv_file.write('\n')
-            fname = input('Please enter a first name for new record: ')
-            csv_file.write(f'{fname}')
-            lname = input('Please enter a last name for new record: ')
-            csv_file.write(f',{lname}')
-            city = input('Please enter a city for new record: ')
-            csv_file.write(f',{city}')
-           
+    elif user == 'create':
+       create()
+        
     elif user == 'retrieve' or user == 'Retrieve':
-        retrieval_list = []
-        retrieve_fname = input('Whos record would you like to retrieve? Please enter a first name: ')
-        retrieval_list.append(retrieve_fname)
-        retrieve_lname = input('Please enter a last name: ')
-        retrieval_list.append(retrieve_lname)
-            
-
+        retrieve()
 
     elif user == 'update' or user == 'Update':
         update_fname = input('Please enter first name of the record you want to update: ')
