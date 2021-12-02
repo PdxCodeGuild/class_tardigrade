@@ -10,7 +10,7 @@ always round up. Scores greater than 14 should be presented as having the same a
 
 Scores correspond to the following ages and grad levels:"""
 
-book = open(r"C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\wizard-of-oz.txt", "rt")
+book = open(r"C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\wizard-of-oz.txt", "r")
 data = book.read()
 words = data.split()
 
