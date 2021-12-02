@@ -1,6 +1,6 @@
 import string
 import re
-
+import math #got from "geeksforgeeks.org as well as math.ceil() function in order to round up ari math result"
 with open('vanessa\kidnapped.txt', 'r',encoding='utf-8') as kidnapped:
     contents = kidnapped.read()
 title="Kidnapped"
@@ -20,7 +20,8 @@ s = re.findall("[\.?!]", contents)
 sentences= float((len(s)))
 characters_total=float(characters_total)
 word_count=float(word_count)
-ari=(((characters_total/word_count)*4.71)+((word_count/(sentences))*.5)-21.43)//1
+ari_not_complete=(((characters_total/word_count)*4.71)+((word_count/(sentences))*.5)-21.43)
+ari = math.ceil(ari_not_complete)
 print(f"The ARI for {title} is {ari}")
 
 
