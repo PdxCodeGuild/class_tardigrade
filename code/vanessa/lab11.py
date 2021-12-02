@@ -16,19 +16,13 @@ for word in words:
     word_count += 1
 # print(f"word count {word_count}")
 
-x = re.findall("[\.?!]", contents)
-# print(len(x))
+s = re.findall("[\.?!]", contents)
+sentences= float((len(s)))
 characters_total=float(characters_total)
-totals=4.71(characters_total/word_count)
-print(totals)
-first_part=(characters_total/word_count) 
-second_part=(word_count/len(x))
-first_part2= first_part*4.71
-second_part2= second_part*0.5
-total=(first_part2 + second_part2)-21.43
-x=total//1
-print(f"The ARI for {title} is {x}")
-#7.0333
+word_count=float(word_count)
+ari=(((characters_total/word_count)*4.71)+((word_count/(sentences))*.5)-21.43)//1
+print(f"The ARI for {title} is {ari}")
+
 
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -47,11 +41,7 @@ ari_scale = {
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
 
-if x in ari_scale:
-    print(f"This corresponds to a {ari_scale[8]['grade_level']} level of difficulty that is suitable for an average person {ari_scale[8]['ages']} years old.")
-
-
-
-# {book['title']} by {book["author"]}                                   
-# This corresponds to a 11th Grade level of difficulty
-# that is suitable for an average person 16-17 years old.
+if ari in ari_scale:
+    print(f"This corresponds to a {ari_scale[ari]['grade_level']} level of difficulty that is suitable for an average person {ari_scale[ari]['ages']} years old.")
+    if ari > 14:
+        print(f"This corresponds to a {ari_scale[ari]['grade_level']} level of difficulty that is suitable for an average person {ari_scale[ari]['ages']} years old.")
