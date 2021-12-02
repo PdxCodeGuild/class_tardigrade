@@ -10,6 +10,7 @@ M-F 9:30 am – 4:30 pm
 
 - November 25th & 26th (Thanksgiving)
 - December 24th (Christmas Eve)
+- December 27th (Long Xmas Weekend)
 - December 31st (New Years Eve)
 
 ### Staff
