@@ -1,27 +1,34 @@
 import string
+import re
 
-
-with open('kidnapped.txt', 'r',encoding='utf-8') as kidnapped:
-    pass
+with open('vanessa\kidnapped.txt', 'r',encoding='utf-8') as kidnapped:
     contents = kidnapped.read()
-    # print(contents)
-
-#need to determine #of characters, #words, #sentences
+title="Kidnapped"
 characters_total= 0
 for character in contents:
     if character in string.ascii_letters:
         characters_total= characters_total +1
-print (f"characters total: {characters_total}")
+# print (f"characters total: {characters_total}")
 
 words=contents.split()
 word_count = 0
 for word in words:
     word_count += 1
-print(f"word count {word_count}")
+# print(f"word count {word_count}")
 
-
-
-
+x = re.findall("[\.?!]", contents)
+# print(len(x))
+characters_total=float(characters_total)
+totals=4.71(characters_total/word_count)
+print(totals)
+first_part=(characters_total/word_count) 
+second_part=(word_count/len(x))
+first_part2= first_part*4.71
+second_part2= second_part*0.5
+total=(first_part2 + second_part2)-21.43
+x=total//1
+print(f"The ARI for {title} is {x}")
+#7.0333
 
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -39,3 +46,12 @@ ari_scale = {
     13: {'ages': '17-18', 'grade_level':   '12th Grade'},
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
+
+if x in ari_scale:
+    print(f"This corresponds to a {ari_scale[8]['grade_level']} level of difficulty that is suitable for an average person {ari_scale[8]['ages']} years old.")
+
+
+
+# {book['title']} by {book["author"]}                                   
+# This corresponds to a 11th Grade level of difficulty
+# that is suitable for an average person 16-17 years old.
