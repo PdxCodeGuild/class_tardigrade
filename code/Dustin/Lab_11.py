@@ -14,8 +14,18 @@ book = open(r"C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\wizar
 data = book.read()
 words = data.split()
 
-print('Number of words in text file :', len(words))
+just_char = data.replace(" ","")
+number_of_char = len(just_char)
+number_of_words = len(words)
+number_of_sentences = data.count(".")
 
+
+print('Number of characters: ', number_of_char)
+print('Number of words: ', number_of_words)
+print('Number of sentences: ', number_of_sentences)
+
+ari_score = 4.71 * (number_of_char / number_of_words) +.5 * (number_of_words / number_of_sentences) - 21.43
+print(ari_score)
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
      2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
