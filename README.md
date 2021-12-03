@@ -10,6 +10,7 @@ M-F 9:30 am – 4:30 pm
 
 - November 25th & 26th (Thanksgiving)
 - December 24th (Christmas Eve)
+- December 27th (Long Xmas Weekend)
 - December 31st (New Years Eve)
 
 ### Staff
@@ -96,7 +97,7 @@ Presentation Day: February 25th, 2022
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
-<!-- [Rain Data](1%20Python/labs/rain_data.md), -->
+[Rain Data](1%20Python/labs/rain_data.md),
 [Random Emoticon Generator](1%20Python/labs/random_emoticon_generator.md),
 [Random Password Generator](1%20Python/labs/random_password.md),
 [Road Trip](1%20Python/labs/road_trip.md),
