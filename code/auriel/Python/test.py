@@ -2,12 +2,6 @@
 contact_list = []
 file_path = r'code/auriel/Python/contact_list_auriel.csv'
 
-with open(file_path, 'w') as csv_file:
-    csv_file.write('first_name,last_name,city')
-    csv_file.write('\njazmin,cofield,baltimore')
-    csv_file.write('\nauriel,cofield,atlanta')
-    csv_file.write('\nlisa,moore,edgewood')
-
 with open(file_path, 'r') as csv_file:
     rows = csv_file.read().split('\n')
     headers = rows[0].split(',')
@@ -49,6 +43,32 @@ def retrieve():
             print(f'''Contact information is as follows: \n
             firstname: {x['first_name']} lastname: {x['last_name']} city: {x['city']}''')
 
+def update():
+    update_fname = input('Please enter first name of the record you want to update: ').lower()
+    update_lname = input('Please enter last name of the record you want to update: ').lower()
+    for x in contact_list:
+        if update_fname == x['first_name'] and update_lname == x['last_name']:
+            update = input('What information would you like to update? \nFirst name, last name or city: ').lower()
+            
+        if update == 'first name':
+            new_fname = input('What is the new first name?: ').lower()
+            x['first_name'] = new_fname
+        if update == 'last name':
+            new_lname = input('What is the new last name?: ').lower()
+            x['last_name'] = new_lname
+        if update == 'city':
+            new_city = input('What is the new city?: ').lower()
+            x['city'] = new_city
+
+def delete():
+    delete_fname = input('Please enter first name of the record you want to delete: ').lower()
+    delete_lname = input('Please enter last name of the record you want to delete: ').lower()
+    for x in contact_list:
+        if delete_fname == x['first_name'] and delete_lname == x['last_name']:
+            del x['first_name']
+            del x['last_name']
+            del x['city']            
+
 while True:
     user = input('''
 Hello, would you like to:
@@ -65,12 +85,10 @@ If you would like to quit, please type 'quit' ''').lower()
         retrieve()
 
     elif user == 'update' or user == 'Update':
-        update_fname = input('Please enter first name of the record you want to update: ')
-        update_lname = input('Please enter last name of the record you want to delete: ')
+        create()
 
     elif user == 'delete' or user == 'Delete':
-        delete_fname = input('Please enter first name of the record you want to delete: ')
-        delete_lname = input('Please enter last name of the record you want to delete: ')
+        delete()
 
     else:
         print('Please enter one of the options listed')

@@ -1,15 +1,7 @@
 # Version 1 of lab
-import csv
-
 
 contact_list = []
 file_path = r'code/auriel/Python/contact_list_auriel.csv'
-
-with open(file_path, 'w') as csv_file:
-    csv_file.write('first_name,last_name,city')
-    csv_file.write('\njazmin,cofield,baltimore')
-    csv_file.write('\nauriel,cofield,atlanta')
-    csv_file.write('\nlisa,moore,edgewood')
 
 with open(file_path, 'r') as csv_file:
     rows = csv_file.read().split('\n')
@@ -21,9 +13,10 @@ with open(file_path, 'r') as csv_file:
             contact_list.append(entry)
 
 
-x = ','.join(contact_list)
-print(x)
+print(type(rows))
 
 
+updated_clist = []
 
-
+for w, people in enumerate(contact_list):
+    print(people)
