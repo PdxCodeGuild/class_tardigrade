@@ -12,11 +12,14 @@ with open(file_path, 'r') as csv_file:
             entry = {headers[0]: split[0], headers[1]: split[1], headers[2]: split[2]}
             contact_list.append(entry)
 
+updated_contact_list = []
 
-print(type(rows))
+for x in contact_list:
+    updated_contact_list.append(x['first_name'])
+    updated_contact_list.append(x['last_name'])
+    updated_contact_list.append(x['city'])
+
+print(updated_contact_list[0::3])
 
 
-updated_clist = []
 
-for w, people in enumerate(contact_list):
-    print(people)
