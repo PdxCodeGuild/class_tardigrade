@@ -3,26 +3,26 @@ file_path = "/Users/dartagnanchilders/Desktop/pdx_code/FS_bootcamp/class_tardigr
 file_path_2 = "/Users/dartagnanchilders/Desktop/pdx_code/FS_bootcamp/class_tardigrade/code/dart/contacts_2.csv"
 
 with open(file_path, "r") as file: # opens the contacts.csv file
-    lines_with_contact_data = file.read().split("\n")
+    lines = file.read().split("\n")
     # print(lines)
 
-# headers = lines_with_contact_data[0].split(",")
+# headers = lines[0].split(",")
 
 # contacts = []
 
-# for line in lines_with_contact_data:
+# for line in lines:
 #     values = line.split(",")
 #     key_value_pairs = dict(zip(headers, values))
 #     contacts.append(key_value_pairs)
 
 contacts = []
 
-def csv_to_lst_of_dicts():
-    headers = lines_with_contact_data[0].split(",")
+def convert_csv_file_to_list_of_dicts(): # convert csv to a list of dictionaries
+    headers = lines[0].split(",")
 
     lst_of_lsts = []
 
-    for line in lines_with_contact_data:
+    for line in lines:
         values = line.split(",")
         key_value_pairs = dict(zip(headers, values))
         contacts.append(key_value_pairs)
@@ -35,11 +35,9 @@ def csv_to_lst_of_dicts():
         })
     return contacts
 
+#----------------------------------------------------------------------------------------------------------------#
 
-
-
-# Retrieve a contact's information
-def view_contact():
+def view_contact(): # Retrieve a contact's information
     contact_search = input("\nEnter the name of the contact you would like to view: ").lower()
     for contact in contacts:
         if contact["name"] == contact_search:
@@ -49,11 +47,9 @@ def view_contact():
         
     print("\nContact not found.")
 
+#----------------------------------------------------------------------------------------------------------------#
 
-
-
-# Create a new contact and add it to the contacts list
-def create_contact():
+def create_contact(): # Create a new contact and add it to the contacts list
     input_name = input("\nEnter new contact's name: ")
     input_fruit = input(f"\nEnter {input_name}'s favorite fruit: ")
     input_color = input(f"\nEnter {input_name}'s favorite color: ")
@@ -70,15 +66,13 @@ def create_contact():
     print()
     print(contact_dict)
 
+#----------------------------------------------------------------------------------------------------------------#
 
-
-
-# Update a contact's information
-def update_contact():
+def update_contact(): # Update a contact's information
     record_to_update = view_contact()
     update_question = input(f"\nWould you like to update this record? \"yes\" or \"no\": ")
     if update_question == "yes":
-        attribute_to_update = input("\nWhat section would you like to update, \"name\", \"favorite fruit\", or \"favorite color\": ")
+        attribute_to_update = input("\nWhat section would you like to update? Choose \"name\", \"favorite fruit\", or \"favorite color\": ")
         new_attribute = input(f"\nWhat would you like to change the {attribute_to_update} to: ")
         for x in range(len(contacts)):
             if contacts[x] == record_to_update:
@@ -89,21 +83,20 @@ def update_contact():
     else:
         print("No new changes made")
 
+#----------------------------------------------------------------------------------------------------------------#
 
-# Delete or remove a contact from the contact's list
-def delete_contact(): 
+def delete_contact(): # Delete or remove a contact from the contact's list
     record_to_delete = view_contact()
-    delete_question = input(f"Would you like to delete {record_to_delete}'s record? \"yes\" or \"no\": ")
-    if delete_question == "yes":
+    delete_question = input(f"\nAre you sure you want to delete this record? \"Yes\" or \"No\": ")
+    if delete_question == "yes".lower():
         contacts.remove(record_to_delete)
         return contacts
     else:
         print(f"{record_to_delete} was not deleted")
 
+#----------------------------------------------------------------------------------------------------------------#
 
-
-
-def convert_contacts_dicts_to_csv():
+def convert_list_of_dicts_back_to_csv_file(): # convert list of dictionaries back to csv file
     headers = [key for key in contacts[0]]
     # contact_str = ",".join(headers) + "\n"
     contact_str = ""
@@ -117,10 +110,9 @@ def convert_contacts_dicts_to_csv():
     print(contact_str)
     return contact_str
 
+#----------------------------------------------------------------------------------------------------------------#
 
-
-
-contacts = csv_to_lst_of_dicts()
+contacts = convert_csv_file_to_list_of_dicts()
 
 print("\nWelcome to the contacts list!".title())
 
@@ -151,7 +143,7 @@ or \"Delete\" to delete a contact.""")
     if user_action == "quit".lower():
         break
 
-updated_contacts = convert_contacts_dicts_to_csv()
+updated_contacts = convert_list_of_dicts_back_to_csv_file()
 
 with open(file_path_2, "w") as file:
     file.write(updated_contacts)
