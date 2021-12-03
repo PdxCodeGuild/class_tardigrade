@@ -1,130 +1,157 @@
 
 file_path = "/Users/dartagnanchilders/Desktop/pdx_code/FS_bootcamp/class_tardigrade/code/dart/contacts.csv"
-file_path_2 = "/Users/dartagnanchilders/Desktop/pdx_code/FS_bootcamp/class_tardigrade/code/dart/contacts2.csv"
-# open the contacts.csv file
-with open(file_path, "r") as f:
-    lines = f.read().split("\n")
-    # print(lines)
-def retrieve(user_input):
-    # locates a user's information by their name
-    for dict in contacts:
-        for name in dict:
-            if dict[name] == user_input:
-                return dict
+file_path_2 = "/Users/dartagnanchilders/Desktop/pdx_code/FS_bootcamp/class_tardigrade/code/dart/contacts_2.csv"
 
-headers = lines[0].split(",")
-# print(headers)
+with open(file_path, "r") as file: # opens the contacts.csv file
+    lines_with_contact_data = file.read().split("\n")
+    # print(lines)
+
+# headers = lines_with_contact_data[0].split(",")
+
+# contacts = []
+
+# for line in lines_with_contact_data:
+#     values = line.split(",")
+#     key_value_pairs = dict(zip(headers, values))
+#     contacts.append(key_value_pairs)
+
 contacts = []
 
-for line in lines:
-    values = line.split(",")
-    # print(values)
-    key_value_pairs = dict(zip(headers, values))
-    # print(pairs)
-    contacts.append(key_value_pairs)
-# create a loop to run thorugh the repl
-loop_control = True
-while loop_control == True: 
-    user_action = input("""\nWhat would you like to do?\
- To create a new contact, enter \"Create\"\
- to retrieve a contact, enter \"Retrieve\"\
- to update a contact, enter \"Update\"\
- or to delete a contact, enter \"Delete\": """)
+def csv_to_lst_of_dicts():
+    headers = lines_with_contact_data[0].split(",")
 
-    if user_action == "Retrieve" or user_action == "retrieve":
-        person = input("\nEnter the name of the contact you would like to retrieve and or view: ")
-        final = retrieve(person)
+    lst_of_lsts = []
 
-        print("\nRetrieving Contact...")
-        print(f"\n{final}")
-
-        continuation_answer = input("\nIs there anything else you would like to do while you are here? Enter \"Yes\" or \"No\": ")
-
-        if continuation_answer == "No" or continuation_answer == "no":
-            loop_control == False
-            break
-
-    elif user_action == "Update" or user_action == "update":
-        person = input("\nEnter the name of the contact whose information you would like to update: ")
-        attribute = input("\nWould you like to update their name, favorite fruit or favorite color: ")
-        value = input("\nWhat would you like to change it to: ")
-
-        selected_dict = retrieve(person)
-
-        selected_dict[attribute] = value
-        print("\nUpdating Contact...")
-        print(f"\n{selected_dict}")
-
-        continuation_answer = input("\nIs there anything else you would like to do while you are here? Enter \"Yes\" or \"No\": ")
-
-        if continuation_answer == "No" or continuation_answer == "no":
-            loop_control == False
-            break
-
-    elif user_action == "Delete" or user_action == "delete":
-        person = input("\nEnter the name of the contact you would like to delete: ")
-        selected_dict = retrieve(person)
-        contacts.remove(selected_dict)
-
-        print("\nDeleting Contact...")
-
-        continuation_answer = input("\nIs there anything else you would like to do while you are here? Enter \"Yes\" or \"No\": ")
-
-        if continuation_answer == "No" or continuation_answer == "no":
-            loop_control == False
-            break
-
-    elif user_action == "Create" or user_action == "create":
-        name = input("\nEnter the new contact's name: ")
-        fruit = input("\nEnter their favorite fruit: ")
-        color = input("\nEnter their favorite color: ")
-
-        contacts.append({
-        "name": name,
-        "favorite_fruit": fruit,
-        "favorite_color": color,
-    })
-        
-        print("\nCreating Contact...")
-        print()
-        print({"name": name, "favorite_fruit": fruit, "favorite_color": color})
-
-        continuation_answer = input("\nIs there anything else you would like to do while you are here? Enter \"Yes\" or \"No\": ")
-
-        if continuation_answer == "No" or continuation_answer == "no":
-            loop_control == False
-            break
-
-for contact in contacts:
-
-    keys = list(contact.keys())
-
-names = []
-
-for contact in contacts:
-    for key in keys:
-        names.append(contact[key])
-
-final = keys + names
-
-final_output = ",".join(final)
-
-words = final_output.split(",")
-new_line = ""
-word_count = 0
-
-for word in words:
-    new_line += word + ","
-    word_count += 1
+    for line in lines_with_contact_data:
+        values = line.split(",")
+        key_value_pairs = dict(zip(headers, values))
+        contacts.append(key_value_pairs)
     
-    if word_count == 3: 
-        new_line += "\n"
-        word_count = 0
+    for list in lst_of_lsts:
+        contacts.append({
+            headers[0]: list[0],
+            headers[1]: list[1],
+            headers[2]: list[2]
+        })
+    return contacts
 
-with open(file_path, "w") as f:
-        f.write(new_line)
 
-# final_list = "".join(contacts)
 
-with open(file_path_2, "w") as f:
-        f.write(contacts).split("\n")
+
+# Retrieve a contact's information
+def view_contact():
+    contact_search = input("\nEnter the name of the contact you would like to view: ").lower()
+    for contact in contacts:
+        if contact["name"] == contact_search:
+            print("\nRetrieving Contact...")
+            print(f"\n{contact}")
+            return contact
+        
+    print("\nContact not found.")
+
+
+
+
+# Create a new contact and add it to the contacts list
+def create_contact():
+    input_name = input("\nEnter new contact's name: ")
+    input_fruit = input(f"\nEnter {input_name}'s favorite fruit: ")
+    input_color = input(f"\nEnter {input_name}'s favorite color: ")
+
+    contact_dict = {
+        "name": input_name, 
+        "favorite_fruit": input_fruit, 
+        "favorite_color": input_color
+    }
+
+    contacts.append(contact_dict)
+
+    print("\nCreating new contact...")
+    print()
+    print(contact_dict)
+
+
+
+
+# Update a contact's information
+def update_contact():
+    record_to_update = view_contact()
+    update_question = input(f"\nWould you like to update this record? \"yes\" or \"no\": ")
+    if update_question == "yes":
+        attribute_to_update = input("\nWhat section would you like to update, \"name\", \"favorite fruit\", or \"favorite color\": ")
+        new_attribute = input(f"\nWhat would you like to change the {attribute_to_update} to: ")
+        for x in range(len(contacts)):
+            if contacts[x] == record_to_update:
+                entry = contacts[x]
+                entry[attribute_to_update] = new_attribute
+                print(f"\n{entry}")
+                break
+    else:
+        print("No new changes made")
+
+
+# Delete or remove a contact from the contact's list
+def delete_contact(): 
+    record_to_delete = view_contact()
+    delete_question = input(f"Would you like to delete {record_to_delete}'s record? \"yes\" or \"no\": ")
+    if delete_question == "yes":
+        contacts.remove(record_to_delete)
+        return contacts
+    else:
+        print(f"{record_to_delete} was not deleted")
+
+
+
+
+def convert_contacts_dicts_to_csv():
+    headers = [key for key in contacts[0]]
+    # contact_str = ",".join(headers) + "\n"
+    contact_str = ""
+    counter = 0
+    for contact in contacts:
+        counter += 1
+        if len(contacts) == counter:
+            contact_str += f"{contact[headers[0]]},{contact[headers[1]]},{contact[headers[2]]}"
+        else:
+            contact_str += f"{contact[headers[0]]},{contact[headers[1]]},{contact[headers[2]]}\n"
+    print(contact_str)
+    return contact_str
+
+
+
+
+contacts = csv_to_lst_of_dicts()
+
+print("\nWelcome to the contacts list!".title())
+
+while True:
+    user_action = input("""\nTo view a contact, enter \"View\",\
+ to create a new contact, enter \"Create\",\
+ to update a contact's information, enter \"Update\",\
+ to delete a contact, enter \"Delete\" or to QUIT the program, enter \"Quit\": """).lower()
+
+    if user_action not in ['view', 'create', 'update', 'delete']:
+        print("""Please enter \"View\" to view a contact,\
+\"Create\" to create a new contact,\
+\"Update\" to update a contact's information\
+or \"Delete\" to delete a contact.""")
+
+    if user_action == "View".lower():
+        view_contact()
+    
+    if user_action == "Create".lower():
+        create_contact()
+
+    if user_action == "Update".lower():
+        update_contact()
+    
+    if user_action == "Delete".lower():
+        delete_contact()
+
+    if user_action == "quit".lower():
+        break
+
+updated_contacts = convert_contacts_dicts_to_csv()
+
+with open(file_path_2, "w") as file:
+    file.write(updated_contacts)
