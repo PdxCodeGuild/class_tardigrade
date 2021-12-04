@@ -6,15 +6,6 @@ with open(file_path, "r") as file: # opens the contacts.csv file
     lines = file.read().split("\n")
     # print(lines)
 
-# headers = lines[0].split(",")
-
-# contacts = []
-
-# for line in lines:
-#     values = line.split(",")
-#     key_value_pairs = dict(zip(headers, values))
-#     contacts.append(key_value_pairs)
-
 contacts = []
 
 def convert_csv_file_to_list_of_dicts(): # convert csv to a list of dictionaries

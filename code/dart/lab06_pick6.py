@@ -1,6 +1,4 @@
-from math import inf
 import random
-
 
 def pick6():
     ticket = random.sample(range(0, 100), 6)
@@ -26,27 +24,25 @@ winnings_dict = {
 }
 
 
-if __name__ == '__main__': # only runs this block if it is this file that's being run
-    # Generate a list of 6 random numbers representing the winning ticket
-    winning_ticket_nums = pick6()
-    balance = 0
-    earnings  = 0
-    expenses = 0
+winning_ticket_nums = pick6()
+balance = 0
+earnings  = 0
+expenses = 0
     
-    print(f"\nBeginning balance = ${balance}.")
+print(f"\nBeginning balance = ${balance}.")
     
-    for _ in range(100_000):
+for _ in range(100_000):
         # Generate a list of 6 random numbers representing the ticket
-        ticket = pick6()
+    ticket = pick6()
         # Subtract 2 from your balance (you bought a ticket)
-        balance -= 2 # shorthand for balance = balance -2
-        expenses += 2
+    balance -= 2
+    expenses += 2
         # Find how many numbers match
-        matches = num_matches(ticket, winning_ticket_nums)
+    matches = num_matches(ticket, winning_ticket_nums)
         # Add to your balance the winnings from your matches
-        balance += winnings_dict[matches]
-        earnings += winnings_dict[matches]
+    balance += winnings_dict[matches]
+    earnings += winnings_dict[matches]
 
-    print(f"\nEnding balance = ${balance}.\n")
-    print((earnings - expenses) / expenses)
-    print()
+print(f"\nEnding balance = ${balance}.\n")
+print("Return on Investment (ROI) is "), print((earnings - expenses) / expenses)
+print()
