@@ -1,4 +1,3 @@
-
 class ATM:
     def __init__(self, balance=0, interest_rate=0.1, transactions=[]):
         self.balance = balance
@@ -32,45 +31,61 @@ class ATM:
         for transaction in self.transactions:
             print(transaction)
 
+def menu():
+    print("\nPress [1] to Check Balance")
+    print("\nPress [2] to Deposit Funds")
+    print("\nPress [3] to Withdraw Funds")
+    print("\nPress [4] to Check Interest")
+    print("\nPress [5] to Check Transaction History")
+    print("\nPress [6] to Exit")
+
 atm = ATM()  # create an instance of our class
-print("\nWelcome to the ATM")
+print("\033[1m" + "\n=======================\n")
+print("\033[1m" + "  Welcome to the ATM!  ")
+print("\033[1m" + "\n=======================")
+menu()
 while True:
-    command = input("\nEnter a command (Balance, Deposit, Withdraw, Interest, Log or Exit): ")
-    if command == "balance":
+    command = int(input("\nEnter a command: "))
+    if command == 1:
         balance = atm.check_balance()  # call the check_balance() method
         print(f"\nYour balance is ${balance}.")
-    elif command == "deposit":
+        menu()
+    elif command == 2:
         amount = float(input("\nHow much would you like to deposit: "))
         atm.deposit(amount)  # call the deposit(amount) method
-        print(f"\nDeposited ${amount}")
-    elif command == "withdraw":
+        print(f"\nDeposited ${amount}\n")
+        menu()
+    elif command == 3:
         amount = float(input("\nHow much would you like to withdraw: "))
         # call the check_withdrawal(amount) method
         if atm.check_withdrawal(amount):
             atm.withdraw(amount)  # call the withdraw(amount) method
             print(f"\nWithdrew ${amount}.")
         else:
-            print("\nInsufficient funds.")
-    elif command == "interest":
+            print("\nInsufficient funds.\n")
+        menu()
+    elif command == 4:
         amount = atm.calc_interest()  # call the calc_interest() method
         atm.deposit(amount)
         print(f"\nAccumulated ${amount} in interest.")
-    elif command == "help":
-        print("\nAvailable commands:")
-        print("balance  - get the current balance")
-        print("deposit  - deposit money")
-        print("withdraw - withdraw money")
-        print("interest - accumulate interest")
-        print("history      - transaction history")
-        print("exit     - exit the program\n")
-    elif command == "history":
+    # elif command == 5:
+    #     print("\nAvailable commands:")
+    #     print("balance  - get the current balance")
+    #     print("deposit  - deposit money")
+    #     print("withdraw - withdraw money")
+    #     print("interest - accumulate interest")
+    #     print("history  - transaction history")
+    #     print("exit     - exit the program\n")
+    elif command == 5:
         print("\n==========================\n")
         atm.print_transactions()
         print("\n==========================")
-    elif command == "exit":
-        print("\n==========================\n")
-        print("Goodbye! Thank You For Using PDX_Code_Guild Bank.")
-        print("\n==========================")
+        menu()
+    elif command == 6:
+        print("\033[1m" + "\n==================================================\n")
+        print("\033[1m" + "Goodbye! Thank You For Using PDX_Code_Guild Bank!")
+        print("\033[1m" + "\n==================================================")
         break
     else:
         print("\nCommand not recognized.")
+        menu()
