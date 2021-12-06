@@ -34,7 +34,7 @@ def num_matches(winning_ticket, ticket):
 
 ## Steps
 
-1. Generate a list of 6 random numbers representing the winning tickets
+1. Generate a list of 6 random numbers representing the winning ticket
 2. Start your balance at 0
 2. Loop 100,000 times, for each loop:
 3. Generate a list of 6 random numbers representing the ticket
