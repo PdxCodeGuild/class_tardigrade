@@ -12,6 +12,7 @@ ones = {
             }
 tens = {
     0: "and",
+    1: "ten",
     2: "twenty",
     3: "thirty",
     4: "fourty",
@@ -23,6 +24,7 @@ tens = {
             }
 special = {
     0:  "zero",
+    10: "ten",
     11: "eleven",
     12: "twelve",
     13: "thirteen",
@@ -31,98 +33,9 @@ special = {
     16: "sixteen",
     17: "seventeen",
     18: "eighteen",
-    19: "nineteen",
-#     100:"one-hundred",
-#     111: "one-hundred eleven",
-#     112: "one-hundred twelve",
-#     113: "one-hundred thirteen",
-#     114: "one-hundred fourteen",
-#     115: "one-hundred fifteen",
-#     116: "one-hundred sixteen",
-#     117: "one-hundred seventeen",
-#     118: "one-hundred eighteen",
-#     119: "one-hundred nineteen",
-#     200: "two-hundred",
-#     211: "two-hundred eleven",
-#     212: "two-hundred twelve",
-#     213: "two-hundred thirteen",
-#     214: "two-hundred fourteen",
-#     215: "two-hundred fifteen",
-#     216: "two-hundred sixteen",
-#     217: "two-hundred seventeen",
-#     218: "two-hundred eighteen",
-#     219: "two-hundred nineteen",
-#     300: "three-hundred",
-#     311: "three-hundred eleven",
-#     312: "three-hundred twelve",
-#     313: "three-hundred thirteen",
-#     314: "three-hundred fourteen",
-#     315: "three-hundred fifteen",
-#     316: "three-hundred sixteen",
-#     317: "three-hundred seventeen",
-#     318: "three-hundred eighteen",
-#     319: "three-hundred nineteen",
-#     400: "four-hundred",
-#     411: "four-hundred eleven",
-#     412: "four-hundred twelve",
-#     413: "four-hundred thirteen",
-#     414: "four-hundred fourteen",
-#     415: "four-hundred fifteen",
-#     416: "four-hundred sixteen",
-#     417: "four-hundred seventeen",
-#     418: "four-hundred eighteen",
-#     419: "four-hundred nineteen",
-#     500: "five-hundred",
-#     511: "five-hundred eleven",
-#     512: "five-hundred twelve",
-#     513: "five-hundred thirteen",
-#     514: "five-hundred fourteen",
-#     515: "five-hundred fifteen",
-#     516: "five-hundred sixteen",
-#     517: "five-hundred seventeen",
-#     518: "five-hundred eighteen",
-#     519: "five-hundred nineteen",
-#     600: "six-hundred",
-#     611: "six-hundred eleven",
-#     612: "six-hundred twelve",
-#     613: "six-hundred thirteen",
-#     614: "six-hundred fourteen",
-#     615: "six-hundred fifteen",
-#     616: "six-hundred sixteen",
-#     617: "six-hundred seventeen",
-#     618: "six-hundred eighteen",
-#     619: "six-hundred nineteen",
-#     700: "seven-hundred",     
-#     711: "seven-hundred eleven",
-#     712: "seven-hundred twelve",
-#     713: "seven-hundred thirteen",
-#     714: "seven-hundred fourteen",
-#     715: "seven-hundred fifteen",
-#     716: "seven-hundred sixteen",
-#     717: "seven-hundred seventeen",
-#     718: "seven-hundred eighteen",
-#     719: "seven-hundred nineteen",
-#     800: "eight-hundred",
-#     811: "eight-hundred eleven",
-#     812: "eight-hundred twelve",
-#     813: "eight-hundred thirteen",
-#     814: "eight-hundred fourteen",
-#     815: "eight-hundred fifteen",
-#     816: "eight-hundred sixteen",
-#     817: "eight-hundred seventeen",
-#     818: "eight-hundred eighteen",
-#     819: "eight-hundred nineteen",
-#     900: "nine-hundred",
-#     911: "nine-hundred eleven",
-#     912: "nine-hundred twelve",
-#     913: "nine-hundred thirteen",
-#     914: "nine-hundred fourteen",
-#     915: "nine-hundred fifteen",
-#     916: "nine-hundred sixteen",
-#     917: "nine-hundred seventeen",
-#     918: "nine-hundred eighteen",
-#     919: "nine-hundred nineteen",
-}
+    19: "nineteen",}
+
+
 hundreds={
     0: " ",
     1: "one-hundred",
@@ -142,14 +55,22 @@ while True:
     hundreds_tenths = x % 100
     tens_digit = (x%100)//10
     ones_digit = x%10
-    if 0 < hundreds_tenths <2:
-        if x in special:
-            print(hundreds.get(hundreds,special.get(x)))
-            break
+    # print(hundreds_digit)
+    # print(hundreds_tenths)
+    # print(tens_digit)
+    # print(ones_digit)
     if x in special:
         print(special.get(x))
         break
-    
+    if 1 < hundreds_tenths <20:
+        print(hundreds_digit)
+        print(hundreds_tenths)
+        # if x in special:
+        print(hundreds.get(hundreds_digit))
+        print(special.get(hundreds_tenths))
+        #     # print("if statement ran")
+        #     # print(special.get(x))
+        break
     elif x not in special:
         hundreds_digit = x//100
         print(hundreds.get(hundreds_digit),tens.get(tens_digit),ones.get(ones_digit))
