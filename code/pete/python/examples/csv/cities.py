@@ -11,3 +11,9 @@ cities = [ # you want to build a list of dictionaries (like this)
 
 headers = lines[0].split(',')
 print(headers)
+cities = lines[1:]
+print(cities)
+for city in cities:
+    print(city.split(','))
+    city_dict = {}
+    # loop over city.split(',') or headers to make key-value pairs for a dictionary

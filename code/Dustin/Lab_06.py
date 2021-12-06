@@ -3,7 +3,7 @@
 import random
 winning_ticket = random.sample(range(1, 99), 6)
 print(winning_ticket)
-
+attempts = int(input("How many times would you like to play? "))
 """starting cash"""
 cash = 0
 
@@ -24,11 +24,15 @@ def play(winner):
     winnings = [0, 4, 7, 100, 50000, 1000000, 25000000]
     cash = -2 + (winnings[total_matches])
 
+
     return cash
 
-for i in range(100000):
+for i in range(attempts):
     cash += play(winning_ticket)
 print(cash)
+expenses = attempts * 2
+ROl = cash
+print(expenses)
 
 
 
