@@ -20,16 +20,16 @@ while range(len(my_tickets) < 100000):
                                         # print(f"my tickets{my_tickets}")
 
 def num_matches(win_ticket, ticket):
+    match = 0
     for i in range(len(win_ticket)):
-        match = 0
         if win_ticket[i]== ticket[i]:
-            return match
-           
+            match += 1
+    return match
+         
 for ticket in my_tickets:
-    (num_matches(winning_ticket,ticket))
-
-my_match= (num_matches(winning_ticket,my_tickets))
-for match in range(len(my_tickets)):
+    my_match =(num_matches(winning_ticket,ticket))
+    if my_match == 0:
+        balance += 0
     if my_match == 1:
         balance += 4
     if my_match == 2:
