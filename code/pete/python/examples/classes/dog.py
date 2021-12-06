@@ -31,7 +31,8 @@ class Dog:
         return f'{self.name}, a {self.breed}'
 
     def __eq__(self, other):
-        """how to evaluate dog_instance1 == dog_instance2"""
+        """how to evaluate dog_instance1 == dog_instance2
+        (self == other)"""
         # other is another dog
         if self.size == other.size:
             return True
@@ -39,7 +40,7 @@ class Dog:
             return False
     
     def __lt__(self, other):
-        """how to evaluate dog1 < dog2"""
+        """how to evaluate dog1 < dog2 (self < other)"""
         if self.size == 'small':
             if other.size in ('medium', 'large'):
                 return True
