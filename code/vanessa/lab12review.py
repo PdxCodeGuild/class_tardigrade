@@ -22,7 +22,7 @@ for persons_data in traveler_history[1:]:
         
     total_histories.append(profile)
     
-    print(total_histories[1]["country of origin"])
+print(total_histories[0]["country of origin"])
 
 # weather={"fall": "rainy",
 #         "winter": "cold/overcast/stormy/dry",  
@@ -50,5 +50,3 @@ print("Welcome to Vanessa's and friend's travel history repository")
 # input_origin = input("What is your country of origin? ")
 # input_number = input("How many countries have you visited? ")
 # input_countries = input("Which countries have you visited (including home country if travel has been done domestically)? please separate by comma: ")
-
-    
