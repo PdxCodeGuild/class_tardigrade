@@ -6,6 +6,29 @@ lines of text into a list of dictionaries, one dictionary for each user. The tex
 the text in the other lines represent the values.
   """
 
-with open('contacts.csv', 'r') as file:
+with open(r"C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\jedi-sith.txt", "r") as file:
     lines = file.read().split('\n')
-    print(lines)
+
+
+headers = lines[0].split(',')
+#print(headers)
+
+force_users = lines[1:]
+
+#print(force_users)
+for user in force_users:
+    user = user.split(',')
+    jedi_dict = {}
+    for i in range(len(headers)):
+
+        jedi_dict[headers[i]] = user[i]
+
+    print(jedi_dict)
+
+#for line in lines
+
+
+
+
+
+
