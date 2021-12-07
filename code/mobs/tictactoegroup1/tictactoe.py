@@ -5,6 +5,9 @@ Date:
 
 '''
 
+print("\t--------------------------------")
+print("\t|         Tic Tac Toe          |")
+print("\t--------------------------------")
 
 
 class Player:
@@ -34,39 +37,64 @@ class Game:
         moves = {'top left'       :  0,
                  'top middle'     :  1,
                  'top right'      :  2,
-                 'left middle'    :  3,
+                 'middle left'    :  3,
                  'middle'         :  4,
-                 'right middle'   :  5,
+                 'middle right'   :  5,
                  'bottom left'    :  6,
                  'bottom middle'  :  7,
                  'bottom right'   :  8,
         }
 
         user_move = moves[user_move]
-        self.board[user_move] = token
+        if self.board[user_move] != ' ':
+            return False
+        else:
+            self.board[user_move] = token
+            return True
+
+
+    def calc_winner(self, token):
+        return (self.board[0] == token and self.board[1] == token and self.board[2] == token or
+                self.board[3] == token and self.board[4] == token and self.board[5] == token or
+                self.board[6] == token and self.board[7] == token and self.board[8] == token or
+
+
+                self.board[0] == token and self.board[3] == token and self.board[6] == token or
+                self.board[1] == token and self.board[4] == token and self.board[7] == token or
+                self.board[2] == token and self.board[5] == token and self.board[8] == token or
+
+
+                self.board[0] == token and self.board[4] == token and self.board[8] == token or
+                self.board[2] == token and self.board[4] == token and self.board[6] == token)
 
 
 
-    def calc_winner():
-        ...
+    def is_full(self):
+        if " " not in self.board:
+            print('Tied game.')
+            return True
 
 
-    def is_full():
-        ...
+    def is_game_over(self, token):
 
+        full_board = self.is_full
 
-    def is_game_over():
-        return True
+        winner = self.calc_winner
+
+        if winner(token) or winner(token):
+            print('Game has a winner!')
+            return True
+        elif full_board == True:
+            print('Tied game')
+            return True
+
 
 game_over = False
 
 
 
 
-
-
-
-while True: # ask for player 1's name and preferred token
+while True:
     player1_name = input("\nEnter player 1's name: ")
 
     player1_token = input("\nEnter player 1's token (X or O): ").upper()
@@ -100,20 +128,43 @@ new_board = Game()
 while game_over == False:
 
     if turn % 2 == 0:
-        user_move = input(f"{player1_name}: choose an empty spot to place your token: ")
-
-        new_board.move(player1_name, player1_token, user_move)
+        while True:
+            user_move = input(f"{player1_name}: choose an empty spot to place your token: ")
+            if new_board.move(player1_name, player1_token, user_move) == True:
+                break
+            else:
+                print('Move already played, try again.')
+   
         turn += 1
     
     elif turn % 2 == 1:
-        user_move = input(f"{player2_name}: choose an empty spot to place your token: ")
-        new_board.move(player2_name, player2_token, user_move)
+        
+        while True:
+            user_move = input(f"{player2_name}: choose an empty spot to place your token: ")
+            if new_board.move(player2_name, player2_token, user_move) == True:
+                break
+            else:
+                print('Move already played, try again.')
+   
         turn += 1
 
     print(new_board)
 
+    if new_board.is_game_over(player1_token) or new_board.is_game_over(player2_token):
+        print('Game over')
 
-    # check is_game_over()
+        print('Thanks for losing.')
+
+        break
+    # if new_board.calc_winner(player1_token) or new_board.calc_winner(player2_token):
+    #     print('You did it')
+    #     game_over == True
+    #     break
+    if new_board.is_full() == True:
+        print('Tiiiiiiiiiiiiied game')
+        break
+        
+
 
 
 
