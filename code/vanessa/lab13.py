@@ -3,9 +3,10 @@
 
 
 class ATM:
-    def __init__(self, balance=0, interest_rate=0.1):
+    def __init__(self, balance=0, interest_rate=0.1, transaction=[]):
         self.balance = balance
         self.interest_rate= interest_rate
+        self.transaction = transaction
         
 
     def check_balance(self):
@@ -17,6 +18,7 @@ class ATM:
         """deposit a given amount into account"""
         if amount > 0:
             self.balance += amount
+            self.transaction.append(f'user deposited ${amount}')
         
 
     def check_withdrawal(self, amount):
@@ -29,12 +31,18 @@ class ATM:
         """withdraw given amount from account and return that amount"""
         if amount >= 0:
             self.balance -= amount
+            self.transaction.append (f'user withdrew ${amount}')
             return self.balance
 
     def calc_interest(self):
         """calculate and return interest gained on account"""
         amount = (self.balance * self.interest_rate)
         return amount
+
+    def print_transactions(self):
+        """prints out list of previous transactions. """
+        return self.transaction
+
 
 
 atm = ATM()  # create an instance of our class
@@ -67,6 +75,10 @@ while True:
         print('withdraw - withdraw money')
         print('interest - accumulate interest')
         print('exit     - exit the program')
+        print('transaction - get transaction history')
+    elif command == 'transaction':
+        amount = atm.print_transactions()  # call the print_transactions methods
+        print(f'History of transactions is: {amount}')
     elif command == 'exit':
         break
     else:
