@@ -40,9 +40,9 @@ def menu():
     print("\nPress [6] to Exit")
 
 atm = ATM()  # create an instance of our class
-print("\033[1m" + "\n=======================\n")
-print("\033[1m" + "  Welcome to the ATM!  ")
-print("\033[1m" + "\n=======================")
+print("\033[1m" + "\n=======================\n" + "\033[0m")
+print("\033[1m" + "  Welcome to the ATM!  " + "\033[0m")
+print("\033[1m" + "\n=======================" + "\033[0m")
 menu()
 while True:
     command = int(input("\nEnter a command: "))
