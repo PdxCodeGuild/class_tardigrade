@@ -10,11 +10,26 @@ always round up. Scores greater than 14 should be presented as having the same a
 
 Scores correspond to the following ages and grad levels:"""
 
-book = open(r"C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\wizard-of-oz.txt", "rt")
+book = open(r"C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\wizard-of-oz.txt", "r")
 data = book.read()
 words = data.split()
+import math
+"""Using the math module seemed to be the best way to round up, I dont know if we cover it specifically in
+class. So wanted to note its use here."""
 
-print('Number of words in text file :', len(words))
+"""parsing the txt file here for the relevant information"""
+just_char = data.replace(" ","")
+number_of_char = len(just_char)
+number_of_words = len(words)
+number_of_sentences = data.count(".")
+
+"""Checking my code is done correctly with print statements"""
+#print('Number of characters: ', number_of_char)
+#print('Number of words: ', number_of_words)
+#print('Number of sentences: ', number_of_sentences)
+
+ari_score = math.ceil(4.71 * (number_of_char / number_of_words) +.5 * (number_of_words / number_of_sentences) - 21.43)
+
 
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -32,3 +47,11 @@ ari_scale = {
     13: {'ages': '17-18', 'grade_level':   '12th Grade'},
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
+current_scale = ari_scale[ari_score]
+
+
+"""Output """
+
+print("The ARI for wizard-of-oz.txt is : ", ari_score)
+print(f"That is suitable for an average person {current_scale['ages']} years old.")
+print(f"This corresponds to a {current_scale['grade_level']} level of difficulty.")
