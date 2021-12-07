@@ -77,7 +77,7 @@ class Game:
 
     def is_game_over(self, token):
 
-        full_board = self.is_full
+        full_board = self.is_full()
 
         winner = self.calc_winner
 
@@ -103,7 +103,8 @@ while True:
 
         print("\nYou can only choose either X or O.")
     
-    player2_name = input("\nEnter player 2's name: ")
+    else:
+        player2_name = input("\nEnter player 2's name: ")
     player2_token = ""
 
 
@@ -125,12 +126,15 @@ player_2 = Player(player2_name, player2_token)
 turn = 0
 new_board = Game()
 
+possible_moves = ['top left', 'top middle','top right','middle left','middle','middle right','bottom left','bottom middle','bottom right']
 while game_over == False:
 
     if turn % 2 == 0:
         while True:
             user_move = input(f"{player1_name}: choose an empty spot to place your token: ")
-            if new_board.move(player1_name, player1_token, user_move) == True:
+            if user_move not in possible_moves:
+                print('Move not valid, try again.')              
+            elif new_board.move(player1_name, player1_token, user_move) == True:
                 break
             else:
                 print('Move already played, try again.')
@@ -156,14 +160,6 @@ while game_over == False:
         print('Thanks for losing.')
 
         break
-    # if new_board.calc_winner(player1_token) or new_board.calc_winner(player2_token):
-    #     print('You did it')
-    #     game_over == True
-    #     break
-    if new_board.is_full() == True:
-        print('Tiiiiiiiiiiiiied game')
-        break
-        
 
 
 
