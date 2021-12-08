@@ -32,14 +32,12 @@ class Game:
     def move(self,command, player):
         b = self.board
         b[command] = player.token
-        return command
+        
 
         '''Moves a token through the x an y axes'''
     
         self.turn += 1
-        if self.turn >= 9:
-            self.is_full()
-
+        return command
     def calc_winner(self):
         '''Determines which player has won the game'''
         b = self.board
@@ -52,15 +50,15 @@ class Game:
             for num in win:
                 if b[num] == "X":
                     wincount1 += 1
-                elif [b] == "O":
+                elif b[num] == "O":
                     wincount2 += 1
-        if wincount1 == 3:
-            return "X"
-        elif wincount2 == 3:
-            return "O"
-        else:
-            return "no winner"
-        
+            if wincount1 == 3:
+                return "X"
+            elif wincount2 == 3:
+                return "O"
+            else:
+                return "no winner"
+                
                 
                      
                 
@@ -73,12 +71,17 @@ class Game:
         '''Determines if the board is full with no winner'''
        
     def is_game_over(self):
-        finewinner = self.calc_winner()
-        ful = self.is_full()
-        if finewinner != "no winner":
+        findwinner = self.calc_winner()
+        full = self.is_full()
+        if findwinner != "no winner" and full != True:
             return True
         else:
             return False
+
+        if full == True:
+            return True
+        else:
+             return False
         '''Returns true if the board is full or a player has won'''
 
 
@@ -92,16 +95,19 @@ def main():
     player2=Player(input("O What is your name? "), "O")
     players.append(player1)
     players.append(player2)
-    active_player = players[game.turn %2]
+    
 
 
+    # print(game)
+    while not game.is_game_over() == True:
+        active_player = players[game.turn %2]
+        print(game.turn)
+        print(game)
+        command = int(input(f'{active_player.name} enter a number position (1-9) to place your token: '))
+        print(game.move(command, active_player))
+        game.is_game_over()
     print(game)
-    # while not game.is_game_over() == True:
-    #     print(game)
-    #     command= input("What is your move? ")
-    command = int(input(f'{active_player.name} enter a number position (1-9) to place your token: '))
-    print(game.move(command, player1))
-    print(game.calc_winner())
-    print(game)
+    print(f"{active_player.name} has won!")
+        
 main()
 
