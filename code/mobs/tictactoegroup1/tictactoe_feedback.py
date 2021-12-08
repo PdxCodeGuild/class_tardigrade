@@ -33,7 +33,7 @@ class Game:
         return   f"{self.board[0]}  |  {self.board[1]}  |  {self.board[2]}\n{self.board[3]}  |  {self.board[4]}  |  {self.board[5]}\n{self.board[6]}  |  {self.board[7]}  |  {self.board[8]}"
 
 
-    def move(self, player, user_move):
+    def move(self, player, user_move): # pass the player object in
         moves = {'top left'       :  0,
                  'top middle'     :  1,
                  'top right'      :  2,
@@ -49,7 +49,7 @@ class Game:
         if self.board[user_move] != ' ':
             return False
         else:
-            self.board[user_move] = player.token
+            self.board[user_move] = player.token # and use its token attribute here
             return True
 
 
@@ -126,11 +126,12 @@ player_2 = Player(player2_name, player2_token)
 turn = 0
 new_board = Game()
 
+# make a list of players
 players = [player_1, player_2]
 
 possible_moves = ['top left', 'top middle','top right','middle left','middle','middle right','bottom left','bottom middle','bottom right']
 while game_over == False:
-    player = players[turn % 2]
+    player = players[turn % 2] # alternate between players using this
 
     while True:
         user_move = input(f"{player.player}: choose an empty spot to place your token: ")
