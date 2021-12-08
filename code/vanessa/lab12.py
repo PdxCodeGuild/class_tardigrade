@@ -24,18 +24,10 @@ for row in line:
 print(profile)
 
 
-# for i in range(1,len(line)):
-#     print(i[1])
-#     profile= {}
-#     for j in range(len(header)):                       
-#         (header[0])
 
-# for strings in lines:
-#     traveler_data = {}              #dictionary
-#     traveler_list = strings.split()
-#     traveler_data.keys(strings)
-#     print(traveler_data)
-
-# #iterate over list of lines to get through each person
-# #iterate over header list
+input_name = input("What is your name? ")
+input_relation = input("What is your relation to Vanessa? ")
+input_origin = input("What is your country of origin? ")
+input_number = input("How many countries have you visited? ")
+input_countries = input("Which countries have you visited (including home country if travel has been done domestically)? please separate by comma: ")
 
