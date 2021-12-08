@@ -1,4 +1,3 @@
-import math
 """ VERSION 1 LINEAR SEARCH """
 
 """
@@ -31,7 +30,7 @@ search range in half each iteration until it finds its target.
 #     L = 0
 #     R = n - 1
 #     while L <= R:
-#         m = math.floor((L + R) / 2)
+#         m = (L + R) // 2
 #         if A[m] < T:
 #             L = m + 1
 #         elif A[m] > T:
@@ -43,7 +42,7 @@ search range in half each iteration until it finds its target.
 
 def binary_search(nums, low, high, x):
     if high >= low:
-        mid = (high + low) // 2
+        mid = (low + high) // 2
         if nums[mid] == x:
             return mid
         elif nums[mid] > x:
