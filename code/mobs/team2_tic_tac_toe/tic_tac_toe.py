@@ -43,16 +43,42 @@ class Game:
     def calc_winner(self):
         '''Determines which player has won the game'''
         b = self.board
+      
+        
         wins = [[1,2,3],[4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [7,5,3]]
+        for win in wins:
+            wincount1 = 0
+            wincount2 = 0
+            for num in win:
+                if b[num] == "X":
+                    wincount1 += 1
+                elif [b] == "O":
+                    wincount2 += 1
+        if wincount1 == 3:
+            return "X"
+        elif wincount2 == 3:
+            return "O"
+        else:
+            return "no winner"
+        
+                
+                     
+                
 
     def is_full(self):
-        if self.turn == 9:
+        if self.turn == 9 and self.calc_winner == "no winner":
+            
             return True
 
         '''Determines if the board is full with no winner'''
        
     def is_game_over(self):
-        return False
+        finewinner = self.calc_winner()
+        ful = self.is_full()
+        if finewinner != "no winner":
+            return True
+        else:
+            return False
         '''Returns true if the board is full or a player has won'''
 
 
@@ -75,6 +101,7 @@ def main():
     #     command= input("What is your move? ")
     command = int(input(f'{active_player.name} enter a number position (1-9) to place your token: '))
     print(game.move(command, player1))
+    print(game.calc_winner())
     print(game)
 main()
 
