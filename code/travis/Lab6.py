@@ -12,15 +12,15 @@ total_matches = 0
 earnings = 0
 highest_num_matched = 0
 random_num_list = []
-tickets_bought = 100000
+tickets_bought = 100_000
 
 payout_amount_dict = {
         1: 4,
         2: 7,
         3: 100,
-        4: 50000,
-        5: 1000000,
-        6: 25000000
+        4: 5_0000,
+        5: 1_000_000,
+        6: 25_000_000
 }
 
 
@@ -33,7 +33,7 @@ def pick6():
 
     for ran in range(1,7):
 
-        ran = random.randrange(1,99)
+        ran = random.randrange(0,99)
         random_num_list.append(ran)
 
     return random_num_list
