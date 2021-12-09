@@ -13,9 +13,10 @@ path = ""
 
 with open(path + 'oliver-twist.txt', 'r', encoding = "utf8") as book:
 
-    contents = book.read()
-    
+    content = book.read()
 
+
+contents = re.sub("\n", " ", content)
 
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -35,16 +36,10 @@ ari_scale = {
 }
 
 
-
-
-
-ari = 0
+ari = 0.0
 num_char = 0
 num_words = 0
 num_sentences = 0
-
-
-ari = 1
 
 
 #find num char
@@ -55,27 +50,22 @@ num_words = len(re.split("[^A-Za-z0-9_\-’]+", contents))
 
 
 #find num sentences    check punctuation
+num_sentences = len(re.split("\. ", contents))
 
-#num_sentences = len(re.split("[^A-Za-z0-9_\-’]+", contents))
-
-print("num sentence", num_sentences)
-
-
-#round ARI
-#ari = 4.71(num_char / num_words) + 0.5 (num_words/ num_sentences) - 21.43
+ari = (4.71 * (num_char / num_words)) + (0.5 * (num_words/ num_sentences)) - 21.43
 
 ari = round(ari)
 
+
 if ari > 14:
+    
     ari = 14
 
-
-# use dictionary 
+# use dictionary            
 output_ages = ari_scale[ari]["ages"]
 output_grades  = ari_scale[ari]["grade_level"]
 
 
 # print output
-
 print(f"The book has an ARI value of: {ari}. It is for ages {output_ages} at a {output_grades} level")
-print(f"It contains {num_words} words, {num_char} characters, and {num_sentences}. ")
+print(f"It contains {num_words} words, {num_char} characters, and {num_sentences} sentences. ")
