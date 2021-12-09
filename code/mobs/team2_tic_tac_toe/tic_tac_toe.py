@@ -38,7 +38,9 @@ class Game:
     
         self.turn += 1
         return command
+    
     def calc_winner(self):
+        print('is calc ran')
         '''Determines which player has won the game'''
         b = self.board
       
@@ -50,38 +52,50 @@ class Game:
             for num in win:
                 if b[num] == "X":
                     wincount1 += 1
-                elif b[num] == "O":
+                if b[num] == "O":
                     wincount2 += 1
-            if wincount1 == 3:
-                return "X"
-            elif wincount2 == 3:
-                return "O"
-            else:
-                return "no winner"
+            if wincount1 == 3 or wincount2 == 3:
+                return "winner"
+            # else:
+               #  return "no winner"
+        return "no winner"
+           
+            
                 
                 
                      
                 
 
     def is_full(self):
-        if self.turn == 9 and self.calc_winner == "no winner":
+        print('is full ran')
+        calc = self.calc_winner()
+        if self.turn == 9 and calc == "no winner":
             
             return True
 
         '''Determines if the board is full with no winner'''
        
     def is_game_over(self):
+        print('is game ran')
         findwinner = self.calc_winner()
         full = self.is_full()
-        if findwinner != "no winner" and full != True:
+        if full == True:
             return True
+        elif findwinner == "winner":
+            return True
+        
         else:
             return False
 
-        if full == True:
-            return True
-        else:
-             return False
+        # if findwinner != "no winner" and full == True:
+        #     return True
+        # else:
+        #     return False
+
+        # if full == True:
+        #     return True
+        # else:
+        #      return False
         '''Returns true if the board is full or a player has won'''
 
 
@@ -107,7 +121,8 @@ def main():
         print(game.move(command, active_player))
         game.is_game_over()
     print(game)
-    print(f"{active_player.name} has won!")
+    if game.calc_winner() == "winner": print(f"{active_player.name} has won!")
+    if game.is_full() == True: print('game is full')
         
 main()
 
