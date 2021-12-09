@@ -22,4 +22,4 @@ while True:
         data = response.json()
         for i in range(0, len(data['results'])):
             print(data['results'][i]['joke'], end='\n')
-            time.sleep(2)
+            time.sleep(3)
