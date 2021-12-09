@@ -60,8 +60,29 @@ while welcome_message == 'yes':
         print('')
         time.sleep(1)
         num += 1
+        if num == parameters['limit']:
+            question = input('Would you like to view the next page?: ')
+            while question == 'yes':
+                num = 0
+                parameters['page'] += 1
+                search_response = requests.get(search_url, headers=header, params=parameters)
+
+                search_dad_joke = search_response.json()
+                for j in search_dad_joke['results']:
+                    print(search_dad_joke['results'][num]['joke'])
+                    print('')
+                    num += 1
+                if parameters['page'] != search_dad_joke['total_pages']:
+                    question = input('Next page?: ')
+                else:
+                    print('This is the last page.')
+                    break
+
+            else:
+                break
 
 
-    welcome_message = input('Would you like to go again? (yes/no): ')
+
+    welcome_message = input('Would you like to search for more jokes? (yes/no): ')
 
 print('Thanks for your time!')
