@@ -44,5 +44,4 @@ for _ in range(100_000):
     earnings += winnings_dict[matches]
 
 print(f"\nEnding balance = ${balance}.\n")
-print("Return on Investment (ROI) is "), print((earnings - expenses) / expenses)
-print()
+print(f"Return on Investment (ROI) is " + str((earnings - expenses) / expenses),"\n")

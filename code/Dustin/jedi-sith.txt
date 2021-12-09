@@ -1,0 +1,6 @@
+name,species,affiliation,light saber color
+Luke Skywalker,Human,Jedi,green
+Anikin Skywalker,Human,Jedi Knight,blue
+Darth Vader,Cyborg,Sith, red
+Plo Koon,Kel'dor,Jedi Master,orange
+Yoda,Yoda-species,Jedi Master,green
