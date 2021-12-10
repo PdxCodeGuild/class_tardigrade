@@ -1,5 +1,5 @@
 class ATM:
-    def __init__(self, balance=0, interest_rate=0.1, transactions=[]):
+    def __init__(self, balance=0, interest_rate=0.001, transactions=[]):
         self.balance = balance
         self.interest_rate = interest_rate
         self.transactions = transactions
@@ -40,9 +40,9 @@ def menu():
     print("\nPress [6] to Exit")
 
 atm = ATM()  # create an instance of our class
-print("\033[1m" + "\n=======================\n")
-print("\033[1m" + "  Welcome to the ATM!  ")
-print("\033[1m" + "\n=======================")
+print("\033[1m" + "\n=======================\n" + "\033[0m")
+print("\033[1m" + "  Welcome to the ATM!  " + "\033[0m")
+print("\033[1m" + "\n=======================" + "\033[0m")
 menu()
 while True:
     command = int(input("\nEnter a command: "))
@@ -53,7 +53,7 @@ while True:
     elif command == 2:
         amount = float(input("\nHow much would you like to deposit: "))
         atm.deposit(amount)  # call the deposit(amount) method
-        print(f"\nDeposited ${amount}\n")
+        print(f"\nDeposited ${amount}")
         menu()
     elif command == 3:
         amount = float(input("\nHow much would you like to withdraw: "))

@@ -62,7 +62,7 @@ while True:
     if x in special:
         print(special.get(x))
         break
-    if 1 < hundreds_tenths <20:
+    if 10 < hundreds_tenths <20:
         print(hundreds_digit)
         print(hundreds_tenths)
         # if x in special:

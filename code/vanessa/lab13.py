@@ -1,40 +1,51 @@
+#ATM
+
+
+
 class ATM:
-    def __init__(self, balance=0, interest_rate=0.1, transactions=[]):
-        self.account_balance = 0
-        self.interest_rate = 0.1
-        self.transactions = transactions
+    def __init__(self, balance=0, interest_rate=0.1, transaction=[]):
+        self.balance = balance
+        self.interest_rate= interest_rate
+        self.transaction = transaction
+        
+
     def check_balance(self):
         """return the account balance"""
-        return self.account_balance
+        return self.balance
+        ...
 
     def deposit(self, amount):
         """deposit a given amount into account"""
-        self.transactions.append(f'User deposited ${amount}')
-        self.account_balance += amount
+        if amount > 0:
+            self.balance += amount
+            self.transaction.append(f'user deposited ${amount}')
+        
 
     def check_withdrawal(self, amount):
         """return True if account has enough funds to withdraw given amount"""
-        if amount < self.account_balance:
+        if amount <= self.balance:
             return True
-        else:
-            return False
+    
 
     def withdraw(self, amount):
         """withdraw given amount from account and return that amount"""
-        self.transactions.append(f'User withdrew ${amount}')
-        self.account_balance -= amount
+        if amount >= 0:
+            self.balance -= amount
+            self.transaction.append (f'user withdrew ${amount}')
+            return self.balance
 
     def calc_interest(self):
         """calculate and return interest gained on account"""
-        interest = self.account_balance * (self.interest_rate / 100)
-        return interest
+        amount = (self.balance * self.interest_rate)*.01
+        return amount
 
     def print_transactions(self):
-        print(self.transactions)
+        """prints out list of previous transactions. """
+        return self.transaction
+
 
 
 atm = ATM()  # create an instance of our class
-
 print('Welcome to the ATM')
 while True:
     command = input('Enter a command: ')
@@ -62,13 +73,17 @@ while True:
         print('balance  - get the current balance')
         print('deposit  - deposit money')
         print('withdraw - withdraw money')
-        print('transactions - show transaction history')
         print('interest - accumulate interest')
         print('exit     - exit the program')
-    elif command == 'transactions':
-        atm.print_transactions()
+        print('transaction - get transaction history')
+    elif command == 'transaction':
+        amount = atm.print_transactions()  # call the print_transactions methods
+        print(f'History of transactions is: {amount}')
     elif command == 'exit':
         break
     else:
         print('Command not recognized')
+
+
+    
 
