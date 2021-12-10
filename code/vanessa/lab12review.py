@@ -22,34 +22,55 @@ for persons_data in traveler_history[1:]:
         
     total_histories.append(profile)
     
-print(total_histories[1]["country of origin"])
-print(total_histories[4]["name"])
-print(total_histories[1]["countries visited"])
-print(total_histories[1]["country of origin"])
+# print(total_histories[1])
+# print(total_histories[4]["name"])
+# print(total_histories[1]["countries visited"])
+# print(total_histories[1]["country of origin"])
 
-# weather={"fall": "rainy",
-#         "winter": "cold/overcast/stormy/dry",  
-#         "spring": "rainy/warm",
-#         "summer": " very warm" }    
-# oregon= ("apples", "cheese", "ducks", "berries",weather)
-# print(oregon[4]["winter"])
-
-# def search():
-#     """searches for key info"""
-#     search_term= input("Which person's travel history would you like? ")
-#     for name in total_histories:
-#         if search_term in name ['name'].lower():
-#             print(f" {name} relation to Vanessa is {relation},from {country of origin}, resides in {country of residence}, has visited {number of countries} and these include the following countries{countries visited}")
-
-# print(search())
 
 print("Welcome to Vanessa's and friend's travel history repository")
 
+def create():
+    new_record = input("What is your name? What is your relation to Vanessa? What is your country of origin? How many countries have you visited? Which countries have you visited (including home country if travel has been done domestically)? please seperate by comma except for countries visited(x y z): ")
+    print(new_record)
 
+def update():
+    update_record1= input("Whose record would you like to update? ")
+    print(update_record1)
+    update_recordpart2= input("What would you like to update? ")
+    print(total_histories(update_recordpart2))
 
+def retrieve():
+    print("Options: ")
+    for each in total_histories:
+        print(each["name"])
+    retrieve_record = input("Whose travel history would you like to see? ")
+    for person in total_histories:
+        if person['name'] == retrieve_record:
+            return person
+        # elif person['name'] != retrieve_record:
+        #     print("Sorry. Person not found.")
 
-# input_name = input("What is your name? ")
-# input_relation = input("What is your relation to Vanessa? ")
-# input_origin = input("What is your country of origin? ")
-# input_number = input("How many countries have you visited? ")
-# input_countries = input("Which countries have you visited (including home country if travel has been done domestically)? please separate by comma: ")
+def delete():
+    delete_record= input('Whose travel history do you wish to delete?')
+    print(delete_record)
+
+def quit():
+    print("Thanks- Safe travels!")
+    return
+
+while True:
+    command = input('Would you like to [c]reate [u]pdate, [r]etrieve, [d]elete or [q]uit? ').lower()
+    if command not in ["c","u","r","d","q"]:
+        print("please enter 'c' 'u' 'r' 'd' or 'q' commands only.")
+    if command == 'c':
+        create()
+    if command == 'u':
+        update()
+    if command == 'r':
+        retrieve()
+    if command == 'd':
+        delete()
+    if command == 'q':
+        quit()
+        break
