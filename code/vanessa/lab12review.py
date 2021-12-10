@@ -22,11 +22,6 @@ for persons_data in traveler_history[1:]:
         
     total_histories.append(profile)
     
-# print(total_histories[1])
-# print(total_histories[4]["name"])
-# print(total_histories[1]["countries visited"])
-# print(total_histories[1]["country of origin"])
-
 
 print("Welcome to Vanessa's and friend's travel history repository")
 
@@ -36,20 +31,35 @@ def create():
 
 def update():
     update_record1= input("Whose record would you like to update? ")
-    print(update_record1)
-    update_recordpart2= input("What would you like to update? ")
-    print(total_histories(update_recordpart2))
+    for person in total_histories:
+        if person['name'] == update_record1:
+            update= input("What would you like to update? [n]ame, [r]elation, [c]ountry of origin, country of [r]esidence, n[u]mber of countries visited, or countries [v]?').lower() ")
+            if update == 'n':
+                print("n")
+            if update == 'r':
+                print("r")
+            if update == 'c':
+                print("c")
+            if update == 'r':
+                print("r")
+            if update ==  'u':
+                print("u")
+            if update == 'v':
+                print("v")
+            print(update)
+    print(total_histories(update))
 
 def retrieve():
     print("Options: ")
     for each in total_histories:
         print(each["name"])
     retrieve_record = input("Whose travel history would you like to see? ")
+    # print(total_histories)
     for person in total_histories:
         if person['name'] == retrieve_record:
             return person
-        # elif person['name'] != retrieve_record:
-        #     print("Sorry. Person not found.")
+        elif person['name'] == retrieve_record:
+            print("Sorry. Person not found.")
 
 def delete():
     delete_record= input('Whose travel history do you wish to delete?')
@@ -66,9 +76,9 @@ while True:
     if command == 'c':
         create()
     if command == 'u':
-        update()
+        print(update())
     if command == 'r':
-        retrieve()
+        print(retrieve())
     if command == 'd':
         delete()
     if command == 'q':
