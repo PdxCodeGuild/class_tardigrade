@@ -1,4 +1,15 @@
+# Version 1 of Lab
 import requests
+url = 'https://icanhazdadjoke.com/'
+
+headers = {
+    'accept': 'application/json'
+}
+response = requests.get(url, headers = headers)
+data = response.json()
+print(data['joke'])
+
+# Version 2 of Lab
 import time
 
 while True:
@@ -22,4 +33,4 @@ while True:
         data = response.json()
         for i in range(0, len(data['results'])):
             print(data['results'][i]['joke'], end='\n')
-            time.sleep(3)
+            time.sleep(2)
