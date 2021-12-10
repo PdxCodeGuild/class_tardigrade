@@ -1,40 +1,65 @@
 # code an investment trading bot that trades using fake paper money
-import alpaca_trade_api as tradeapi
-import numpy as np
+import robin_stocks as r
+import pandas as pd
 import time
 
-url = "https://paper-api.alpaca.markets" # url used to access website
+login = r.login(username, password)
 
-sec_key = "hAoJ9HSwKWvQ7wBjMcRwoT7yTxdDm2VfMyJPG0vW"
+r.build_holdings()
+r.profiles.load_basic_profile()
 
-pub_key = "AK11YJE0ZV9IEZ1AUK9Q"
+# def visualize_price(ticker_list, span = "year", bounds = "regular"):   
+#     for t in range(len(ticker_list)):
+#         name = str(rh.get_name_by_symbol(ticker_list[t]))
+#         hist = rh.stocks.get_stock_historicals(ticker_list[t], span=span, bounds=bounds)
+#         hist_df = pd.DataFrame()
+#         for i in range(len(hist)):
+#             df = pd.DataFrame(hist[i], index = [i])
+#             hist_df = pd.concat([hist_df,df])
+#         hist_df.begins_at = pd.to_datetime(hist_df.begins_at, infer_datetime_format=True)
+#         hist_df.open_price = hist_df.open_price.astype("float32")
+#         hist_df.close_price = hist_df.close_price.astype("float32")
+#         hist_df.high_price = hist_df.high_price.astype("float32")
+#         hist_df.low_price = hist_df.low_price.astype("float32")
 
-api = tradeapi.REST(key_id=pub_key, secret_key=sec_key, base_url=url)
+#         ax = hist_df.plot(x = "begins_at", y = "open_price", figsize = (16,8))
+#         ax.fill_between(hist_df.begins_at, hist_df.low_price, hist_df.high_price, alpha = 0.5)
+#         ax.set_xlabel("Date")
+#         ax.set_ylabel("Price (USD)")
+#         ax.legend([ticker_list[t]])
+#         ax.set_title(name)
+#     return
 
-# purchase a stock
-api.submit_order(
-    symbol = "TSLA",
-    qty = 1,
-    side = "buy",
-    type = "market",
-    time_in_force = "gtc",
-)
+def extract_list():
+    ticker_list = list(r.build_holdings().keys())
+    return ticker_list
 
-# sell a stock
-api.submit_order(
-    symbol = "TSLA",
-    qty = 1,
-    side = "sell",
-    type = "market",
-    time_in_force = "gtc",
-)
+ticker_list = extract_list()
+# visualize_price(ticker_list, span = "year", bounds = "regular")
 
-symbol = "TSLA"
+def trading_bot(trading_dict):
+    holdings = r.build_holdings()
+    holdings_df = pd.DataFrame()
+    for i in range(len(holdings)):
+        ticker = list(holdings.items())[i][0]
+        holding_df = pd.DataFrame(list(holdings.items())[i][1], index = [i])
+        holding_df["ticker"] = ticker
+        holdings_df = pd.concat([holdings_df, holding_df])
+    holdings_df = holdings_df[["ticker", "price", "quantity", "percent_change","average_buy_price", "equity", "equity_change","pe_ratio", "type", "name", "id" ]]
 
-while True:
-    print("")
-    print("Checking Price...")
+    for j in range(len(trading_dict)):
+        holding_df = holdings_df[holdings_df.ticker == list(trading_dict.keys())[j]]
+        if holding_df["percent_change"].astype("float32")[0] <= list(trading_dict.values())[j][0]:
+            buy_string = "Buying " + str(holding_df["ticker"][0]) + " at " + time.ctime()
+            print(buy_string)
+            r.orders.order_buy_market(holding_df["ticker"][0],1,timeInForce= "gfd")
+        else:
+            print("Nothing to buy")
 
-    market_data = api.get_barset(symbol, "minute", limit = 10)
+        if holding_df["percent_change"].astype("float32")[0] >= list(trading_dict.values())[j][1]:
+            sell_string = "Buying " + str(holding_df["ticker"][0]) + " at " + time.ctime()
+            print(sell_string)
+            r.orders.order_sell_market(holding_df["ticker"][0],1,timeInForce= "gfd")
+        else:
+            print("Nothing to sell")
 
-    close_list = []
