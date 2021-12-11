@@ -1,17 +1,25 @@
-import csv
+import requests
+import time
 
-file_path = r'code/auriel/Python/contactlist_auriel.csv'
-fieldnames = ['first_name', 'last_name', 'city', 'favorite_color']
+while True:
 
-with open(file_path, 'w', newline = '') as csv_file:
-    fieldnames = ['first_name', 'last_name', 'city', 'favorite_color']
-    writer = csv.DictWriter(csv_file, fieldnames = fieldnames)
+    user_input = input("Please type a search term to find a specific joke. If you would like to exit type 'quit' ").lower()
 
-    writer.writeheader()
-    writer.writerow({'first_name': 'matt', 'last_name': 'jones', 'city': 'baltimore', 'favorite_color': 'blue'})
-    writer.writerow({'first_name': 'lisa', 'last_name': 'lowes', 'city': 'chance', 'favorite_color': 'red'})
-    writer.writerow({'first_name': 'amber', 'last_name': 'peterson', 'city': 'mitchellville', 'favorite_color': 'purple'})
+    if user_input == 'quit':
+        break
+    else:
+        url = f'https://icanhazdadjoke.com/search?term={user_input}'
 
-with open(file_path, 'r') as file:
-    lines = file.read().split('\n')
-    print(lines)
+        headers = {
+            'accept': 'application/json'
+        }
+
+        params = {
+            'limit': 20,
+        }
+
+        response = requests.get(url, headers = headers, params = params)
+        data = response.json()
+        for i in range(0, len(data['results'])):
+            print(data['results'][i]['joke'], end='\n')
+            time.sleep(3)

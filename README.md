@@ -10,6 +10,7 @@ M-F 9:30 am – 4:30 pm
 
 - November 25th & 26th (Thanksgiving)
 - December 24th (Christmas Eve)
+- December 27th (Long Xmas Weekend)
 - December 31st (New Years Eve)
 
 ### Staff
@@ -80,13 +81,13 @@ Presentation Day: February 25th, 2022
 * [Lab 09 Peaks And Valleys](1%20Python/labs/09%20Peaks%20And%20Valleys.md)
 * [Lab 10 ROT13](1%20Python/labs/10%20ROT13.md)
 * [Lab 11 ARI](1%20Python/labs/11%20ARI.md)
-<!-- * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
+* [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
 * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
 * [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
-* [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
+<!-- * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md) -->
 * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
 * [Lab 17 Quotes API](1%20Python/labs/17%20Quotes%20API.md)
-* [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md) -->
+* [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md)
 
 #### Optional Python Labs
 
@@ -96,14 +97,14 @@ Presentation Day: February 25th, 2022
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
-<!-- [Rain Data](1%20Python/labs/rain_data.md), -->
+[Rain Data](1%20Python/labs/rain_data.md),
 [Random Emoticon Generator](1%20Python/labs/random_emoticon_generator.md),
 [Random Password Generator](1%20Python/labs/random_password.md),
 [Road Trip](1%20Python/labs/road_trip.md),
 [Rock, Paper, Scissors](1%20Python/labs/rock_paper_scissors.md),
 [Simple Calculator](1%20Python/labs/simple_calculator.md),
 [Sock Sorter](1%20Python/labs/sock_sorter.md),
-<!-- [Stack And Linked List](1%20Python/labs/stack_and_linked_list.md), -->
+[Stack And Linked List](1%20Python/labs/stack_and_linked_list.md),
 [Unit Converter](1%20Python/labs/unit_converter.md)
 
 
