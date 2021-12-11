@@ -9,7 +9,7 @@ Date:  12/6/21
 class ATM:
 
 
-    def __init__(self, balance = 0, interest_rate = 0.1, transaction_list = []):
+    def __init__(self, balance = 0, interest_rate = 0.001, transaction_list = []):
         self.balance = balance
         self.interest_rate = interest_rate
         self.transaction_list = transaction_list
