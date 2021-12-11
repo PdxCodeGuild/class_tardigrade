@@ -27,7 +27,9 @@ print("Welcome to Vanessa's and friend's travel history repository")
 
 def create():
     new_record = input("What is your name? What is your relation to Vanessa? What is your country of origin? How many countries have you visited? Which countries have you visited (including home country if travel has been done domestically)? please seperate by comma except for countries visited(x y z): ")
+    total_histories.append(new_record)
     print(new_record)
+    print(total_histories)
 
 def update():
     update_record1= input("Whose record would you like to update? ")
@@ -62,7 +64,7 @@ def retrieve():
             print("Sorry. Person not found.")
 
 def delete():
-    delete_record= input('Whose travel history do you wish to delete?')
+    delete_record= input('Whose travel history do you wish to delete? warning: this will delete entire record')
     print(delete_record)
 
 def quit():
