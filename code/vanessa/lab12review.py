@@ -1,6 +1,9 @@
 
 
 
+from os import name
+
+
 with open('vanessa\contacts2.csv', 'r') as travel_doc:
     traveler_history = travel_doc.read().split("\n")
     header =(traveler_history[0].split(","))
@@ -28,7 +31,6 @@ print("Welcome to Vanessa's and friend's travel history repository")
 def create():
     new_record = input("What is your name? What is your relation to Vanessa? What is your country of origin? How many countries have you visited? Which countries have you visited (including home country if travel has been done domestically)? please seperate by comma except for countries visited(x y z): ")
     total_histories.append(new_record)
-    print(new_record)
     print(total_histories)
 
 def update():
@@ -38,6 +40,7 @@ def update():
             update= input("What would you like to update? [n]ame, [r]elation, [c]ountry of origin, country of [r]esidence, n[u]mber of countries visited, or countries [v]?').lower() ")
             if update == 'n':
                 print("n")
+                print(total_histories[4]["name"])
             if update == 'r':
                 print("r")
             if update == 'c':
@@ -64,8 +67,34 @@ def retrieve():
             print("Sorry. Person not found.")
 
 def delete():
-    delete_record= input('Whose travel history do you wish to delete? warning: this will delete entire record')
-    print(delete_record)
+    print("Options: ")
+    for each in total_histories:
+        print(each["name"])
+    delete_record= input('Whose travel history do you wish to delete? warning: this will delete entire record... ')
+    for each in total_histories:
+        if (each["name"]) == delete_record:
+          total_histories.pop(delete_record)
+        #     print(total_histories)
+           
+    #         print(total_histories)
+    #     if each_person== total_histories[1]:
+    #         total_histories.pop(1)
+    #         print(total_histories)
+    #     if each_person== total_histories[2]:
+    #         total_histories.pop(2)
+    #         print(total_histories)
+    #     if each_person== total_histories[3]:
+    #         total_histories.pop(3)
+    #         print(total_histories)
+    #     if each_person== total_histories[4]:
+    #         total_histories.pop(4) 
+    #         print(total_histories)       
+        
+        #     print(total_histories.remove([i[delete_record]])#remove dict from list
+        # if delete_record == "vanessa": #might want to try removing by index with another reverse dictionary? 
+            # print(i)
+            
+
 
 def quit():
     print("Thanks- Safe travels!")
