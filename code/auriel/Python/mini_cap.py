@@ -23,7 +23,11 @@ artist = tk.StringVar()
 
 # Function for search button
 def search_clicked():
-    ...
+    print('Yes Auriel')
+
+
+
+
 
 # Entry box for artist name 
 artist_label = ttk.Label(
@@ -61,7 +65,7 @@ search_button = ttk.Button(
 )
 search_button.pack(
     fill = 'x',
-    expand = True,
+    expand = False,
     ipady = 5
 )
 
@@ -73,7 +77,7 @@ exit_button = ttk.Button(
 )
 exit_button.pack(
     fill = 'x',
-    expand = True,
+    expand = False,
     ipady = 5
 )
 
