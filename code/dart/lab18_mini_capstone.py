@@ -1,65 +1,95 @@
-# code an investment trading bot that trades using fake paper money
-import robin_stocks as r
-import pandas as pd
-import time
+# create a discord bot using python
+import discord
+import requests
+import json
+import random
+from replit import db
+from keep_alive import keep_alive
 
-login = r.login(username, password)
+client = discord.Client()
 
-r.build_holdings()
-r.profiles.load_basic_profile()
+sad_words = ["sad", "depressed", "unhappy", "angry", "miserable", "depressing"]
 
-# def visualize_price(ticker_list, span = "year", bounds = "regular"):   
-#     for t in range(len(ticker_list)):
-#         name = str(rh.get_name_by_symbol(ticker_list[t]))
-#         hist = rh.stocks.get_stock_historicals(ticker_list[t], span=span, bounds=bounds)
-#         hist_df = pd.DataFrame()
-#         for i in range(len(hist)):
-#             df = pd.DataFrame(hist[i], index = [i])
-#             hist_df = pd.concat([hist_df,df])
-#         hist_df.begins_at = pd.to_datetime(hist_df.begins_at, infer_datetime_format=True)
-#         hist_df.open_price = hist_df.open_price.astype("float32")
-#         hist_df.close_price = hist_df.close_price.astype("float32")
-#         hist_df.high_price = hist_df.high_price.astype("float32")
-#         hist_df.low_price = hist_df.low_price.astype("float32")
+starter_encouragements = [
+  "Cheer up! You're about of a great team known as the Death Eaters and together we will destroy Harry Potter!",
+  "Hang in there.",
+  "You are a great person!"
+]
 
-#         ax = hist_df.plot(x = "begins_at", y = "open_price", figsize = (16,8))
-#         ax.fill_between(hist_df.begins_at, hist_df.low_price, hist_df.high_price, alpha = 0.5)
-#         ax.set_xlabel("Date")
-#         ax.set_ylabel("Price (USD)")
-#         ax.legend([ticker_list[t]])
-#         ax.set_title(name)
-#     return
+if "responding" not in db.keys():
+  db["responding"] = True
 
-def extract_list():
-    ticker_list = list(r.build_holdings().keys())
-    return ticker_list
+def get_quote():
+  response = requests.get("https://zenquotes.io/api/random")
+  json_data = json.loads(response.text)
+  quote = json_data[0]['q'] + " -" + json_data[0]['a']
+  return(quote)
 
-ticker_list = extract_list()
-# visualize_price(ticker_list, span = "year", bounds = "regular")
+def update_encouragements(encouraging_message):
+  if "encouragements" in db.keys():
+    encouragements = db["encouragements"]
+    encouragements.append(encouraging_message)
+    db["encouragements"] = encouragements
+  else:
+    db["encouragements"] = [encouraging_message]
 
-def trading_bot(trading_dict):
-    holdings = r.build_holdings()
-    holdings_df = pd.DataFrame()
-    for i in range(len(holdings)):
-        ticker = list(holdings.items())[i][0]
-        holding_df = pd.DataFrame(list(holdings.items())[i][1], index = [i])
-        holding_df["ticker"] = ticker
-        holdings_df = pd.concat([holdings_df, holding_df])
-    holdings_df = holdings_df[["ticker", "price", "quantity", "percent_change","average_buy_price", "equity", "equity_change","pe_ratio", "type", "name", "id" ]]
+def delete_encouragment(index):
+  encouragements = db["encouragements"]
+  if len(encouragements) > index:
+    del encouragements[index]
+    db["encouragements"] = encouragements
 
-    for j in range(len(trading_dict)):
-        holding_df = holdings_df[holdings_df.ticker == list(trading_dict.keys())[j]]
-        if holding_df["percent_change"].astype("float32")[0] <= list(trading_dict.values())[j][0]:
-            buy_string = "Buying " + str(holding_df["ticker"][0]) + " at " + time.ctime()
-            print(buy_string)
-            r.orders.order_buy_market(holding_df["ticker"][0],1,timeInForce= "gfd")
-        else:
-            print("Nothing to buy")
+@client.event
+async def on_ready():
+  print('We have logged in as {0.user}'.format(client))
 
-        if holding_df["percent_change"].astype("float32")[0] >= list(trading_dict.values())[j][1]:
-            sell_string = "Buying " + str(holding_df["ticker"][0]) + " at " + time.ctime()
-            print(sell_string)
-            r.orders.order_sell_market(holding_df["ticker"][0],1,timeInForce= "gfd")
-        else:
-            print("Nothing to sell")
+@client.event
+async def on_message(message):
+  if message.author == client.user:
+    return
 
+  msg = message.content
+
+  if msg.startswith('$inspire'):
+    quote = get_quote()
+    await message.channel.send(quote)
+
+  if db["responding"]:
+    options = starter_encouragements
+    if "encouragements" in db.keys():
+      options = options + db["encouragements"]
+
+    if any(word in msg for word in sad_words):
+      await message.channel.send(random.choice(options))
+
+  if msg.startswith("$new"):
+    encouraging_message = msg.split("$new ",1)[1]
+    update_encouragements(encouraging_message)
+    await message.channel.send("New encouraging message added.")
+
+  if msg.startswith("$del"):
+    encouragements = []
+    if "encouragements" in db.keys():
+      index = int(msg.split("$del",1)[1])
+      delete_encouragment(index)
+      encouragements = db["encouragements"]
+    await message.channel.send(encouragements)
+
+  if msg.startswith("$list"):
+    encouragements = []
+    if "encouragements" in db.keys():
+      encouragements = db["encouragements"]
+    await message.channel.send(encouragements)
+
+  if msg.startswith("$responding"):
+    value = msg.split("$responding ",1)[1]
+
+    if value.lower() == "true":
+      db["responding"] = True
+      await message.channel.send("Responding is on.")
+    else:
+      db["responding"] = False
+      await message.channel.send("Responding is off.")
+
+keep_alive()
+client.run("OTIwNDA5NTM2MzU4MTI1NTY4.Ybj8LQ.vvculqtxtheAHuG0TtYUSZE9fQM")
