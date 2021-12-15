@@ -1,9 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
+import lyricsgenius as lg
+from lyricsgenius import Genius
+
 
 # Create root window with application name
 root = tk.Tk()
-root.geometry('300x150')
+root.geometry('300x300')
 root.resizable(False, False)
 root.title('Lyric Finder')
 
@@ -59,7 +62,19 @@ search_button = ttk.Button(
 search_button.pack(
     fill = 'x',
     expand = True,
-    ipady = 10
+    ipady = 5
+)
+
+# Exit button
+exit_button = ttk.Button(
+    root,
+    text = 'Exit',
+    command = root.destroy
+)
+exit_button.pack(
+    fill = 'x',
+    expand = True,
+    ipady = 5
 )
 
 root.mainloop()
