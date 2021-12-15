@@ -1,4 +1,5 @@
 #Habit Tracker
+from typing import Counter
 import schedule
 import time
 schedule.Set
@@ -12,26 +13,16 @@ if progress == "y":
 else:
     print("Ok!")
 
-# def daily_affirmation ():
-#     with open('affirmations.csv','r') as file:
-#         contents = file.read()
-#         line = contents.split('\n')
-#     for j in line:
-#         j=1
-#         if j < 31:
-#              time.sleep(4)
-#              print(line[j])
-#              j += 1
-
-# def counter(global met_goals ):
-#     global met_goals0
-#     return global met_goals    
+counter=[0]
 
 def goal1(message='drink water'):
     print(message)
+    counts = 0
     accomplished= input("Task complete? (y/n) ")
     if accomplished == "y":
-        print("Yay-one step closer!")
+        print("Yay-one step closer!")    
+        counts= counts + 1
+        counter.append(counts)
     if accomplished == "n":
         print("keep trying!")
 
@@ -71,18 +62,17 @@ def congrats (message='Congratulations! Keep up the great work!'):
     print(message)
 
 
-schedule.every(15).minutes.do(goal1)
+schedule.every(1).minutes.do(goal1)
 schedule.every(15).to(30).minutes.do(goal5)
 schedule.every(5).to(10).days.do(goal1)
 schedule.every(1).hour.do(goal2, )
-schedule.every().day.at("03:05").do(goal2)
-schedule.every().day.at("03:05:30").do(goal3)
-schedule.every().day.at("03:04").do(goal4)
-# schedule.every().day.at("14:58").do(daily_affirmation)
-schedule.every().day.at("03:05").do(congrats)
+schedule.every().day.at("15:11").do(goal2)
+schedule.every().day.at("15:12:30").do(goal3)
+schedule.every().day.at("15:13").do(goal4)
+# schedule.every().day.at("14:78").do(daily_affirmation)
+schedule.every().day.at("15:13:30").do(congrats)
 
 while True:
     schedule.run_pending()
-    time.sleep(1)
-
-
+    time.sleep(1) 
+    print(counter)
