@@ -19,38 +19,15 @@ def pick6_2():
     
 
     for _ in range(6):
-        ticket.append(randint(1, 99))
+        ticket.append(ran
+        dint(1, 99))
 
     return ticket
             
 
-  
+      
+        
 
-def num_matches():
-    for _ in range(100000):
-        winning_ticket=entry = pick6_2()
-     
-        if ticket == winning_ticket:
-            return 6
-
-        elif ticket[0:4] == winning_ticket[0:4] or ticket[0][1][2][3][4] == winning_ticket[0][1][2][3][4]:
-            print('you win $1000000')
-            return 4
-        else:
-            print('you lose')
-        return entry and ticket
-
-num_matches()
-    
-
-    # elif ticket[0][1][2][3][4][5] == winning_ticket[0][1][2][3][4][5]:
-    #     print('you win $7')
-
-    # elif all_tickets[0:2] == winnning_ticket[0:2]:
-    #     print('you win $100')
-
-    # elif all_tickets[0:3] == winnning_ticket[0:3]:
-    #     print('you win $50000')
 
 
 pick6()
