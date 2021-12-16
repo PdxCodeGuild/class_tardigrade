@@ -1,75 +1,101 @@
-import astropy
-from astropy import time
-import arrow
+
 import pyaztro
 
+
+    
 
 
 month = input('What is your birthmonth?: ')
 day = int(input('What day were you born?: '))
 
+
 if month == 'january' or month == 'January':
-    if day < 20:
-        print('Your sun sign is Capricorn!')
-    elif day >= 20:
-        print('Your sun sign is Aquarius!') 
-if month == 'febuary' or month == 'Febuary':
-    if day < 19:
-        print('Your sun sign is Aquarius!')
-    elif day >= 19:
-        print('Your sun sign is Pisces!')
-if month == 'march' or month == 'March':
-    if day <=20:
-        print('Your sun sign is Pisces!')
-    elif day > 20:
-        print('Your sun sign is Aries! ')
-if month == 'april' or month == 'April':
     if day <= 19:
-        print('Your sun sign is Pisces')
-    elif day > 19:
-        print('Your sun sign is Taurus!')
-if month == 'may' or month == 'May':
-    if  day <= 20:
-        print('Your sun sign is Taurus!')
+       sun = 'Capricorn'
+    elif day >20:
+        sun = 'Aquarius' 
+elif month == 'febuary' or month == 'Febuary':
+    if day < 19:
+        sun = 'Aquarius'
+    elif day >= 19:
+        sun = 'Pisces'
+elif month == 'march' or month == 'March':
+    if day <=20:
+        sun = 'Pisces'
     elif day > 20:
-        print('Your sun sign is Gemini!')
-if month == 'june' or month == 'June':
+        sun = 'Aries '
+elif month == 'april' or month == 'April':
+    if day <= 19:
+        sun = 'Pisces'
+    elif day > 19:
+        sun = 'Taurus'
+elif month == 'may' or month == 'May':
+    if  day <= 20:
+        sun = 'Taurus'
+    elif day > 20:
+        sun = 'Gemini'
+elif month == 'june' or month == 'June':
     if day <= 21:
-        print('Your sun sign is Gemini!')
+        sun = 'Gemini'
     elif day >21:
-        print('Your sun sign is Cancer!')
-if month == 'july' or month == 'July':
+        sun = 'Cancer'
+elif month == 'july' or month == 'July':
     if day <= 22:
-        print('Your sun sign is Cancer!')
+        sun = 'Cancer'
     elif day > 22:
-        print('Your sun sign is Leo!')
-if month == 'august' or month == 'August':
+        sun = 'Leo'
+elif month == 'august' or month == 'August':
     if day <= 22:
-        print('Your sun sign is Leo!')
+        sun = 'Leo'
     elif day > 22:
-        print('Your sun sign is Virgo!')
-if month == 'september' or month == 'September':
+        sun = 'Virgo'
+elif month == 'september' or month == 'September':
     if day <= 23:
-        print('Your sun sign is Virgo!')
+        sun = 'Virgo'
     elif day > 23:
-        print('Your sun sign is Libra!')
-if month == 'october' or month == 'October':
+        sun = 'Libra'
+elif month == 'october' or month == 'October':
     if  day <= 23:
-        print('Your sun sign is Libra!')
+        sun = 'Libra'
     elif day > 23:
-        print('Your sun sign is Scorpio!')
-if month == 'november' or month == 'November':
+        sun = 'Scorpio'
+elif month == 'november' or month == 'November':
     if day <= 22:
-        print('Your sun sign is Scorpio!')
+        sun = 'Scorpio'
     elif day > 22:
-        print('Your sun sign is Sagittarius!')
-if month == 'december' or month == 'December':
+        sun = 'Sagittarius'
+elif month == 'december' or month == 'December':
     if day <= 21:
-        print('Your sun sign is Sagittarius!')
+        sun = 'Sagittarius'
     elif day > 21:
-        print('Your sun sign is Capricorn!')
+        sun = 'Capricorn'
 else:
-        print('I do not understand. Please enter birthmonth and birthday')
+    print('I do not understand. Please enter birthmonth and birthday')
+print(f'Your Zodiac sign is {sun}!')
+
+
+matches = ['Leo and Sagittarius'['Virgo and Taurus']]
+
+
+
+
+
+user_choice = input('What else would you like to know about your Zodiac? You can choose "horoscope"user "description" or "compatability.: ')
+
+while True:
+    if user_choice == 'horoscope':
+        zodiac = pyaztro.Aztro(sign=sun)
+        print(zodiac.description)
+        break
+    if user_choice == 'compatability':
+        for i in matches:
+            print(i)
+        
+
+
+# # import pyaztro
+# taurus = pyaztro.Aztro(sign='taurus')
+# taurus.description
 
 # Aries	March 21 -April 19	Energetic, candid and willful
 # Taurus	April 20 - May 20	Reliable, diligent and conservative

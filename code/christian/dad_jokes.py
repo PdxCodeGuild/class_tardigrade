@@ -45,5 +45,4 @@ while True:
     output = response.json()['results']
     for item in output:
         print(item['joke'])
-    # print(output)
-    # print(output['joke'])
+    
