@@ -4,6 +4,7 @@
 import discord # allows us to communicate with the discord server
 import random
 import time
+import os
 
 intents = discord.Intents.default()
 intents.members=True
