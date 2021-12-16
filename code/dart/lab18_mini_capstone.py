@@ -1,17 +1,22 @@
 # Bot is short for robot and is a software application that performs automated, repetitive and pre-defined tasks. 
 # Bots typically imitate or replace human behavior. As they are automated, they operate much faster than human users.
 
-import discord # allows us to communicate with the discord server
-import random
-import time
 import os
+import time
+import random
+import discord
+from dotenv import load_dotenv
 
 intents = discord.Intents.default()
-intents.members=True
+intents.members = True
 client = discord.Client(intents = intents) # discord.Client() creates a connection to Discord. This class is used to interact with Discord.
 
+# load bot's token
+load_dotenv()
+TOKEN = os.getenv("TOKEN")
+
 @client.event
-async def on_ready():
+async def on_ready(): # as far as I understand it, asynchronous functions or programs allow functions to run out of order while say a different function is waitng on something to happen
   print("Bot is ready and logged in as {0.user}".format(client))
 
 @client.event
@@ -42,12 +47,16 @@ async def on_message(message):
   channel = str(message.channel.name)
   print(f"{username}: {user_message} ({channel})")
 
-  if message.author == client.user: # if message author == bot, it will not reply to itself 
+  # bot won't reply to its own messages  
+  if message.author == client.user:
     return
 
   if message.channel.name == "general":
-    if user_message == "Hello".lower() or user_message == "Hey".lower() or user_message == "Whats up".lower() or user_message == "What's up".lower() or user_message == "Sup".lower():
-      await message.channel.send(f"Hello {username}. I'm glad to have you on our team. What do you say we destroy Harry Potter")
+    if any(word in user_message for word in "Sup".lower()) or any(word in user_message for word in "Hello".lower()) \
+    or any(word in user_message for word in "Hey".lower()) or any(word in user_message for word in "What's up".lower()) \
+    or any(word in user_message for word in "Whats up".lower()):
+    # if user_message == "Hello".lower() or user_message == "Hey".lower() or user_message == "Whats up".lower() or user_message == "What's up".lower() or user_message == "Sup".lower():
+      await message.channel.send(f"Hello {username}. I'm glad to have you on our team. What do you say we destroy Harry Potter.")
       return
     elif user_message == "Bye".lower() or user_message == "see you later".lower():
       await message.channel.send(f"See you later {username}. Keep practicing your wand skills.")
@@ -58,4 +67,5 @@ async def on_message(message):
     elif any(word in user_message for word in "Potter"):
       await message.channel.send(f"Did you say Potter? If you're talking about Harry Potter, STOP.")
 
-client.run("OTIwNDA5NTM2MzU4MTI1NTY4.Ybj8LQ.ZQ8tqZxoVioA55HeNLEdxFOrrHY") # runs the bot when we run the file
+# runs bot when file is ran
+client.run(TOKEN)
