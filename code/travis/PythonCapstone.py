@@ -6,14 +6,15 @@ Date: 12 13 21
 
 """
 
+import base64
+import json
 import os
+from types import NoneType
 import requests
 from cryptography.fernet import Fernet, InvalidToken
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
-
-
-
-
 
 #access secure data using "py -m pip install cryptography"
 
@@ -24,230 +25,208 @@ from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 #create password, hash to key
 #repl to enter data, retrieve data
 
+#salt = os.urandom(16)
+def read_encrypted_list():
+  file_location = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/secret-list.txt" 
+  with open(file_location, 'r', encoding="utf-8") as secret_file:
+      secret_lines = secret_file.readlines()
+
+      #take items out of returned file
+      for items in secret_lines:
+        secret_lines_str = items
+
+        print(f" items from doc {secret_lines_str}")
+        
+        ##decodes item from document
+        
+      # print(salt)
+      #  print(input_user_password)
+        # print(secret_lines_str)
+        #new_crypt = Cryptography(salt, input_user_password, secret_lines_str)
+
+        # try:
+      new_decrypt = Cryptography(verified_user_salt, input_user_password, secret_lines_str)
+
+      decrypted_output = new_decrypt.perform_decrypt()
+
+      print(f"This data is decrypted from file {decrypted_output}")
+        # except:
+        #   print("error")
+
+def write_encrypted_list(test_save_data):
+
+  file_location = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/secret-list.txt"
+
+  with open(file_location, 'w', encoding="utf-8") as secret_file_w:
+    
+    secret_file_w.write(test_save_data.decode())
+
+
+def create_f(input_salt, user_password):
+      
+    kdf = PBKDF2HMAC(
+      algorithm=hashes.SHA256(),
+      length=32,
+      salt=input_salt,
+      iterations=390000,
+    )
+    key = base64.urlsafe_b64encode(kdf.derive(user_password))
+    f = Fernet(key)
+    return f
+
 
 class User():
 
   def __init__(self, user_name, password):
     self.user_name = user_name
     self.password = password
+    
+  def __repr__(self):
+ 
+    return self.user_name
 
-#  def __repr__(self):
-
- #   return self.user_name
-
-  def login(self):
+  def create_user():
     ...
 
 
-  def add_user(self):
-      ...
+  def load_user_salt(self):
+    """
+    Checks user then loads their hash
+    
+    """
+    user_filename = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/user_info.txt"
 
+    with open(user_filename, "r") as user:
+      user_lines = user.read().split('\n')
+    
 
+    user_id = user_lines[0]
+    user_file_salt = user_lines[1].encode()   
+    user_encrypt = user_lines[2]
 
+    user_salt = user_file_salt.decode("unicode-escape").encode('ISO-8859-1')
+     
+    if self.user_name.decode() == user_id:
 
+      print(f"Welcome {self.user_name}")
 
+    else: 
 
+      print("Enter valid username")
+    
+    f = create_f(user_salt, self.password)
+ 
+    f.decrypt(str.encode(user_encrypt))
+
+    decrypted_is_valid = f.decrypt(str.encode(user_encrypt)).decode()
+
+    print(f"Verified user? : {decrypted_is_valid}")
+
+  #  if decrypted_is_valid != "user_verified":
+  #    return False
+
+ #   elif decrypted_is_valid == "user_verified":
+
+    return user_salt.decode("unicode-escape").encode('ISO-8859-1')   
+ 
 
 class Cryptography():
 
-  def __init__(self, f, key):
+  def __init__(self, user_salt, user_password, new_data):
 
-    self.key = key      
-    self.f = f
-    
-  def __repr__(self):
+    self.user_salt = user_salt
+    self.new_data = new_data   
+    self.user_password = user_password
+ 
+  # def perform_encrypt(self, input_data):
+  #   """
+  #   Encrypt method
+  #   """
+  #   #changes to byte
+  #   data_to_encrypt = str.encode(input_data) 
+  #   encrypt_f = create_f(self.user_salt, self.user_password)
 
-      return f"F: {self.f}\n Key: {self.key}"
+  #   #encrypt data using key
+  #   token = encrypt_f.encrypt(data_to_encrypt) 
 
-
-  def my_encrypt_method(self, input_data):
-    """
-    Encypt method
-    """
-
-    #turns to bytes
-    data_to_encrypt = str.encode(input_data) 
-
-    #encrypt data using key
-    token = self.f.encrypt(data_to_encrypt)    
-    
+  #   return token
 
 
-    #test encrypt print
-    print(f" Token: Encrypted data {token}\n") 
-
-    return token
-
-
-
-  def my_decrypt(self, data_to_decrypt, test_key):
+  def perform_decrypt(self):
     """
     decrypt data
-    """   
-    try:
-      kdf.verify(b"test", test_key)
-    except:
-      print("error")
+    """
+    decrypt_f = create_f(self.user_salt, self.user_password)
 
-    decrypt_key_input = test_key
+    return (decrypt_f.decrypt(str.encode(self.new_data)))
 
-    #turn to bytes
+  def create_encrypt_data(self):
 
-    decrypt_key = str.encode(decrypt_key_input)
+    print(f"this is new data: {self.new_data}")
+    encrypt_f = create_f(self.user_salt, self.user_password)
+    encrypt_token = encrypt_f.encrypt(self.new_data)
 
-
-    new_f = Fernet(decrypt_key)
-
-    #turns data back to bytes
-    test_decrypt = str.encode(data_to_decrypt)
-
-    #prints decrypted data
-    return  new_f.decrypt(test_decrypt)
-    
+    print(f"this is new encrypted data {encrypt_token}")
+    return encrypt_token
+  
 
 
-
-#Create cryptography Key "password"
-#key = Fernet.generate_key()
-#print(f" Key: {key} \n")
-##passwords
-salt = os.urandom(16)
-
-kdf = Scrypt(
-    salt=salt,
-    length=32,
-    n=2**14,
-    r=8,
-    p=1,
-)
-
-key = kdf.derive(b"test")
-
-# kdf = Scrypt(
-#     salt=salt,
-#     length=32,
-#     n=2**14,
-#     r=8,
-#     p=1,
-# )
-
-
-
-
-#kdf.verify(b"test", key)
-
-
-
-f = Fernet(key)
-
-#new instance of Cryptography class
-new_crypt = Cryptography(f, key)
-
-
-
-# make a repl to search API and enter as many items that user wants
+#User login and user verify
 while True:
 
-
-  ######User Login input
-
-  new_user = User("test", b"pVIU3WJh3DwIbrE6j8F-DpV1pl9peagbzqYW0qy4O1Y=")
-
-  user_login_select = input("What is your username?")
-
-
- # if new_user.user_name == user_login_select:
- #   print(f"Welcome {new_user} ")
-
-#    test_key_input = input("Enter your key.")
-
- #   if new_user.password == str.encode(test_key_input):
-#      print("Successful Login")
-  #  else:
-   #   print("unsucessful login")
+######User Login input
+ # input_user_name = input("Enter username")
+ # input_user_password = input("Enter password: ")
+  input_user_name = "travis".encode()
+  input_user_password = "password".encode()
   
-  test_key_input = b"test"
 
 
-#####API Search
-  #data_to_encypt = input(b"What would you like to encrypt?")
-  #search_input = input(f"Enter the type of alcohol you would like to see: ")
-  search_input = ("rum")
-  response = requests.get(f"http://www.thecocktaildb.com/api/json/v1/1/search.php?i={search_input}")
+  ##check username get salt
+  new_user = User(input_user_name, input_user_password)
 
-  data = response.json()
+ # if new_user.load_user_salt() == False:
 
-  test_data = data["ingredients"][0]["strIngredient"]
- 
-  print(f"returned data from API: {test_data}")
+ #   print("Incorrect Login")
 
-   
-  #print(response.url)
-  #print(response.text)
-  #decrypted_output = new_crypt.my_decrypt(secret_lines_str, test_key_input)
- 
-  #test_key_input = input("Enter your key.")
+ # else:
 
-  test_write = new_crypt.my_encrypt_method(test_data)
+  verified_user_salt = new_user.load_user_salt()
 
-  #Add Encrypt to a list so user can encrypt multiple things
+  #verify user exists and password is correct
+
+  if input("Read list? ") == "y":
+    read_encrypted_list()
 
   break
 
 
 
-#File access
-file_location = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/secret-list.txt"
 
+#####API Search
+while True:
 
-with open(file_location, 'r', encoding="utf-8") as secret_file:
-    secret_lines = secret_file.readlines()
-  #  print(secret_lines)
+  search_input = input(f'Enter the type of alcohol you would like add to list? ("q" to quit' )
 
+  if search_input == "q":
+    if input("write list? ") == "y":
+      
+      new_data = test_data.encode()
+      new_encrypt = Cryptography(verified_user_salt, input_user_password, new_data)
+      test_save_data = new_encrypt.create_encrypt_data()
 
-    #take items out of returned file
-    for items in secret_lines:
-      secret_lines_str = items
-      print(f" items from doc {secret_lines_str}")
-
-
-
-      ##decodes item from document
-      try:
-        decrypted_output = new_crypt.my_decrypt(secret_lines_str, test_key_input)
-        print(decrypted_output.decode())
-
-      except InvalidToken:
-        print("Invalid Token")
-      except:
-        print("error")
-
-
-
-
-with open(file_location, 'w', encoding="utf-8") as secret_file_w:
-
-  
-
-  # test_dict_username = {
-  #     "test" : ["", ""],
-  #     "testing_user2" : ["encrypted message", ...]
-  # }
-
-
-  #est_dict_username[new_user.user_name][0] = test_write.decode()
-  
-  #secret_file_w.write(str(test_dict_username))
+      write_encrypted_list(test_save_data)
+    break
 
   try:
-    secret_file_w.write(test_write.decode())
+    response = requests.get(f"http://www.thecocktaildb.com/api/json/v1/1/search.php?i={search_input}")
+
+    data = response.json() 
+    test_data = data["ingredients"][0]["strIngredient"]
+    print(f"{test_data} added to encrypted list")
+
+
 
   except:
-    print("Error in write")
+    print("drink not found. Try again")
 
-
-
-
-
-
-#implement write. tie all input to the users key
