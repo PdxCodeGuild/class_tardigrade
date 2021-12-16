@@ -23,7 +23,7 @@ artist = tk.StringVar()
 
 # Function for search button
 def search_clicked():
-    print('Yes Auriel')
+    ...
 
 
 

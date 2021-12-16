@@ -1,9 +1,8 @@
 import tkinter as tk
 from tkinter import Label, Toplevel, ttk
 import lyricsgenius
-from tkinter.messagebox import showinfo
+import json
 
-from lyricsgenius.api.public_methods import artist
 
 # Create root window with application name
 root = tk.Tk()
@@ -22,12 +21,23 @@ label.pack(ipadx=10, ipady=10)
 song_input = tk.StringVar()
 artist_input = tk.StringVar()
 
+# Genius search
+def song_info():
+    genius = lyricsgenius.Genius(access_token='hw_boxg7Ur3re20KM_3bK9qCAhXhdGe8OUYoDnz3Lh720FmbWARu7eD8cpdzs5TP')
+    song = genius.search_song(title = song_input.get(), artist = artist_input.get())
+    return song.lyrics
+
 # Function for search button
 def search_clicked():
-    genius = lyricsgenius.Genius(access_token='hw_boxg7Ur3re20KM_3bK9qCAhXhdGe8OUYoDnz3Lh720FmbWARu7eD8cpdzs5TP')
-
-    artists = genius.search_artist(f'{artist_input}', max_songs = 5, sort = 'title', include_features = True )
+    new_win = Toplevel(root)
+    new_win.geometry('350x750')
+    new_win.title(f'Lyrics for {song_input.get()} by {artist_input.get()}')
+    Label(
+        new_win,
+        text = song_info()
+    )
     
+
 # Entry box for artist name 
 artist_label = ttk.Label(
     root,
