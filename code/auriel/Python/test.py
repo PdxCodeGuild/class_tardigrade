@@ -25,7 +25,7 @@ artist_input = tk.StringVar()
 def song_info():
     genius = lyricsgenius.Genius(access_token='hw_boxg7Ur3re20KM_3bK9qCAhXhdGe8OUYoDnz3Lh720FmbWARu7eD8cpdzs5TP')
     song = genius.search_song(title = song_input.get(), artist = artist_input.get())
-    return song.lyrics
+    print(song.lyrics)
 
 # Function for search button
 def search_clicked():

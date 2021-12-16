@@ -1,15 +1,13 @@
-import tkinter as tk
-from tkinter import ttk
+import lyricsgenius
+import json
+test = []
 
-root = tk.Tk()
+song_input = input('Enter song name: ')
+artist_input = input('Enter artist name: ')
+ 
+genius = lyricsgenius.Genius(access_token='hw_boxg7Ur3re20KM_3bK9qCAhXhdGe8OUYoDnz3Lh720FmbWARu7eD8cpdzs5TP')
+song = genius.search_song(song_input, artist_input)
 
+test.append(song.lyrics)
 
-def select(option):
-    print(option)
-
-
-ttk.Button(root, text='Rock', command=lambda: select('Rock')).pack()
-ttk.Button(root, text='Paper',command=lambda: select('Paper')).pack()
-ttk.Button(root, text='Scissors', command=lambda: select('Scissors')).pack()
-
-root.mainloop()
+print(song.lyrics)
