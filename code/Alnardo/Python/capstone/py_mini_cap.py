@@ -5,28 +5,38 @@
 
 
 import matplotlib.pyplot as plt
-x1_min = int(input('Please enter the minimum value for x: '))
-x2_max = int(input('Please enter the maximum vlaue for x: '))
+print('*-*'*20)
+print('\n\tWelcome to the Graphing Calculator!\n')
+print('*-*'*20)
 
-x=range(x1_min, x2_max+1)
+
+x1_min = int(input('Please enter the minimum x value: '))
+x2_max = int(input('Please enter the maximum x value: '))
+
+min_max = range(x1_min, x2_max)
 
 y=[]
 
-for i in x:
-    y.append(i**2)
+expr = input('Please enter an equation: ')
+
+for x in min_max:
+    answer = eval(expr) 
+    y.append(answer)
+# print(y)
+
 mean = 0
 counter = 0
 question = input('Would you like to calculate the median and/or mean? (yes/no): ')
 while question == 'yes':
-    choice = input('Would you like the mean?: ')
+    choice_1 = input('Would you like the mean?: ')
     for j in y:
         mean += j
         counter += 1
-    if choice == 'yes':
+    if choice_1 == 'yes':
         average = mean / counter
         print(average)
-    choice == input('Would you like the median?: ')
-    if choice == 'yes':
+    choice_2 = input('Would you like the median?: ')
+    if choice_2 == 'yes':
         median = 0
         if counter % 2 == 0:
             median = int(counter/2)
@@ -41,6 +51,7 @@ while question == 'yes':
 
 
 marker_options = ['.', ',', 'o', 'v', '^', 'x', '<', '>', '1', '2', '3', '4', '8', 's', 'p', 'P', 'd', 'D', 'X']
+color_options = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
 while True:
     marker_choice = input('What kind of marker would you like to use? (Enter "options" for a list of available choices): ')
     if marker_choice == 'options':
@@ -49,12 +60,22 @@ while True:
         print('Invalid choice')
     else:
         break
+while True:
+    color_choice = input('What kind of color would you like to use? (Enter "options" for a list of available choices): ')
+    if color_choice == 'options':
+        print(color_options)
+    elif color_choice not in color_options:
+        print('Invalid choice')
+    else:
+        break
 
-print(marker_choice)
 
-plt.plot(x, y, color='red', marker=marker_choice, linestyle='dashed', linewidth=1, markersize=10) 
+# print(marker_choice)
+# linestyle='dashed'
+# plt.hlines(y=0, xmin=-5, xmax=20, linewidth=4, color='r')
+plt.plot(min_max, y, color=color_choice, marker=marker_choice, linewidth=2, markersize=8) 
 
-plt.title('Test graph')
+plt.title(f'{expr}')
 
 
 plt.show()
