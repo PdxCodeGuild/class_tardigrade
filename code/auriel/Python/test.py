@@ -6,7 +6,7 @@ import lyricsgenius
 # Create root window with application name
 root = tk.Tk()
 root.geometry('300x300')
-root.resizable(False, False)
+root.resizable(True, True)
 root.title('Lyric Finder')
 
 # Show a label with welcome message
@@ -22,17 +22,16 @@ artist_input = tk.StringVar()
 
 # Function for search button
 def search_clicked():
-    genius = lyricsgenius.Genius(access_token='4Lpv5s9uvBkfdvP6eYk6BGDBAz1Uluafc0qt6oy7OTURbQYzmW6Y3ukOu95yCO5P')
-    genius = Genius()
+    genius = lyricsgenius.Genius(access_token='hw_boxg7Ur3re20KM_3bK9qCAhXhdGe8OUYoDnz3Lh720FmbWARu7eD8cpdzs5TP')
 
-    if song_input == '':
-        artist = genius.search_artist(f'{artist_input}', max_songs = None, sort = 'title', include_features = True )
-        sl_window = Toplevel(root)
-        sl_window.geometry('750x250')
-        Label(
-            sl_window,
-            text = artist
-        ).pack(ipady = 30)
+    artists = genius.search_artist(f'{artist_input}', max_songs = 5, sort = 'title', include_features = True )
+    new_window = Toplevel(root)
+    new_window.geometry('750x350')
+    new_window.title('List of Songs')
+    Label(
+        new_window,
+        text  = artists
+    ).pack(pady=30)
 
 # Entry box for artist name 
 artist_label = ttk.Label(
