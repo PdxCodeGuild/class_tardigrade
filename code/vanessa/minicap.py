@@ -23,14 +23,19 @@ def goal1(message='drink water'):
         print("Yay-one step closer!")    
         counts= counts + 1
         counter.append(counts)
+        print(counter)
     if accomplished == "n":
         print("keep trying!")
 
 def goal2(message='work out'):
     print("time to", message)
     accomplished= input("Task complete? (y/n) ")
+    counts=0
     if accomplished == "y":
-        print("Yay-one step closer!")   
+        print("Yay-one step closer!")    
+        counts= counts + 1
+        counter.append(counts)
+        print(counter)
     if accomplished == "n":
         print("keep trying!")
 
@@ -45,34 +50,49 @@ def goal3(message='sleep 8 hours'):
 def goal4(message='wake up!Drink a glass of water- Cheers!'):
     print("time to", message)
     accomplished= input("Task complete? (y/n) ")
+    counts=0
     if accomplished == "y":
-        print("Yay-one step closer!")   
+        print("Yay-one step closer!")    
+        counts= counts + 1
+        counter.append(counts)
+        print(counter)
     if accomplished == "n":
         print("keep trying!")
 
-def goal5(message='get steps in'):
+def goal5(message='sleep 8 hours'):
     print("time to", message)
     accomplished= input("Task complete? (y/n) ")
+    counts=0
     if accomplished == "y":
-        print("Yay-one step closer!")
+        print("Yay-one step closer!")    
+        counts= counts + 1
+        counter.append(counts)
+        print(counter)
     if accomplished == "n":
         print("keep trying!")
+
 
 def congrats (message='Congratulations! Keep up the great work!'):
     print(message)
+    total=(len(counter))
+    return total
 
 
 schedule.every(1).minutes.do(goal1)
 schedule.every(15).to(30).minutes.do(goal5)
 schedule.every(5).to(10).days.do(goal1)
 schedule.every(1).hour.do(goal2, )
-schedule.every().day.at("15:11").do(goal2)
-schedule.every().day.at("15:12:30").do(goal3)
-schedule.every().day.at("15:13").do(goal4)
+schedule.every().day.at("15:59").do(goal2)
+schedule.every().day.at("15:59:30").do(goal3)
+schedule.every().day.at("16:01").do(goal4)
 # schedule.every().day.at("14:78").do(daily_affirmation)
-schedule.every().day.at("15:13:30").do(congrats)
+schedule.every().day.at("16:08:30").do(congrats)
 
 while True:
     schedule.run_pending()
     time.sleep(1) 
-    print(counter)
+
+
+#end of day, add to input list, each number = each day. use input list in graph for 10 days/30 days
+#maybe put final graph in seperate function or build graph day by day? 
+
