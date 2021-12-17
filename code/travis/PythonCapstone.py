@@ -25,43 +25,38 @@ from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 #create password, hash to key
 #repl to enter data, retrieve data
 
-#salt = os.urandom(16)
+new_encrypt_list = []
+search_input = ""
+
 def read_encrypted_list():
   file_location = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/secret-list.txt" 
   with open(file_location, 'r', encoding="utf-8") as secret_file:
       secret_lines = secret_file.readlines()
+      print("Decrypted list")
 
       #take items out of returned file
       for items in secret_lines:
-        secret_lines_str = items
+        secret_lines_str = items        
+        new_decrypt = Cryptography(verified_user_salt, input_user_password, secret_lines_str)
 
-        print(f" items from doc {secret_lines_str}")
-        
-        ##decodes item from document
-        
-      # print(salt)
-      #  print(input_user_password)
-        # print(secret_lines_str)
-        #new_crypt = Cryptography(salt, input_user_password, secret_lines_str)
+        decrypted_output = new_decrypt.perform_decrypt()
 
-        # try:
-      new_decrypt = Cryptography(verified_user_salt, input_user_password, secret_lines_str)
+        print(f"--- {decrypted_output.decode()}")
 
-      decrypted_output = new_decrypt.perform_decrypt()
-
-      print(f"This data is decrypted from file {decrypted_output}")
-        # except:
-        #   print("error")
 
 def write_encrypted_list(test_save_data):
 
   file_location = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/secret-list.txt"
 
   with open(file_location, 'w', encoding="utf-8") as secret_file_w:
-    
-    secret_file_w.write(test_save_data.decode())
+    secret_file_w.write("\n".join(test_save_data))
+ #   secret_file_w.write(test_save_data.decode())
 
 
+
+
+
+# Create
 def create_f(input_salt, user_password):
       
     kdf = PBKDF2HMAC(
@@ -106,26 +101,30 @@ class User():
 
     user_salt = user_file_salt.decode("unicode-escape").encode('ISO-8859-1')
      
-    if self.user_name.decode() == user_id:
+    if self.user_name.decode() != user_id:
 
-      print(f"Welcome {self.user_name}")
+      return False
+  
+    try:
+      f = create_f(user_salt, self.password) 
+      f.decrypt(str.encode(user_encrypt))
+    except:
+        return False        
 
-    else: 
 
-      print("Enter valid username")
+
+    try:
+      decrypted_is_valid = f.decrypt(str.encode(user_encrypt)).decode()
+
+   
+    except:
+
+      return False
     
-    f = create_f(user_salt, self.password)
- 
-    f.decrypt(str.encode(user_encrypt))
+    if decrypted_is_valid != "user_verified":
 
-    decrypted_is_valid = f.decrypt(str.encode(user_encrypt)).decode()
+      return False
 
-    print(f"Verified user? : {decrypted_is_valid}")
-
-  #  if decrypted_is_valid != "user_verified":
-  #    return False
-
- #   elif decrypted_is_valid == "user_verified":
 
     return user_salt.decode("unicode-escape").encode('ISO-8859-1')   
  
@@ -138,19 +137,6 @@ class Cryptography():
     self.new_data = new_data   
     self.user_password = user_password
  
-  # def perform_encrypt(self, input_data):
-  #   """
-  #   Encrypt method
-  #   """
-  #   #changes to byte
-  #   data_to_encrypt = str.encode(input_data) 
-  #   encrypt_f = create_f(self.user_salt, self.user_password)
-
-  #   #encrypt data using key
-  #   token = encrypt_f.encrypt(data_to_encrypt) 
-
-  #   return token
-
 
   def perform_decrypt(self):
     """
@@ -162,60 +148,71 @@ class Cryptography():
 
   def create_encrypt_data(self):
 
-    print(f"this is new data: {self.new_data}")
     encrypt_f = create_f(self.user_salt, self.user_password)
     encrypt_token = encrypt_f.encrypt(self.new_data)
 
-    print(f"this is new encrypted data {encrypt_token}")
+
     return encrypt_token
   
 
-
+print(f" {'-' * 30}")
+print("Welcome to your encrypted shopping list!")
+print(f" {'-' * 30}")
 #User login and user verify
+
+print("Login!!")
 while True:
 
-######User Login input
- # input_user_name = input("Enter username")
- # input_user_password = input("Enter password: ")
-  input_user_name = "travis".encode()
-  input_user_password = "password".encode()
-  
-
+  input_user_name = input("Enter username: ").encode()
+  input_user_password = input("Enter password: ").encode()
 
   ##check username get salt
   new_user = User(input_user_name, input_user_password)
 
- # if new_user.load_user_salt() == False:
-
- #   print("Incorrect Login")
-
- # else:
-
   verified_user_salt = new_user.load_user_salt()
+  if verified_user_salt == False:
+    print("Incorrect login")
+  else:
+    break 
 
-  #verify user exists and password is correct
+if input("Would you like to read your list (y)? ") == "y":
+  read_encrypted_list()
 
-  if input("Read list? ") == "y":
-    read_encrypted_list()
-
-  break
-
-
-
-
+print("Make your new alcohol Christmas shopping list:")
+print(f" {'-' * 30}")
+print()
 #####API Search
 while True:
-
-  search_input = input(f'Enter the type of alcohol you would like add to list? ("q" to quit' )
+ 
+  search_input = input(f'Enter ("w" to write) ("q" to quit) or the type of alcohol you would like add to list: ')
+  print()
 
   if search_input == "q":
-    if input("write list? ") == "y":
-      
-      new_data = test_data.encode()
-      new_encrypt = Cryptography(verified_user_salt, input_user_password, new_data)
-      test_save_data = new_encrypt.create_encrypt_data()
+    break
 
-      write_encrypted_list(test_save_data)
+
+  if search_input == "w":
+
+    encrypt_list = []
+
+    if len(new_encrypt_list) == 0:
+
+      print("Your list is empty!")
+      continue
+
+    else:
+
+      print("Items added to list:")
+      for item in new_encrypt_list:
+        
+        new_data = item
+        new_encrypt = Cryptography(verified_user_salt, input_user_password, new_data)
+        test_save_data = new_encrypt.create_encrypt_data()
+        print(f"   {new_data.decode()}")
+        encrypt_list.append(test_save_data.decode())
+
+    write_encrypted_list(encrypt_list)
+
     break
 
   try:
@@ -223,10 +220,13 @@ while True:
 
     data = response.json() 
     test_data = data["ingredients"][0]["strIngredient"]
-    print(f"{test_data} added to encrypted list")
 
+    new_encrypt_list.append(test_data.encode())
+    print(f"{test_data} added to encrypted list")
+    print()
 
 
   except:
-    print("drink not found. Try again")
+    print("Drink not found. Try again")
+    print()
 
