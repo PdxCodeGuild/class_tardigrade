@@ -115,6 +115,3 @@ token.txt
 #django uploaded files
 uploaded_files/
 node_modules
-
-#christians files
-my_terms.py
