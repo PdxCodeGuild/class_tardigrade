@@ -16,7 +16,7 @@ while True:
         break
     else:
         print('Invalid option')
-        print(welcome_options)
+        print(f"Options are {welcome_options}")
 
 if welcome == 't' or welcome == 'trig':
     tan = np.tan
@@ -54,6 +54,9 @@ if welcome == 't' or welcome == 'trig':
             else:
                 break
         plt.plot(x, y, color=color_choice, marker=marker_choice, linewidth=2, markersize=8) 
+
+        plt.title(f'{answer}')
+
         plt.show()
         
 
@@ -122,7 +125,6 @@ elif welcome == 'r' or welcome == 'regular':
         plt.plot(min_max, y, color=color_choice, marker=marker_choice, linewidth=2, markersize=8) 
 
         plt.title(f'{expr}')
-
 
         plt.show()
     else:
