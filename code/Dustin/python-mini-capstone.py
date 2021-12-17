@@ -15,27 +15,28 @@ buy_price = input("At what price would you like to buy? ")
 sale_price = input("At what price would you like to sale? ")
 
 
-account_sid = os.environ['TWILIO_ACCOUNT_SID']
-auth_token = os.environ['TWILIO_AUTH_TOKEN']
+account_sid = "AC5ae2b44fa7ea31f4b18474bc353dca6c"
+# Your Auth Token from twilio.com/console
+auth_token  = "42b451bcb0d49f773160054605bdbbe5"
 client = Client(account_sid, auth_token)
 
 buy_message = client.messages \
     .create(
          body=f'The {coin} has reached your specified buying price of {buy_price}.',
-         from_='+15017122661',
+         from_='+12184408410',
          to='+18016902294'
      )
 
 sale_message = client.messages \
     .create(
          body=f'The {coin} has reached your specified buying price of {sale_price}.',
-         from_='+15017122661',
+         from_='+12184408410',
          to='+18016902294'
      )
 price = cryptocompare.get_price('DOGE', 'USD')
 
 print(price)
 if buy_price >= price:
-    buy_message
+    print(print(message.sid))
 if sale_price <= price:
-    sale_message
+    print(sale_message.sid)
