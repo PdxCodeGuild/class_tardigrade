@@ -21,14 +21,17 @@ from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
 
 ####mini capstone features:
 #pull data from website. then edit, then encrypt to document then decrypt.
-# include class and methods
-#create password, hash to key
+#create password, user and tie to cipher text with salt
 #repl to enter data, retrieve data
 
 new_encrypt_list = []
 search_input = ""
 
+
+
+
 def read_encrypted_list():
+
   file_location = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/secret-list.txt" 
   with open(file_location, 'r', encoding="utf-8") as secret_file:
       secret_lines = secret_file.readlines()
@@ -54,18 +57,23 @@ def write_encrypted_list(test_save_data):
 
 
 
+# Create the cipher text and key:
+# key is made with salt and password
 
-
-# Create
 def create_f(input_salt, user_password):
       
+    #creates the first part of key using salt
+    #SHA enables password functionality
     kdf = PBKDF2HMAC(
       algorithm=hashes.SHA256(),
       length=32,
       salt=input_salt,
       iterations=390000,
     )
+    #combines user salt and user_password
     key = base64.urlsafe_b64encode(kdf.derive(user_password))
+
+    #symmetric encryption ties it to key
     f = Fernet(key)
     return f
 
@@ -86,7 +94,7 @@ class User():
 
   def load_user_salt(self):
     """
-    Checks user then loads their hash
+    Checks user then loads, validates then returns their salt
     
     """
     user_filename = "C:/Users/robot/pdx_code/bootcamp/class_tardigrade/code/travis/user_info.txt"
@@ -99,6 +107,8 @@ class User():
     user_file_salt = user_lines[1].encode()   
     user_encrypt = user_lines[2]
 
+
+    
     user_salt = user_file_salt.decode("unicode-escape").encode('ISO-8859-1')
      
     if self.user_name.decode() != user_id:
@@ -106,13 +116,16 @@ class User():
       return False
   
     try:
+
       f = create_f(user_salt, self.password) 
+
+      #uses entered password and checks it with saved cipher text
       f.decrypt(str.encode(user_encrypt))
     except:
+
         return False        
 
-
-
+    #verifies the user password is correct
     try:
       decrypted_is_valid = f.decrypt(str.encode(user_encrypt)).decode()
 
@@ -125,7 +138,7 @@ class User():
 
       return False
 
-
+    #returns user salt to preform cryptography tasks
     return user_salt.decode("unicode-escape").encode('ISO-8859-1')   
  
 
@@ -158,15 +171,16 @@ class Cryptography():
 print(f" {'-' * 30}")
 print("Welcome to your encrypted shopping list!")
 print(f" {'-' * 30}")
-#User login and user verify
 
+
+#User login and user verify
 print("Login!!")
 while True:
 
   input_user_name = input("Enter username: ").encode()
   input_user_password = input("Enter password: ").encode()
 
-  ##check username get salt
+  ##check username and password and then gets salt
   new_user = User(input_user_name, input_user_password)
 
   verified_user_salt = new_user.load_user_salt()
@@ -175,6 +189,7 @@ while True:
   else:
     break 
 
+#read list
 if input("Would you like to read your list (y)? ") == "y":
   read_encrypted_list()
 
@@ -184,7 +199,7 @@ print()
 #####API Search
 while True:
  
-  search_input = input(f'Enter ("w" to write) ("q" to quit) or the type of alcohol you would like add to list: ')
+  search_input = input(f'Enter ("w" to write) ("q" to quit) or the type of alcohol from API you would like add to list: ')
   print()
 
   if search_input == "q":
