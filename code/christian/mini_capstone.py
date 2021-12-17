@@ -134,19 +134,15 @@ while True:
 
 
 
+
+
+
+
+
+
+
+
 # # import pyaztro
 # taurus = pyaztro.Aztro(sign='taurus')
 # taurus.description
 
-# Aries	March 21 -April 19	Energetic, candid and willful
-# Taurus	April 20 - May 20	Reliable, diligent and conservative
-# Gemini	May 21 - June 21	Quick-witted, capricious and cheerful
-# Cancer 	June 22 - July 22	Considerate, imaginative and sensitive
-# Leo 	July 23 - August 22	Enthusiastic, proud and arrogant
-# Virgo  	August 23 - September 22	Elegant, perfectionist and picky
-# Libra 	September 23 - October 23	Equitable, charming and hesitant
-# Scorpio 	October 24 - November 22	Insightful, mysterious and suspicious
-# Sagittarius	November 23 - December 21	Unconstrained, lively and rash
-# Capricorn 	December 22 - January 19	Perseverant, practical and lonely
-# Aquarius	January 20 - February 18	Smart, liberalistic and changeful
-# Pisces	February 19 - March 20	Romantic, kind and sentimental
