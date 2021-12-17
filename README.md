@@ -6,9 +6,10 @@ M-F 9:30 am – 4:30 pm
 
 ![tardigrade](tardigrade.jpg)
 
-### Holidays
+### Holidays / Days Off
 
 - November 25th & 26th (Thanksgiving)
+- December 13th (Day Off)
 - December 24th (Christmas Eve)
 - December 27th (Long Xmas Weekend)
 - December 31st (New Years Eve)
@@ -83,17 +84,18 @@ Presentation Day: February 25th, 2022
 * [Lab 11 ARI](1%20Python/labs/11%20ARI.md)
 * [Lab 12 Contact List](1%20Python/labs/12%20Contact%20List.md)
 * [Lab 13 ATM](1%20Python/labs/13%20ATM.md)
-<!-- * [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
-* [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md)
+* [Lab 14 Mob Tic Tac Toe](1%20Python/labs/14%20Mob%20Tic%20Tac%20Toe.md)
+<!-- * [Lab 15 Searching And Sorting](1%20Python/labs/15%20Searching%20And%20Sorting.md) -->
 * [Lab 16 Dad Joke API](1%20Python/labs/16%20Dad%20Joke%20API.md)
 * [Lab 17 Quotes API](1%20Python/labs/17%20Quotes%20API.md)
-* [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md) -->
+* [Lab 18 Mini-Capstone](1%20Python/labs/../../1%20Python/labs/18%20Mini-Capstone.md)
 
 #### Optional Python Labs
 
 [Count Words](1%20Python/labs/count_words.md),
 [Grading](1%20Python/labs/grading.md),
 [Guess The Number](1%20Python/labs/guess_the_number.md),
+[Image Manipulation](1%20Python/labs/image_manipulation.md),
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
@@ -104,7 +106,7 @@ Presentation Day: February 25th, 2022
 [Rock, Paper, Scissors](1%20Python/labs/rock_paper_scissors.md),
 [Simple Calculator](1%20Python/labs/simple_calculator.md),
 [Sock Sorter](1%20Python/labs/sock_sorter.md),
-<!-- [Stack And Linked List](1%20Python/labs/stack_and_linked_list.md), -->
+[Stack And Linked List](1%20Python/labs/stack_and_linked_list.md),
 [Unit Converter](1%20Python/labs/unit_converter.md)
 
 

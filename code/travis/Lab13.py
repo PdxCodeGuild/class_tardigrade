@@ -6,15 +6,13 @@ Date:  12/6/21
 """
 
 
-transaction_list = []
-
-
 class ATM:
 
 
-    def __init__(self, balance = 0, interest_rate = 0.1):
+    def __init__(self, balance = 0, interest_rate = 0.1, transaction_list = []):
         self.balance = balance
         self.interest_rate = interest_rate
+        self.transaction_list = transaction_list
 
 
 
@@ -29,6 +27,7 @@ class ATM:
         """deposit a given amount into account"""
 
         self.balance += amount
+        self.transaction_list.append(f"user deposited ${amount}")
 
     
 
@@ -49,6 +48,7 @@ class ATM:
         """withdraw given amount from account and return that amount"""
         
         self.balance -= amount
+        self.transaction_list.append(f"user withdrew ${amount}")
 
 
 
@@ -56,16 +56,15 @@ class ATM:
         """calculate and return interest gained on account"""
     
         amount = self.interest_rate * self.balance
-
         return amount
 
 
     #version 2
 
-    def print_transactions(self, transactions):
+    def print_transactions(self):
         
 
-        for item in transactions:
+        for item in self.transaction_list:
             print(item)
 
 
@@ -91,7 +90,7 @@ while True:
 
         atm.deposit(amount)  # call the deposit(amount) method
 
-        transaction_list.append(f"user deposited ${amount}")
+
 
         print(f'Deposited ${amount}')
 
@@ -108,7 +107,6 @@ while True:
             atm.withdraw(amount)  # call the withdraw(amount) method
             print(f'Withdrew ${amount}')
 
-            transaction_list.append(f"user withdrew ${amount}")
             
         else:
 
@@ -138,8 +136,7 @@ while True:
     #Version 2
     elif command == "print":
 
-        atm.print_transactions(transaction_list)
-
+        atm.print_transactions()
 
 
     elif command == 'exit':
