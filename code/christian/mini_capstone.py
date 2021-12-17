@@ -1,13 +1,21 @@
 
 import pyaztro
+import time
+import arrow
+time.sleep
+
 
 
     
 
 
 month = input('What is your birthmonth?: ')
-day = int(input('What day were you born?: '))
+print('Calculating...')
+time.sleep(2)
 
+day = int(input('What day were you born?: '))
+print('*stares at the sky...')
+time.sleep(2)
 
 if month == 'january' or month == 'January':
     if day <= 19:
@@ -23,7 +31,7 @@ elif month == 'march' or month == 'March':
     if day <=20:
         sun = 'Pisces'
     elif day > 20:
-        sun = 'Aries '
+        sun = 'Aries'
 elif month == 'april' or month == 'April':
     if day <= 19:
         sun = 'Pisces'
@@ -71,26 +79,59 @@ elif month == 'december' or month == 'December':
         sun = 'Capricorn'
 else:
     print('I do not understand. Please enter birthmonth and birthday')
+
 print(f'Your Zodiac sign is {sun}!')
-
-
-matches = ['Leo and Sagittarius'['Virgo and Taurus']]
-
+time.sleep(2)
 
 
 
+traits = {'Aquarius': 'are humanitarian, independant, insightful',
+'Pisces': 'are compassionate, artistic, gentle',
+'Aries': 'are courageous, comfident, passionate',
+'Taurus': 'are reliable, devoted, practical',
+'Gemini': 'are adaptable, affectionate, curious',
+'Cancer': 'are emotional, highly imaginative, persuasive',
+'Leos': 'are generous, warm-hearted, creative',
+'Virgo': 'are loyal, analytical, practical',
+'Libra': 'are diplomatic, fair minded, social',
+'Scorpio': 'are resourcful, passionate, brave',
+'Sagittarius': 'are generous, idealistic, humorous',
+'Capricorn': 'are disciplined, self-controled, responsible'}
 
-user_choice = input('What else would you like to know about your Zodiac? You can choose "horoscope"user "description" or "compatability.: ')
+matches = {'Aquarious': 'matches with Leo and Sagittarius', 
+'Pisces': 'matches with Virgo and Taurus',
+'Aries': 'matches with Libra and Leo',
+'Taurus': 'matches with Scorpio and Cancer',
+'Gemini': 'matches with Sagittarius and Aquarius',
+'Cancer': 'matches with Capricorn and Taurus',
+'Leo': 'matches with Aquarius and Gemini',
+'Virgo': 'matches with Pisces and Cancer',
+'Libra': 'matches with Aries and Sagittarius',
+'Scorpio': 'matches with Taurus and Cancer',
+'Sagittarius': 'matches with Gemini and Aries',
+'Capricorn': 'matches with Taurus and Cancer'}
+
+print('What else would you like to know about your sign or other signs?')
+time.sleep(1)
 
 while True:
+    user_choice = input('You can choose "horoscope", "traits","matches", or "goodbye" to leave session: ')
     if user_choice == 'horoscope':
         zodiac = pyaztro.Aztro(sign=sun)
         print(zodiac.description)
-        break
-    if user_choice == 'compatability':
-        for i in matches:
-            print(i)
-        
+    elif user_choice == 'traits':
+        for trait in traits:
+            if sun == trait:
+                print(trait, traits[trait])
+    elif user_choice == 'matches':
+        for match in matches:
+            if sun == match:
+                print(match, matches[match])
+    elif user_choice == 'goodbye':
+        print('Goodbye!')  
+        break  
+
+
 
 
 # # import pyaztro
