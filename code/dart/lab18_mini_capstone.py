@@ -4,8 +4,8 @@
 import os
 import time
 import random
-import discord
-from dotenv import load_dotenv
+import discord # pip installed
+from dotenv import load_dotenv # pip installed
 
 intents = discord.Intents.default()
 intents.members = True
@@ -15,8 +15,10 @@ client = discord.Client(intents = intents) # discord.Client() creates a connecti
 load_dotenv()
 TOKEN = os.getenv("TOKEN")
 
+# asynchronous functions or programs allow functions to run out of order while say a different function is waitng on something to happen
 @client.event
-async def on_ready(): # as far as I understand it, asynchronous functions or programs allow functions to run out of order while say a different function is waitng on something to happen
+async def on_ready():
+  await client.change_presence(activity = discord.Activity(type = discord.ActivityType.listening, name = "Lo-Fi"))
   print("Bot is ready and logged in as {0.user}".format(client))
 
 @client.event
@@ -36,7 +38,6 @@ async def on_member_join(member):
 
   await channel.send(random_message)
   # await channel.send(embed = embed)
-
   if not channel:
     return
 
@@ -52,20 +53,25 @@ async def on_message(message):
     return
 
   if message.channel.name == "general":
-    if any(word in user_message for word in "Sup".lower()) or any(word in user_message for word in "Hello".lower()) \
-    or any(word in user_message for word in "Hey".lower()) or any(word in user_message for word in "What's up".lower()) \
-    or any(word in user_message for word in "Whats up".lower()):
-    # if user_message == "Hello".lower() or user_message == "Hey".lower() or user_message == "Whats up".lower() or user_message == "What's up".lower() or user_message == "Sup".lower():
-      await message.channel.send(f"Hello {username}. I'm glad to have you on our team. What do you say we destroy Harry Potter.")
+    hello_responses = [
+    f"Hey {username}! How're you doing? What do you say we destroy Harry Potter?",
+    f"What's going on {username}? It's a fine day to finally defeat Harry Potter.",
+    f"Yo what's up {username}. I feel like defeating Harry Potter today. You with me?",
+  ]
+    random_hello_responses = random.choice(hello_responses)
+
+    if user_message == "Hello".lower() or user_message == "Hey".lower() or user_message == "Heyy".lower() or \
+    user_message == "What's up".lower() or user_message == "Whats up".lower() or user_message == "Sup".lower() or user_message == "Yo".lower():
+      await message.channel.send(random_hello_responses)
       return
-    elif user_message == "Bye".lower() or user_message == "see you later".lower():
+    if user_message == "Bye".lower() or user_message == "See you later".lower():
       await message.channel.send(f"See you later {username}. Keep practicing your wand skills.")
-    elif user_message == "Harry Potter".lower():
+    if "Harry Potter".lower() in user_message:
       await message.channel.send(f"Did someone say Harry Potter? Ugh, I hate that guy.")
-    elif any(word in user_message for word in "Harry") or any(word in user_message for word in "Hairy"):
-      await message.channel.send(f"Did someone say Harry? As in Harry Potter? Yeah, we don't talk about him here.")
-    elif any(word in user_message for word in "Potter"):
+    elif "Potter".lower() in user_message or "Pot".lower() in user_message or "Pottery".lower() in user_message:
       await message.channel.send(f"Did you say Potter? If you're talking about Harry Potter, STOP.")
+    elif "Harry".lower() in user_message or "Hairy".lower() in user_message:
+      await message.channel.send(f"Did someone say Harry? As in Harry Potter? Yeah, we don't talk about him here.")
 
 # runs bot when file is ran
 client.run(TOKEN)
