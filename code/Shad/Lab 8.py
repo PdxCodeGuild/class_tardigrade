@@ -1,58 +1,30 @@
-ist = []
+
+from typing import List
+
+
 def cc_valid( ):
-    while 1 < 8:
-        num = input( 'Enter your numbers:  \ntype fin when finsh')
-        num = num.split(',')
-        ist.append(int(num))
-        ist.pop(-1)
-        print(ist)
-
-        return num
-        # if num == "fin":
-        #     print("done")
-            
-        # else:
-        #     sep = num.split(',')
-        #     ist.append(num)
-            
-        #     check_digit = ist.pop(-1)
-        #     print(check_digit, "check_digit")
-        #     # reverse the numbers in a list without the check digit.
-        #     rev = ist.reverse() 
-
-        #     print(rev)
-            
-        #     double = rev[::2] * 2
-        #     sub = double[0:-1] - 9 
-        #     print(sub)
-
-        
-
-            
-
-#             break
-#         return num
-  
-# cc_valid()
-# Let's write a function which returns whether a string containing a credit card number is valid as a boolean. The steps are as follows:
-
-# Convert the input string into a list of ints
-# Slice off the last digit. That is the check digit.
-# Reverse the digits.
-# Double every other element in the reversed list.
-# Subtract nine from numbers over nine.
-# Sum all values.
-# Take the second digit of that sum.
-# If that matches the check digit, the whole card number is valid.
-# For example, the worked out steps would be:
-
-
-#list = []
-#check_digit = list.pop(-1)
-#new_list = check_digit
-#reverse = check_digit.reverse()
-#d = reverse[::2]
-#double = d * 2
-#sub = double[0:-1] - 9
-#print(sub)
+    num_list = []
+    string = input('enter: ')
+    num_list=list( string)
+    num_list.pop(-1)
+    num_list.reverse()
+    t = num_list[::2] * 2
+    print(t)
+    for i in num_list:
+        num_list[i][::2] * 2
+        print(i)
+        print(num_list[i])
+    print(type(num_list))
     
+    
+    
+    
+    print(num_list)
+    return num_list
+    ist=[int(i) for i in input().split()]
+    
+    # del num_list[-1]
+    # num_list.reverse()
+List    
+    
+cc_valid()
