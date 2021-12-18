@@ -6,9 +6,10 @@ M-F 9:30 am – 4:30 pm
 
 ![tardigrade](tardigrade.jpg)
 
-### Holidays
+### Holidays / Days Off
 
 - November 25th & 26th (Thanksgiving)
+- December 13th (Day Off)
 - December 24th (Christmas Eve)
 - December 27th (Long Xmas Weekend)
 - December 31st (New Years Eve)
@@ -94,6 +95,7 @@ Presentation Day: February 25th, 2022
 [Count Words](1%20Python/labs/count_words.md),
 [Grading](1%20Python/labs/grading.md),
 [Guess The Number](1%20Python/labs/guess_the_number.md),
+[Image Manipulation](1%20Python/labs/image_manipulation.md),
 [LCR](1%20Python/labs/LCR.md),
 [Mad Libs](1%20Python/labs/madlib.md),
 [Magic 8 Ball](1%20Python/labs/magic_8_ball.md),
