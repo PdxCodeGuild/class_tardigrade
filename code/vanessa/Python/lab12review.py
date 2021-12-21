@@ -1,7 +1,5 @@
 
-
-
-from os import name
+from bokeh.core.has_props import C
 
 
 with open('vanessa\contacts2.csv', 'r') as travel_doc:
@@ -30,8 +28,16 @@ print("Welcome to Vanessa's and friend's travel history repository")
 
 def create():
     new_record = input("What is your name? What is your relation to Vanessa? What is your country of origin? How many countries have you visited? Which countries have you visited (including home country if travel has been done domestically)? please seperate by comma except for countries visited(x y z): ")
-    total_histories.append(new_record)
-    print(total_histories)
+    new_record= new_record.split(", \n")
+    print(dict(new_record))
+    #NEED to turn input into dictionary first before appending to list. Then add to csv w/out spaces.
+    # print(new_record.split(", \n"))
+    # total_histories.append(new_record)
+    # print(total_histories)
+    # with open('vanessa\contactupdate.csv','a') as travel_doc:
+    #     travel_doc.write(new_record)
+
+    
 
 def update():
     update_record1= input("Whose record would you like to update? ")
