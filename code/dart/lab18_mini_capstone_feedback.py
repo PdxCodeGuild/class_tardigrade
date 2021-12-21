@@ -64,7 +64,8 @@ async def on_message(message):
     user_message == "What's up".lower() or user_message == "Whats up".lower() or user_message == "Sup".lower() or user_message == "Yo".lower():
       await message.channel.send(random_hello_responses)
       return
-    if user_message == "Bye".lower() or user_message == "See you later".lower():
+    # if user_message == 'bye'
+    if user_message == "Bye".lower() or user_message == "See you later".lower(): # if user_message.lower() == 'bye'
       await message.channel.send(f"See you later {username}. Keep practicing your wand skills.")
     if "Harry Potter".lower() in user_message:
       await message.channel.send(f"Did someone say Harry Potter? Ugh, I hate that guy.")
