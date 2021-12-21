@@ -42,10 +42,10 @@ while True:
         print(hero_list)
     elif user_input == "retreive a hero":
         pull_hero = input("what is their name?: ")
-        for i in range(len(hero_list)):
-            hero_list[i] = pull_hero[i]
-            #find dictionary of hero and print dictionary
-        print(f'here is your requested hero {pull_hero}')
+        for hero in hero_dict:
+            if pull_hero == hero_dict['name']:
+                    print(hero, hero_dict[hero])
+        #find dictionary of hero and print dictionary
     elif user_input == 'update a hero':
         update_hero = input('Which hero do you want to update?: ')
         update_value = input('what do you want to update?') #name power enemy alias
@@ -53,6 +53,7 @@ while True:
         #ask what value to change it to
         for i in range(len(hero_list)):
             hero_list[i] = update_hero[i]
+            print(hero_list)
 
 
 

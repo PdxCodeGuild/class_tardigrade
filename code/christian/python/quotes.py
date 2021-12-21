@@ -17,5 +17,12 @@ while True:
 
     headers = {'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'}
 
-    param = {}
+    param = {'limit': 20,
+    'term': search}
+
+    response = requests.get(url, headers=headers)
+
+    info = response.json()['quote']
+    print(info['body'])
+
 
