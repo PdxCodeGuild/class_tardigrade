@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+body {
+	background-color: palegreen;
+	font-family: 'Lora', serif;
+}
+
+h1 {
+	text-align: center;
+	/* height: 35vh; */
+	/* 35vh is 35% the height of the viewport */
+}
+
+h2, h3, li {
+	margin-left: 25px;
+	padding: 0.25rem;
+}
+
+img {
+	/* position: absolute; */
+	/* top: 25px; */
+	width: 50%;
+	margin-left: 25px;
+	border: 4px ridge chartreuse;
+}
+
+a {
+	color: coral;
+}
