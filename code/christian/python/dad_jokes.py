@@ -32,7 +32,9 @@ output = response.json()['results']
 
 # print(output)
 while True:
-    search = input('Search for a dad joke: ')
+    search = input('Search for a dad joke or "done" to quit: ')
+    if search == 'done':
+        break
     url = 'https://icanhazdadjoke.com/search'
     headers = {
         'accept': 'application/json'
