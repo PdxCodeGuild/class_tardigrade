@@ -1,0 +1,76 @@
+
+body{
+    
+
+    margin-right: 3rem;
+    margin-left: 3rem;
+    border: 5px solid black;
+}
+
+main{
+
+    justify-content: right;
+    flex-wrap: wrap;
+
+    background-color: aqua;
+    width: 85%;
+
+}
+
+header{
+    background-color: red;
+    min-height: 5rem;
+}
+
+h1{
+    margin: 0px;
+
+}
+
+.entry{
+
+    display: inline;
+    flex-wrap: wrap;
+    background-color: seashell;
+    width: 30%;
+    min-height: 40%;
+    margin:10%;
+    
+}
+
+#mainEntry{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+#navAndMain{
+    display: flex;
+
+
+}
+p{
+    display: inline;
+    padding: 80%;
+    width: 80%;
+}
+img{
+
+    float: left;
+    max-height: 50%;
+
+}
+#topNav{
+    min-height: 3rem;
+    background-color: royalblue;
+
+}
+
+#sideNav{
+    justify-content: left;
+    width: 15%;
+    background-color: salmon;
+
+}
