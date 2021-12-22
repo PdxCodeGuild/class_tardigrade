@@ -1,0 +1,71 @@
+main {
+	width: 80vw;
+	height: 75vh;
+	overflow-y: scroll;
+	background-color: #27F5C5;
+	padding: 1rem;
+	display: flex; /* give the container display: flex */
+	/* flex-direction: column; flex-direction: row is the default*/ 
+	flex-wrap: wrap; /* the flex-children will wrap around to the next line */
+	justify-content: space-evenly;
+}
+
+header {
+	background-color: #1CFA48;
+	height: 20vh;
+	display: flex;
+	justify-content: center; /* centers the children on the primary axis */
+	align-items: center; /* centers the children on the secondary axis */
+}
+
+article {
+	margin: 1rem;
+	height: 10rem;
+	width: 25%;
+	background-color: #1CB6FA;
+}
+
+nav {
+	width: 20vw;
+	background-color: #18DE78;
+	display: flex;
+	flex-direction: column; /* flexes the children up-down */
+	justify-content: space-evenly; /* even spacing along the primary axis */
+	align-items: center;
+}
+
+.flex-container {
+	display: flex;
+}
+
+h1 {
+	margin: 0; /* h1s have built-in margin that can push even their parent elements away from the sides of the document */
+}
+
+footer {
+	height: 5vh;
+	background-color: #18D5DE;
+}
+
+figure.doggo-container {
+	border: 2px solid black;
+	width: 25rem;
+}
+
+figure.doggo-container > img {
+	width: 100%;
+}
+
+figure.doggo-container > h3 {
+	text-align: center;
+}
+
+figure.doggo-container > p {
+	text-align: center;
+	margin: 1rem;
+	/* padding: 1rem; */
+	height: 10.3rem;
+	overflow: hidden;
+	/* white-space: nowrap;
+	text-overflow: ellipsis; */
+}
