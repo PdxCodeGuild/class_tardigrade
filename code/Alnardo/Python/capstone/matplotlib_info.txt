@@ -11,4 +11,4 @@ plt.plot(x, y, color='red', marker='x', linestyle='dashed', linewidth=1, markers
 plt.legend() #  Shows legend in graph
 plt.title('Test graph') #  Adds a title to the top of the graph
 
-marker options = ('.', ',', 'o', 'v', '^', 'x', '<', '>', '1', '2', '3', '4', '8', 's', 'p', 'P', 'd', 'D', 'X')
+marker_options = ('.', ',', 'o', 'v', '^', 'x', '<', '>', '1', '2', '3', '4', '8', 's', 'p', 'P', 'd', 'D', 'X')
