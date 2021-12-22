@@ -1,25 +1,29 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 *{
     font-family: 'Vujahday Script', cursive;
  color:#bcc3eb
 }
 body {
     background-color:#50616E ;
+    background-image: url("hexcolor.png");
 }
 p {
+    border: 5px solid white;
     text-align: center;
-    margin:"600";
-    padding:"600";
+    margin:25px;
+    padding:25px;
 }
+div {text-align: center;}
 h1{
-    color:#38b4cc
-    
+    color:#38b4cc  
 }
 ol{
+    text-align: left;
     color: #ADE25D
 }
 ul{
-    color: #CFFFB3
+    color: #CFFFB3;
+    text-align: left
 }
 
 a:link {
@@ -32,5 +36,13 @@ a:hover {
     color: #ADE25D;
   }
 img{
-    align:center
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+q{
+    font-family: 'Quicksand', sans-serif;
+
+
 }
