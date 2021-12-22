@@ -7,6 +7,7 @@ import random
 import discord # pip installed
 from dotenv import load_dotenv # pip installed
 
+
 intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents = intents) # discord.Client() creates a connection to Discord. This class is used to interact with Discord.

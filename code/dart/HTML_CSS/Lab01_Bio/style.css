@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    color: #F0FFFF;
+    scroll-snap-align: start;
+}
+
+.headers {
+    height: 100px;
+    width: 200px; /** Use 100% to fill the width of the page **/
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;
+    width: 450px; 
+    height: 700px;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+.wrapper {
+    display: grid;
+    text-align: center;
+    font-size: x-large;
+}
+
+p {
+    margin: 0 4rem;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: x-large;
+}
+
+.one {
+    background-image: url("https://images.unsplash.com/photo-1457364887197-9150188c107b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+    background-size: cover;
+}
+
+.two {
+    background-image: url("https://www.hdcarwallpapers.com/walls/tesla_roadster_4k-HD.jpg");
+    background-size: cover;
+}
+
+.three {
+    background-image: url("https://cdn.thomasnet.com/insights-images/e6efd4ea-b29a-4f7e-86e9-0d8d1a907fc1/750px.png");
+    background-size: cover;
+    font-size: large;
+    padding-left: 50px;
+}
+
+ul {margin: 0 2rem}
+
+li {margin-left: 15px}
+
+a:link {color: green}
+  
+  /* visited link */
+a:visited {color: green;}
+  
+  /* mouse over link */
+a:hover {color: red}
+  
+  /* selected link */
+a:active {color: blue}
+
+footer {
+	height: 1.5vh;
+	background-color: #F0FFFF;
+    text-align: center;
+}
+
+body {overflow: hidden}

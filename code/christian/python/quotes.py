@@ -12,7 +12,6 @@ print(info['body'])
 
 while True:
     search = input('Enter a keyword to search for quotes: ')
-    
 
     url = 'https://favqs.com/api/qotd'
 
