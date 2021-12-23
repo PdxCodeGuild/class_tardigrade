@@ -1,0 +1,25 @@
+.container {
+    border: 2px solid red;
+}
+
+.container-fluid {
+    border: 2px solid blue;
+}
+
+.row {
+    border: 2px solid green;
+}
+
+.col {
+    border: 2px solid orange;
+}
+
+.btn-info {
+    background-color: teal;
+
+}
+
+.photo-box {
+    border: 2px solid black;
+    margin-top: 10rem;
+}
