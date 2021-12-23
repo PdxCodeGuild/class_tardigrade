@@ -1,0 +1,140 @@
+/* EXTRA SMALL SCREEN WIDTH */
+/* smartphones in portrait-mode, devices less than 576px wide */
+
+/* 1. Use your browser's responsive design mode to view your webpage
+in smartphone-portrait mode.  Fill in the css below until it looks right. */
+
+main {
+	/* width: 80vw; */
+	/* height: 75vh; */
+	/* overflow-y: scroll; */
+	background-color: #27F5C5;
+	padding: 1rem;
+	display: flex; /* give the container display: flex */
+	/* flex-direction: column; flex-direction: row is the default*/ 
+	flex-wrap: wrap; /* the flex-children will wrap around to the next line */
+	justify-content: space-evenly;
+}
+
+header {
+	background-color: #1CFA48;
+	height: 20vh;
+	display: flex;
+	justify-content: center; /* centers the children on the primary axis */
+	align-items: center; /* centers the children on the secondary axis */
+}
+
+article {
+	margin: 1rem;
+	height: 10rem;
+	width: 25%;
+	background-color: #1CB6FA;
+}
+
+nav {
+	height: 10vh;
+	background-color: #18DE78;
+	display: flex;
+	justify-content: space-evenly; /* even spacing along the primary axis */
+	align-items: center;
+}
+
+
+
+h1 {
+	margin: 0; /* h1s have built-in margin that can push even their parent elements away from the sides of the document */
+}
+
+footer {
+	height: 5vh;
+	background-color: #18D5DE;
+}
+
+figure.doggo-container {
+	border: 2px solid black;
+	width: 25rem;
+}
+
+figure.doggo-container > img {
+	width: 100%;
+}
+
+figure.doggo-container > h3 {
+	text-align: center;
+}
+
+figure.doggo-container > p {
+	text-align: center;
+	margin: 1rem;
+	/* padding: 1rem; */
+	height: 10.3rem;
+	overflow: hidden;
+	/* white-space: nowrap;
+	text-overflow: ellipsis; */
+}
+
+@media (min-width: 576px) {
+	/* SMALL SCREEN WIDTH */
+	/* smartphones in landscape-mode, devices less than 768 px wide */
+	
+	/* 2.  Switch to smartphone-landscape mode on your browser.  Add any
+	necessary css changes for landscape-width here. */
+}
+	
+@media (min-width: 768px) {
+	/* MEDIUM SCREEN WIDTH */
+	/* tablets, devices less than 992px wide */
+
+	/* 3.  Switch to tablet mode on your browser.  Add any necessary css
+	for tablet-width here. */
+	.flex-container {
+		display: flex;
+	}
+
+	nav {
+		width: 20vw;
+		height: auto;
+		flex-direction: column;
+	}
+
+	main {
+		width: 80vw;
+		height: 75vh;
+		overflow-y: scroll;
+	}
+
+	figure.doggo-container {
+		width: 15rem;
+	}
+}
+
+@media (min-width: 992px) {
+	/* LARGE SCREEN WIDTH */
+	/* laptops, desktops, devices less than 1200px wide */
+
+	/* 4. Turn off responsive design mode on your desktop.  Add any css
+	here to make your page look good on your desktop. */
+
+	nav {
+		width: 15vw;
+	}
+
+	main {
+		width: 85vw;
+	}
+
+	figure.doggo-container {
+		width: 25rem;
+	}
+}
+
+@media (min-width: 1200px) {
+	/* EXTRA LARGE SCREEN WIDTH */
+	/* large desktops, devices 1200px or wider */
+
+	/* 5. Even smaller desktops can emulate extra-wide monitors
+	in responsive design mode.  Often desktop-width is sufficient
+	for ultra-wide screens, but as more and more internet users
+	have larger screens, developers are beginning to style websites
+	for those users. Add that css here. */
+}
