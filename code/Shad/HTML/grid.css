@@ -1,0 +1,35 @@
+.grid-container {
+
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px;
+}
+
+.top {
+
+    background-color: blueviolet;
+    text-align: center;
+}
+
+.right {
+
+    
+    background-color: red;
+    text-align: center;
+}
+
+
+.main {
+    
+    background-color: mediumturquoise;
+    text-align: center;
+}
+
+
+
+.foot { 
+
+    
+    background-color: rgb(162, 226, 43);
+    text-align: center;
+}
