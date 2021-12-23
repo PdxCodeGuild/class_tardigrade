@@ -4,8 +4,8 @@ body{
 }
 main{
     text-align: center;
-    width: 70vw;
-	height: 50vh;
+    width: 120vw;
+	height: 70vh;
 	overflow-y: scroll;
 	background-color:#96031A;
 	padding: 1rem;
@@ -42,8 +42,9 @@ div{
 nav{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; 
+    justify-content: space-around; 
     align-items: left;
+    width: fit-content;
 }
 footer{
     height: 5vh;
@@ -62,8 +63,8 @@ article {
 
 }
 img{
-    width:75%;
-    height:75%;
+    /* width:75%;
+    height:75%; */
     object-fit: contain;
     /* was looking for object-fit cover but found contain and it worked for my purposes on w3docs */
 
