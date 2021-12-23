@@ -1,0 +1,108 @@
+
+body{
+    margin: 5rem;
+    border-style: solid;    
+    border-color: #131200;
+    border-width: 5px;
+    background-image: url("background.jpg");
+    background-size: cover;
+
+}
+
+
+main {
+    padding: 40px;
+    background-color: beige;
+    align-content: center;
+    background-color: #E8EEF2;
+}
+
+nav {
+    align-content: center;
+    text-align: center;
+    background-color: #274C77;
+    padding: 10px;
+    border-bottom:5px solid black;
+}
+
+h1{
+    color: #131200;
+    font-size: 30px;
+    font-family: 'Twinkle Star', cursive;
+}
+
+h2{
+    font-family: 'Twinkle Star', cursive;
+}
+
+h3{
+    font-family: 'Twinkle Star', cursive;
+}
+
+blockquote{
+    padding:20px;
+    font: 1em sans-serif;   
+
+}
+
+#bottomImg{
+    height: 400px;
+    
+    
+}
+
+table{
+    align-content: center;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+p{
+    max-width: 70%;
+    padding-left: 30px;
+    font-size: 13pt;
+}
+
+
+td{
+    padding: 10px;
+}
+
+
+footer{
+    border-top: 2px solid black;
+    align-content: center;
+    text-align: center;
+    background-color:#32639A;
+    padding: 10px;
+    font-size: small;
+}
+
+
+a:link{
+    color:#274C77;
+}
+a:visited{
+    color: #77B6EA;    
+}
+
+a:hover{
+    color: #131200
+
+}
+#bannerDiv{
+    align-content: center;
+    background-color: black;
+}
+
+#imageBanner{
+    max-width: 100%;    
+}
+
+#mapImg{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;    
+}
+

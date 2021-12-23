@@ -14,11 +14,27 @@ A ticket contains 6 numbers, 1 to 99, and the number of matches between the tick
 - if 5 numbers match, you win $1,000,000
 - if 6 numbers match, you win $25,000,000
 
-One function you might write is `pick6()` which will generate a list of 6 random numbers, which can then be used for both the winning numbers and tickets. Another function could be `num_matches(winning, ticket)` which returns the number of matches between the winning numbers and the ticket.
+Write these 2 functions to use in this lab:
+
+```py
+def pick6():
+    """
+    return a list of 6 random numbers
+    """
+    ...
+
+def num_matches(winning_ticket, ticket):
+    """
+    return the number of matches between the 2 tickets
+    """
+    ...
+```
+
+`pick6()` will generate a list of 6 random numbers, which can then be used for both the winning numbers and tickets. `num_matches(winning, ticket)` will return the number of matches between the winning numbers and the ticket.
 
 ## Steps
 
-1. Generate a list of 6 random numbers representing the winning tickets
+1. Generate a list of 6 random numbers representing the winning ticket
 2. Start your balance at 0
 2. Loop 100,000 times, for each loop:
 3. Generate a list of 6 random numbers representing the ticket

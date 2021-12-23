@@ -1,0 +1,56 @@
+main {
+    width: 55vw;
+    height: 70vh;
+    background-color: #1E1A1D;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h2 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+p {
+    margin: 0;
+}
+article {
+    margin: 1rem;
+    width: 25%;
+    height: 25vh;
+    background-color: #E5F2C9;
+    color: indigo;
+}
+
+.flex-container {
+	display: flex;
+}
+
+header {
+    height: 15vh;
+    background-color: goldenrod;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0px;
+}
+
+nav {
+    width: 15vw;
+    background-color: #1A090D;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+a:link {
+    color: #ACE894;
+}
+
+a:visited {
+    color: #BB4430
+}
