@@ -49,11 +49,11 @@ Presentation Day: February 25th, 2022
 
 [URL Shortener](4%20Django/labs/02%20URL%20Shortener.md) -->
 
-<!-- ## HTML/CSS Labs Assigned:
+## HTML/CSS Labs Assigned:
 
 * [Lab 01 Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)
 * [Lab 02 Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)
-* [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
+<!-- * [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
 * [Lab 04 Company](3%20HTML%20+%20CSS/labs/04%20Mob%20Class%20Mascot.md)
 * [Lab 05 Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md)
 
