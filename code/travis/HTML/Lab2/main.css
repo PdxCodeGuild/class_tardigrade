@@ -2,19 +2,14 @@
 body{
     
 
-    margin-right: 3rem;
-    margin-left: 3rem;
     border: 5px solid black;
 }
 
 main{
-
-    justify-content: right;
+    display: flex;
     flex-wrap: wrap;
-
     background-color: aqua;
-    width: 85%;
-
+    width: 100%
 }
 
 header{
@@ -29,37 +24,39 @@ h1{
 
 .entry{
 
-    display: inline;
-    flex-wrap: wrap;
     background-color: seashell;
-    width: 30%;
-    min-height: 40%;
-    margin:10%;
-    
+    max-width: 32%;
+    height: auto;
+    margin:2%;
+    min-width: 30rem;
+    flex-grow: 2;
 }
 
 #mainEntry{
+
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap:wrap;
     flex-direction: row;
-    justify-content: center;
+  justify-content:center;
+  align-items: flex-start;
 
 }
 
 #navAndMain{
     display: flex;
-
-
 }
-p{
-    display: inline;
-    padding: 80%;
-    width: 80%;
+
+.entry > p {
+    
+    margin: 0;
+    padding: 1rem;
 }
-img{
+
+.entry > img{
 
     float: left;
-    max-height: 50%;
+    max-width: 25vh;
+    padding: 5px;
 
 }
 #topNav{
@@ -69,8 +66,10 @@ img{
 }
 
 #sideNav{
-    justify-content: left;
-    width: 15%;
+    display: block;
+    float: left;
+    max-width: 10rem;
+    min-width:10rem;
     background-color: salmon;
 
 }
