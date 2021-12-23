@@ -34,8 +34,8 @@
     </div>
     <section id="blog">
         <div class="blog-heading">
-            <span>My Book Blog</span>
-            <h3>Books I Think are Awesome</h3>
+            <span>Welcome to my Book Blog</span>
+            <h3>Let's Talk Books</h3>
         </div>
         <div class="blog-container">
             <div class="blog-box">
@@ -92,6 +92,29 @@
             </div>
         </div>
     </section>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <footer>Copyright d'Artagnan Childers 2021 &copy;</footer>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 700 || document.documentElement.scrollTop > 700) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 </body>
 
 </html>
