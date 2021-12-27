@@ -1,28 +1,70 @@
 .grid-container {
-
+    background-color: grey;
     display: grid;
-    grid-template-columns: 100px 100px 100px;
-    grid-template-rows: 100px 100px;
+    justify-items: stretch;
+    grid-template-columns:  1fr 1fr 1fr end;
+    grid-template-rows: 200px 200px 200px;
+    gap: 0px;
 }
 
 .top {
-
-    background-color: blueviolet;
+    color: ivory;
+    background-color: black;
+    padding: 30px;
+    font-size: 40px;
     text-align: center;
+    font-style: arial ;
+    font-size: 300;
+    font-display: center;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row: 1;
+    border-color:blanchedalmond;
+    font-weight: 900;
+    font-stretch: expanded;
+    font-variant-caps: normal;
+    font-family: Arial;   
 }
 
-.right {
 
-    
-    background-color: red;
+.right {
+    background-color: black;
     text-align: center;
+    grid-column-start: 1;
+    grid-column-end: span;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    float: left;
+    width: 25%;
+    padding-left: 10px;
+    border-style: dotted;
+    border-color: black;
+    border-right-width: 125px;
+  
 }
 
 
 .main {
-    
-    background-color: mediumturquoise;
+    display: inline-flex;
+    background-color:grey;
     text-align: center;
+    justify-content: center;
+    grid-column-start: 2;
+    grid-column-end: end;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    float: left;
+    width: 75%;
+    font-variant-caps: normal;
+    font-family: Arial;
+    text-align: center;
+    box-sizing: content-box;
+    border-radius: 1fr;
+    border-width: 20px;
+    border-image: 500px;
+
+
 }
 
 
@@ -30,6 +72,11 @@
 .foot { 
 
     
-    background-color: rgb(162, 226, 43);
+    background-color: black;
     text-align: center;
+    grid-row-start: 4;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 4
+
 }
