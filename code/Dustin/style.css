@@ -1,0 +1,44 @@
+body {background-color: silver;}
+h2 {
+    color: cyan;
+    font-size: 65px;
+    margin: 0px;
+    text-align: center;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+img {
+  border-radius: 20%;
+}
+
+
+p {
+    color: midnightblue;
+}
+ul {
+    columns: 2;
+    max-width: 500px;
+    list-style-image: url(http://farm9.staticflickr.com/8368/8440559840_ceee49dc91_o.png);
+}
+ul:before{
+    content:attr(list-label);
+    font-size:120%;
+    font-weight:bold;
+    text-align: center;
+    display: block;
+    color: darkcyan;
+
+}
+li {
+	margin: 0;
+	padding: 16px  16px 14px;
+	list-style: none;
+	background-image: url(http://farm9.staticflickr.com/8368/8440559840_ceee49dc91_o.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 10px;
+}
