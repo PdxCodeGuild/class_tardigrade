@@ -1,76 +1,124 @@
 
-body{
-    
-
-    margin-right: 3rem;
-    margin-left: 3rem;
-    border: 5px solid black;
+*{
+    font: 1em sans-serif;
 }
 
+
 main{
-
-    justify-content: right;
+    display: flex;
     flex-wrap: wrap;
-
-    background-color: aqua;
-    width: 85%;
-
+    background-color: #92F7F2;
+    width: 100%
 }
 
 header{
-    background-color: red;
-    min-height: 5rem;
+    background-color: #52798D;
+    max-height: 10vh;
+    display: flex;
+    width: 100%;
+
 }
 
+nav{
+    background-color: #489DF7;
+    border: 1px solid black;
+
+}
+
+footer{
+    text-align: center;
+    height: 5vh;
+    background-color: #489DF7;
+    border: 1px solid black;
+    }
+
 h1{
-    margin: 0px;
+    align-self: center;
+    text-align: center;
+    margin-left: 50px;
+}
+
+#navAndMain{
+    display: flex;
+}
+
+
+#mainEntry{
+
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+  justify-content:center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  height:80vh;
+  width: 100%;
 
 }
 
 .entry{
 
-    display: inline;
-    flex-wrap: wrap;
-    background-color: seashell;
-    width: 30%;
-    min-height: 40%;
-    margin:10%;
+    background-color:#92B2F7;
+    max-width:  28rem;
+    height: auto;
+    margin:2%;
+    min-width: 30rem;
+}
+
+.entry > p {
     
+    margin: 0;
+    padding: 1rem;
 }
 
-#mainEntry{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-
+.entry > img{
+    float: right;
+    max-width: 40%;
+    padding: 5px;
 }
 
-#navAndMain{
-    display: flex;
-
-
-}
-p{
-    display: inline;
-    padding: 80%;
-    width: 80%;
-}
-img{
-
-    float: left;
-    max-height: 50%;
-
-}
 #topNav{
-    min-height: 3rem;
-    background-color: royalblue;
+    min-height: 5vh;
+}
 
+#topNav > a{    
+    
+    margin: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 20px;
 }
 
 #sideNav{
-    justify-content: left;
-    width: 15%;
-    background-color: salmon;
 
+    float: left;
+    max-width: 10rem;
+    min-width:10rem;
+    border-top: none;
+    border-bottom: none;
+}
+
+#sideNav > a{
+    display: block;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#sideNav > h3{
+    text-align: center;
+}
+
+header > img{
+    max-height: 10vh;
+
+}
+
+a:link{
+    color:darkblue;
+       
+}
+
+a:visited{
+    color: darkred;
 }
