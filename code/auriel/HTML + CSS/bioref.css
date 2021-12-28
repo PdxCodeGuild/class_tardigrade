@@ -11,14 +11,38 @@ h1 {
 }
 p {
     background-color:royalblue;
-    margin: 0;
     margin: 2mm;
     padding: 1rem 0;
+    text-align: left;
+}
+h2 {
+    background-color: yellow;
+    margin: 2mm;
+    padding: 1rem 0;
+    text-align: center;
+    font-size: medium;
+    font-style: italic;
+}
+h3 {
+    color: black;
+    font-size: x-large;
+    text-align: left;
+}
+ul {
+    color: black;
+    font-size: large;
     text-align: left;
 }
 img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    width: 30%;
+}
+a:link, a:visited {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    color: red;
 }
