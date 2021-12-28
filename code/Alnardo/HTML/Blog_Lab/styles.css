@@ -1,31 +1,3 @@
-main {
-    width: 55vw;
-    height: 70vh;
-    background-color: #1E1A1D;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-h2 {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-p {
-    margin: 0;
-}
-article {
-    margin: 1rem;
-    width: 25%;
-    height: 25vh;
-    background-color: #E5F2C9;
-    color: indigo;
-}
-
-.flex-container {
-	display: flex;
-}
-
 header {
     height: 15vh;
     background-color: goldenrod;
@@ -34,12 +6,66 @@ header {
     justify-content: center;
 }
 
-h1 {
-    margin: 0px;
+header > aside > img {
+    width: 20vw;
+    height: 100%;
 }
 
+
+main {
+    width: 85%;
+    height: 90vh;
+    background-color: #1E1A1D;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+article > h2 {
+    height: 5%;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+article {
+    margin: 1rem;
+    width: 25%;
+    height: 40vh;
+    background-color: #E5F2C9;
+    color: indigo;
+    justify-content: space-evenly;
+}
+
+article > p {
+    margin: 0px;
+    height: 50%;
+    text-align: center;
+    padding: 2px;
+    padding-top: 8px;
+    padding-bottom: 0px;
+    white-space: inherit;
+    overflow: hidden;
+    
+}
+
+article > img {
+    width: 100%;
+    height: 45%;
+}
+
+
+.flex-container {
+	display: flex;
+}
+
+/* 
+h1 {
+    margin: 0px;
+} */
+
 nav {
-    width: 15vw;
+    width: 15%;
     background-color: #1A090D;
     display: flex;
     flex-direction: column;
@@ -53,4 +79,11 @@ a:link {
 
 a:visited {
     color: #BB4430
+}
+footer {
+    background-color: #381D2A;
+    display: flex;
+    height: 2vh;
+    color: lavender;
+    justify-content: center;
 }
