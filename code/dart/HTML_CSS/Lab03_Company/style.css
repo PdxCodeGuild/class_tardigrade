@@ -1,0 +1,22 @@
+.hero-body {
+  background-image: url("https://mark-fore-and-strike.com/wp-content/uploads/2016/06/wide-mountains.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.buttons {
+	flex: auto;
+	justify-content: center;
+}
+
+.footer {
+  padding: 0%;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
