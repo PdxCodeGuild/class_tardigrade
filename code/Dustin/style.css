@@ -34,11 +34,40 @@ ul:before{
 
 }
 li {
-	margin: 0;
-	padding: 16px  16px 14px;
-	list-style: none;
-	background-image: url(http://farm9.staticflickr.com/8368/8440559840_ceee49dc91_o.png);
-	background-repeat: no-repeat;
-	background-position: left center;
-	background-size: 10px;
+    margin: 0;
+    padding: 16px 16px 14px;
+    list-style: none;
+    background-image: url(http://farm9.staticflickr.com/8368/8440559840_ceee49dc91_o.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 10px;
+}
+"CSS pelow this point is still trial, trying to figure out from webhelp"
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+.navbar a:hover {
+  background-color: #800000;
+  color: Maroon;
+}
+
+.navbar a.active {
+  background-color: #00ffff;
+  color: Cyan;
 }
