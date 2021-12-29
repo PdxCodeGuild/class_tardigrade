@@ -1,8 +1,7 @@
 header > h1{
     font: 2em sans-serif;
     color: white;
-    width: 100%;
-    
+    width: 100%;  
     
 }
 
@@ -34,6 +33,7 @@ footer > h4{
     display:flex;
     flex-direction: column;
     max-width: 100vw;
+    margin-bottom: 15vh;
 }
 
 #mainView > img{
@@ -59,8 +59,9 @@ content{
     flex-direction: column;
     max-width: 100vw;
 
-    text-align: left;
+    text-align: center;
     border: black solid 2px;
+    margin-bottom: 5vh;
 }
 
 content > img{
@@ -155,13 +156,22 @@ main{
     display:flex;
     flex-direction: row;
 
-    max-width: 100vw;
+    width: 100vw;
     border: purple solid 2px;
+    margin-bottom: 10vh;
 }
 
 #mainView > img{
 
-    width: auto;
+    height: auto;
+    width: 70%;
+
+}
+
+#mainText{
+    width: 30%;
+    text-align: center;
+    margin-top: 20%;
 
 }
 
@@ -179,22 +189,80 @@ main{
 
 
 
+.horizontalFlex{
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border-color: red;
+    width: 90%;
+    height: 40vh;
+}
+
+.horizontalFlex > img{
+
+
+    height: 70%;
+    width: auto;
+    
+}
+
+.horizontalFlex > h4{
+
+    flex-grow: 1;
+    width: 40%;
+
+}
+
+
+
 
 }
 
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {h1{
+@media only screen and (min-width: 768px) {
+    
+h1{
     font: 1em sans-serif;
 
+
 }
+
+main{
+    
+    max-width: 90%;
+    margin: auto;
 }
+
+#mainView{
+
+    max-height: 500px;
+
+}
+
+#mainView > img{
+
+    max-width:500px;
+    
+}
+
+
+
+}
+
 
 
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {h1{
     font: 1em sans-serif;
+}
+
+
+#mainView{
+
+    max-width: 500px;
 
 }
 }
