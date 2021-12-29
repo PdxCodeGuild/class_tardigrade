@@ -1,16 +1,15 @@
-
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-h1{
+header > h1{
     font: 2em sans-serif;
     color: white;
     width: 100%;
-    margin-top: 3vh;
     
     
 }
 
+
+body{
+    margin: 0;
+}
 
 header{
     max-height: 10vh;
@@ -26,7 +25,7 @@ footer{
     min-height: 3vh;
 }
 
-h4{
+footer > h4{
     margin: 0px;
 
 }
@@ -44,21 +43,15 @@ h4{
 
 #mainText > h2{
 
-    margin: 10px;
     text-align: center;
 
 }
 
 #mainText > p{
-
-    margin: 10px;
+    
     text-align: center;
 
 }
-
-
-
-
 
 
 content{
@@ -66,8 +59,6 @@ content{
     flex-direction: column;
     max-width: 100vw;
 
-
-    margin: 10px;
     text-align: left;
     border: black solid 2px;
 }
@@ -87,7 +78,6 @@ content > img{
 }
 
 .horizontalFlex > h4{
-
    
     margin: 20px 0 20px 0 ;
 
@@ -125,9 +115,6 @@ content > img{
 
 
 
-}
-
-
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -135,6 +122,63 @@ h1{
         font: 1em sans-serif;
     
 }
+
+content{
+    display:flex;
+
+    text-align: left;
+    border: black solid 2px;
+    margin:10px;
+    width: 45%;
+
+}
+
+content > img{
+
+    width: auto;
+    max-width: 100%
+
+}
+
+main{
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: springgreen solid 2px;
+
+}
+
+
+#mainView{
+
+    display:flex;
+    flex-direction: row;
+
+    max-width: 100vw;
+    border: purple solid 2px;
+}
+
+#mainView > img{
+
+    width: auto;
+
+}
+
+#mainText > h2{
+
+    text-align: center;
+
+}
+
+#mainText > p{
+    
+    text-align: center;
+
+}
+
+
+
 
 }
 
