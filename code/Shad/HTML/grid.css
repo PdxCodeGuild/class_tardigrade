@@ -51,7 +51,7 @@
     text-align: center;
     justify-content: center;
     grid-column-start: 2;
-    grid-column-end: end;
+    grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
     float: left;
@@ -80,3 +80,5 @@
     grid-column-end: 4
 
 }
+
+    
