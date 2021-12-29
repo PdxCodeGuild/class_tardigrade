@@ -24,11 +24,13 @@ h2 {
     font-style: italic;
 }
 h3 {
+    background-color:blanchedalmond;
     color: black;
     font-size: x-large;
     text-align: left;
 }
 ul {
+    background-color:blanchedalmond;
     color: black;
     font-size: large;
     text-align: left;
