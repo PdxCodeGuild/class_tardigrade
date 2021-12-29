@@ -1,21 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+
 header > h1{
     font: 2em sans-serif;
     color: white;
     width: 100%;  
     
 }
+a.icon{
+    padding-right: 0;
 
+}
+
+body{
+
+    width: 100%;
+}
+
+#shoppingCart{
+
+    width: 30px;
+    height: 30px;
+    
+    
+}
 
 body{
     margin: 0;
 }
 
 header{
-    max-height: 10vh;
+    max-height: fit-content;
     display: flex;
     text-align: center;
     background-color: #563CEB;   
-    max-width: 100vw;
+    width: 100%;
 
 }
 
@@ -32,7 +53,7 @@ footer > h4{
 #mainView{
     display:flex;
     flex-direction: column;
-    max-width: 100vw;
+    width: 100%;
     margin-bottom: 15vh;
 }
 
@@ -57,10 +78,10 @@ footer > h4{
 content{
     display:flex;
     flex-direction: column;
-    max-width: 100vw;
+    width: 100%;
 
     text-align: center;
-    border: black solid 2px;
+
     margin-bottom: 5vh;
 }
 
@@ -74,7 +95,8 @@ content > img{
 .horizontalFlex{
 
     display: flex;
-    border-color: red;
+    border: lightgray solid 5px;
+
 
 }
 
@@ -84,14 +106,98 @@ content > img{
 
 }
 
+header > img{
 
 
+    max-width:100%;
+    height: auto;
+}
 
+nav{ margin-bottom: 5vh;
+}
+
+
+/*mobile hamburger nav*/
+
+  .mobile-container {
+    width: 100%;
+    margin: auto;
+    background-color: #555;
+    height: 500px;
+    color: white;
+    border-radius: 10px;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+  }
+  
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  .topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .active {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+
+.navbar{
+
+    display: none;
+}
+
+#fullLogo{
+
+    display: none;
+}
+
+
+/* Small devices (portrait tablets and large phones,450px and up) */
+@media only screen and (min-width: 450px) {
+
+#mobileLogo{
+
+    display: none;
+}
+
+#fullLogo{
+    display: block;
+}
+
+.topnav{
+
+    display: none;
+}
 /* Style the navigation bar */
 .navbar {
     width: 100%;
     background-color:#4654F2;
     overflow: auto;
+    display: block;
   }
   
   /* Navbar links */
@@ -101,7 +207,7 @@ content > img{
     padding: 12px;
     color: white;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1.2em;
   }
   
   /* Navbar links on mouse-over */
@@ -116,20 +222,21 @@ content > img{
 
 
 
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
 h1{
-        font: 1em sans-serif;
-    
+        font: 1em sans-serif;    
+}
+
+footer{
+
+    margin-top: 5vh;
+
 }
 
 content{
+    
     display:flex;
-
     text-align: left;
-    border: black solid 2px;
-    margin:10px;
+ 
     width: 45%;
 
 }
@@ -146,18 +253,16 @@ main{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border: springgreen solid 2px;
+
 
 }
 
 
 #mainView{
 
-    display:flex;
-    flex-direction: row;
 
-    width: 100vw;
-    border: purple solid 2px;
+    width: 100%;
+
     margin-bottom: 10vh;
 }
 
@@ -168,12 +273,6 @@ main{
 
 }
 
-#mainText{
-    width: 30%;
-    text-align: center;
-    margin-top: 20%;
-
-}
 
 #mainText > h2{
 
@@ -188,13 +287,12 @@ main{
 }
 
 
-
 .horizontalFlex{
 
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    border-color: red;
+
     width: 90%;
     height: 40vh;
 }
@@ -222,32 +320,47 @@ main{
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    
-h1{
-    font: 1em sans-serif;
+
+
+
+main{
+    font: 1.5em sans-serif;
 
 
 }
 
 main{
     
-    max-width: 90%;
+    max-width: 800px;
     margin: auto;
 }
 
-#mainView{
-
-    max-height: 500px;
-
+.navbar{
+    font-size: 1.2em;
 }
+
+
 
 #mainView > img{
 
     max-width:500px;
     
 }
+#mainView{
 
+    display:flex;
+    flex-direction: row;
+    max-height: 500px;
+    width: 100%;
 
+    margin-bottom: 10vh;
+}
+#mainText{
+    width: 30%;
+    text-align: center;
+    margin-top: 20%;
+
+}
 
 }
 
@@ -259,19 +372,51 @@ main{
     font: 1em sans-serif;
 }
 
+main{
+    font: 2em sans-serif;
+
+
+}
+
+.navbar > a{
+    font-size: 1.5em;
+}
 
 #mainView{
 
-    max-width: 500px;
+    max-width: 90%;
+    justify-content: center;
 
 }
+
+main{
+
+    max-width: 800px;
+}
+
+
+
 }
 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    h1{
+    h{
+
     font: 1em sans-serif;
 }
 
+
+
+main{
+    font-size: 3em;
+}
+
+
+body{
+    justify-content: center;
+    margin: auto;
+    max-width: 1200px;
+
+}
 }
