@@ -1,7 +1,8 @@
-* {
-    box-sizing: border-box;
-}
+*{
 
+        box-sizing: border-box;
+ 
+}
 
 header > h1{
     font: 2em sans-serif;
@@ -19,25 +20,19 @@ body{
     width: 100%;
 }
 
-#shoppingCart{
-
-    width: 30px;
-    height: 30px;
-    
-    
-}
 
 body{
+
     margin: 0;
 }
 
 header{
+
     max-height: fit-content;
     display: flex;
     text-align: center;
     background-color: #563CEB;   
     width: 100%;
-
 }
 
 footer{
@@ -95,7 +90,7 @@ content > img{
 .horizontalFlex{
 
     display: flex;
-    border: lightgray solid 5px;
+    border: lightgray solid 10px;
 
 
 }
@@ -113,7 +108,7 @@ header > img{
     height: auto;
 }
 
-nav{ margin-bottom: 5vh;
+nav{ margin-top: 5vh;
 }
 
 
@@ -177,21 +172,29 @@ nav{ margin-bottom: 5vh;
 
 
 /* Small devices (portrait tablets and large phones,450px and up) */
-@media only screen and (min-width: 450px) {
+@media only screen and (min-width: 600px) {
 
 #mobileLogo{
 
     display: none;
 }
 
+
+main{
+
+    gap: 20px 20px;
+
+}
 #fullLogo{
+
     display: block;
 }
 
 .topnav{
-
     display: none;
 }
+
+
 /* Style the navigation bar */
 .navbar {
     width: 100%;
@@ -221,24 +224,15 @@ nav{ margin-bottom: 5vh;
   }
 
 
-
-h1{
-        font: 1em sans-serif;    
-}
-
 footer{
-
     margin-top: 5vh;
-
 }
 
-content{
-    
+content{    
     display:flex;
     text-align: left;
- 
+    
     width: 45%;
-
 }
 
 content > img{
@@ -253,21 +247,17 @@ main{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
-
 }
 
 
 #mainView{
-
-
+    display:flex;
+    flex-direction: row;
     width: 100%;
-
     margin-bottom: 10vh;
 }
 
 #mainView > img{
-
     height: auto;
     width: 70%;
 
@@ -275,13 +265,10 @@ main{
 
 
 #mainText > h2{
-
     text-align: center;
-
 }
 
-#mainText > p{
-    
+#mainText > p{    
     text-align: center;
 
 }
@@ -290,11 +277,10 @@ main{
 .horizontalFlex{
 
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: row;
-
     width: 90%;
-    height: 40vh;
+    height: auto
 }
 
 .horizontalFlex > img{
@@ -406,17 +392,17 @@ main{
     font: 1em sans-serif;
 }
 
+#mainView{
 
-
-main{
-    font-size: 3em;
+    font-size: 2em;
 }
 
-
-body{
+main{
+    font-size: 2em;
     justify-content: center;
     margin: auto;
     max-width: 1200px;
-
 }
+
+
 }
