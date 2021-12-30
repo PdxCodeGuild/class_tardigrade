@@ -1,171 +1,148 @@
-*{
-
-        box-sizing: border-box;
- 
+* {
+    box-sizing: border-box;
 }
 
-header > h1{
-    font: 2em sans-serif;
-    color: white;
-    width: 100%;  
-    
-}
-a.icon{
-    padding-right: 0;
 
-}
 
-body{
 
+
+body {
     width: 100%;
-}
-
-
-body{
-
     margin: 0;
 }
 
-header{
+header {
 
     max-height: fit-content;
     display: flex;
     text-align: center;
-    background-color: #563CEB;   
+    background-color: #3B33A8;
     width: 100%;
 }
 
-footer{
-    background-color: lightseagreen;
-    min-height: 3vh;
+header>img {
+    max-width: 100%;
+    height: auto;
 }
 
-footer > h4{
+footer {
+    background-color: #4654F2;
+    min-height: 10vh;
+    color: white;
+    margin-top: 5vh;
+    text-align: center;
+
+}
+
+
+footer>h4 {
     margin: 0px;
 
 }
 
-#mainView{
-    display:flex;
+#mainView {
+    display: flex;
     flex-direction: column;
     width: 100%;
     margin-bottom: 15vh;
+    margin-top: 10vh;
+
 }
 
-#mainView > img{
+#mainView>img {
     width: auto;
-
 }
 
-#mainText > h2{
-
+#mainText>h2 {
     text-align: center;
-
 }
 
-#mainText > p{
-    
+#mainText>p {
     text-align: center;
-
 }
 
 
-content{
-    display:flex;
+content {
+    display: flex;
     flex-direction: column;
     width: 100%;
-
     text-align: center;
-
     margin-bottom: 5vh;
 }
 
-content > img{
-
+content>img {
     width: auto;
-
 }
 
 
-.horizontalFlex{
-
+.horizontalFlex {
     display: flex;
     border: lightgray solid 10px;
-
-
 }
 
-.horizontalFlex > h4{
-   
-    margin: 20px 0 20px 0 ;
-
-}
-
-header > img{
-
-
-    max-width:100%;
-    height: auto;
-}
-
-nav{ margin-top: 5vh;
+.horizontalFlex>h4 {
+    margin: 20px 0 20px 0;
 }
 
 
 /*mobile hamburger nav*/
 
-  .mobile-container {
+.mobile-container {
     width: 100%;
     margin: auto;
-    background-color: #555;
+    background-color: #8648A8;
     height: 500px;
     color: white;
     border-radius: 10px;
-  }
-  
-  .topnav {
+}
+
+.topnav {
     overflow: hidden;
-    background-color: #333;
+    background-color: #E390F5;
     position: relative;
-  }
-  
-  .topnav #myLinks {
+}
+
+.topnav #myLinks {
     display: none;
-  }
-  
-  .topnav a {
+}
+
+.topnav a {
     color: white;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
     display: block;
-  }
-  
-  .topnav a.icon {
+}
+
+.topnav a.icon {
     background: black;
     display: block;
     position: absolute;
     right: 0;
     top: 0;
-  }
-  
-  .topnav a:hover {
-    background-color: #ddd;
+}
+
+.topnav a:hover {
+    background-color: #A15BA8;
     color: black;
-  }
-  
-  .active {
-    background-color: #04AA6D;
+}
+
+.active {
+    background-color: #4654F2;
     color: white;
-  }
+}
 
 
-.navbar{
 
+.navbar {
     display: none;
 }
 
-#fullLogo{
+a.icon {
+    padding-right: 0;
+}
+
+#fullLogo {
 
     display: none;
 }
@@ -174,131 +151,123 @@ nav{ margin-top: 5vh;
 /* Small devices (portrait tablets and large phones,450px and up) */
 @media only screen and (min-width: 600px) {
 
-#mobileLogo{
+    #mobileLogo {
+        display: none;
+    }
 
-    display: none;
-}
+    #fullLogo {
 
+        display: block;
+    }
 
-main{
-
-    gap: 20px 20px;
-
-}
-#fullLogo{
-
-    display: block;
-}
-
-.topnav{
-    display: none;
-}
+    .topnav {
+        display: none;
+    }
 
 
-/* Style the navigation bar */
-.navbar {
-    width: 100%;
-    background-color:#4654F2;
-    overflow: auto;
-    display: block;
-  }
-  
-  /* Navbar links */
-  .navbar a {
-    float: left;
-    text-align: center;
-    padding: 12px;
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-  }
-  
-  /* Navbar links on mouse-over */
-  .navbar a:hover {
-    background-color: #000;
-  }
-  
-  /* Current/active navbar link */
-  .active {
-    background-color: #FA3131;
-  }
+
+    main {
+        gap: 20px 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
 
-footer{
-    margin-top: 5vh;
-}
+    #mainView {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-bottom: 15vh;
+        margin-left: 5vh;
 
-content{    
-    display:flex;
-    text-align: left;
-    
-    width: 45%;
-}
+    }
 
-content > img{
-
-    width: auto;
-    max-width: 100%
-
-}
-
-main{
-
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+    #mainView>img {
+        height: auto;
+        width: 70%;
+    }
 
 
-#mainView{
-    display:flex;
-    flex-direction: row;
-    width: 100%;
-    margin-bottom: 10vh;
-}
+    #mainText>h2 {
+        text-align: center;
+        padding-left: 10px;
+    }
 
-#mainView > img{
-    height: auto;
-    width: 70%;
+    #mainText>p {
+        text-align: center;
+        padding-left: 5px;
+    }
 
-}
-
-
-#mainText > h2{
-    text-align: center;
-}
-
-#mainText > p{    
-    text-align: center;
-
-}
+    content {
+        display: flex;
+        text-align: center;
+        width: 45%;
+    }
 
 
-.horizontalFlex{
 
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    width: 90%;
-    height: auto
-}
+    content>img {
+        width: auto;
+        max-width: 100%
+    }
 
-.horizontalFlex > img{
+    .horizontalFlex {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 90%;
+        height: auto;
+        text-align: left;
+        font-size: 1.2em;
+
+    }
+
+    .horizontalFlex>img {
+        height: auto;
+        width: 100%;
+    }
+
+    .horizontalFlex>h4 {
+        flex-grow: 1;
+        width: 100%;
+        padding-left: 20px;
+    }
 
 
-    height: 70%;
-    width: auto;
-    
-}
-
-.horizontalFlex > h4{
-
-    flex-grow: 1;
-    width: 40%;
-
-}
+    footer {
+        margin-top: 5vh;
+        text-align: center;
+    }
 
 
+
+    /* Style the navigation bar */
+    .navbar {
+        width: 100%;
+        background-color: #4654F2;
+        overflow: auto;
+        display: block;
+    }
+
+    /* Navbar links */
+    .navbar a {
+        float: left;
+        text-align: center;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+
+    /* Navbar links on mouse-over */
+    .navbar a:hover {
+        background-color: #E390F5;
+    }
+
+    /* Current/active navbar link */
+    .active {
+        background-color: #A15BA8;
+    }
 
 
 }
@@ -307,102 +276,75 @@ main{
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
+    main {
+        font: 1.2em sans-serif;
+        max-width: 800px;
+        margin: auto;
+    }
 
+    .navbar {
+        font-size: 1.2em;
+    }
 
-main{
-    font: 1.5em sans-serif;
+    #mainView {
+        display: flex;
+        flex-direction: row;
+        max-height: 500px;
+        width: 100%;
+        font-size: 1.2em;
+        margin-bottom: 15vh;
+    }
 
+    #mainView>img {
+        max-width: 500px;
+    }
 
-}
-
-main{
-    
-    max-width: 800px;
-    margin: auto;
-}
-
-.navbar{
-    font-size: 1.2em;
-}
-
-
-
-#mainView > img{
-
-    max-width:500px;
-    
-}
-#mainView{
-
-    display:flex;
-    flex-direction: row;
-    max-height: 500px;
-    width: 100%;
-
-    margin-bottom: 10vh;
-}
-#mainText{
-    width: 30%;
-    text-align: center;
-    margin-top: 20%;
+    #mainText {
+        width: 30%;
+        text-align: center;
+        margin-top: 20%;
+    }
 
 }
-
-}
-
-
 
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {h1{
-    font: 1em sans-serif;
-}
+@media only screen and (min-width: 992px) {
 
-main{
-    font: 2em sans-serif;
+    main {
+        font: 1.2em sans-serif;
+        max-width: 800px;
+    }
 
+    #mainView {
 
-}
+        font-size: 1.5em;
+        max-width: 90%;
+        justify-content: center;
 
-.navbar > a{
-    font-size: 1.5em;
-}
+    }
 
-#mainView{
-
-    max-width: 90%;
-    justify-content: center;
-
-}
-
-main{
-
-    max-width: 800px;
-}
-
-
+    .navbar>a {
+        font-size: 1.5em;
+    }
 
 }
 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    h{
 
-    font: 1em sans-serif;
-}
 
-#mainView{
+    main {
+        font-size: 1.3em;
+        justify-content: center;
+        margin: auto;
+        max-width: 1200px;
+    }
 
-    font-size: 2em;
-}
-
-main{
-    font-size: 2em;
-    justify-content: center;
-    margin: auto;
-    max-width: 1200px;
-}
-
+    #mainView {
+        font-size: 1.5em;
+        margin-bottom: 30vh;
+    }
 
 }
