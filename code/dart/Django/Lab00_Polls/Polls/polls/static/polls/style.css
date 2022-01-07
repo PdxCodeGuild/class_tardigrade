@@ -1,0 +1,6 @@
+li a {
+    color: green;
+}
+body {
+    background: white url("Django/Lab00_Polls/Polls/polls/static/polls/images/background.gif") no-repeat;
+}
