@@ -15,7 +15,7 @@ body {
 }
 
 
-
+/* #D8BFAA #E7A977 */
 .container-fluid {
     background-color: #EFEFF0;
     color: black;
@@ -42,8 +42,8 @@ p {
 
 .accordion-body {
     background-color: #D8BFAA;
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex;
+    flex-wrap: wrap; */
     justify-content: center;
 }
 
@@ -51,13 +51,13 @@ article {
     padding: 1rem;
     margin: 3px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 
 article > img {
     border: 2px solid black;
-    width: 58%;
+    /* width: 58%; */
 }
 
 
@@ -188,6 +188,12 @@ body > img {
     p {
         font-size: 2vh;
     }
+
+    .accordion-body {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 
 	/* 5. Even smaller desktops can emulate extra-wide monitors
 	in responsive design mode.  Often desktop-width is sufficient
