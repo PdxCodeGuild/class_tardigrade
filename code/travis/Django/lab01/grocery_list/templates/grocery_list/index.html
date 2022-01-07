@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    {% if latest_question_list %}
+    <ul>
+        {% for descript in grocery_item_list %}
+        <li>descript</li>
+        <li>descript</li>
+        {% endfor %}
+    </ul><br>
+    {% else %}
+        <p>No more items.</p>
+    {% endif %}
+
+
+
+    <!-- <h1>Grocery List</h1>
+
+    <form>
+        <label>Enter an item to add to your grocery list</label>
+        <input type="text">
+        <input type="submit">
+    </form> -->
+
+
+</body>
+
+</html>
