@@ -1,100 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="main.css" />
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\normalize.css">
+    <link rel="stylesheet" href="css\main.css">
+    <title>Lab:3 Sday Photography</title>
+    <link rel="icon" type="image/x-icon" href="photos/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-
-            <nav>
-                <nav class="nav-extended">
-                    <div class="nav-wrapper">
-                        <a href="#" class="brand-logo">Logo</a>
-                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
-                                class="material-icons">menu</i></a>
-                        <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li><a href="sass.html">Sass</a></li>
-                            <li><a href="badges.html">Components</a></li>
-                            <li><a href="collapsible.html">JavaScript</a></li>
-                        </ul>
-                    </div>
-                    <div class="nav-content">
-                        <ul class="tabs tabs-transparent">
-                            <li class="tab"><a href="#test1">Test 1</a></li>
-                            <li class="tab"><a class="active" href="#test2">Test 2</a></li>
-                            <li class="tab"><a href="#test4">Test 4</a></li>
-                        </ul>
-                    </div>
+    <header>
+        <!--  -->
+        <img id="mobileLogo" src="photos/Main-logo-PNG-scaleddwnmobile.png">
+        <img id="fullLogo" src="photos/Main-logo-PNG-scaleddwn.png">
+    </header>
 
 
-                </nav>
+    <!--Full Size Nav Bar-->
+    <nav class="navbar">
+        <a class="active" href="#"><i class="fa fa-fw fa-home"></i>Home</a>
+        <a href="#"><i class="fa fa-fw fa-camera-retro"></i>Portfolio</a>
+        <a href="#"><i class="fa fa-fw fa-shopping-bag"></i>Package Pricing</a>
+        <a href="#"><i class="fa fa-fw fa-user"></i>About</a>
+        <a href="#"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+    </nav>
 
-                <div id="topArea" class="row">
-  
+    <!-- Top Navigation Menu for Mobile -->
 
-                        <div id="topAreaColText" class="col s4 valign-wrapper">
-                            
-                            <p >
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor eos voluptatum minus?
-                                Voluptatem aperiam fuga consequuntur, ipsa commodi esse, fugiat blanditiis nemo eveniet
-                                neque explicabo, praesentium ut eos saepe est.
-                            </p>
-
-                        </div>
-                        <div id="topAreaCol" class="col s8">
-
-                            <img src="young-photographer-banner.png" alt="Photographer">
-
-
-
-                    </div>
-
-                </div>
+    <div class="topnav">
+        <a href="#home" class="active">Home</a>
+        <div id="myLinks">
+            <a href="#">Portfolio</a>
+            <a href="#">Package Pricing</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
         </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+        </a>
+    </div>
 
 
+    <div id="mainView">
+        <img src="photos/mainImageWedding.jpg">
+
+        <div id="mainText">
+            <h2>Quam id leo in vitae turpis</h2>
+            <p>Eget lorem dolor sed viverra ipsum nunc aliquet.</p>
+        </div>
+    </div>
+
+    <main>
+        <content class="horizontalFlex">
+            <h4>Velit ut tortor. Nibh praesent tristique magna sit.</h4>
+            <img src="photos/photoMain.jpg">
+        </content>
+
+        <content>
+            <img src="photos/collage4.jpg">
+            <h3>Dictum at tempor.</h3>
+            <a href="#">Package Information</a>
+        </content>
+
+        <content>
+            <img src="photos/collage3.jpg">
+            <h3>Morbi tristique senectus et netus</h3>
+            <a href="#">Pricing</a>
+        </content>
 
 
+        <content class="horizontalFlex">
+            <h4>Fusce ut placerat orci nulla pellentesque dignissim.</h4>
+            <img src="photos/engageMain.jpg">
+        </content>
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            For <a
+                href="https://github.com/PdxCodeGuild/class_tardigrade/blob/main/3%20HTML%20%2B%20CSS/labs/03%20Company.md">Class_Tardigrade</a><br>
+            Design inspired by <a href="https://www.brother-usa.com/home">Brother Office Supply</a>
+        </p>
+        <h4>Created by Travis Jackson</h4>
+    </footer>
+
+    <!--Mobile Nav Hamburger script-->
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
 
 
-        <footer class="page-footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Footer Content</h5>
-                        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer
-                            content.</p>
-                    </div>
-                    <div class="col l4 offset-l2 s12">
-                        <h5 class="white-text">Links</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    © 2014 Copyright Text
-                    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-                </div>
-            </div>
-        </footer>
-
-
-
-
-
-
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
 
 </html>
