@@ -12,11 +12,19 @@
         <h1 class ="text-4xl text-center">
             Welcome To Your Grocery List
         </h1>
-        <form>
-            action = '/'
+        <form
+			action = '/colors/new-color/'
+			method = 'POST'
+			class = 'border-2 px-6 py-6'
+        >
 
+                {% csrf_token %}
+                <label for = 'item-input'>New Grocery Item</label>
+                <input type = 'text' class = 'border-4' id ='item-name' name = 'item'>
+                <input type ='submit' value = 'Submit' class = 'cursor-pointer border-2 px-4'>
         </form>
+
     </header>
-    
+    <main class=""
 </body>
 </html>
