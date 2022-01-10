@@ -2,5 +2,5 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def index(request):
-    ...
+def start(request):
+    return HttpResponse('Welcome to your Grocery List')
