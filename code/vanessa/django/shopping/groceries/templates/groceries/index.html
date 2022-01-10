@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <form action="/" method="POST">
-        <input type="text" name="Grocery item"/>
+    <form action="{% url 'groceries:add' %}" method="POST">
+        {%csrf_token%}
+        <input type="text" name="groceryitem" />
         <button type="submit">Submit</button>
     </form>
     <ul>
         {% for item in grocery_list %}
         <li>{{ item.description }}</li>
+        <form action="{% url 'groceries:delete' item.id %}" method="get">
+            {%csrf_token%}
+            <!-- <input type="text" name="groceryitem"/> -->
+
+            <button type="submit">Delete</button>
+        </form>
         {% endfor %}
-    </ul>   
-    
+    </ul>
+
+
 </body>
+
 </html>
