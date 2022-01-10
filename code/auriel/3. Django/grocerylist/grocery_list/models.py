@@ -5,3 +5,7 @@ class GroceryItem(models.Model):
     created_date = models.DateField
     completed_date = models.DateField
     completed = models.BooleanField
+
+
+    def __str__(self):
+        return self.groceryitem

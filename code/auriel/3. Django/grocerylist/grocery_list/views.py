@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from .models import GroceryItem
 
 
-def start(request):
-    return HttpResponse('Welcome to your Grocery List')
+def index(request):
+    return render(request, 'grocery_list/groceryitems.html')
