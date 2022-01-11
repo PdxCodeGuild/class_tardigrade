@@ -10,7 +10,8 @@
 
 <body>
 
-
+<form action="complete" method ="POST">
+    {% csrf_token %}
 <table>
     <tr>
         <th>Item</th>
@@ -19,38 +20,59 @@
         <th>completed</th>
     </tr>
     {% if grocery_item_list %}
+
     {% for items in grocery_item_list %}
+    
     <tr>
         <td>{{items.description}}</td>
         <td>{{items.created_date}}</td>
         <td>{{items.completed_date}}</td>
         <td>{{items.completed}}</td>
+        <td><input type="checkbox" name = "id" id = "id" value = {{ items.id }}></td><br>
+        
 
     </tr>
 
-    {% endfor %}
-    {% else %}
-    <p>No more items.</p>
-{% endif %}
+
 </table>
 
+{% endfor %}
+{% else %}
+<p>No more items.</p>
+{% endif %}
+
+<button type="submit">Submit</button>
 
 
-    <h1>Grocery List</h1>
+</form>
+
+
+    <!-- <h1>Grocery List</h1>
     <form action="" method="post">
         {% csrf_token %}
 
-        <label>Enter a new item:</label>
+        <label>Select an item:</label>
         <input type="text" name="description" required><br>
 
 
       <input type="datetime-local" id= "created_date" name="created_date" required>
-        <label for="created_date"> Date created</label><br>
+      <label for="created_date"> Date created</label><br>
 
-
-
-        <button type="submit">Add to list</button>
+        <button type="submit">Submit</button>
+        
     </form>
+
+      <input type="datetime-local" id= "date_completed" name="date_completed">
+        <label for ="date_completed">Date Completed (blank for not completed)</label><br>
+
+        <input type="checkbox" id="completed" name="completed" value="True">
+        <label for="vehicle1">Completed?</label><br>
+     -->
+ 
+
+
+
 </body>
+
 
 </html>
