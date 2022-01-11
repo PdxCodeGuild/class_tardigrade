@@ -9,6 +9,7 @@ app_name = 'groceries' # for namespacing
 urlpatterns = [
     path('', views.index, name='index'),
     path('add/', views.addview, name='add'),
+    path('complete/<int:id>',views.complete, name="complete"),
     path('delete/<int:id>',views.delete_item, name='delete')
     ]
 
