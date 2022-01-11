@@ -4,7 +4,7 @@ from .models import GroceryItem
 from django.utils import timezone
 
 
-def index(request):
-    groceryitem = GroceryItem.objects.order_by('id')
+def home(request):
+    groceryitem = GroceryItem.objects.all()
     context = {'groceryitem': groceryitem}
     return render(request, 'grocery_list/groceryitems.html', context)
