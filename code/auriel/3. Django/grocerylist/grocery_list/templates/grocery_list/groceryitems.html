@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
 
     <header>
@@ -13,7 +15,7 @@
             Welcome To Your Grocery List
         </h1>
         <form
-			action = '/colors/new-color/'
+			action = 'add/'
 			method = 'POST'
 			class = 'border-2 px-6 py-6'
         >
@@ -25,6 +27,12 @@
         </form>
 
     </header>
-    <main class=""
+    <ul class = "list-disc">
+        {% for item in groceryitem %}
+        <li> {{ item }} {{item.created_date}} </li>
+
+        {% endfor %}
+    </ul>
+
 </body>
 </html>
