@@ -38,20 +38,14 @@ def index(request):
 
 
 def complete(request):
-  #  print(request.POST)
-    id_entry = request.POST["id"]
 
-    entry = get_object_or_404(GroceryItem, id = id_entry)
+    if request.method == 'POST':
 
+        id_entry = request.POST["id"]
+        grocery_item_list_test = GroceryItem.objects.filter(id=id_entry)   
 
-    context = entry[complete: True]
-
-    #new_item = GroceryItem(id = id_entry,  completed=True)
-
-    print(entry)
-   # print(new_item)
-   # grocery_item_list.save()
-    print(context)
+        grocery_item_list_test.update(completed_date = datetime.now(), completed = True)
+        
 
     grocery_item_list = GroceryItem.objects.all() 
 
@@ -60,5 +54,20 @@ def complete(request):
     return render(request, 'grocery_list/complete.html', context)
 
 
-def delete(request,id):
-    ...
+
+
+def delete(request):
+
+    if request.method == 'POST':
+        
+        id_entry = request.POST["id"]
+        grocery_item_list_test = GroceryItem.objects.filter(id=id_entry)
+
+        grocery_item_list_test.delete()
+        
+
+    grocery_item_list = GroceryItem.objects.all() 
+
+    context = {'grocery_item_list': grocery_item_list}
+
+    return render(request, 'grocery_list/delete.html', context)
