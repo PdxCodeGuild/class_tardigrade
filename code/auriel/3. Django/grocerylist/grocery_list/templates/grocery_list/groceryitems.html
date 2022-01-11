@@ -17,7 +17,7 @@
         <form
 			action = 'add/'
 			method = 'POST'
-			class = 'border-2 px-6 py-6'
+			class = 'border-4 px-6 py-6'
         >
 
                 {% csrf_token %}
@@ -27,12 +27,23 @@
         </form>
 
     </header>
-    <ul class = "list-disc">
-        {% for item in groceryitem %}
-        <li> {{ item }} {{item.created_date}} </li>
 
-        {% endfor %}
-    </ul>
+    <div class="w-full bg-white rounded-lg shadow-lg lg:w-2/5">
+        <ul class="divide-y-4 divide-gray-100">
+
+            {% for item in groceryitem %}
+            <li class="p-4 hover:bg-blue-600 hover:text-blue-200 text-2xl">
+                {{ item }}
+                <input class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Delete" />
+
+                <input class=" float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Complete" />
+                
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
 
 </body>
 </html>

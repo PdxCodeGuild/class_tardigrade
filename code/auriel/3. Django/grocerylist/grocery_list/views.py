@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
 from .models import GroceryItem
+from django.utils import timezone
+
 
 def home(request):
     groceryitem = GroceryItem.objects.all()
@@ -14,7 +15,13 @@ def add(request):
     return redirect('/')
 
 def complete(request, id):
-    ...
+    item = get_object_or_404(GroceryItem, id=id)
+    item.completed = True
+    item.completed_date = timezone.now()
+    item.save()
+    return redirect('/')
 
 def delete(request, id):
-    ...
+    item = get_object_or_404(GroceryItem, id=id)
+    item.delete()
+    return redirect('/')

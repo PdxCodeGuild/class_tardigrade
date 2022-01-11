@@ -5,4 +5,6 @@ app_name = 'grocery_list'
 urlpatterns = [
     path('', views.home, name='list'),
     path('add/', views.add, name = 'add'),
+    path('complete/', views.complete, name = 'complete'),
+    path('delete/', views.delete, name = 'delete'),
 ]
