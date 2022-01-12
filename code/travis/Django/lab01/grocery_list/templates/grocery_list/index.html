@@ -1,3 +1,8 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'grocery_list/style.css' %}">
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,40 +10,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Grocery List</title>
 </head>
 
 <body>
 
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Created date</th>
+            <th>Completed date</th>
+            <th>completed</th>
+        </tr>
+        {% if grocery_item_list %}
+        {% for items in grocery_item_list %}
+        <tr>
+            <td>{{items.description}}</td>
+            <td>{{items.created_date}}</td>
+            <td>{{items.completed_date}}</td>
+            <td>{{items.completed}}</td>
+        </tr>
 
-<table>
-    <tr>
-        <th>Item</th>
-        <th>Created date</th>
-        <th>Completed date</th>
-        <th>completed</th>
-    </tr>
-    {% if grocery_item_list %}
-    {% for items in grocery_item_list %}
-    <tr>
-        <td>{{items.description}}</td>
-        <td>{{items.created_date}}</td>
-        <td>{{items.completed_date}}</td>
-        <td>{{items.completed}}</td>
+        {% endfor %}
+        {% else %}
+        <p>No more items.</p>
+        {% endif %}
+    </table>
 
-    </tr>
 
-    {% endfor %}
-    {% else %}
-    <p>No more items.</p>
-{% endif %}
-</table>
 
     <h1>Grocery List</h1>
-    <form>
+    <form action="" method="post">
+        {% csrf_token %}
+
         <label>Enter a new item:</label><br>
-        <input type="text"><br>
-        <input type="submit">
+        <input type="text" name="description" required><br>
+        <label for="created_date"> Date created</label><br>
+        <input type="datetime-local" id="created_date" name="created_date" required>
+        <button type="submit">Add to list</button>
     </form>
 </body>
 
