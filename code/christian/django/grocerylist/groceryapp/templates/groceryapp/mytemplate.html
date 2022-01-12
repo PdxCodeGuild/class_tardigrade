@@ -5,15 +5,30 @@
     <title></title>
   </head>
   <body>
-    <form action="{% url 'myapp:mycreate' %}" method="post">
+      <h1>Incomplete</h1>
+    <ul>
+        {% for item in incomplete_list %}
+        <li>
+            {{ item.text }}
+            <button><a href="{% url 'groceryapp:remove_item' item.id %}">delete</a></button>
+            <button><a href="{% url 'groceryapp:complete' item.id %}">complete</a></button>
+        </li>
+        {% endfor %}
+    </ul>
+    <h1>Completed</h1>
+    {% for item in completed_list %}
+    <li>
+        {{item.text}}
+        <button><a href="{% url 'groceryapp:remove_item' item.id %}">delete</a></button>
+    </li>
+    {% endfor %}
+
+
+    <form action='/newitem/' method = 'POST'>
         {% csrf_token %}
-        <input type="text" name="myfield"/>
+        <input type="text" name="text"/>
         <button type="submit">submit</button>
     </form>
-    <ul>
-        {% for myinstance in myinstances %}
-        <li>{{ myinstance.myfield }}</li>
-        {% endfor %}
-      </ul>
+     
   </body>
 </html>
