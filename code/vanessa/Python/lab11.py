@@ -1,29 +1,26 @@
 import string
 import re
-import math #got from "geeksforgeeks.org as well as math.ceil() function in order to round up ari math result"
+
 with open('vanessa\kidnapped.txt', 'r',encoding='utf-8') as kidnapped:
     contents = kidnapped.read()
-title="Kidnapped"
+    print(contents)
+
+#need to determine #of characters, #words, #sentences
 characters_total= 0
 for character in contents:
     if character in string.ascii_letters:
         characters_total= characters_total +1
-# print (f"characters total: {characters_total}")
+print (f"characters total: {characters_total}")
 
 words=contents.split()
 word_count = 0
 for word in words:
     word_count += 1
-# print(f"word count {word_count}")
+print(f"word count {word_count}")
 
-s = re.findall("[\.?!]", contents)
-sentences= float((len(s)))
-characters_total=float(characters_total)
-word_count=float(word_count)
-ari_not_complete=(((characters_total/word_count)*4.71)+((word_count/(sentences))*.5)-21.43)
-ari = math.ceil(ari_not_complete)
-print(f"The ARI for {title} is {ari}")
 
+x = re.findall([A-Z][.!?]*[.!?], contents)
+print(x)
 
 ari_scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
@@ -41,8 +38,3 @@ ari_scale = {
     13: {'ages': '17-18', 'grade_level':   '12th Grade'},
     14: {'ages': '18-22', 'grade_level':      'College'}
 }
-
-if ari in ari_scale:
-    print(f"This corresponds to a {ari_scale[ari]['grade_level']} level of difficulty that is suitable for an average person {ari_scale[ari]['ages']} years old.")
-    if ari > 14:
-        print(f"This corresponds to a {ari_scale[ari]['grade_level']} level of difficulty that is suitable for an average person {ari_scale[ari]['ages']} years old.")
