@@ -4,6 +4,17 @@
 <h3>Residents of {{ state.abbreviation }}</h3>
 <ul>
 {% for person in state.people.all %}
-	<li>{{ person.name }} from {{ person.state.name }}</li>
+	<li><a href="{% url 'census:person' person.id %}">{{ person.name }}</a></li>
 {% endfor %}
 </ul>
+
+<h3>Former Residents of {{ state.abbreviation }}</h3>
+<ul>
+{% for person in state.one_time_residents.all %}
+
+	{% if person.state != state %}
+	<li><a href="{% url 'census:person' person.id %}">{{ person.name }}</a></li>
+	{% endif %}
+
+{% endfor %}
+	</ul>
