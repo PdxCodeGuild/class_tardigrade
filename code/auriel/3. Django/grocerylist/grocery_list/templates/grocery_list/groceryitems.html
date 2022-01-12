@@ -35,18 +35,22 @@
             <li class="p-4 hover:bg-blue-600 hover:text-blue-200 text-2xl">
                 {{ item }}
                 
-                <a href="{% url 'grocery_list:delete' GroceryItem.id %}">
-                    <button class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit">
-                        Delete  
-                    </button>
-                </a>
+                <form action = "{% url 'grocery_list:delete' GroceryItem.id %}" method="get">
+
+                    {% csrf_token %}
+                    <input class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Delete">
+                    </input>
+
+                </form>
                 
-                <a href="{% url 'grocery_list:complete' GroceryItem.id %}"></a>
+                <form action = "{% url 'grocery_list:complete' GroceryItem.id %}" method="get">
+
+                    {% csrf_token %}
                     <button class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800">
                         Complete
                     </button>
-                </a>
-
+                
+                </form>
 
             </li>
 
