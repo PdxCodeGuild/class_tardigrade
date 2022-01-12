@@ -1,0 +1,20 @@
+<h1>Cities</h1>
+
+{% for city in cities %}
+<article>
+	<h3>{{ city.name }}</h3>
+	<p style="margin-left: 10px;">Residents:</p>
+	<ul>
+		{% for person in city.people.all %}
+		<li>
+			{{ person.name }} from {{ person.city.name }}
+			<br>
+			Colors:
+			{% for color in person.favorite_colors.all %}
+			{{ color }}
+			{% endfor %}
+		</li>
+		{% endfor %}
+	</ul>
+</article>
+{% endfor %}
