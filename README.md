@@ -12,6 +12,7 @@ M-F 9:30 am – 4:30 pm
 - December 13th (Day Off)
 - December 24th (Christmas Eve)
 - December 27th (Long Xmas Weekend)
+- December 30th (Day Off)
 - December 31st (New Years Eve)
 
 ### Staff
@@ -53,14 +54,13 @@ Presentation Day: February 25th, 2022
 
 * [Lab 01 Bio](3%20HTML%20+%20CSS/labs/01%20Bio.md)
 * [Lab 02 Blog](3%20HTML%20+%20CSS/labs/02%20Blog.md)
-<!-- * [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
-* [Lab 04 Company](3%20HTML%20+%20CSS/labs/04%20Mob%20Class%20Mascot.md)
+* [Lab 03 Company](3%20HTML%20+%20CSS/labs/03%20Company.md)
 * [Lab 05 Personal Portfolio](3%20HTML%20+%20CSS/labs/05%20Personal%20Portfolio.md)
 
 
 #### Optional HTML/CSS/Flask Labs
 
-[Flask Redo](3%20HTML%20+%20CSS/labs/Optional%20Flask%20Redo.md), [Burrito Order Form](3%20HTML%20+%20CSS/labs/Optional%20Burrito%20Order%20Form.md) -->
+[Flask Redo](3%20HTML%20+%20CSS/labs/Optional%20Flask%20Redo.md), [Burrito Order Form](3%20HTML%20+%20CSS/labs/Optional%20Burrito%20Order%20Form.md)
 
 
 <!-- ## Flask Labs Assigned:

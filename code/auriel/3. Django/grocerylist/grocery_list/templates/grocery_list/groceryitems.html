@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1 class ="text-4xl text-center">
+            Welcome To Your Grocery List
+        </h1>
+        <form
+			action = 'add/'
+			method = 'POST'
+			class = 'border-4 px-6 py-6'
+        >
+
+                {% csrf_token %}
+                <label for = 'item-input'>New Grocery Item</label>
+                <input type = 'text' class = 'border-4' id ='item-name' name = 'item'>
+                <input type ='submit' value = 'Add Item To Grocery List' class = 'cursor-pointer border-2 px-4'>
+        </form>
+
+    </header>
+
+    <div class="w-full bg-white rounded-lg shadow-lg lg:w-2/5">
+        <ul class="divide-y-4 divide-gray-100">
+
+            {% for item in groceryitem %}
+            <li class="p-4 hover:bg-blue-600 hover:text-blue-200 text-2xl">
+                {{ item }}
+                
+                <a href="{% url 'grocery_list:delete' GroceryItem.id %}">
+                    <button class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit">
+                        Delete  
+                    </button>
+                </a>
+                
+                <a href="{% url 'grocery_list:complete' GroceryItem.id %}"></a>
+                    <button class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800">
+                        Complete
+                    </button>
+                </a>
+
+
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</body>
+</html>
