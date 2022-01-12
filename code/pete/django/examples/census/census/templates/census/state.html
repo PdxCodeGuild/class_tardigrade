@@ -1,0 +1,9 @@
+<title>{{ state.name }}</title>
+<h1>{{ state.name }}</h1>
+
+<h3>Residents of {{ state.abbreviation }}</h3>
+<ul>
+{% for person in state.people.all %}
+	<li>{{ person.name }} from {{ person.state.name }}</li>
+{% endfor %}
+</ul>
