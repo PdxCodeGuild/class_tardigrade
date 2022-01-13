@@ -1,0 +1,8 @@
+<body>
+    <title>Library</title>
+    <h1>Books</h1>
+    
+    {% for book in books %}
+    <h3><a href="{{ book.slug }}">{{ book.title }}</a></h3>
+    {% endfor %}
+    </body>
