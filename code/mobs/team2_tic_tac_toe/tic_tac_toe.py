@@ -124,5 +124,5 @@ def main():
     if game.calc_winner() == "winner": print(f"{active_player.name} has won!")
     if game.is_full() == True: print('game is full')
         
-main()
+main()  
 

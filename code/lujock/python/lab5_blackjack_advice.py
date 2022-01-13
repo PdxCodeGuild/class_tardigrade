@@ -37,3 +37,5 @@ while True:
     elif user == "stay":
         print(f" you have {total}")
         
+        
+        # unfinished lab

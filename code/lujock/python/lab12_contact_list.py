@@ -36,6 +36,6 @@ for row in lines:
                      }
         friends.append(name_dict)
 print(friends)
-        
+       
 
     

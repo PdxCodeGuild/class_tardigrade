@@ -39,3 +39,6 @@ else:
     print(ones_dict[ones_digit])
 
     print(f'{tens_dict[tens_digit]}, {ones_dict[ones_digit]} ')
+
+
+# unfinished lab
