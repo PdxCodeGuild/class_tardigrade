@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'lab_grocery_list.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -69,6 +69,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'lab_grocery_list.wsgi.application'
+
+
+STATIC_URL = 'grocery_list/templates/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'grocery_list/templates'),
+    os.path.join(
+        os.path.dirname(__file__),
+        '../grocery_list/templates',
+    ),    
+)
 
 
 # Database
@@ -106,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
