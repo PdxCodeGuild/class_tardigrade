@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'bookshelf'
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('checkout/<int:id>',views.checkout, name="checkout"),
 ]
     

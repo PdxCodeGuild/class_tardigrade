@@ -2,7 +2,19 @@
     <title>Library</title>
     <h1>Author</h1>
     
-    {% for author in authors %}
-    <h3><a href="{{ author.first_last_name }}">{{ author.first_last_name}}</a></h3>
-    {% endfor %}
-    </body>
+    <body style="color:Red;       background-color:lightpink">
+        <title>Library</title>
+        <h1 >Library</h1>
+            
+        <h1 style="color:white"> Authors </h1>
+        <ul>
+            {% for author in authors %}
+            <li>{{author.first_last_name}}</li>
+    
+            {% for book in author.books.all %}
+            <ol>{{book.title}}</ol>
+            {% endfor %}
+            {% endfor %}
+    
+            
+        </ul>

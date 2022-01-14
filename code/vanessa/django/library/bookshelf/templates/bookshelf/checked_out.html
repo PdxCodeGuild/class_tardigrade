@@ -1,0 +1,27 @@
+<body style="color:Red;       background-color:lightpink">
+    <title>Library</title>
+    <h1 >Library</h1>
+    
+<body>
+    <h1 style="color:white"> Books </h1>
+    {% for book in books %}
+    <div>
+    <h2 >{{ book.title }}</h2>
+    <ol>
+   Checked out: {{ book.checked_out }}
+   <br>
+    Checkout Time : {{book.checkout_time}}
+    </ol>
+    </div>
+    {%endfor%}
+
+    Checked out: {{ book.checked_out }}
+                <br>
+                Checkout Time : {{book.checkout_time}}
+                {% if book.checked_out == False %}
+                <br>
+                <a href="{% url 'bookshelf:checkout' book.id %}">Checkout</a>
+                {% else %}
+                <br>
+                Check out next time!
+                {%endif%}

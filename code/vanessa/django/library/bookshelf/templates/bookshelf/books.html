@@ -1,8 +1,19 @@
-<body>
+<body style="color:Red;       background-color:lightpink">
     <title>Library</title>
-    <h1>Books</h1>
+    <h1 >Library</h1>
     
+<body>
+    <h1 style="color:white"> Books </h1>
     {% for book in books %}
-    <h3><a href="{{ book.slug }}">{{ book.title }}</a></h3>
-    {% endfor %}
-    </body>
+    <div>
+    <h2 >{{ book.title }}</h2>
+    <ol>
+    <h4 >{{ book.author }}</h4>
+    Published:{{ book.publish_date }}
+    <br>
+   Checked out: {{ book.checked_out }}
+   <br>
+    Checkout Time : {{book.checkout_time}}
+    </ol>
+    </div>
+    {%endfor%}

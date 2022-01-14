@@ -1,26 +1,29 @@
-<body>
-<title>Library</title>
-<h1>Library</h1>
+<body style="color:Red;       background-color:lightpink">
+    <title>Library</title>
+    <h1>Library</h1>
 
-<body>
-    <p>Enter book name</p>
-    <form action="{% url 'bookshelf:index' %}" method="POST">
-        {%csrf_token%}
-        <input type="text" name="book" />
-        <button type="submit">Submit</button>
-    </form>
-    <p>Enter author name</p>
-    <form action="{% url 'bookshelf:index' %}" method="POST">
-        {%csrf_token%}
-        <input type="text" name="Author" />
-        <button type="submit">Submit</button>
-    </form>
+    <body>
+        <h2 style="color:white"> Books </h2>
+        {% for book in books %}
+        <div>
+            <h3>{{ book.title }}</h3>
+            <ol>
+                <h4>{{ book.author }}</h4>
+                Published:{{ book.publish_date }}
 
-    {% for book in books %}
-    <h4 >{{ book.title }}</h4>
-    <li>Checkout Status: {{ book.checked_out }}
-    {%endfor%}
-        {% comment %} {%if {{book.checked_out}}=True %}
-        {{%print {{book.checkouttime%}}
-#HOW DO I PRINT CHECKOUT TIME????
-    </li> {% endcomment %}
+            </ol>
+        </div>
+        {%endfor%}
+
+        <h2 style="color:white"> Authors </h2>
+        <ul>
+            {% for author in authors %}
+            <li>{{author.first_last_name}}</li>
+
+            {% for book in author.books.all %}
+            <ol>{{book.title}}</ol>
+            {% endfor %}
+            {% endfor %}
+
+
+        </ul>
