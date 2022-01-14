@@ -1,0 +1,16 @@
+<h1>{{ book.title }} by {{ book.author }}</h1>
+
+{% comment %} <h3>Checkout Status: {{ book.checked_out }}</h3> {% endcomment %}
+
+{% if book.checked_out == True %}
+<h3>Book is currently checked out!</h3>
+<h3>It will be returned by: {{ book.return_date }} </h3>
+<button><a href="{% url 'library:index' %}">Return</a></button>
+{% else %}
+<h3>Book is available! Would you like to check this out?</h3>
+<button><a href="{% url 'library:index' %}">Check Out</a></button>
+
+{% endif %}
+
+<button><a href="{% url 'library:index' %}">Home</a></button>
+

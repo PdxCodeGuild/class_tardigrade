@@ -1,5 +1,5 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, redirect
 
 
 from .models import Book, Author
@@ -19,3 +19,9 @@ def index(request):
     }
     return render(request, 'library/index.html', context)
     # return HttpResponse('Not my problem')
+
+def detail(request, id):
+    book = get_object_or_404(Book, id=id)
+    context = {'book' : book}
+
+    return render(request, 'library/detail.html', context)
