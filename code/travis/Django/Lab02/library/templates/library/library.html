@@ -10,11 +10,36 @@
     
 
 
+    
+
     <ul>
-        {% for x in book_list %}
-        <li>{{ x.title }}</li>
+        {% for book in book_list %}
+
+
+
+        <li>{{ book.title }}</li>
     {% endfor %}
     </ul>
+
+
+    <form action="{% url 'contacts:save_contact' %}" method="post">
+        {% csrf_token %}
+
+        <h2>Checkout a book:</h2>
+        <ul>
+            {% for book in book_list %}    
+    
+    
+            <li>{{ book.title }}</li>
+
+            <input type="radio" name="check_out"/>
+
+        {% endfor %}
+        </ul>
+
+        <button type="submit">save</button>
+    </form>
+
 
 
 

@@ -8,9 +8,9 @@ app_name = 'library' # for namespacing
 urlpatterns = [
     path('', views.library, name='library'),
 
-   # path("<int:id>/", views.library, name="author_name"),
+  path("checked-out/<int:id>/", views.library, name="title"),
 
-  #  path("<int:id>/book", views.library, name="title")
+  path("<int:id>/book", views.library, name="title")
 
 
 ]

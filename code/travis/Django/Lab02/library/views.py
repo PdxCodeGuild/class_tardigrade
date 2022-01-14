@@ -16,3 +16,12 @@ def library(request):
 
 
     return render(request, 'library/library.html', context )
+
+
+
+def checkout(request): # a view for receiving a form submission
+  
+    print(request.POST) # verify we received the form data
+    book_title = request.POST['title'] # get the value the user entered into the 'first name' field
+
+
