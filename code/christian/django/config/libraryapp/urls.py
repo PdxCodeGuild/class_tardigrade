@@ -3,5 +3,8 @@ from . import views
 
 app_name = 'libraryapp'
 urlpatterns = [
-    path('', views.myview, name='myview')
+    path('', views.index, name='index'),
+    path('checkinout/<int:id>/', views.checkinout, name='checkinout'),
+    
+    
 ]

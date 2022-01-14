@@ -1,0 +1,18 @@
+<h1>Book Check in/Check out Here</h1>
+
+<h2>{{ book }}</h2>
+
+
+
+<a href="{% url 'libraryapp:index' %}">
+	<button>Go Back</button>
+	</a>
+
+	<h2>Checkout/Checkin:</h2>
+<form action="/" method="POST">
+	{% csrf_token %}
+	<p>Name</p>
+	<input type="text" name="checkout">
+	<button type="submit">Checkout</button>
+	<button type="submit">Checkin</button>
+</form
