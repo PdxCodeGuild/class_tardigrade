@@ -8,7 +8,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
-    fields = ['title', 'publish_date', 'author_name']
+    fields = ['title', 'publish_date', 'author_name', 'is_checked_out']
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)

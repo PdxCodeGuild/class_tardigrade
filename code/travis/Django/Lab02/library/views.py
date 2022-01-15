@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 
 from library.models import Book
@@ -13,15 +13,25 @@ def library(request):
     book_list = Book.objects.all()
     context = {'book_list': book_list}
 
-
-
     return render(request, 'library/library.html', context )
 
 
 
-def checkout(request): # a view for receiving a form submission
-  
-    print(request.POST) # verify we received the form data
-    book_title = request.POST['title'] # get the value the user entered into the 'first name' field
 
 
+
+def checkout(request, id):
+
+
+  book_list = get_object_or_404(Book, id = id)
+
+  if book_list.is_checked_out == True:
+    book_list.is_checked_out = False
+
+  else:
+
+    book_list.is_checked_out = True
+
+  book_list.save()
+
+  return redirect('/')

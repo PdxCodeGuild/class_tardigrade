@@ -12,12 +12,11 @@ class Author(models.Model):
 
 
 
-
-
 class Book(models.Model):
     title = models.CharField(max_length=30)
     publish_date = models.CharField(max_length=30)    
     author_name = models.ForeignKey("Author", on_delete=models.CASCADE)
+    is_checked_out = models.BooleanField(default = False)
 
     def __str__(self):
         return self.title
