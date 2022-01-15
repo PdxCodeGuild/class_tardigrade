@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .completed {
+            text-decoration: line-through;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,10 +37,17 @@
         <ul class="divide-y-4 divide-gray-100">
 
             {% for item in groceryitem %}
+
             <li class="p-4 hover:bg-blue-600 hover:text-blue-200 text-2xl">
                 {{ item }}
+
+                <span
+                {% if item.completed %}
+                class="line-through"
+                {% endif %}
+                >
                 
-                <form action = "{% url 'grocery_list:delete' GroceryItem.id %}" method="get">
+                <form action = "/delete/{{item.id}}/" method="get">
 
                     {% csrf_token %}
                     <input class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Delete">
@@ -43,14 +55,14 @@
 
                 </form>
                 
-                <form action = "{% url 'grocery_list:complete' GroceryItem.id %}" method="get">
+                <form action = "/complete/{{item.id}}/" method="get">
 
                     {% csrf_token %}
-                    <button class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800">
-                        Complete
-                    </button>
+                    <input class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Complete">
+                    </input>
                 
                 </form>
+                
 
             </li>
 
