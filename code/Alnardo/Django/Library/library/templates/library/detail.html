@@ -5,12 +5,27 @@
 {% if book.checked_out == True %}
 <h3>Book is currently checked out!</h3>
 <h3>It will be returned by: {{ book.return_date }} </h3>
-<button><a href="{% url 'library:index' %}">Return</a></button>
-{% else %}
-<h3>Book is available! Would you like to check this out?</h3>
-<button><a href="{% url 'library:index' %}">Check Out</a></button>
+<hr/>
 
-{% endif %}
+    <form action="{% url 'library:update' book.id %}" method="POST">
+        {% csrf_token %}
+        <h4>Returned by: </h4>
+        <input type="text" name="user">
+        <button type="submit">Return</button>
+    </form>
 
-<button><a href="{% url 'library:index' %}">Home</a></button>
 
+    {% else %}
+    <h3>Book is available! Would you like to check this out?</h3>
+    <hr/>
+    <form action="{% url 'library:update' book.id %}" method="POST">
+        {% csrf_token %}
+        <h4>Checked out by: </h4>
+        <input type="text" name="user">
+        <button type="submit">Check Out</button>
+        {% comment %} <a href="{% url 'library:update' book.id %}">Check Out</a> {% endcomment %}
+    </form>
+
+    {% endif %}
+
+    <button><a href="{% url 'library:index' %}">Home</a></button>

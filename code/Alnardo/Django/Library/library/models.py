@@ -25,3 +25,12 @@ class Book(models.Model):
 
     def __str__(self):
         return f'{self.title} by {self.author}'
+
+class Check_Out(models.Model):
+    book = models.ForeignKey(Book, on_delete=PROTECT, related_name='check_outs')
+    user = models.CharField(max_length=50)
+    checked_out = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.book

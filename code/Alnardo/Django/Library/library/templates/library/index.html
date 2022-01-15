@@ -26,3 +26,5 @@
     <li><a href="{% url 'library:detail' book.id %}">{{ book.title }} by {{ book.author }}</a></li>
     {% endfor %}
 </ul>
+<hr/>
+<button><a href="{% url 'library:checkout' %}">List</a></button>
