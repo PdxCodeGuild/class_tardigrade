@@ -9,10 +9,13 @@
 	</a>
 
 	<h2>Checkout/Checkin:</h2>
-<form action="/" method="POST">
-	{% csrf_token %}
+
+	<form action="/checkedout/{{book.id}}/" method="POST">
+		{% csrf_token %}
 	<p>Name</p>
-	<input type="text" name="checkout">
-	<button type="submit">Checkout</button>
-	<button type="submit">Checkin</button>
-</form
+	<input type="text" name="user">
+	<button type='submit' >Checkout</button>
+	{% comment %} <button type="submit">Checkin</button> {% endcomment %}
+	</form>
+
+

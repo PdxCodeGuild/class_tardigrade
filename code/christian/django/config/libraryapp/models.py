@@ -25,7 +25,6 @@ class Book(models.Model):
 class Checkout(models.Model):
     book = models.ForeignKey(Book, on_delete=PROTECT, related_name= 'checkouts' )
     user = models.TextField()
-    #False = book is checked out
     checkout = models.BooleanField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
