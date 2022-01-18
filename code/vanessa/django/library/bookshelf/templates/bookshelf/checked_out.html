@@ -1,27 +1,57 @@
-<body style="color:Red;       background-color:lightpink">
-    <title>Library</title>
-    <h1 >Library</h1>
+<body style="color:grey;       background-color:purple">
+    <title>Checkout</title>
+    <h1 style="color:white;"">Checkout</h1>
     
 <body>
-    <h1 style="color:white"> Books </h1>
+
+    <form action="{% url 'bookshelf:add' %}" method="POST">
+        {%csrf_token%}
+        <input type="text" name="user"/>
+        <button type="submit">Submit</button>
+    </form>
+    
+    
+    <h1 style=" color:white"> Books </h1>
     {% for book in books %}
     <div>
-    <h2 >{{ book.title }}</h2>
-    <ol>
-   Checked out: {{ book.checked_out }}
-   <br>
-    Checkout Time : {{book.checkout_time}}
-    </ol>
+        <h2>{{ book.title }}</h2>
+        <ol>
+
+            Checked out: {{ Check_out_in.checked_out }}
+            <br>
+            {% if Check_out_in.checked_out == True %}
+            Checkout Time : {{Check_out_in.checkout_time}}
+            <br>
+            Checked out by user: {{Check_out_in.user_nameS}}
+            <br>
+            Last check in: {{Check_out_in.checkin_time}}
+            <br>
+            Check out next time!
+            {%endif%}
+
+
+            {% if Check_out_in.checked_out == False %}
+            
+            <form action="{% url 'bookshelf:add' %}" method="POST">
+                {%csrf_token%}
+                <input type="text" name="user"/>
+                <button type="submit">Submit</button>
+            </form>
+
+            Last check in: {{Check_out_in.checkin_time}}
+            {%endif%} 
+
+        </ol>
     </div>
     {%endfor%}
 
-    Checked out: {{ book.checked_out }}
-                <br>
-                Checkout Time : {{book.checkout_time}}
-                {% if book.checked_out == False %}
-                <br>
-                <a href="{% url 'bookshelf:checkout' book.id %}">Checkout</a>
-                {% else %}
-                <br>
-                Check out next time!
-                {%endif%}
+
+    {% for book in Check_out_in.book.all %}
+    <ol>{{book.title}}</ol>
+    {%endfor%}
+
+
+
+  
+
+

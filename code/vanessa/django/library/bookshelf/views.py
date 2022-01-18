@@ -7,7 +7,7 @@ def index(request):
     context = {
         'books': Book.objects.all(),
         'authors': Author.objects.all(),
-        # 'checkout time': Book.checkout_time
+
     }
     return render(request,'bookshelf/index.html',context)
 
@@ -18,3 +18,33 @@ def checkout(request,id):
     checked_item.checkout_time=timezone.now()
     checked_item.save()
     return redirect('/')
+
+def user(request):
+    if request.method == 'POST':
+        description = request.POST['user']
+        user.objects.create(description=description)
+        return redirect('/')
+
+def new_page(request):
+    context = {
+        'books': Book.objects.all(),
+        'authors': Author.objects.all(),
+     
+    }
+    return render(request, 'bookshelf/checked_out.html', context)
+
+def author_page(request):
+    context = {
+        'books': Book.objects.all(),
+        'authors': Author.objects.all(),
+      
+    }
+    return render(request, 'bookshelf/author.html', context )
+
+def books_page(request):
+    context = {
+        'books': Book.objects.all(),
+        'authors': Author.objects.all(),
+
+    }
+    return render(request, 'bookshelf/books.html', context )
