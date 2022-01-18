@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+
+<body>
+
+        <h2>Checkout a book:</h2>
+ 
+
+        <table style="text-align: center; border: black solid 2px;">
+            <tr >
+                <th>Book Title</th>
+                <th>User</th>
+                <th>Last used</th>
+                <th>Check in/ Check out</th>
+            </tr>
+            {% for checkout in checkout_list %}  
+
+            <tr>
+            <td>{{ checkout.title }} </td>
+            
+            
+
+                
+
+            <td>
+                <form action="checked-out/{{checkout.id}}/" method="post">
+                    {% csrf_token %}
+                {% if checkout.is_checked_out == False %}             
+
+
+                <label for="user">Your name: </label>
+                <input id="user" type="text" name="user" value="" disabled></td>
+                {% else %}
+                
+                <label for="user">Your name: </label>
+                <input id="user" type="text" name="user" value="{{ checkout.user }}"></td>
+                {% endif %}
+
+
+            <td>
+                <button type="submit" value="{{checkout.user}}">
+
+                    {% if checkout.is_checked_out == True %}Checkout
+                    {% else %} Return
+                    {% endif %}
+                </button>
+                </form>
+                </td>
+
+                <td>{{ checkout.time_stamp }} </td>
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+
+
+
+
+</body>
+
+</html>

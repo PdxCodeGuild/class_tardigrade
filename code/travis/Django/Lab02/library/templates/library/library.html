@@ -10,37 +10,27 @@
 
 <body>
 
-    <ul>
+    <h1>Library</h1>
+    <table>
+    <tr>
+        <th>Title</th>
+        <th>Publish Date</th>
+        <th>Author</th>
+
+
+    </tr>
         {% for book in book_list %}
-        <li>{{ book.title }}</li>
+    <tr>
+        <td>{{ book.title }}</td>
+        <td>{{ book.publish_date }}</td>
+        <td>{{ book.author_name }}</td>
+
+    </tr>
+
         {% endfor %}
-    </ul>
+</table>
 
-
-
-        <h2>Checkout a book:</h2>
- 
-          
-        <ul>
-            {% for book in book_list %}
-
-            <li>{{ book.title }} </li>
-            
-            <form action="/checked-out/{{book.id}}/" method="post">
-                
-            {% csrf_token %}
-                <button type="submit" value="{{book.id}}">
-
-                    {% if book.is_checked_out == True %}Checkout
-                    {% else %} Return
-                    {%endif %}</button>
-            </form>
-            {% endfor %}
-
-        </ul>
-
-
-
+<a href="library-checkout/">Checkout Book</a>
 
 
 </body>
