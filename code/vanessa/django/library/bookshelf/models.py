@@ -16,8 +16,8 @@ class Book(models.Model):
         return self.title
 
 class Check_out_in(models.Model):
-    checked_out=models.BooleanField(default=True)
-    books=models.ForeignKey(Book, on_delete=models.PROTECT,related_name='checked_out_books')
+    checked_out=models.BooleanField(default=False)
+    books=models.ForeignKey(Book, on_delete=models.PROTECT,related_name='checked_out_books', null=True, blank =True)
     checkout_time=models.DateField(null=True, blank =True)
     checkin_time=models.DateField(null=True, blank=True)
     user_name=models.CharField(max_length=25)

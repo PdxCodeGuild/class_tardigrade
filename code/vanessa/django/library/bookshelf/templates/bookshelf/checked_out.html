@@ -3,54 +3,40 @@
     <h1 style="color:white;"">Checkout</h1>
     
 <body>
-
-    <form action="{% url 'bookshelf:add' %}" method="POST">
-        {%csrf_token%}
-        <input type="text" name="user"/>
-        <button type="submit">Submit</button>
-    </form>
-    
     
     <h1 style=" color:white"> Books </h1>
     {% for book in books %}
     <div>
         <h2>{{ book.title }}</h2>
         <ol>
-
-            Checked out: {{ Check_out_in.checked_out }}
-            <br>
-            {% if Check_out_in.checked_out == True %}
-            Checkout Time : {{Check_out_in.checkout_time}}
-            <br>
-            Checked out by user: {{Check_out_in.user_nameS}}
-            <br>
-            Last check in: {{Check_out_in.checkin_time}}
-            <br>
-            Check out next time!
-            {%endif%}
-
-
-            {% if Check_out_in.checked_out == False %}
-            
-            <form action="{% url 'bookshelf:add' %}" method="POST">
+            {% for work in book.checked_out_books.all %}
+            {% if work.checked_out == True %}
+                    Checked out: {{work.checked_out}}
+                    <br>
+                    Checkout Time : {{work.checkout_time}}
+                    <br>
+                    Checked out by user: {{work.user_name}}
+                    <br>
+                    Last check in: {{work.checkin_time}}
+                    <br>
+                    Check out next time!
+                    <br>
+            {% endif %}
+            {% if work.checked_out == False %}
+                To check out book input username here:
+                <form action="{% url 'bookshelf:add' %}" method="POST">
                 {%csrf_token%}
                 <input type="text" name="user"/>
                 <button type="submit">Submit</button>
-            </form>
-
-            Last check in: {{Check_out_in.checkin_time}}
-            {%endif%} 
-
+                </form>
+                Last check in: {{Check_out_in.checkin_time}}
+            {% endif %}
+            {% endfor %}
+    {% endfor %}
+        
         </ol>
     </div>
-    {%endfor%}
-
-
-    {% for book in Check_out_in.book.all %}
-    <ol>{{book.title}}</ol>
-    {%endfor%}
-
-
+    
 
   
 
