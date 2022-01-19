@@ -1,24 +1,19 @@
 <h1>{{ book.title }} by {{ book.author }}</h1>
 
-{% comment %} <h3>Checkout Status: {{ book.checked_out }}</h3> {% endcomment %}
-
-{% if book.checked_out == True %}
+{% if most_recent_checkout.checked_out == True %}
 <h3>Book is currently checked out!</h3>
-<h3>It will be returned by: {{ book.return_date }} </h3>
 <hr/>
 
-    <form action="{% url 'library:update' book.id %}" method="POST">
+    <form action="{% url 'library:return' most_recent_checkout.id %}" method="POST">
         {% csrf_token %}
-        <h4>Returned by: </h4>
-        <input type="text" name="user">
         <button type="submit">Return</button>
     </form>
 
 
-    {% else %}
+{% else %}
     <h3>Book is available! Would you like to check this out?</h3>
     <hr/>
-    <form action="{% url 'library:update' book.id %}" method="POST">
+    <form action="{% url 'library:check_out' book.id %}" method="POST">
         {% csrf_token %}
         <h4>Checked out by: </h4>
         <input type="text" name="user">
@@ -26,6 +21,6 @@
         {% comment %} <a href="{% url 'library:update' book.id %}">Check Out</a> {% endcomment %}
     </form>
 
-    {% endif %}
+{% endif %}
 
-    <button><a href="{% url 'library:index' %}">Home</a></button>
+    <a href="{% url 'library:index' %}"><button>Home</button></a>

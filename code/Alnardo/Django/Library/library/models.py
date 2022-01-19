@@ -20,8 +20,8 @@ class Book(models.Model):
     title = models.CharField(max_length=50)
     publish_date = models.DateField()
     author = models.ForeignKey(Author, on_delete=PROTECT, related_name='books')
-    checked_out = models.BooleanField(default=False)
-    return_date = models.DateField(default=return_date_time)
+    # checked_out = models.BooleanField(default=False)
+    # return_date = models.DateField(default=return_date_time)
 
     def __str__(self):
         return f'{self.title} by {self.author}'
@@ -29,8 +29,8 @@ class Book(models.Model):
 class Check_Out(models.Model):
     book = models.ForeignKey(Book, on_delete=PROTECT, related_name='check_outs')
     user = models.CharField(max_length=50)
-    checked_out = models.BooleanField(default=False)
+    checked_out = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.book
+        return self.book.title
