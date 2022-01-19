@@ -3,60 +3,54 @@
 {% block title %}Library{% endblock %}
 {% block content %}
 <section class="container">
-	<table class="table table-hover table-bordered">
-		<thead>
+	<table class="table is-bordered is-striped is-narrow is-hoverable">
+		<thead class="table-light">
 			<tr>
-				<th scope="col">Book</th>
-				<th scope="col">Author</th>
-				<th scope="col">Publish Date</th>
-				<th scope="col">Checked Out</th>
+				<th scope="col"> Select an Author</th>
 			</tr>
 		</thead>
 		<tbody>
-			{% for book in books %}
-			{% if book.available == True %}
-			<tr>
-				<td>{{ book.title }}</td>
-				<td>{{ book.author }}</td>
-				<td>{{ book.publish_date }}</td>
-				<td>{{ book.available }}</td>
-			</tr>
-			{% endif %}
+			{% for author in authors %}
+			<td class="list-group-item"><a href="{% url 'library:checkout' author.name %}">{{author}}</a></td>
 			{% endfor %}
 		</tbody>
 	</table>
 </section>
+<h1 class="tc ph4 b">History</h1>
 <section class="container">
-	<h1 class="text-center m-5 fw-bolder fs-3">Books That Are Already Checked Out</h1>
-
-	<table class="table table-hover table-bordered">
-		<thead>
+	<table class="table is-bordered is-striped is-narrow is-hoverable">
+		<thead class="table-light">
 			<tr>
-				<th>Book</th>
-				<th>Author</th>
-				<th>Checked Out By</th>
-				<th>Return</th>
+				<th scope="col">Book</th>
+				<th scope="col">Checked Out By</th>
+				<th scope="col">Checkout/Return Dates</th>
+				<th scope="col">Return</th>
 			</tr>
 		</thead>
-		{% for item in checked %}
-		<tr>
-			{% if item.checked_out == True %}
-			<td>{{ item.book }}</td>
-			<td>{{ item.book.author }}</td>
-			<td>{{ item.username }}</td>
-			<td>
-				<form action="{% url 'library:checkin' item.id %}" method="POST">
-					{% csrf_token %}
-					<input type="hidden" name="id" value="{{ item.id }}">
-					<button type="submit" id="id" class="btn btn-primary">Return</button>
-				</form>
-			</td>
-		</tr>
-		{% endif %}
-		{% endfor %}
+		<tbody>
+			{% for book in checkout %}
+			<tr>
+				<td>
+					{{ book.book }}
+				</td>
+				<td>
+					{{ book.user}}
+				</td>
+				<td>
+					{% if book.checkout == True %}
+					{% else %}
+					Checked in at {{ book.time }}
+					{% endif %}
+				</td>
+				<td>
+					{% if book.checkout == True %}
+					<a href="{% url 'library:checkin' book.id %}"><button
+							class="btn btn-primary btn-sm">Return</button></a>
+					{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
 	</table>
 </section>
-<a class="is-flex is-justify-content-center pt-6" href="{% url 'library:form' %}">
-	<button class="btn btn-primary">Check Out a Book</button>
-</a>
 {% endblock %}
