@@ -19,11 +19,21 @@ def checkout(request,id):
     checked_item.save()
     return redirect('/')
 
-def user(request):
+def user(request,id):
     if request.method == 'POST':
+        timestamp= timezone.now()
+        checked_out=True
+        book=get_object_or_404(Book, id=id)
         description = request.POST['user']
-        user.objects.create(description=description)
+        Check_out_in.objects.create(user_name=description, timestamp=timestamp, checked_out=checked_out, books=book)
+
         return redirect('/')
+
+# class Check_out_in(models.Model):
+#     checked_out=models.BooleanField(default=False)
+#     books=models.ForeignKey(Book, on_delete=models.PROTECT,related_name='checked_out_books', null=True, blank =True)
+#     timestamp=models.DateField(null=True, blank =True)
+#     user_name=models.CharField(max_length=25)
 
 def new_page(request):
 
@@ -33,6 +43,13 @@ def new_page(request):
         'checked_out': Check_out_in.objects.all(),
     }
     return render(request, 'bookshelf/checked_out.html', context)
+
+def check_in(request, id):
+    # create an instance of checkout model
+    # get the book object for the book
+    #update the books checkout status
+    return render(request, 'bookshelf/checked_out.html',)
+
 
 def author_page(request):
     context = {

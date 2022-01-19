@@ -8,7 +8,6 @@ urlpatterns = [
     path('new_page',views.new_page, name='new_page'),
     path('author_page',views.author_page, name='author_page'),
     path('books_page',views.books_page, name='books_page'),
-    path('add/', views.user, name='add')
-
+    path('user/<int:id>',views.user, name='add')
 ]
     
