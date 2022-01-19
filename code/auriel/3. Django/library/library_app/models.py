@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 
 class Author(models.Model):
@@ -14,3 +13,9 @@ class Book(models.Model):
     available = models.BooleanField(default=True)
     def __str__(self):
         return self.title
+
+class Checkout(models.Model):
+    book = models.ForeignKey('Book', on_delete=models.PROTECT)
+    user = models.CharField(max_length=32)
+    checkout = models.BooleanField()
+    timestamp = models.DateTimeField(auto_now_add=True)

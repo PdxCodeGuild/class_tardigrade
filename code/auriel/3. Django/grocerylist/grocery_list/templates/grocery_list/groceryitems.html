@@ -32,20 +32,20 @@
         <ul class="divide-y-4 divide-gray-100">
 
             {% for item in groceryitem %}
-
-            <span
-            {% if item.completed %}
-            class="line-through"
-            {% endif %}
-            >
             
             <li class="p-4 hover:bg-blue-600 hover:text-blue-200 text-2xl">
+                <span
+                {% if item.completed %}
+                class="line-through"
+                {% endif %}
+                >
                 {{ item }}
+                </span>
                 
                 <form action = "/delete/{{item.id}}/" method="get">
 
                     {% csrf_token %}
-                    <input class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Delete">
+                    <input class="float-right h-5 px-5 text-sm text-indigo-100 transition-colors duration-150 bg-red-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Delete">
                     </input>
 
                 </form>
@@ -53,7 +53,7 @@
                 <form action = "/complete/{{item.id}}/" method="get">
 
                     {% csrf_token %}
-                    <input class="float-right h-8 px-4 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Complete">
+                    <input class="float-right h-5 px-5 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg cursor-pointer focus:shadow-outline hover:bg-indigo-800" type="submit" value="Complete">
                     </input>
                 
                 </form>
