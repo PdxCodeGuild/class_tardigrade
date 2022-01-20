@@ -15,7 +15,13 @@
 	<p>Name</p>
 	<input type="text" name="user">
 	<button type='submit' >Checkout</button>
-	{% comment %} <button type="submit">Checkin</button> {% endcomment %}
+	</form>
+
+	<form action="/checkedin/{{book.id}}/" method="POST">
+		{% csrf_token %}
+	<p>Name</p>
+	<input type="text" name="user">
+	<button type='submit' >Checkin</button>
 	</form>
 
 

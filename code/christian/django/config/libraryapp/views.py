@@ -19,36 +19,27 @@ def checkinout(request, id):
 
 def checkedout(request, id):
     book = get_object_or_404(Book, id=id)
-    
-    
     if request.method == 'POST':
         user = request.POST['user']
         checkout = True
         Checkout.objects.create(user = user, book = book, checkout = checkout)
         return redirect('/history')
 
+def checkedin(request, id):
+    book = get_object_or_404(Book, id=id)
+    if request.method == 'POST':
+        user = request.POST['user']
+        checkout = False
+        Checkout.objects.create(user = user, book = book, checkout = checkout)
+        return redirect('/history')
+
 
 def history(request):
-    history = Checkout.objects.all
-    context = {'book': history}
+    history = Checkout.objects.all()
+    context = {'checkouts': history}
     return render(request, 'libraryapp/history.html', context)
 
 
 
 
 
-
-# Create your views here.
-#make a form for checkinout
-# def form(request):
-#     if request.method == 'POST':
-#         checkin = request.POST['checkin']
-#         checkout = request.POST['checkout']
-
-        
-        # title = request.POST['title']
-        # body = request.POST['body']
-        # Entry.objects.create(title=title, body=body)
-        # return redirect('/')
-        # return redirect('diary:index')
-#make html for history of checkin/checkout (myinstance = Model.objects.all())
