@@ -24,7 +24,7 @@ class Book(models.Model):
 
 class CheckoutBook(models.Model):
     title = models.ForeignKey("Book", on_delete=models.CASCADE)
-    user = models.CharField(max_length=30, null=True, default=None, blank=True)
+    user = models.CharField(max_length=30, null=True,)
     is_checked_out = models.BooleanField(default = False, blank=True)
     time_stamp = models.CharField(max_length=30, default=None, blank=True)
   
