@@ -16,51 +16,54 @@
 
 <body>
 
-<form action="complete" method ="POST">
-    {% csrf_token %}
-<table>
-    <tr>
-        <th>Item</th>
-        <th>Created date</th>
-        <th>Completed date</th>
-        <th>completed</th>
-        <th>complete?</th>
-    </tr>
-    {% if grocery_item_list %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table style="text-align: center;">
+            <tr>
+                <th>Item</th>
+                <th>Created date</th>
+                <th>Completed date</th>
+                <th>completed</th>
+                <th>complete?</th>
+            </tr>
+            {% if grocery_item_list %}
+            {% for items in grocery_item_list %}
+            <tr>
 
-    {% for items in grocery_item_list %}
-        {%if items.completed == True %}
-        <tr>
-            <td><s>{{items.description}}</s></td>
-            <td><s>{{items.created_date}}</s></td>
-            <td><s>{{items.completed_date}}</s></td>
-            <td><s>{{items.completed}}</s></td>
-            <td><input type="radio" name = "id" id = "id" value = {{ items.id }} disabled></td><br>           
-    
-        </tr>
+
+                {%if items.completed == True %}
+
+                <td><s>{{items.description}}</s></td>
+                <td><s>{{items.created_date}}</s></td>
+                <td><s>{{items.completed_date}}</s></td>
+                <td>{{items.completed}}</td>
+
+                <td><input type="radio" name="id" id="id" value={{ items.id }} disabled></td>
+
+
+                {% else %}
+
+                <td>{{items.description}}</td>
+                <td>{{items.created_date}}</td>
+                <td>{{items.completed_date}}</td>
+                <td>{{items.completed}}</td>
+                <td><input type="radio" name="id" id="id" value={{ items.id }}></td>
+                {%endif%}
+
+            </tr>
+            {% endfor %}
+
+        </table>
+
+
         {% else %}
-    <tr>
-        <td>{{items.description}}</td>
-        <td>{{items.created_date}}</td>
-        <td>{{items.completed_date}}</td>
-        <td>{{items.completed}}</td>
-        <td><input type="radio" name = "id" id = "id" value = {{ items.id }}></td><br>
-        
+        <p>No more items.</p>
+        {% endif %}
 
-    </tr>
-    {%endif%}
-
-</table>
-
-{% endfor %}
-{% else %}
-<p>No more items.</p>
-{% endif %}
-
-<button type="submit">Submit</button>
+        <button type="submit">Submit</button>
 
 
-</form>
+    </form>
 
 </body>
 

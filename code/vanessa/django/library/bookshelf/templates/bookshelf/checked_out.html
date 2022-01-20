@@ -1,0 +1,48 @@
+<body style="color:grey;       background-color:purple">
+    <title>Checkout</title>
+    <h1 style="color:white;"">Checkout</h1>
+    
+    
+    <h1 style=" color:white"> Books </h1>
+    <div>
+        {% for book in books %}
+        <h2>{{ book.title }}</h2>
+            {% if work.checked_out == False %} 
+            To check out book input username here:
+            <form action="{% url 'bookshelf:add' book.id %}" method="POST">
+                {%csrf_token%}
+                <input type="text" name="user"/>
+                <button type="submit">Submit</button>
+            </form>
+            {% for work in book.checked_out_books.all %}
+            Checked out: {{work.checked_out}}
+            <br>
+            Checkout Time : {{work.timestamp}}
+            <br>
+            Last check in: {{Check_out_in.checkin_time}}
+            {% endfor %}
+        
+
+            {% else %} 
+
+                {% for work in book.checked_out_books.all %}
+                Checked out: {{work.checked_out}}
+                <br>
+                Checkout Time : {{work.timestamp}}
+                <br>
+                Checked out by user: {{work.user_name}}
+                <br>
+                Check out next time!
+                <br>
+                <a href="{% url 'bookshelf:check_in' book.id %}">Return/Check-in</a>
+                <br>
+                Last check in: {{Check_out_in.checkin_time}}
+                <br>
+                {% endfor %}
+            {% endif %}
+
+
+        {% endfor %}
+
+    </div>
+</body>
