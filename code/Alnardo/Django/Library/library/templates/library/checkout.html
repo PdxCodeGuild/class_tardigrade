@@ -1,0 +1,32 @@
+<h1>Check Out and Returns</h1>
+<hr/>
+<h3>Check Outs</h2>
+{% comment %} {% for co_book in checked_out %} {% endcomment %}
+{% for checked_out in checked_out_book %}
+    <ul>
+
+        <li>{{ checked_out.book.title }} was checked out by {{ checked_out.user }} at {{ checked_out.timestamp }}</li>
+
+    </ul>
+
+{% endfor %} 
+<hr/>
+<h3>Returns</h3>
+{% for returned in returned_book %}     
+    <ul>
+        <li>{{ returned.book.title}} was returned by {{ returned.user }} at {{ returned.timestamp }}</li>
+    </ul>
+{% endfor %}
+
+<hr/>
+{% comment %} <h3>Returns</h2>
+
+    <ul>
+        <li>{{ returned.book.title}} was returned by {{ returned.user }} at {{ returned.timestamp }}</li>
+    </ul>
+{% endfor %}
+
+<hr/> {% endcomment %}
+<a href="{% url 'library:index' %}"><button>Home</button></a>
+
+
