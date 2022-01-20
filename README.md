@@ -49,7 +49,7 @@ Presentation Day: February 25th, 2022
 
 #### Optional Django Labs  
 
-[URL Shortener](4%20Django/labs/02%20URL%20Shortener.md)
+[URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md)
 
 ## HTML/CSS Labs Assigned:
 
