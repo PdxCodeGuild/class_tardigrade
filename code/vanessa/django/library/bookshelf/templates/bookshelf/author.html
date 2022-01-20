@@ -1,0 +1,17 @@
+<body style="color:Red;       background-color:lightpink">
+    <title >Authors</title>
+    <h1 style="color:white">Library</h1>
+    <title style="color:white">Library</title>
+    <h6>Checkout <a href="{% url 'bookshelf:new_page' %}"> HERE</a></h6>
+    <h1 style="color:white">Author</h1> 
+{% for author in authors %}
+<li>{{author.first_last_name}}</li>
+
+{% for book in author.books.all %}
+<ol>{{book.title}}</ol>
+
+{% endfor %}
+{% endfor %}
+    
+
+    
