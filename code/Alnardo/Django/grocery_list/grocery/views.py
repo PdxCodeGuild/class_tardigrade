@@ -32,8 +32,7 @@ def index(request):
 def detail(request, id):
     grocery_item = get_object_or_404(GroceryItem, id=id)
     context = {'grocery' : grocery_item}
-    # if grocery_item.completed == False:
-    #     ...
+
     return render(request, 'grocery/detail.html', context)
 
 
