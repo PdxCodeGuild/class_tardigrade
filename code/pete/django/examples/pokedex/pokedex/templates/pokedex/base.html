@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% block title %}
+  <title>Pokedex</title>
+	{% endblock title %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+  <body>
+		<nav class="pa3 pa4-ns">
+			<a class="link dim black b f1 f-headline-ns tc db mb3 mb4-ns" href="#" title="Home">Pokedex</a>
+			<div class="tc pb3">
+				<a class="link dim gray f6 f5-ns dib mr3" href="#" title="Home">Home</a>
+				<a class="link dim gray f6 f5-ns dib mr3" href="#" title="About">About</a>
+				<a class="link dim gray f6 f5-ns dib mr3" href="#" title="Store">Store</a>
+				<a class="link dim gray f6 f5-ns dib" href="#" title="Contact">Contact</a>
+			</div>
+		</nav>
+		{% block content %}
+		{% endblock content %}
+		<footer class="bg-near-black white-80 pv5 pv6-l ph4">
+			<p class="f6"><span class="dib mr4 mr5-ns">©2022 Class Tardigrade, All Rights Reserved</span>
+				<a class="link white-80 hover-light-purple" href="/terms">Terms</a> /
+				<a class="link white-80 hover-gold" href="/privacy"> Privacy </a> /
+				<a class="link white-80 hover-green" href="#">hi@yourcompany.com </a>
+			</p>
+		</footer>
+  </body>
+</html>

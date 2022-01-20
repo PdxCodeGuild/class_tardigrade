@@ -1,0 +1,26 @@
+<h1>{{ book.title }} by {{ book.author }}</h1>
+
+{% if most_recent_checkout.checked_out == True %}
+<h3>Book is currently checked out!</h3>
+<hr/>
+
+    <form action="{% url 'library:return' most_recent_checkout.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Return</button>
+    </form>
+
+
+{% else %}
+    <h3>Book is available! Would you like to check this out?</h3>
+    <hr/>
+    <form action="{% url 'library:check_out' book.id %}" method="POST">
+        {% csrf_token %}
+        <h4>Checked out by: </h4>
+        <input type="text" name="user">
+        <button type="submit">Check Out</button>
+        {% comment %} <a href="{% url 'library:update' book.id %}">Check Out</a> {% endcomment %}
+    </form>
+
+{% endif %}
+
+    <a href="{% url 'library:index' %}"><button>Home</button></a>
