@@ -2,7 +2,8 @@
     <title >Authors</title>
     <h1 style="color:white">Library</h1>
     <title style="color:white">Library</title>
-    <h6>Checkout <a href="{% url 'bookshelf:new_page' %}"> HERE</a></h6>
+    <h6>Checkout <a href="{% url 'bookshelf:checkout_page' %}"> HERE</a></h6>
+    <h6>Return <a href="{% url 'bookshelf:index' %}"> Home</a></h6>
     <h1 style="color:white">Author</h1> 
 {% for author in authors %}
 <li>{{author.first_last_name}}</li>
