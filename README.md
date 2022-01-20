@@ -14,6 +14,7 @@ M-F 9:30 am – 4:30 pm
 - December 27th (Long Xmas Weekend)
 - December 30th (Day Off)
 - December 31st (New Years Eve)
+- January 17th (MLK Day)
 
 ### Staff
 
@@ -39,7 +40,7 @@ Presentation Day: February 25th, 2022
 [Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md) -->
  
 
-<!-- ## Django Labs Assigned:
+## Django Labs Assigned:
 
  * [Lab 00 Polls](4%20Django/labs/00%20Polls.md)
  * [Lab 01 Grocery List](4%20Django/labs/01%20Grocery%20List.md)
@@ -48,7 +49,7 @@ Presentation Day: February 25th, 2022
 
 #### Optional Django Labs  
 
-[URL Shortener](4%20Django/labs/02%20URL%20Shortener.md) -->
+[URL Shortener](4%20Django/labs/02%20URL%20Shortener.md)
 
 ## HTML/CSS Labs Assigned:
 
