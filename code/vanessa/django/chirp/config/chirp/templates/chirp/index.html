@@ -1,0 +1,16 @@
+<h1>CHIRP</h1>
+
+<h2>New chirp:</h2>
+<form action="/" method="POST">
+	{% csrf_token %}
+	<textarea name="body" cols="120" rows="15"></textarea>
+	<button type="submit">click me</button>
+</form>
+
+<ul>
+	{% for chirp in chirps %}
+	<li><a href="{% url 'chirp:chirp' chirp.id %}">{{ chirp }}</a></li>
+	<!-- <li><a href="/chirp/{{chirp.id}}">{{ chirp }}</a></li> -->
+	{% endfor %}
+</ul>
+

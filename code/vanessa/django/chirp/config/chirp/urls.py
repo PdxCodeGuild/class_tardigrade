@@ -3,5 +3,5 @@ from .import views
 
 app_name = 'chirp'
 urlpatterns = [
-    path('',views.firsttest, name='firsttest')
+    path('',views.index, name='index')
 ]
