@@ -9,10 +9,20 @@
           justify-content: center
       }
       main {
-        display:flex;
-        flex-wrap: wrap
+        {% comment %} display:flex; {% endcomment %}
       }
   </style>
+  <header>
+    <nav class="pa3 pa4-ns">
+        <a class="link dim black b f1 f-headline-ns tc db mb3 mb4-ns" href="#" title="Home">Chirper</a>
+        <div class="tc pb3">
+          <a class="link dim gray f6 f5-ns dib mr3" href="#" title="Home">Home</a>
+          <a class="link dim gray f6 f5-ns dib mr3" href="#" title="About">About</a>
+          <a class="link dim gray f6 f5-ns dib mr3" href="#" title="Store">Store</a>
+          <a class="link dim gray f6 f5-ns dib" href="#" title="Contact">Contact</a>
+        </div>
+      </nav>      
+  </header>
   <body>
       <h1>Welcome {{ user | title }}</h1>
       <hr/>
@@ -24,12 +34,10 @@
             <input type="text" id="chirp" name="chirp" maxlength="150">
             <input type="submit" value="Submit">
         </form>
-        <h3 id="user_header">Chirps by {{ user | title }}</h3>
+        {% comment %} <h3 id="user_header">Chirps by {{ user | title }}</h3> {% endcomment %}
     <main>
-
-        <form
-        {% for post in posts %}
-        <div class="flex items-center">
+        {% comment %} {% for post in posts %}
+        <div class="justify-center items-center">
             <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
                 <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">{{ post.title | title }}</h1>
                 <div class="pa3 bt b--black-10">
@@ -38,11 +46,24 @@
                     </p>
                 </div>
             </article>
-            {% endfor %}
         </div>
+        {% endfor %}
+        <hr/> {% endcomment %}
+        {% for post in all_posts %}
+        <div class="justify-center items-center">
+            <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
+                <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">{{ post.title | title }} by {{ post.user | title}}</h1>
+                <div class="pa3 bt b--black-10">
+                    <p class="f6 f5-ns lh-copy measure">
+                        {{ post.chirp }}
+                    </p>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
     </main>
-        
     </body>
+    <hr/>
     <footer>
         <small class="f6 db tc">© 2016 <b class="ttu">SOME COMPANY Inc</b>., All Rights Reserved</small>
         <div class="tc mt3">

@@ -6,9 +6,13 @@ from .models import Post
 def index(request):
     if request.user.is_authenticated:
         posts = request.user.chirps.all()
-        context = {'posts' : posts}
+        all_posts = Post.objects.all()
+        context = {'posts' : posts,
+                    'all_posts': all_posts}
         return render(request, 'chirp/index.html', context)
-    return render(request, 'chirp/index.html')
+    all_posts = Post.objects.all()
+    context = {'all_posts': all_posts}
+    return render(request, 'chirp/index.html', context)
 
 def add(request):
     title_input = request.POST.get('title')
