@@ -2,9 +2,10 @@ from django.urls import path
 from . import views
 
 app_name = 'posts'
-
 urlpatterns = [
     path('', views.index, name='index'),
-    path('home/', views.home, name='home'),
-    path('make_post/', views.make_post, name="make_post"),
+    path('chirp/', views.chirp, name='chirp'),
+    path('chirp_comments/<int:id>/', views.chirp_comments, name='chirp_comments'),
+    path('delete/<int:id>/', views.delete, name='delete'),
+    path('likes/<int:id>/', views.likes, name='likes'),
 ]
