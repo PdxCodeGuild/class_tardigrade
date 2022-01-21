@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Chirpper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+  <style>
+      #user_header {
+          display:flex;
+          justify-content: center
+      }
+      main {
+        display:flex;
+        flex-wrap: wrap
+      }
+  </style>
+  <body>
+      <h1>Welcome {{ user | title }}</h1>
+      <hr/>
+        <form action="/add/" method="POST">
+            {% csrf_token %}
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" maxlength="20">
+            <label for="chirp">Chirp</label>
+            <input type="text" id="chirp" name="chirp" maxlength="150">
+            <input type="submit" value="Submit">
+        </form>
+        <h3 id="user_header">Chirps by {{ user | title }}</h3>
+    <main>
+
+        <form
+        {% for post in posts %}
+        <div class="flex items-center">
+            <article class="center mw5 mw6-ns br3 hidden ba b--black-10 mv4">
+                <h1 class="f4 bg-near-white br3 br--top black-60 mv0 pv2 ph3">{{ post.title | title }}</h1>
+                <div class="pa3 bt b--black-10">
+                    <p class="f6 f5-ns lh-copy measure">
+                        {{ post.chirp }}
+                    </p>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </main>
+        
+    </body>
+    <footer>
+        <small class="f6 db tc">© 2016 <b class="ttu">SOME COMPANY Inc</b>., All Rights Reserved</small>
+        <div class="tc mt3">
+          <a href="/language/" title="Language" class="f6 dib ph2 link mid-gray dim">Language</a>
+          <a href="/terms/"    title="Terms" class="f6 dib ph2 link mid-gray dim">Terms of Use</a>
+          <a href="/privacy/"  title="Privacy" class="f6 dib ph2 link mid-gray dim">Privacy</a>
+        </div>
+    </footer>
+</html>
