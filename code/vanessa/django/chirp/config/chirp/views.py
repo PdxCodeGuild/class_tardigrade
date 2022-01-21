@@ -8,8 +8,6 @@ def index(request):
         chirp.objects.create(body=body)
         return redirect('chirp:index')
 
-
-
     chirps = chirp.objects.all().order_by('-id')
     context = {'chirp': chirps}
     return render(request, 'chirp/index.html', context)
