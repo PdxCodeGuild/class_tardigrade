@@ -1,9 +1,12 @@
-
-
-from django import forms
-class PostForm(forms.Form):
+from django.forms import ModelForm
+from .models import Chirp
 
 
 
-    contact_name = forms.CharField(label='Contact Name', max_length=100)
-    contact_age = forms.IntegerField(label='Contact Age')
+class ChirpForm(ModelForm):
+
+     class Meta:
+
+
+         model = Chirp
+         fields = ['title', 'message', 'user', 'post_date']

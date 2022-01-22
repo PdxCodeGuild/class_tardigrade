@@ -4,5 +4,5 @@ from . import views
 app_name = 'chirp' # for namespacing
 urlpatterns = [
     path('', views.main, name='main'),
-    path("login/", views.login, name= "login"),
+    path("submit/", views.submit, name= "submit"),
 ]

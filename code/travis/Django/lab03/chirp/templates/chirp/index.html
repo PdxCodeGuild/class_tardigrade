@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
+    <title>Document</title>
+</head>
+<body style="display:flex; align-content: center; flex-direction: column;">
+
+
+<h1>Home Feed</h1>
+
+    
+
+
+{% for chirp in chirp_list %}
+<div class="chirpPost">       
+
+        <section id="title">{{ chirp.title }}</section>
+ 
+
+        <section id="message">{{ chirp.message }}</section>
+          
+
+            <section id="user"> {{ chirp.user }}      </section>      
+
+
+
+                
+                <section id="postDate">{{ chirp.post_date }}</section>
+
+
+</div>
+{%endfor%}
+</body>
+</html>

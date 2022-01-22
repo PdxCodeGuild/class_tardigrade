@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.urls import path, include
 from django.contrib import admin
+from user import views
+from chirp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('chirp.urls')),
-    path('user/', include('user.urls')),
+    path('',  include('chirp.urls')),
+    path('', include('user.urls')),
 ]

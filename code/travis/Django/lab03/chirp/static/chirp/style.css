@@ -1,0 +1,21 @@
+
+
+
+.chirpPost{
+
+    border: 5px solid blue;
+    margin: auto;
+    min-width: 30vw;
+    min-height: 30vh;
+    text-align: center;
+ 
+}
+
+
+#title{
+    width: 100%;
+    border-bottom: 3px solid red;
+    height: 20%;
+}
+
+
