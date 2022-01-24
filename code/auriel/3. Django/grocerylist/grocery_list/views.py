@@ -21,9 +21,9 @@ def complete(request, id):
     item.completed = True
     item.completed_date = timezone.now()
     item.save()
-    return redirect('grocery_list/groceryitems.html')
+    return redirect('/')
 
 def delete(request, id):
     item = get_object_or_404(GroceryItem, id=id)
     item.delete()    
-    return redirect('grocery_list/groceryitems.html')
+    return redirect('/')

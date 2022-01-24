@@ -1,0 +1,60 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+<h1 class="is-flex is-justify-content-center mt-4 is-size-3 has-text-weight-bold">Chirp</h1>
+<p class="is-flex is-justify-content-center mt-4 is-size-5 has-text-weight-bold">Welcome
+	{% if request.user.is_authenticated %}
+		{{ request.user.user_name }}
+	{% else %}
+		Guest
+	{% endif %}
+</p>
+<article class="container">
+    <div class="row">
+        <div class="col-md-3" class="container is-flex is-justify-content-center is-flex-direction-column">
+        </div>
+        <div class="col-md-9 container">
+            <div class="row">
+                <div class="col-9">
+                    <form action="{% url 'posts:make_post' %}" method="POST" class="container is-flex is-justify-content-center is-flex-direction-column">
+                        {% csrf_token %}
+                        <label for="content">New post</label>
+                        <textarea class="form-control m-3" type="text" id="content" name="content"
+                            style="height: 100px"></textarea>
+                </div>
+                <div class="col-3">
+                    <button class="button is-primary has-text-weight-bold"
+                        type="submit">Post</button>
+                </div>
+                </form>
+            </div>
+            <ul>
+                {% for post in posts %}
+                <li class="border border-dark row">
+                    <div class="col-3">
+                        {{ post.user.user_image }}
+                    </div>
+                    <div class="col-9">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">{{ post.title}} by {{ post.user.user_name }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">{{ post.content }}</th>
+                                </tr>
+                                <tr>
+                                    <td scope="row">{{ post.date_time }}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</article>
+{% endblock %}
