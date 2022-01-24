@@ -8,34 +8,40 @@
     {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
-    <title>Document</title>
+    <title>Chirp Feed</title>
 </head>
-<body style="display:flex; align-content: center; flex-direction: column;">
 
+<body>
 
-<h1>Home Feed</h1>
+<header>
+   <h1>Home Feed</h1> 
+    </header>
+<nav>
+    <a href="/submit"> Submit Chirp </a><br>
+    <a href="/login"> Login </a><br>
+    <a href="/logout"> Signout</a>
+</nav>
 
-    
 
 
 {% for chirp in chirp_list %}
 <div class="chirpPost">       
 
-        <section id="title">{{ chirp.title }}</section>
+        <section class="title">{{ chirp.title }}</section>
  
 
-        <section id="message">{{ chirp.message }}</section>
+        <section class="chirpText">{{ chirp.message }}</section>
           
 
-            <section id="user"> {{ chirp.user }}      </section>      
+            <section class="userName"> {{ chirp.user }}      </section>      
 
 
 
                 
-                <section id="postDate">{{ chirp.post_date }}</section>
+                <section class="postDate">{{ chirp.post_date }}</section>
 
 
-</div>
-{%endfor%}
+    </div>
+        {%endfor%}
 </body>
 </html>

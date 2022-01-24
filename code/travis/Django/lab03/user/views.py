@@ -3,6 +3,8 @@ from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 
+
+
 def login(request):
     return HttpResponse('hello world!')
 
@@ -29,10 +31,10 @@ def mylogin(request):
 
 
 
-def logout_view(request):
-    logout(request)
+def logout(request):
+
     # redirect to a success page.
-    redirect("")
+   
     return HttpResponse("logout")
 
 

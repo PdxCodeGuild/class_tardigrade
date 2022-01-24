@@ -1,5 +1,8 @@
+import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
+
+#from code.travis.Django.lab03 import user
 from .forms import ChirpForm
 from .models import Chirp
 
@@ -15,17 +18,15 @@ from django.http import HttpResponseRedirect
 
 def main(request):
 
-    chirp_list = Chirp.objects.all()
+
+    #sorts into newest first
+    chirp_list = Chirp.objects.all().order_by("-post_date")
+
+
+
     context = {'chirp_list': chirp_list}
 
     return render(request, 'chirp/index.html', context)
-
-
-
-
-
-
-
 
 
 
@@ -36,18 +37,22 @@ def login(request):
 
 
 
-
+['title', 'message', 'user', 'post_date']
 
 def submit(request):
     if request.method == 'POST': # receiving a form submission
         # create an instance of our form from the form data
         form = ChirpForm(request.POST)
+
         if form.is_valid():
             # get the data out of the form
-            contact_name = form.cleaned_data['contact_name']
-            contact_age = form.cleaned_data['contact_age']
+            user = form.cleaned_data['user']
+            title = form.cleaned_data["title"]
+            message = form.cleaned_data["message"]
+            post_date = datetime.datetime.now()  
+
             # create an instance of our model from the data
-            contact = Chirp(name=contact_name, age=contact_age)
+            contact = Chirp(user=user, title=title, message = message, post_date = post_date)
             # save a new record to the database
             contact.save()
             # create a new blank form for the template
@@ -55,9 +60,9 @@ def submit(request):
         # if the form is invalid, we just send it back to the template
     else: # receiving a GET request
         form = ChirpForm() # create a new blank form
-    
-    return HttpResponse("submit page")
-   # return render(request, 'chirp/index.html', {'form': form}) # pass the form to the template
+
+
+    return render(request, 'chirp/submit.html', {'form': form}) # pass the form to the template
 
 
 

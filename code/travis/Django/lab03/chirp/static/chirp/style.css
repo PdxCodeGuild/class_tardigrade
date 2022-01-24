@@ -1,21 +1,85 @@
 
 
+body{
+    box-sizing: border-box;
+display:flex;
+ align-content: center;
+  flex-direction: column;
+  height: 100%;
 
+}
+
+#submitBody{
+display:flex;
+ align-content: center;
+
+  height: 100%;
+
+}
+
+header{
+
+    min-height:5h;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+nav{
+
+    margin-left: 50px;
+
+}
 .chirpPost{
 
-    border: 5px solid blue;
+    background-color: lightblue;
     margin: auto;
-    min-width: 30vw;
-    min-height: 30vh;
+    width: 30vw;
+    height: 20vh;
     text-align: center;
+    margin-bottom: 30px;
+    border: 1px solid black;   
+    
+
+}
+
+.chirpSubmit{
+
+    background-color: lightblue;
+    margin: auto;
+    width: 40vw;
+    height: 40vh;
+    text-align: center;
+
+    border: 1px solid black;    
+
+}
+
+.title{
+    background-color: lightblue;
+    font-size: 1.1em;
+    height: 13% ;
+}
+
+.chirpText{ 
+    background-color: white;
+    height:70% ;
+
+}
+
+.userName{
+    background-color: lightblue;
+
+    height: 7% ;
+}
+
+.postDate{
+    background-color: lightblue;
+    margin-top: 1px;
+    height: 5% ;
+    font-size: .8em;
+
  
 }
 
-
-#title{
-    width: 100%;
-    border-bottom: 3px solid red;
-    height: 20%;
-}
 
 
