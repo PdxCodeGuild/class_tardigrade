@@ -1,0 +1,31 @@
+<body style="color:Red;       background-color:lightpink">
+    <title>Library</title>
+    <h1 style="color:white">Library</h1>
+    <h6>Checkout <a href="{% url 'bookshelf:checkout_page' %}"> HERE</a></h6>
+    <body>
+        <h2 style="color:white"><a href="{% url 'bookshelf:books_page' %}"> Books </a> </h2>
+        {% comment %} {% for book in books %}
+        <div>
+            <h3>{{ book.title }}</h3>
+            <ol>
+                <h4>{{ book.author }}</h4>
+                Published:{{ book.publish_date }}
+            
+
+            </ol>
+        </div>
+        {%endfor%} {% endcomment %}
+
+        <h2 style="color:white"><a href="{% url 'bookshelf:author_page' %}"> Authors </a></h2>
+        {% comment %} <ul>
+            {% for author in authors %}
+            <li>{{author.first_last_name}}</li>
+
+            {% for book in author.books.all %}
+            <ol>{{book.title}}</ol>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+         {% endcomment %}
+
+         <h2 style="color:white"><a href="{% url 'bookshelf:history' %}"> History </a></h2>

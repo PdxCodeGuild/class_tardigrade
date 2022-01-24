@@ -1,0 +1,30 @@
+table {
+    margin: 10px;
+    border-collapse: collapse;
+    border-style: hidden;
+    border: 2px solid black;
+    text-align: center;
+
+}
+table td {
+
+    border: 2px solid black;
+    min-width: 177px;
+
+}
+table th {
+
+    border: 2px solid black;
+}
+
+table tr{
+
+   height: 61px;
+}
+
+
+p{
+    margin: 50px;
+
+
+}

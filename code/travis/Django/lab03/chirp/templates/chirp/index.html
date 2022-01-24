@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
+    <title>Chirp Feed</title>
+</head>
+
+<body>
+
+<header>
+   <h1>Home Feed</h1> 
+    </header>
+<nav>
+    <a href="/submit"> Submit Chirp </a><br>
+    <a href="/login"> Login </a><br>
+    <a href="/logout"> Signout</a>
+</nav>
+
+
+
+{% for chirp in chirp_list %}
+<div class="chirpPost">       
+
+        <section class="title">{{ chirp.title }}</section>
+ 
+
+        <section class="chirpText">{{ chirp.message }}</section>
+          
+
+            <section class="userName"> {{ chirp.user }}      </section>      
+
+
+
+                
+                <section class="postDate">{{ chirp.post_date }}</section>
+
+
+    </div>
+        {%endfor%}
+</body>
+</html>
