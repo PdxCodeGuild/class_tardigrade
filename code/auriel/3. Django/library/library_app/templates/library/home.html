@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+          <div class="block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none">
+              <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
+            </button>
+          </div>
+          <div class="hidden lg:block">
+            <ul class="inline-flex">
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000">Home</a></li>
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000/checkin/list">Check In Books</a></li>
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000checkedout/list">Checked In/Out Books</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <header>
+        <h1 class ="text-4xl text-center">
+            Welcome To Auriel's Library
+        </h1>
+    </header>
+
+    <h2 class="text-4xl font-medium font-bold leading-tight mt-0 mb-2 text-blue-600">Authors</h2>
+
+    {% for author in authors %}
+    <h3><a class="text-2xl font-bold" href="{{ author.id }}"> {{ author.name }}</a></h3>
+    {% endfor %}
+
+</body>
+
+</html>
