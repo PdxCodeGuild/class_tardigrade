@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+          <div class="block lg:hidden">
+            <button class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none">
+              <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
+            </button>
+          </div>
+          <div class="hidden lg:block">
+            <ul class="inline-flex">
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000">Home</a></li>
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000/checkin/list">Check In Books</a></li>
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000/checkedout/list">Checked In/Out Books</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <header>
+        <h1 class ="text-4xl text-center">
+            Checked In/Out Books
+        </h1>
+    </header>
+
+
+    <div class="flex flex-col mt-8">
+      <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+          <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+              <table class="min-w-full">
+                  <thead>
+                      <tr>
+                          <th
+                              class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                              Title</th>
+                          <th
+                              class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                              By Who?</th>
+                          <th
+                              class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                              Checked In/Checked Out</th>
+                          <th
+                              class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                             Time</th>
+                      </tr>
+                  </thead>
+                  {% for check in checked %}
+                  <tbody class="bg-white">
+                      <tr>
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <div class="flex items-center">
+                                  <div class="ml-4">
+                                      <div class="text-sm font-medium leading-5 text-gray-900">
+                                          {{ check.book }}
+                                      </div>
+                                  </div>
+                              </div>
+                          </td>
+  
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <div class="text-sm leading-5 text-gray-500">{{ check.user }}</div>
+                          </td>
+  
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                              <span
+                                {% if not check.checkout %}
+                                class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                                Checked In
+                                {% endif %}
+                              </span>
+
+                              <span
+                              {% if check.checkout %}
+                              class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
+                              Checked Out
+                              {% endif %}
+                            </span>
+                          </td>
+
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-500">{{ check.timestamp}}</div>
+                        </td>
+                        
+                      </tr>
+                  </tbody>
+                  {% endfor%}
+              </table>
+          </div>
+      </div>
+  </div>
+
+
+
+</body>
+
+</html>

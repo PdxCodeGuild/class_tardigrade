@@ -1,0 +1,35 @@
+<style>
+	.red-border {
+		border: 2px solid red;
+	}
+</style>
+
+<h1>Donate a book</h1>
+
+<!-- <form action="/" method="POST">
+	{% csrf_token %}
+	<select name="author">
+		{% for author in authors %}
+		<option value="{{ author }}">{{ author }}</option>
+		{% endfor %}
+	</select>
+
+	<input type="text" name="title" />
+	<input type="date" name="publication_date" />
+	<input type="number" />
+
+	<input type="submit" value="click me">
+</form> -->
+
+<form action="/" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Donate">
+</form>
+
+<h2>Donated books:</h2>
+<ul>
+	{% for book in books %}
+	<li>{{ book.title }}</li>
+	{% endfor %}
+</ul>
