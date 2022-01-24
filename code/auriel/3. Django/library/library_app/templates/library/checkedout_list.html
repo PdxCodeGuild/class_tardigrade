@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
     <nav>
         <div class="container mx-auto px-6 py-2 flex justify-between items-center">
           <div class="block lg:hidden">
@@ -26,17 +30,13 @@
         </div>
       </nav>
 
-</head>
-
-<body>
-
     <header>
         <h1 class ="text-4xl text-center">
-            {{ authors.name }}
+            Checked In/Out Books
         </h1>
     </header>
 
-    
+
     <div class="flex flex-col mt-8">
       <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
@@ -48,53 +48,51 @@
                               Title</th>
                           <th
                               class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                              Publish Date</th>
+                              By Who?</th>
                           <th
                               class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                              Availability</th>
+                              Checked In/Checked Out</th>
                           <th
                               class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                              Checkout</th>
+                             Time</th>
                       </tr>
                   </thead>
-                  {% for story in books %}
+                  {% for check in checked %}
                   <tbody class="bg-white">
                       <tr>
                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                               <div class="flex items-center">
                                   <div class="ml-4">
                                       <div class="text-sm font-medium leading-5 text-gray-900">
-                                          {{ story.title }}
+                                          {{ check.book }}
                                       </div>
                                   </div>
                               </div>
                           </td>
   
                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                              <div class="text-sm leading-5 text-gray-500">{{ story.published_date }}</div>
+                              <div class="text-sm leading-5 text-gray-500">{{ check.user }}</div>
                           </td>
   
                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                               <span
-                                {% if story.available %}
+                                {% if not check.checkout %}
                                 class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                                Available
+                                Checked In
                                 {% endif %}
                               </span>
 
                               <span
-                              {% if not story.available %}
+                              {% if check.checkout %}
                               class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
                               Checked Out
                               {% endif %}
                             </span>
                           </td>
 
-                          <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <a href="/checkout/{{ story.id }}" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">
-                              Check Out
-                            </a>
-                          </td>
+                          <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-500">{{ check.timestamp}}</div>
+                        </td>
                         
                       </tr>
                   </tbody>

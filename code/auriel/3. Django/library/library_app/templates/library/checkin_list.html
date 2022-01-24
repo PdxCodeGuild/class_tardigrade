@@ -54,48 +54,40 @@
                               Availability</th>
                           <th
                               class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                              Checkout</th>
+                              Check In</th>
                       </tr>
                   </thead>
-                  {% for story in books %}
+                  {% for book in books %}
                   <tbody class="bg-white">
                       <tr>
+                        {% if not book.available %}
                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                               <div class="flex items-center">
                                   <div class="ml-4">
                                       <div class="text-sm font-medium leading-5 text-gray-900">
-                                          {{ story.title }}
+                                          {{ book.title }}
                                       </div>
                                   </div>
                               </div>
                           </td>
   
                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                              <div class="text-sm leading-5 text-gray-500">{{ story.published_date }}</div>
+                              <div class="text-sm leading-5 text-gray-500">{{ book.published_date }}</div>
                           </td>
   
                           <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                               <span
-                                {% if story.available %}
-                                class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
-                                Available
-                                {% endif %}
-                              </span>
-
-                              <span
-                              {% if not story.available %}
                               class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
                               Checked Out
-                              {% endif %}
                             </span>
                           </td>
 
                           <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
-                            <a href="/checkout/{{ story.id }}" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">
-                              Check Out
+                            <a href="/checkin/{{ book.author_id }}" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">
+                              Check In
                             </a>
                           </td>
-                        
+                          {% endif %}
                       </tr>
                   </tbody>
                   {% endfor%}
