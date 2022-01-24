@@ -4,15 +4,25 @@
 <body>
     <h3 class="is-flex is-justify-content-center mt-4 is-size-3 has-text-weight-bold">Log in</h3>
 
-    <form action="{% url 'users:login' %}" method="POST" class="container is-flex is-justify-content-center is-flex-direction-column">
-        {% csrf_token %}
-        <label for="username" class="has-text-weight-bold">Username</label>
-        <input type="text" id="username" name="username" placeholder="Username">
-        <br />
-        <label for="password" class="has-text-weight-bold">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password">
-        <br />
-        <button class="button is-primary has-text-weight-bold" type="submit">Log in</button>
-    </form>
+    <div class="container w-50">
+        <form action="{% url 'users:login' %}" method="POST"
+            class="is-flex is-flex-direction-column">
+            {% csrf_token %}
+            <label for="username" class="has-text-weight-bold">Username</label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <br />
+            <label for="password" class="has-text-weight-bold">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <br />
+            <div class="is-flex is-justify-content-center pt-2">
+                <button class="button is-success" type="submit">
+                    <span>Log in</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
 </body>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, User_Info
+from .models import Chirp, Chirp_comments
 
-admin.site.register(Post)
-admin.site.register(User_Info)
+admin.site.register(Chirp)
+admin.site.register(Chirp_comments)
