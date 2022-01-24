@@ -1,7 +1,7 @@
 <body style="color:Red;       background-color:lightpink">
     <title>Library</title>
     <h1 style="color:white">Library</h1>
-    <h6>Checkout <a href="{% url 'bookshelf:new_page' %}"> HERE</a></h6>
+    <h6>Checkout <a href="{% url 'bookshelf:checkout_page' %}"> HERE</a></h6>
     <body>
         <h2 style="color:white"><a href="{% url 'bookshelf:books_page' %}"> Books </a> </h2>
         {% comment %} {% for book in books %}
@@ -27,3 +27,5 @@
             {% endfor %}
         </ul>
          {% endcomment %}
+
+         <h2 style="color:white"><a href="{% url 'bookshelf:history' %}"> History </a></h2>

@@ -13,6 +13,22 @@ def index(request):
 
 
 def checkout(request,id):
+    book = get_object_or_404(Book, id=id)
+    timestamp= timezone.now()
+    checked_out=True
+    description = request.POST['user']
+    checkouts = book.checked_out_books.all() # gives you a QuerySet of the CheckOut objects associated with the book
+    if checkouts.exists(): # is the CheckOut QuerySet not empty
+        checkout = checkouts.last()
+        if checkout.checked_out == True:
+            print('hello')
+            # the book is checked out, can only be returned
+        else:
+            print('bye')
+            # the book is not checked out, is available
+    else:
+        Check_out_in.objects.create(books=book,timestamp=timestamp,checked_out=checked_out,user_name=description)
+    
     checked_item= get_object_or_404(Book,id=id)
     checked_item.checked_out= True
     checked_item.timestamp=timezone.now()
@@ -22,9 +38,9 @@ def checkout(request,id):
 def user(request,id):
     if request.method == 'POST':
         timestamp= timezone.now()
+        description = request.POST['user']
         checked_out=True
         book=get_object_or_404(Book, id=id)
-        description = request.POST['user']
         Check_out_in.objects.create(user_name=description, timestamp=timestamp, checked_out=checked_out, books=book)
 
         return redirect('/')
@@ -38,8 +54,7 @@ def check_in(request, id):
         return redirect('/')
 
 
-def new_page(request):
-
+def checkout_page(request):
     context = {
         'books': Book.objects.all(),
         'authors': Author.objects.all(),
@@ -64,3 +79,12 @@ def books_page(request):
 
     }
     return render(request, 'bookshelf/books.html', context )
+
+def history(request):
+    context = {
+        'books': Book.objects.all(),
+        'authors': Author.objects.all(),
+        'checkout_history': Check_out_in.objects.all(),
+        # 'checkout_history': Check_out_in.objects.filter(checked_out=True)
+    }
+    return render(request,'bookshelf/history.html',context )
