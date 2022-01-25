@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
+    <title>Chirp Post</title>
+</head>
+<body class="submitBody">
+       
+    <header>
+        <h1>Submit a Chirp</h1> 
+         </header>
+     <nav>
+         <a href="/"> Home </a><br>
+         <a href="/login"> Login </a><br>
+         <a href="/logout"> Signout</a>
+     </nav>
+     
+    <div class="chirpSubmit">       
+
+    <form action="{% url 'chirp:submit' %}" method="post">
+
+
+        {% csrf_token %}
+
+        <section class="title">{{form.title.label_tag}} {{ form.title }}</section>
+        <section class="chirpText">{{form.message.label_tag}} {{ form.message }}</section>
+        <section class="userName">{{form.user.label_tag}} {{ form.user }}      </section> 
+        <section class="postDate">{{form.post_date.label_tag}} {{ form.post_date }}</section>    
+        <section><input type="submit" value="Submit" /></section>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

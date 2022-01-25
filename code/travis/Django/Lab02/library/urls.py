@@ -2,12 +2,11 @@ from django.urls import path
 from . import views
 
 
-
-
-app_name = 'library' # for namespacing
+app_name = 'library'
 urlpatterns = [
   path('', views.library, name='library'),  
   path("library-checkout/", views.checkout),
-  path("library-checkout/<int:id>/", views.checkout_book, name="checkout"),
-  path("library-checkin/<int:id>/", views.checkout_book, name="checkin"),
-]
+  path("library-checkout/chechout/<int:id>/", views.checkout_book, name="checkout"),
+  path("library-checkout/checkin/<int:id>/", views.checkin, name="checkin"),
+] 
+

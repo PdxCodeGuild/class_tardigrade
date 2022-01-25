@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">   
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,49 +16,56 @@
 
 
     
-    <h2>Checkout a book:</h2>
+    <h1>Check Out Page</h1>
     <body>
 
-        <table>
+        <table >
         <tr>
             <th>Title</th>
-            <th></th>
-            <th>checkout</th>
-            <th>Timestanp</th>
-            <th>is checked out</th>
-            
-    
-    
+            <th>User</th>
+            <th>Checkout</th>
+            <th>Time stamp</th>
+            <th>Checked Out</th>
         </tr>
-        
-        {% for checkout in checkout_list %}
-
-
         <tr>
+        {% for checkout in checkout_list %}
+        
             <td>{{ checkout.title }}</td>
 
             {% if checkout.is_checked_out == False%}
+
             <td>
                 <form action="{% url 'library:checkout' checkout.id %}" method="post" aenctype="multipart/form-data">
                     
                 {% csrf_token %}
       
-                    {{checkout_form.as_p}}
-              </td>
-            <td><button type="submit" value = {{checkout.id}} >Submit</button></td>
-        </form>
+                 {{checkout_form.as_p}}
+            </td>
 
+            <td>
+            <button type="submit" value = {{checkout.id}} >Checkout</button>            
+            </td>
+
+            </form>
+            
         {% else %}
 
-        <td>{{ checkout.user }}</td>
+             <td> {{ checkout.user }}</td>
+
+            
+            <form action="{% url 'library:checkin' checkout.id %}" method="post">  
+
+                {% csrf_token %}
+            
+        <td><button type="submit" value = {{checkout.id}} >Return</button></td>
+
         {%endif%}
-       
+    </form>
 
             <td>{{ checkout.time_stamp }}</td>
             <td>{{ checkout.is_checked_out }}</td>
             
         </tr>
-
   
             {% endfor %}
     </table>
@@ -62,87 +73,7 @@
 
 
 
-
-
-
-
- 
-
-       <!-- <table style="text-align: center; border: black solid 2px;">
-            <tr >
-                <th>id test</th>
-                <th>Book Title</th>
-                <th>User</th>
-                <th>Last used</th>
-                <th>Check in/ Check out</th>
-            </tr>
-            {% for checkout in checkout_list %}  
-            <form action="% url 'library:checkout_book' %" method="post">
-                {% csrf_token %}
-            <tr>
-                <td><input id="id" type="text" name="id" value="{{ checkout.id }}"></td>
-                     
-            
-
-                
-
-            <td>
-                
-                    
-                {% if checkout.is_checked_out == False %}             
-
-
-                <label for="user">Your name: </label>
-                <input id="user" type="text" name="user" value="{{ checkout.user }}" disabled></td>
-                {% else %}
-                
-                <label for="user">Your name: </label>
-                <input id="user" type="text" name="user" value="{{ checkout.user }}"></td>
-                {% endif %}
-
-
-            <td>
-                <button type="submit" value="submit">
-
-                    {% if checkout.is_checked_out == True %}Checkout
-                    {% else %} Return
-                    {% endif %}
-                </button>
-                </form>
-                </td>
-
-                <td>{{ checkout.time_stamp }} </td>
-
-            </tr>
-            {% endfor %}
-
-        </table>
-
-    
-
-
-    <div class="container">
-      
-        <h2>Checkout book</h2>
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-
-              {{checkout_form}}
-
-              <button type="submit">Submit</button>
-        </form>
---->
-
-
-
-
-
-
-
-
-
-
-
+    <p><a href="/">Return to main page</a></p>
 
 </body>
 
