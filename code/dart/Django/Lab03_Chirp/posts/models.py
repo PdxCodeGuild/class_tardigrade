@@ -1,18 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class User_Info(models.Model):
-    user_name = models.CharField(max_length=24)
-    user_image = models.URLField()
-    user_bio = models.CharField(max_length=300)
+class Chirp(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.PROTECT, related_name='users')
+    chirp = models.CharField(max_length=128)
+    created_at = models.DateTimeField(auto_now=True)
+    likes = models.ManyToManyField(User, related_name='likes')
     def __str__(self):
-        return self.user_name
+        return self.chirp
 
-class Post(models.Model):
-    title = models.CharField(max_length=100, null=True, blank=True)
-    content = models.TextField(max_length=128)
-    date_time = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User_Info, on_delete=models.CASCADE, related_name='user')
+class Chirp_comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='users_comment')
+    chirp = models.ForeignKey(Chirp, on_delete=models.CASCADE, related_name='comment')
+    comment = models.CharField(max_length=128)
+    created_at = models.DateTimeField(auto_now=True)
     def __str__(self):
-        post_name = f"{self.title} by {self.user}"
-        return post_name
+        return self.comment

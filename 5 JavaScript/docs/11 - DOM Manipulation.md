@@ -1,5 +1,5 @@
 
-# Editing HTML
+# DOM Manipulation
 
 - [Overview](#overview)
 - [Accessing Elements](#accessing-elements)
@@ -17,7 +17,7 @@
 
 ## Overview
 
-JavaScript provides many functions to manipulate the DOM. You can find more info on [MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents) and [w3schools](https://www.w3schools.com/js/js_htmldom_document.asp).
+JavaScript provides many functions to manipulate the DOM (Document Object Model). You can find more info on [MDN](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents) and [w3schools](https://www.w3schools.com/js/js_htmldom_document.asp).
 
 ## Accessing Elements
 
