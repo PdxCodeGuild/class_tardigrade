@@ -24,7 +24,7 @@
             <ul class="inline-flex">
               <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000">Home</a></li>
               <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000/checkin/list">Check In Books</a></li>
-              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000checkedout/list">Checked In/Out Books</a></li>
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000/checkedout/list">Checked In/Out Books</a></li>
             </ul>
           </div>
         </div>
@@ -36,11 +36,85 @@
         </h1>
     </header>
 
-    <h2 class="text-4xl font-medium font-bold leading-tight mt-0 mb-2 text-blue-600">Authors</h2>
+    <div class="flex flex-col mt-8">
+        <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+            <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                <table class="min-w-full">
+                    <thead>
+                        <tr>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Title</th>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Author</th>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Publish Date</th>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Availability</th>
+                            <th
+                                class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                                Checkout</th>
+                        </tr>
+                    </thead>
+                    {% for book in books %}
+                    <tbody class="bg-white">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="flex items-center">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium leading-5 text-gray-900">
+                                            {{ book.title }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
 
-    {% for author in authors %}
-    <h3><a class="text-2xl font-bold" href="{{ author.id }}"> {{ author.name }}</a></h3>
-    {% endfor %}
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="flex items-center">
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium leading-5 text-gray-900">
+                                            {{ book.author }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+    
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-500">{{ book.published_date }}</div>
+                            </td>
+    
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <span
+                                  {% if book.available %}
+                                  class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                                  Available
+                                  {% endif %}
+                                </span>
+  
+                                <span
+                                {% if not book.available %}
+                                class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
+                                Checked Out
+                                {% endif %}
+                              </span>
+                            </td>
+  
+                            <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200">
+                              <a href="/{{ book.id }}" class="bg-blue-500 hover:bg-blue-700 text-white text-center py-2 px-4 rounded">
+                                Check Out
+                              </a>
+                            </td>
+                          
+                        </tr>
+                    </tbody>
+                    {% endfor%}
+                </table>
+            </div>
+        </div>
+    </div>
 
 </body>
 
