@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
 </head>
-<body>
+<body class="submitBody">
     
 
+    <header>
+        <h1>Login</h1> 
+         </header>
+     <nav>
+         <a href="/"> Home </a><br>
+         <a href="/submit"> Submit Chirp </a><br>
+         <a href="/accounts/logout"> Signout</a>
+     </nav>
+     
 
-<h1>Login page</h1>
+<div id="chirpLogin">
 
-
-<form action="{% url 'user:index' %}" method="post">
+    <form action="{% url 'user:login' %}" method="post">
     {% csrf_token %}
-    {{ login_form }}
+        
+    <section id="userNamePass">{{ login_form.username.label }} {{login_form.username}}</section>
+    <section id="password">{{login_form.password.label_tag}}   {{login_form.password}}</section>
+
     <input type="submit" value="Submit" />
 </form>  
-
-
+</div>
 
 </body>
 </html>

@@ -9,4 +9,4 @@ class ChirpForm(ModelForm):
 
 
          model = Chirp
-         fields = ['title', 'message', 'user', 'post_date']
+         fields = ['title', 'message', ]

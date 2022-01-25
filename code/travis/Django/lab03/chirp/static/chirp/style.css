@@ -2,8 +2,8 @@
 
 body{
     box-sizing: border-box;
-display:flex;
- align-content: center;
+    display:flex;
+   align-content: center;
   flex-direction: column;
   height: 100%;
 
@@ -46,13 +46,14 @@ nav{
 
     background-color: lightblue;
     margin: auto;
-    width: 40vw;
-    height: 40vh;
-    text-align: center;
+    width: 300px;
+    height: 300px;
+
 
     border: 1px solid black;    
 
 }
+
 
 .title{
     background-color: lightblue;
@@ -66,9 +67,11 @@ nav{
 
 }
 
+
+
+
 .userName{
     background-color: lightblue;
-
     height: 7% ;
 }
 
@@ -78,7 +81,35 @@ nav{
     height: 5% ;
     font-size: .8em;
 
- 
+}
+
+#chirpSubmitText{
+ text-align: center;
+
+}
+
+
+
+#chirpLogin{
+
+    background-color: lightblue;
+    margin: auto;
+    width: 25vh;
+    height: 20vh;
+    text-align: center;
+    border: 1px solid black;    
+
+}
+
+#userNamePass{
+    background-color: lightblue;
+
+    height: 7% ;
+}
+#password{
+    background-color: lightblue;
+    font-size: 1.1em;
+    height: 13% ;
 }
 
 

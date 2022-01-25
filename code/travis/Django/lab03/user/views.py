@@ -2,39 +2,48 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import logout
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-
-
-
-def login(request):
-    return HttpResponse('hello world!')
-
-
+from django.contrib.auth.models import User
+from django.contrib.auth import logout
+from .forms import UserLoginForm
+from django.contrib import messages
 
 
 
 def mylogin(request):
 
-    # retrieve the variables from the form submission
-    username = request.POST['username']
-    password = request.POST['password']
-
-    user = authenticate(request, username=username, password=password)
-
-    if user is not None:
-        login(request, user)
-        redirect("")
-    else:
-        # return an 'invalid login' error message
-        redirect("")
     
-    return HttpResponse("login page")
+    print(request)
+    if request.method == "POST":
+
+        username = request.POST['username']
+        password = request.POST['password']
+        print(username)
+        print(password)
+        user = authenticate(request, username=username, password=password)
+        print("test1")
+
+        print(user)
+        if user is not None:
+            login(request, user)
+            print("test2")
+
+            return HttpResponse("login")
+
+        else:
+            print("test3")
+            return redirect("./")
+    
+    login_form = UserLoginForm() # create a new blank form
+
+
+    return render(request, 'user/login.html', {'login_form': login_form}) # pass the form to the template
 
 
 
-def logout(request):
+def logout_view(request):
 
-    # redirect to a success page.
-   
+    logout(request)
+
     return HttpResponse("logout")
 
 
