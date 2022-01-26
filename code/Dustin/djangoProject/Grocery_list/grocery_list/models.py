@@ -1,19 +1,17 @@
 from django.db import models
-from django.contrib.auth.modles import User
+
 
 # Create your models here.
-class Items(models.model):
-    user = models.ForeignKey(User, on_delete=models.cascade, null=True, blank=True)
-    item = models.CharField(max_length=150)
-    quantity = models.CharField(max_length=3)
+class Item(models.Model):
+    description = models.CharField(max_length=150)
+    completed_date = models.DateTimeField()
     complete = models.BooleanField(default=False)
-    create = models.DateTimeField(auto_now=True)
+    created_date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return {self.description}
 
-    class Meta:
-        ordering = ['complete']
+
 
 
 

@@ -9,4 +9,3 @@ class grocerylist(ListView):
 # Create your views here.
 
 class ItemCreate(CreateView)
-    
