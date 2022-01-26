@@ -20,7 +20,7 @@
             <ul class="inline-flex">
               <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000">Home</a></li>
               <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000/checkin/list">Check In Books</a></li>
-              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000/checkedout/list">Checked In/Out Books</a></li>
+              <li><a class="px-4 hover:text-gray-800" href="http://127.0.0.1:8000checkedout/list">Checked In/Out Books</a></li>
             </ul>
           </div>
         </div>
@@ -28,11 +28,11 @@
 
       <header>
         <h1 class ="text-xl text-center">
-           In order to check out {{ books.title }}. Please submit your name.
+           In order to check in {{ books.title }}. Please submit your name.
         </h1>
     </header>
 
-    <form action="checkedout/" method="POST">
+    <form action="/checkin/{{ books.id }}/checkedin/" method="POST">
       {% csrf_token %}
 
       <input class="w-1/2 h-10 px-3 mb-2 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="user" placeholder="Jane Doe"/>
