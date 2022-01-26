@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,41 +8,39 @@
 
     {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
     <title>Chirp Feed</title>
 </head>
 
-<body>
+<body id="">
 
-<header>
-   <h1>Home Feed</h1> 
+    <header>
+        <h1>Chirp Home</h1>
     </header>
-<nav>
-    <a href="/submit"> Submit Chirp </a><br>
-    <a href="accounts/login"> Login </a><br>
-    <a href="accounts/logout"> Signout</a>
-</nav>
 
+    <nav>
+        <a href="/submit"> Submit Chirp </a>
 
+        {% if request.user.is_authenticated %}
+        <p>Signed in: {{ request.user.username }}</p>
+        <a href="accounts/logout"> Signout</a>
+        {% else %}
+        <a href="accounts/login"> Login </a>
+        <a href="accounts/create">Create account</a>
 
-{% for chirp in chirp_list %}
-<div class="chirpPost">       
+        {% endif %}
+    </nav>
 
+    {% for chirp in chirp_list %}
+    <div class="chirpPost">
         <section class="title">{{ chirp.title }}</section>
- 
-
         <section class="chirpText">{{ chirp.message }}</section>
-          
-
-            <section class="userName"> {{ chirp.user }}      </section>      
-
-
-
-                
-                <section class="postDate">{{ chirp.post_date }}</section>
-
-
+        <section class="userName"> {{ chirp.username }} </section>
+        <section class="postDate">{{ chirp.post_date }}</section>
     </div>
-        {%endfor%}
+
+    {%endfor%}
+    <footer>PDX Code Guild: class_tardigrade</footer>
 </body>
+
 </html>

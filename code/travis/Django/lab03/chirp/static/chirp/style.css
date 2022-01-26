@@ -1,35 +1,50 @@
+body {
 
-
-body{
     box-sizing: border-box;
-    display:flex;
-   align-content: center;
-  flex-direction: column;
-  height: 100%;
-
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    height: 100%;
 }
 
-#submitBody{
-display:flex;
- align-content: center;
+#submitBody {
 
-  height: 100%;
-
+    display: flex;
+    align-content: center;
+    height: 100%;
 }
 
-header{
+header {
 
-    min-height:5h;
+    min-height: 5h;
+    text-align: center;
+    background-color: darkblue;
+    color: white;
+}
+
+footer {
+
+    background-color: lightblue;
+    text-align: center;
+}
+
+
+
+nav {
+
+    min-height: 5h;
     text-align: center;
     margin-bottom: 40px;
+    background-color: lightblue;
 }
 
-nav{
+a {
 
-    margin-left: 50px;
-
+    padding: 10px;
 }
-.chirpPost{
+
+
+.chirpPost {
 
     background-color: lightblue;
     margin: auto;
@@ -37,80 +52,73 @@ nav{
     height: 20vh;
     text-align: center;
     margin-bottom: 30px;
-    border: 1px solid black;   
-    
+    border: 1px solid black;
 
 }
 
-.chirpSubmit{
+.chirpSubmit {
 
     background-color: lightblue;
     margin: auto;
     width: 300px;
     height: 300px;
-
-
-    border: 1px solid black;    
+    border: 1px solid black;
+    margin-bottom: 50px;
 
 }
 
 
-.title{
+.title {
+    
     background-color: lightblue;
     font-size: 1.1em;
-    height: 13% ;
+    height: 13%;
 }
 
-.chirpText{ 
+.chirpText {
     background-color: white;
-    height:70% ;
-
+    height: 70%;
 }
 
 
 
 
-.userName{
+.userName {
     background-color: lightblue;
-    height: 7% ;
+    height: 7%;
 }
 
-.postDate{
+.postDate {
     background-color: lightblue;
     margin-top: 1px;
-    height: 5% ;
+    height: 5%;
     font-size: .8em;
-
 }
 
-#chirpSubmitText{
- text-align: center;
+#chirpSubmitText {
 
+    font-size: 1em;
 }
 
 
-
-#chirpLogin{
+#chirpLogin {
 
     background-color: lightblue;
     margin: auto;
     width: 25vh;
     height: 20vh;
     text-align: center;
-    border: 1px solid black;    
-
+    border: 1px solid black;
+    margin-bottom: 50px;
 }
 
-#userNamePass{
+#userNamePass {
     background-color: lightblue;
-
-    height: 7% ;
+    height: 7%;
 }
-#password{
+
+#password {
     background-color: lightblue;
     font-size: 1.1em;
-    height: 13% ;
+    height: 13%;
 }
-
-
-

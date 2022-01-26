@@ -1,5 +1,4 @@
 
-from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 
@@ -8,8 +7,5 @@ class UserLoginForm(ModelForm):
 
         model = User
         fields = ['username', 'password']
-
-
-
 
   

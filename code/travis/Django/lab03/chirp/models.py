@@ -6,8 +6,7 @@ from django.contrib.auth.models import User
 class Chirp(models.Model):
     title = models.CharField(max_length= 15)
     message = models.CharField(max_length=128)
-    post_date = models.DateField(blank=True, null=True)
-
+    post_date = models.DateTimeField(blank=True, null=True)
     username = models.ForeignKey(User, on_delete=models.PROTECT, null=True)
 
 

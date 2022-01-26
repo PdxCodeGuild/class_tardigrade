@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,30 +10,43 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{% static 'chirp/style.css' %}">
 </head>
+
 <body class="submitBody">
-    
+
 
     <header>
-        <h1>Login</h1> 
-         </header>
-     <nav>
-         <a href="/"> Home </a><br>
-         <a href="/submit"> Submit Chirp </a><br>
-         <a href="/accounts/logout"> Signout</a>
-     </nav>
-     
+        <h1>Login</h1>
+    </header>
 
-<div id="chirpLogin">
+    <nav>
+        <a href="/">Home</a>
 
-    <form action="{% url 'user:login' %}" method="post">
-    {% csrf_token %}
-        
-    <section id="userNamePass">{{ login_form.username.label }} {{login_form.username}}</section>
-    <section id="password">{{login_form.password.label_tag}}   {{login_form.password}}</section>
+        {% if request.user.is_authenticated %}
 
-    <input type="submit" value="Submit" />
-</form>  
-</div>
+        <p>Signed in: {{ request.user.username }}</p>
+        <a href="accounts/logout"> Signout</a>
+    </nav>
+
+    {% else %}
+    <a href="accounts/create">Create account</a>
+    </nav>
+
+    <div id="chirpLogin">
+
+        <form action="{% url 'user:login' %}" method="post">
+            {% csrf_token %}
+
+            <section id="userNamePass">{{ login_form.username.label }} {{login_form.username}}</section>
+            <section id="password">{{login_form.password.label_tag}} {{login_form.password}}</section>
+
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+    {% endif %}
+
+    <footer>PDX Code Guild: class_tardigrade</footer>
 
 </body>
+
 </html>
