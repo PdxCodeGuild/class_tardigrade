@@ -51,3 +51,7 @@ if (total % 10 == check_num) {
 else {
     alert('This is not a valid credit card, you got scammed.')
 }
+
+
+// Part A Complete \\
+
