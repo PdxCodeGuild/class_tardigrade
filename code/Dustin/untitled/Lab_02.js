@@ -1,4 +1,5 @@
-print("Make Change")
+//Make Change
+alert("Make Change")
 
 user_input = float(input("Enter dollar amount: "))
 user_input = int(user_input /.01)
@@ -10,7 +11,7 @@ nickels = user_input//5
 user_input = user_input%5
 pennies = user_input
 
-print(quarters, dimes, nickels, pennies)
+"""print(quarters, dimes, nickels, pennies)"""
 
 """Below is dictionary for version 2 assuming i get back to it"""
 
@@ -22,4 +23,3 @@ coins = [
     ('penny', 1)
 ]
 # print(coins[2][1])
-
