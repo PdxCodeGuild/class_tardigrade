@@ -14,13 +14,13 @@ const nums = [5, 0, 8, 3, 4, 1, 6]
 
 //let i = 0
 for ( let i=0; i < nums.length; i++){
-  //  console.log(nums[i])
+  console.log(nums[i])
 }
 
 console.log("while loop")
 let j = 0
 while ( j < nums.length){
-  //  console.log(nums[j])
+  console.log(nums[j])
     j ++
 }
 
@@ -29,7 +29,7 @@ console.log("for loop over elements")
 
 
 for (num of nums){
-//    console.log(num)
+   console.log(num)
 }
 
 
@@ -49,18 +49,19 @@ for (num of nums){
 // > enter a number, or 'done': done
 // average: 4
 
+let ave_num_array = []
 
-
-let test_nums = [2,2,2,2]
 
 let add_button = document.getElementById("add-button");
 
+
 add_button.onclick = function(e){
     e.preventDefault()
+    let entry_field = document.getElementById("entry-field").value;
 
-    test_nums.push(2)
+    ave_num_array.push(parseInt(entry_field))
 
-    alert(test_nums);
+    alert(ave_num_array);
     
 
 }
@@ -71,20 +72,27 @@ let add = 0
 let done_button = document.getElementById("done-button");
 
 done_button.onclick = function(e){
-    e.preventDefault()
-    array_num = test_nums.length
+    e.preventDefault();
 
+    let array_num = ave_num_array.length;
+    
+    console.log(array_num)
  for(let k = 0; k < array_num; k++){
 
-    add += test_nums.pop()
+    add += ave_num_array.pop();
 
  }
+ console.log(add)
 
  average = add / array_num
+ console.log(average)
+  alert( average)
 
-    test_nums = []
-    add = 0
-    array_num = 0
+    ave_num_array = [];
+    add = 0;
+    array_num = 0;
+
+
 
 }
 
