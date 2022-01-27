@@ -2,7 +2,7 @@
 
 <p> {{message}} </p>
 
-<form action="users/login/" method="POST">
+<form action="/users/login/" method="POST">
     {% csrf_token %} 
     <label for="username_input"> username </label>
     <input type="text" id="username_input" name="password">
