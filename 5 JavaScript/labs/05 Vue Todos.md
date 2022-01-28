@@ -8,7 +8,7 @@ Your Vue app will need to do a few things:
  * Allow the user to add and remove todos
  * Allow a user to toggle if a task is complete or not
  
- Reference the Vue.js [Introduction Guide](https://vuejs.org/v2/guide/).
+ Reference the Vue.js [Introduction Guide](https://v3.vuejs.org/guide/introduction.html).
 
 ## How to get started
 
