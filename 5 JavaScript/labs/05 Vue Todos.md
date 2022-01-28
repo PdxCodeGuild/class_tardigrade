@@ -49,7 +49,7 @@ Example: `index.html`
     </div>
 
     <!-- Include Vue from a CDN of your choice, I chose unpkg -->
-    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <!-- Include your code here... -->
     <script src="/js/site.js"></script>
 </body>
@@ -58,12 +58,15 @@ Example: `index.html`
 
 ### How to start a simple Vue app:
 ```js
-new Vue({
-    el: '#app',
+const App = {
     data: {
-        message: 'Hello world!'
+        return {
+            message: 'Hello world!'
+        }
     }
-})
+}
+
+Vue.createApp(App).mount('#app)
 ```
 
 **Now if you check your browser you should see the message `Hello world!`**
