@@ -29,7 +29,7 @@ console.log("for loop over elements")
 
 
 for (num of nums){
-   console.log(num)
+    console.log(num)
 }
 
 
