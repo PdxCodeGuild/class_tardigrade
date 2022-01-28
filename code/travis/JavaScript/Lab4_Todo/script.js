@@ -1,4 +1,4 @@
-let todo_list_array = ["test1", "test2", "test3", "test4"]
+let todo_list_array = ["banana", "apple", "butter", "milk"]
 
 for (let i=0; i < todo_list_array.length; ++i){
     var input_element = document.createElement("input")
@@ -6,22 +6,22 @@ for (let i=0; i < todo_list_array.length; ++i){
 
 
 
-let text_node = document.createTextNode(todo_list_array[i])
+    let text_node = document.createTextNode(todo_list_array[i])
 
 
-label_element.appendChild(text_node)
-label_element.setAttribute("for", todo_list_array[i])
-label_element.innerText = todo_list_array[i]
-label_element.id = todo_list_array[i] + "label"
+    label_element.appendChild(text_node)
+    label_element.setAttribute("for", todo_list_array[i])
+    label_element.innerText = todo_list_array[i]
+    label_element.id = todo_list_array[i] + "label"
 
-input_element.appendChild(text_node)
-input_element.type = "radio"
-input_element.id = todo_list_array[i]
-input_element.name = "radio-items"
+    input_element.appendChild(text_node)
+    input_element.type = "radio"
+    input_element.id = todo_list_array[i]
+    input_element.name = "radio-items"
 
 
-document.getElementById("add-radio").appendChild(label_element)
-document.getElementById("add-radio").appendChild(input_element)
+    document.getElementById("add-radio").appendChild(label_element)
+    document.getElementById("add-radio").appendChild(input_element)
 }
 
 
@@ -29,10 +29,7 @@ document.getElementById("add-radio").appendChild(input_element)
 
 
 //text box to add
-
-add_entry = document.getElementById("add-entry");
-
-
+let add_entry = document.getElementById("add-entry");
 
 //buttons
 let add_button = document.getElementById("add-button");
@@ -47,29 +44,28 @@ let completed_button = document.getElementById("completed-button");
 add_button.addEventListener("click", function(e){
     e.preventDefault();
 
-    entry_value = add_entry.value;
+   let entry_value = add_entry.value;
     todo_list_array.push(entry_value)
+    var input_element_add = document.createElement("input")
+    var label_element_add = document.createElement("label")
+
+    let text_node = document.createTextNode(entry_value)
 
 
-    add_int = todo_list_array.length - 1
-    console.log(add_int)
-    let text_node = document.createTextNode(add_int)
+
+    label_element_add.appendChild(text_node)
+    label_element_add.setAttribute("for", entry_value)
+    label_element_add.innerText = entry_value
+    label_element_add.id = entry_value + "label"
 
 
+    input_element_add.appendChild(text_node)
+    input_element_add.type = "radio"
+    input_element_add.id = entry_value
+    input_element_add.name = "radio-items"
 
-    label_element.appendChild(text_node)
-    label_element.setAttribute("for", todo_list_array[add_int])
-    label_element.innerText = todo_list_array[add_int]
-    label_element.id = todo_list_array[add_int] + "label"
-
-
-    input_element.appendChild(text_node)
-    input_element.type = "radio"
-    input_element.id = todo_list_array[add_int]
-    input_element.name = "radio-items"
-
-    document.getElementById("add-radio").appendChild(label_element)
-    document.getElementById("add-radio").appendChild(input_element)
+    document.getElementById("add-radio").appendChild(label_element_add)
+    document.getElementById("add-radio").appendChild(input_element_add)
 
 
 });
