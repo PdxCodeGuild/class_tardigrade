@@ -25,9 +25,12 @@ toDoButton.addEventListener('submit', function (event) {
 
     console.log(toDoList)
 
+    deleteButton.addEventListener('click', function () {
+       thingsList.removeChild(listLi);
+    })
 
     complete.addEventListener('click', function () {
-        listLi.style.textDecoration = strike
+        listLi.style.textDecoration = "line-through"
     })
 
                 
