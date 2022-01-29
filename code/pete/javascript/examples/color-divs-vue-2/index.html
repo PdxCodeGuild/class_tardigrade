@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Color Divs Vue 2</title>
+
+	<script src="https://unpkg.com/vue@next"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+	<style>
+		main {
+			padding: 3rem;
+			min-height: 100vh;
+		}
+
+		input {
+			margin-right: 1.5rem;
+		}
+
+		#container {
+			display: flex;
+			justify-content: space-evenly;
+			flex-wrap: wrap;
+		}
+
+		.color {
+			height: 150px;
+			width: 150px;
+			border: 2px solid black;
+			margin: 2rem;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<main :style="`background-color: ${bgColor}`">
+
+			<h1>Vue Color Divs 2</h1>
+			<!-- <p>Message: {{ message }}</p> -->
+			<form @submit.prevent="addColor" action="">
+				<!-- @submit.prevent will automatically run event.preventDefault() -->
+				<input type="text" v-model="newColor">
+				<button type="submit">add color</button>
+			</form>
+			<div id="container">
+				<div
+					class="color"
+					v-for="color in colors"
+					:style="`background-color: ${color}`"
+					@click="setBgColor(color)"
+				>
+				</div>
+				<!-- :attribute is a shorthand for v-bind:attribute -->
+				<!-- <div class="color" v-for="color in colors" v-bind:style="`background-color: ${color}`"></div> -->
+			</div>
+			<!-- <button v-on:click="buttonTest">click me</button>
+			@event is a shorthand for v-on:event -->
+			<!-- <button @click="buttonTest">click me</button> -->
+		</main>
+	</div>
+	<script>
+		const App = {
+			data() {
+				return {
+					message: 'welcome to Vue.js',
+					colors: ['burlywood', 'dodgerblue', 'blanchedalmond'],
+					newColor: '',
+					bgColor: 'slategray',
+				}
+			},
+			methods: {
+				buttonTest() {
+					alert('the message is: ' + this.message + this.colors)
+				},
+
+				addColor() {
+					// event.preventDefault()
+					// alert('hi')
+					this.colors.push(this.newColor)
+					this.newColor = ''
+					// this.buttonTest() // you can also use this.methodName to call methods within other methods
+				},
+
+				setBgColor(color) {
+					// alert('set bg color to ' + color)
+					// document.body.style.backgroundColor = color
+					this.bgColor = color
+				}
+			}
+		}
+
+		Vue.createApp(App).mount('#app')
+	</script>
+</body>
+
+</html>
