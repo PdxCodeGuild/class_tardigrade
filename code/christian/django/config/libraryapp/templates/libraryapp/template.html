@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+        {% for book in books %}
+        <li>
+            {{ book.title }}
+            <button><a href="{% url 'libraryapp:checkinout' book.id %}">Checkout</a></button>
+            <button><a href="{% url 'libraryapp:checkinout' book.id %}">Checkin</a></button>
+        </li>
+        {% endfor %}
+    </ul>
+      
+
+
+     
+    {% comment %} <ul>
+      {% for myinstance in myinstances %}
+      <li>{{ myinstance.myfield }}</li>
+      {% endfor %}
+    </ul> {% endcomment %}
+  </body>
+</html>
