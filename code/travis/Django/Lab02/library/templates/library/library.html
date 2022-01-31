@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">   
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,26 +15,29 @@
 <body>
 
     <h1>Library</h1>
+
     <table>
     <tr>
-        <th>Title</th>
-        <th>Publish Date</th>
         <th>Author</th>
+        <th>Title</th>       
+
+        <th>Publish Date</th>
 
 
     </tr>
         {% for book in book_list %}
     <tr>
+        <td>{{ book.author_name }}</td>
         <td>{{ book.title }}</td>
         <td>{{ book.publish_date }}</td>
-        <td>{{ book.author_name }}</td>
+        
 
     </tr>
 
         {% endfor %}
 </table>
 
-<a href="library-checkout/">Checkout Book</a>
+<p><a href="library-checkout/">Checkout/Return Book</a></p>
 
 
 </body>

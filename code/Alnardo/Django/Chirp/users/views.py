@@ -9,7 +9,6 @@ def username_exists(username):
 def login_view(request):
     message = ''
     if request.method == 'POST':
-        print(request.POST)
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
@@ -28,13 +27,12 @@ def logout_view(request):
 def register_view(request):
     message = ''
     if request.method == 'POST':
-        print(request.POST)
         username = request.POST.get('username')
-        password1 = request.POST.get('pw1')
-        password2 = request.POST.get('pw2')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
         
         if username_exists(username):
-            message += ' username taken'
+            message += ' username unavailable'
 
         if password1 != password2:
             message += ' passwords do not match'

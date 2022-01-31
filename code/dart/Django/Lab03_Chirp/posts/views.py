@@ -1,31 +1,49 @@
 from django.shortcuts import redirect, render, get_object_or_404
-from django.views.decorators.http import require_http_methods
-from .models import User_Info, Post
+from django.contrib.auth.decorators import login_required
+from .models import Chirp, Chirp_comments
 
 def index(request):
-    if request.user.is_authenticated:
-        return redirect('posts:home')
-    else:
-        return render(request, 'posts/index.html')
-
-def home(request):
-    posts = Post.objects.all()
+    chirps = Chirp.objects.order_by('-created_at')
     context = {
-        "posts": posts
+        'chirps': chirps,
     }
-    return render(request, 'posts/home.html', context)
+    return render(request, 'posts/index.html', context)
 
-@require_http_methods(['POST'])
-def make_post(request):
+@login_required
+def chirp(request):
     if request.method == 'POST':
-        content = request.POST.get("content")
-        user = request.user.username
-        user = User_Info.objects.filter(user_name=user).get()
-        Post.objects.create(content=content, user=user)
-    return redirect('posts:home')
+        chirp = request.POST.get('chirp')
+        Chirp.objects.create(
+            chirp=chirp,
+            user=request.user
+        )
 
-@require_http_methods(['POST'])
+        return redirect('posts:index')
+
+    return render(request, 'posts/index.html')
+
+@login_required
+def chirp_comments(request, id):
+    if request.method == 'POST':
+        comment = request.POST.get('reply')
+        Chirp_comments.objects.create(
+            comment=comment,
+            user=request.user
+        )
+    chirp = get_object_or_404(Chirp, id=id)
+    context = {
+        'chirp': chirp,
+    }
+    return render(request, 'posts/chirp.html', context)
+
+@login_required
+def likes(request, id):
+    like = get_object_or_404(Chirp, id=id)
+    like.likes.add(request.user)
+    return redirect('posts:index')
+
+@login_required
 def delete(request, id):
-    post = get_object_or_404(Post, id=id, user=request.user)
-    post.delete()
-    return redirect('posts:home')
+    chirp = get_object_or_404(Chirp, id=id)
+    chirp.delete()
+    return redirect('posts:index')

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Color Divs</title>
+
+	<style>
+		#container {
+			display: flex;
+			justify-content: space-evenly;
+			flex-wrap: wrap;
+		}
+
+		.color {
+			height: 150px;
+			width: 150px;
+			border: 2px solid black;
+			margin: 2rem;
+			cursor: pointer;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Color Divs</h1>
+	<form action="">
+		<input type="text" id="input" value="blue">
+		<button type="submit">Add Color</button>
+	</form>
+	<div id="container">
+		<div class="color" style="background-color: darksalmon;"></div>
+		<div class="color" style="background-color: darkseagreen;"></div>
+		<div class="color" style="background-color: paleturquoise;"></div>
+		<div class="color" style="background-color: red;"></div>
+	</div>
+	<script>
+		const form = document.querySelector('form') // alternatively document.getElementByTagName('form')
+		const input = document.querySelector('form > input') // document.querySelector('#input') or document.getElementById('input')
+		const container = document.querySelector('#container') // alternately document.getElementById('container')
+		
+		form.addEventListener('submit', function(event) { // callback function
+			event.preventDefault() // keeps the form from submitting
+			
+			// alert(input.value)
+			
+			// document.body.style.backgroundColor = input.value
+			
+			const colorDiv = document.createElement('div') // creates a new div
+			container.appendChild(colorDiv) // inserts colorDiv into the container div
+			colorDiv.classList.add('color') // gives colorDiv class="color"
+			colorDiv.style.backgroundColor = input.value
+			console.log(colorDiv)
+
+			input.value = ''
+
+		})
+	</script>
+</body>
+</html>

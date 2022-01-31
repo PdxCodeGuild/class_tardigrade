@@ -3,8 +3,13 @@ from django.db import models
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(default='AP')
     def __str__(self):
         return self.name
+    
+    @property
+    def nameorder(self):
+        return self.author.all().order_by('title')
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
@@ -15,7 +20,9 @@ class Book(models.Model):
         return self.title
 
 class Checkout(models.Model):
-    book = models.ForeignKey('Book', on_delete=models.PROTECT)
-    user = models.CharField(max_length=32)
-    checkout = models.BooleanField()
+    book = models.ForeignKey('Book', on_delete=models.PROTECT, related_name='checkout')
+    user = models.CharField(max_length=75)
+    checkout = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.book.title

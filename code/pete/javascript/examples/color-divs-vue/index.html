@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Color Divs</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+	<script src="https://unpkg.com/vue@next"></script>
+	<style>
+		#container {
+			display: flex;
+			justify-content: space-evenly;
+			flex-wrap: wrap;
+		}
+
+		.color {
+			height: 150px;
+			width: 150px;
+			border: 2px solid black;
+			margin: 2rem;
+			cursor: pointer;
+		}
+
+		main {
+			padding: 3rem;
+			min-height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<main :style="`background-color: ${bodyBgColor}`">
+			<h1>Vue Color Divs</h1>
+			<form @submit.prevent="addNewColor" action="">
+			<!-- <form @submit="addNewColor" action="">
+			@submit.prevent will automatically run event.preventDefault() -->
+				<input @change="logEvent" type="text" v-model="newColor">
+				<button type="submit">Add Color</button>
+			</form>
+			<!-- <button @click="sayHello">click me to hear me say hello</button> -->
+			<!-- <button v-on:click="sayHello">click me to hear me say hello</button>
+			@click is a shorthand for v-on:click -->
+			<p>new color: {{ newColor }}</p>
+			<div id="container">
+				<div
+					v-for="color in colors"
+					class="color"
+					:style="`background-color: ${color};`"
+					@click="setBodyBgColor(color)"
+				>
+				</div>
+				<!-- <div v-for="color in colors" class="color" v-bind:style="`background-color: ${color};`"></div>
+				:style is a shorthand for v-bind:style -->
+			</div>
+		</main>
+	</div>
+	<script>
+		const App = {
+			data() {
+				return {
+					message: 'welcome to Vue',
+					colors: ['chartreuse', 'cadetblue', 'saddlebrown'],
+					newColor: '',
+					bodyBgColor: 'white',
+
+				}
+			},
+			methods: {
+				sayHello() {
+					alert('hello')
+				},
+
+				addNewColor() {
+					this.sayHello()
+
+					this.colors.push(this.newColor)
+
+					this.newColor = ''
+					// alert(this.newColor) // you have to say this.propetyName when referring to properties of the data object
+					// alert(newColor) // ReferenceError: newColor is not defined
+				},
+
+				setBodyBgColor(color) {
+					// alert(color)
+					// document.body.style.backgroundColor = color
+					this.bodyBgColor = color
+				},
+
+				logEvent(event) {
+					console.log(event)
+				}
+			}
+		}
+
+		Vue.createApp(App).mount('#app')
+	</script>
+</body>
+</html>
