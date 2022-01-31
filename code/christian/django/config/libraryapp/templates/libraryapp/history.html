@@ -1,0 +1,21 @@
+<h1> history page </h1>
+
+ {% for record in checkouts%}
+    <p> {{ record.book.title}}
+        {% if record.checkout == True%}
+        checkedout
+        {%else%}
+        checkedin
+
+        {% endif %}
+
+        {% comment %} {{record.checkout}} {% endcomment %}
+    </p>
+
+
+
+    
+    
+    {% endfor %}
+
+ 

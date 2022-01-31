@@ -1,0 +1,124 @@
+
+*{
+    font: 1em sans-serif;
+}
+
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #92F7F2;
+    width: 100%
+}
+
+header{
+    background-color: #52798D;
+    max-height: 10vh;
+    display: flex;
+    width: 100%;
+
+}
+
+nav{
+    background-color: #489DF7;
+    border: 1px solid black;
+
+}
+
+footer{
+    text-align: center;
+    height: 5vh;
+    background-color: #489DF7;
+    border: 1px solid black;
+    }
+
+h1{
+    align-self: center;
+    text-align: center;
+    margin-left: 50px;
+}
+
+#navAndMain{
+    display: flex;
+}
+
+
+#mainEntry{
+
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+  justify-content:center;
+  align-items: flex-start;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  height:80vh;
+  width: 100%;
+
+}
+
+.entry{
+
+    background-color:#92B2F7;
+    max-width:  28rem;
+    height: auto;
+    margin:2%;
+    min-width: 30rem;
+}
+
+.entry > p {
+    
+    margin: 0;
+    padding: 1rem;
+}
+
+.entry > img{
+    float: right;
+    max-width: 40%;
+    padding: 5px;
+}
+
+#topNav{
+    min-height: 5vh;
+}
+
+#topNav > a{    
+    
+    margin: 10px;
+    margin-top: 20px;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+#sideNav{
+
+    float: left;
+    max-width: 10rem;
+    min-width:10rem;
+    border-top: none;
+    border-bottom: none;
+}
+
+#sideNav > a{
+    display: block;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#sideNav > h3{
+    text-align: center;
+}
+
+header > img{
+    max-height: 10vh;
+
+}
+
+a:link{
+    color:darkblue;
+       
+}
+
+a:visited{
+    color: darkred;
+}
