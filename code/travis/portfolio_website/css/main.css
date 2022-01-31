@@ -1,0 +1,336 @@
+body {
+    font-size: .9em;
+}
+
+
+#container {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+i {
+    color: white;
+}
+
+/* Style the navigation menu */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: relative;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+    display: none;
+}
+
+/* Style navigation menu links */
+.topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+    background: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+/* Add a grey background color on mouse-over */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Style the active link (or home/logo) */
+.active {
+    background-color: #111b27;    
+    color: white;
+}
+
+.sidebar {
+    display: none;
+}
+
+
+
+.nav600pxPlus {
+    display: none;
+}
+
+main {
+
+    display: flex;
+    flex-direction: column;
+
+    height: fit-content;
+    flex-wrap: nowrap;
+    background-image: url("../images/mainBackground.jpg");
+    background-size: contain;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+a {
+
+    color: white;
+
+}
+
+
+#topImageSection {
+    display: flex;
+    justify-content: center;
+    min-height: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 90%;
+
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#mainImage {
+    width: 100%;
+    height: 100%;
+}
+
+.spacing {
+    min-height: 7vh;
+}
+
+
+.sectionBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 20vh;
+    background-color: #312b35;
+    opacity: .9;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 90%;
+    border: 2px solid white;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 90%;
+
+}
+
+footer {
+    display: flex;
+    align-content: center;
+    background-color: #111b27;
+    height: 70px;
+    font-size: .8em;
+    color: white;
+}
+
+#linkIcons {
+    width: auto;
+    height: auto;
+    flex-wrap: nowrap;
+    justify-content: center;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+p{
+
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+}
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    .nav600pxPlus {
+        display: block;
+        display: flexbox;
+        flex-wrap: nowrap;
+        background-color: #111b27;
+        padding: 20px 0 20px 20px;
+        height: 15vh;
+    }
+
+    .topnav {
+        display: none;
+    }
+
+    .sidebar {
+        display: block;
+    }
+
+    #mainAndSideNav {
+        min-height: 90vh;
+        display: flex;
+        height: fit-content;
+        flex-wrap: nowrap;
+        background-image: url("../images/mainBackground.jpg");
+        background-size: contain;
+
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    main {
+        width: 100%;
+        column-gap: 0px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+
+    /* Style the sidebar - fixed full height */
+    .sidebar {
+        float: left;
+        width: 19vw;
+        min-width: 110px;
+        max-width: 165px;
+        left: 0;
+        background-color: #262129;
+        overflow-x: hidden;
+        padding-top: 16px;
+        opacity: 0.8;
+    }
+
+
+    #portrait {
+
+        max-width: 90%;
+        height: auto;
+        padding-left: 5px;
+    }
+
+    /* Style sidebar links */
+    .sidebar a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 1em;
+        color: white;
+        display: block;
+        opacity: 1;
+    }
+
+    /* Style links on mouse-over */
+    .sidebar a:hover {
+        color: grey;
+    }
+
+
+    .spacing {
+        min-height: 20vh;
+    }
+
+    #topImageSection {
+        display: block;
+        max-height: 585px;
+        margin: 0;
+        height: auto;
+    }
+
+    #mainImage {
+        max-width: 100%;
+        height: 100%;
+        min-width: 100%
+    }
+
+    footer {
+        
+        justify-content: center;
+        background-color: #111b27;
+        height: 10vh;
+    }
+
+    footer>#linkIcons {
+        width: auto;
+        height: auto;
+        margin: 10px;
+        margin-right: 20px;
+    }
+
+    #linkIcons {
+        width: auto;
+        height: auto;
+        justify-content: center;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    p{
+
+        padding-left: 30px;
+        padding-right: 30px;
+
+    }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+
+    .sidebar a {
+
+        font-size: 1.2em;
+
+    }
+
+
+
+    h1 {
+        text-align: center;
+    }
+}
+
+
+
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+
+    h1 {
+        text-align: center;
+    }
+}
+
+
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+
+
+    h1 {
+        text-align: center;
+    }
+
+
+
+
+}

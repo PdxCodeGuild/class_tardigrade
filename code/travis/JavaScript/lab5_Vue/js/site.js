@@ -14,7 +14,7 @@ Vue.createApp({
     addToList() {
 
         alert("test")
-
+        this.items.push()
         }
 
     }
