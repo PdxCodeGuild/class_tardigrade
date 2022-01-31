@@ -1,49 +1,55 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import logout
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-
-
-
-def login(request):
-    return HttpResponse('hello world!')
-
-
+from django.contrib.auth.models import User
+from django.contrib.auth import logout
+from .forms import UserLoginForm
 
 
 
 def mylogin(request):
 
-    # retrieve the variables from the form submission
-    username = request.POST['username']
-    password = request.POST['password']
+    if request.method == "POST":
 
-    user = authenticate(request, username=username, password=password)
+        username = request.POST['username']
+        password = request.POST['password']
 
-    if user is not None:
-        login(request, user)
-        redirect("")
-    else:
-        # return an 'invalid login' error message
-        redirect("")
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+
+            login(request, user)
+            return redirect("/")
+
+        else:
+
+            return redirect("/")
+
+    login_form = UserLoginForm()
+
+    return render(request, 'user/login.html', {'login_form': login_form})
+
+
+def logout_view(request):
+
+    logout(request)
+
+    return redirect("/")
+
+
+def create_user(request):
+
+
+    if request.method == "POST":
+
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = User.objects.create_user(username, None, password)
+        user.save()
+
+        return redirect("/")
+
+    create_form = UserLoginForm()
     
-    return HttpResponse("login page")
-
-
-
-def logout(request):
-
-    # redirect to a success page.
-   
-    return HttpResponse("logout")
-
-
-
-
-
-
-#from django.contrib.auth.models import User
-#user = User.objects.get(username='jane')
-#user.set_password('newpassword')
-#user.save()
-
+    return render(request, 'user/register.html', {'create_form': create_form})

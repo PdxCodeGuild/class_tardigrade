@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Vue To Do</title>
+</head>
+<body>
+    <main id="toDoList">
+        <h1>Vue Do List</h1>
+        <form @submit.prevent="addNewTask">
+            <input type="text" v-model="addTask">
+            <button type="submit">Add Task</button>
+        </form>
+        <p>New Task: {{ addTask }}</p>
+        <hr/>
+        <ul id="taskList">
+            <h2>Tasks</h2>
+            <li v-for="task in tasks">{{ task }}</li>
+
+        </ul>
+    </main>
+    <script>
+        const toDoList = {
+            data() {
+                return {
+                    addTask: '',
+                    tasks: [],
+                }
+            },
+            methods: {
+                sayHello() {
+                    alert('hello')
+                },
+
+                addNewTask() {
+                    // this.sayHello()
+
+                    this.tasks.push(this.addTask)
+
+                    // alert(this.addTask)
+                    this.addTask = ''
+
+                }
+            }
+        }
+
+        Vue.createApp(toDoList).mount('#toDoList')
+    </script>
+</body>
+</html>
