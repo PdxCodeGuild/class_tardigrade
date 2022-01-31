@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 from django.db import models
 
-from numpy import integer
+
 
 class book(models.Model):
     title = models.CharField(max_length=200)
@@ -17,7 +17,20 @@ class book(models.Model):
 
 class author(models.Model):
     name = models.CharField(max_length=200)
+
+class checkout(models.Model):
+    book = models.ForeignKey('book',       on_delete=models.CASCADE)
+    user = models.CharField(max_length=200)
+    checkout = models.BooleanField(auto_created= False)
+    timestamp = models.DateTimeField(null=True, blank=True)
+
+
+# book: the book that the user checked out or checked in
+# user: a text field containing the name of the user that checked out or checked in the book
+# checkout: a boolean indicating whether the book was checked out or checked in
+# timestamp: a datetime that records when the book was checked out or in
     
+
 
 
     
