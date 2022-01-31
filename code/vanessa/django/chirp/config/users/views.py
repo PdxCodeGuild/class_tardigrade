@@ -9,16 +9,20 @@ def username_exists(username):
 def login_view(request):
     message = ''
     if request.method == 'POST':
+        print("hello")
         print(request.POST)
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
+            print("if statement ran")
             login(request, user)
             return redirect('/')
         else:
+            print("else statement ran")
             message = 'please input proper credentials'
     context = {'message': message}
+    print("no post")
     return render(request, 'users/login.html', context)
 
 def logout_view(request):
