@@ -1,0 +1,14 @@
+Information on MatPlotLib and its various optoins
+
+
+# plt.plot(x, y) #basic function
+# plt.plot([-2, 2, 3, 4], [1, 4, 9, 21]) #.plot ([x-coordinates], [y-coordinates])
+# plt.axis([0, 2, -1, 10]) # .axis([x starting point, x ending point, y starting point, y ending point])
+# plt.xlabel(), plt.ylabel()   #Labeling X and Y axis
+# plt.xlabel('To the power of 2') #Labeling X and Y axis
+# plt.ylabel('Answer') #Labeling X and Y axis
+plt.plot(x, y, color='red', marker='x', linestyle='dashed', linewidth=1, markersize=10) # (x-coordinates, y-coordinates, line-color, how each plot is marked)
+plt.legend() #  Shows legend in graph
+plt.title('Test graph') #  Adds a title to the top of the graph
+
+marker_options = ('.', ',', 'o', 'v', '^', 'x', '<', '>', '1', '2', '3', '4', '8', 's', 'p', 'P', 'd', 'D', 'X')

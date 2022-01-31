@@ -1,0 +1,13 @@
+<title>{{ person.name }}</title>
+<h1>{{ person.name }}</h1>
+
+<h3>Current State: {{ person.state.abbreviation }}</h3>
+
+<h3>Has lived in these states:</h3>
+
+<ul>
+{% for state in person.lived_in_states.all %}
+	<li><a href="{% url 'census:state' state.slug %}">{{ state.abbreviation }}</a></li>
+	<!-- <li><a href="/{{ state.slug }}/">{{ state.abbreviation }}</a></li> -->
+{% endfor %}
+</ul>
