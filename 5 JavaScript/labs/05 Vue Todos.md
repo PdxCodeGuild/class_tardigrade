@@ -8,7 +8,7 @@ Your Vue app will need to do a few things:
  * Allow the user to add and remove todos
  * Allow a user to toggle if a task is complete or not
  
- Reference the Vue.js [Introduction Guide](https://vuejs.org/v2/guide/).
+ Reference the Vue.js [Introduction Guide](https://v3.vuejs.org/guide/introduction.html).
 
 ## How to get started
 
@@ -49,7 +49,7 @@ Example: `index.html`
     </div>
 
     <!-- Include Vue from a CDN of your choice, I chose unpkg -->
-    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vue@next"></script>
     <!-- Include your code here... -->
     <script src="/js/site.js"></script>
 </body>
@@ -58,12 +58,15 @@ Example: `index.html`
 
 ### How to start a simple Vue app:
 ```js
-new Vue({
-    el: '#app',
+const App = {
     data: {
-        message: 'Hello world!'
+        return {
+            message: 'Hello world!'
+        }
     }
-})
+}
+
+Vue.createApp(App).mount('#app)
 ```
 
 **Now if you check your browser you should see the message `Hello world!`**
