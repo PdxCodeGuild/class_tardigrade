@@ -50,3 +50,4 @@ averageBtn.addEventListener('click', function (event) {
 
 
 // console.log(output)
+
