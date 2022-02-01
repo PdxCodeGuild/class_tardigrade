@@ -1,7 +1,7 @@
 
-import pyaztro
+# import pyaztro
 import time
-import arrow
+# import arrow
 time.sleep
 
 
