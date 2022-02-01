@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Todo List</title>
+    <!-- Add your styles here! -->
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>Todo List</h1>
+
+    <div id="todo-list-app">
+        <li v-for="item in items">
+          <label :for="item.id" >{{ item.todo }} {{item.id}} </label>
+          <input type="radio" :id = "item.id" :value = "item.id" name="radio" v-model = "selectedRadio">
+        </li>
+
+ 
+      <input id="add-textbox" type="text" v-model = "newTodo"><br>
+      <button id="add-button" type="submit" @click="addToList">Add</button>
+      <button id = "remove-button" type="submit"  @click="removeFromList">Remove</button>
+      <button id ="complete-button" type="submit">Complete</button>
+      </ul>
+      {{selectedRadio}}
+    </div> 
+
+
+    <!-- Include Vue from a CDN of your choice, I chose unpkg -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+
+    <!-- Include your code here... -->
+    <script src="js/site.js"></script>
+</body>
+</html>
