@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<!-- bulma css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- vue and axios -->
+	<script src="https://unpkg.com/vue@next"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<script src="script.js" defer></script>
+	<!-- a script with the defer attribute will wait until the dom is loaded to run -->
+</head>
+<body>
+	<div id="app">
+		<!-- @event is a shorthand for setting an event listener,
+		equivalent to v-on:event -->
+		<article class="m-6">
+			<h3>Random Joke of the Day</h3>
+			<p>{{ randomJoke }}</p>
+		</article>
+		<form @submit.prevent="getJokes" class="m-6 p-3">
+			<div class="field">
+				<label class="label">Search Term:</label>
+				<div class="control">
+					<input class="input" type="text" v-model="term">
+				</div>
+			</div>
+			<div class="field is-grouped">
+				<div class="control">
+					<button class="button is-link">Submit</button>
+				</div>
+			</div>
+		</form>
+		<article>
+
+			<section
+				v-for="joke in jokes"
+			>
+				<div class="card-content">
+					<p class="title is-size-5">
+						“{{ joke.joke }}”
+					</p>
+				</div>
+				<footer class="card-footer">
+				</footer>
+			</section>
+
+		</article>
+	</div>
+</body>
+</html>
