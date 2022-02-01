@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fav Quotes (d'Art)</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- vue and axios -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- my JavaScript file -->
+    <script src="main.js" defer></script>
+
+    <style>
+        img {
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar is-black is-spaced">
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                <img src="https://www.kindpng.com/picc/m/17-179131_quote-rdquo-quote-icon-png-free-transparent-png.png"
+                    width="50" height="60">
+            </a>
+            <div class="navbar-burger" data-target="navbarExampleTransparentExample">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    <strong>Fav Quotes</strong>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="app" class="container my-4">
+
+        <article>
+            <strong>Random Quote of the Day:</strong> <span>{{ randomQuote }} {{ message }}</span>
+        </article>
+
+        <br>
+
+        <strong class="mt-4">Search by Keyword</strong>
+        <form @submit.prevent="searchKeyword">
+            <input type="text" placeholder="Keyword" v-model="Keyword">
+            <button>Search</button>
+        </form>
+
+        <br>
+
+        <strong>Search by Author</strong>
+        <form @submit.prevent="searchAuthor">
+            <input type="text" placeholder="Author" v-model="Author">
+            <button>Search</button>
+        </form>
+
+        <br>
+
+        <strong>Search by Tag</strong>
+        <form @submit.prevent="searchTag">
+            <input type="text" placeholder="Tag" v-model="Tag">
+            <button>Search</button>
+        </form>
+
+        <br>
+
+        <article>
+            <section v-for="quote in foundQuotes" class="my-4">
+                {{ found.body }} - {{ found.author }}
+            </section>
+        </article>
+
+    </div>
+</body>
+
+</html>
