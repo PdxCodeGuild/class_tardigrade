@@ -18,11 +18,20 @@
 
         <button type="submit" id="enter" @click="buttonClick">Enter</button>
         </form>
-        <p>List: {{ newItem }}</p>
-        
+        <p>List: {{ newItem }} </p>
+        <p>List: {{ completedItem }} </p>
+
         <ul>
-         
-            <li v-for="item in itemsToDo">{{ item }}</li>
+
+            <li v-for="item in itemsToDo">{{ item }}
+                <span> 
+                    <button type="submit" id="enter" @click="buttonComplete">complete</button>
+                </span>
+                <span> 
+                    <button type="submit" id="enter" @click="buttonDelete">Delete</button>
+                </span>
+            </li>
+
 
         </ul>
     </div>
