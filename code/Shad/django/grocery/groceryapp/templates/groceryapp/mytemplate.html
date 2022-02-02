@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <ul>
+        {% for item in grocery_list %}
+        <li>{{ item.description}}
+            {{item.completed}}</li>
+        {% endfor %}
+    </ul>
+
+    <form action='/' method='POST'>
+        {% csrf_token %}
+        <input type='text' name='description'>
+        <button type="submit">click here</button>
+
+
+    </form>
+</body>
+
+</html>
