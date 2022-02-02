@@ -29,7 +29,7 @@ M-F 9:30 am – 4:30 pm
 Capstone proposal due: TBD
 Presentation Day: February 25th, 2022  
 
-## JavaScript Labs Assigned:
+<!-- ## JavaScript Labs Assigned:
 
  * [Labs 01-03 Pick3](5%20JavaScript/labs/01-03%20Pick%203.md)
  * [Lab 04 Mob Todo List](5%20JavaScript/labs/04%20Todo%20List.md)
@@ -37,7 +37,7 @@ Presentation Day: February 25th, 2022
  * [Lab 06 JavaScript Mini-Capstone](5%20JavaScript/labs/07%20Mini-Capstone.md)
 
 #### Optional JavaScript Labs
-[Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md)
+[Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md) -->
  
 
 ## Django Labs Assigned:
