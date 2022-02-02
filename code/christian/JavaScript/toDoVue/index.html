@@ -11,12 +11,22 @@
 <body>
     <div id="app">
         {{ message }}
+        <h1> Todo List Vue</h1>
+        <form @submit.prevent='addTask' action="">
+            <input @change="logEvent" type="text" v-model="newTask">
+            <button type="submit">ToDo</button>
+        </form>
+
+        <ul>
+            <li v-for="task in taskList">
+                <span>{{ task }}</span>
+                <button v-on:click="completeTask">Complete</button>
+            </li>
+          </ul>
+         
+        
     </div>
-    <h1> Todo List Vue</h1>
-    <form @submit.prevent='addTask' action="">
-        <input @change="logEvent" type="text" v-model="newTask">
-        <button type="submit">ToDo</button>
-    </form>
+
 
 
 
