@@ -1,0 +1,16 @@
+<h1>Emoticon Generator</h1>
+
+<p>Here is your emoticon:</p>
+
+<h2>{{ emoticon }}</h2>
+
+<a href="/save/{{ emoticon }}">
+	<button>Save</button>
+</a>
+
+<h2>Saved Emoticons</h2>
+<ul>
+	{% for saved_emoticon in saved_emoticons %}
+	<li>{{ saved_emoticon }}</li>
+	{% endfor %}
+</ul>

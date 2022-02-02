@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">   
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+
+<body>
+
+
+    
+    <h1>Check Out Page</h1>
+    <body>
+
+        <table >
+        <tr>
+            <th>Title</th>
+            <th>User</th>
+            <th>Checkout</th>
+            <th>Time stamp</th>
+            <th>Checked Out</th>
+        </tr>
+        <tr>
+        {% for checkout in checkout_list %}
+        
+            <td>{{ checkout.title }}</td>
+
+            {% if checkout.is_checked_out == False%}
+
+            <td>
+                <form action="{% url 'library:checkout' checkout.id %}" method="post" aenctype="multipart/form-data">
+                    
+                {% csrf_token %}
+      
+                 {{checkout_form.as_p}}
+            </td>
+
+            <td>
+            <button type="submit" value = {{checkout.id}} >Checkout</button>            
+            </td>
+
+            </form>
+            
+        {% else %}
+
+             <td> {{ checkout.user }}</td>
+
+            
+            <form action="{% url 'library:checkin' checkout.id %}" method="post">  
+
+                {% csrf_token %}
+            
+        <td><button type="submit" value = {{checkout.id}} >Return</button></td>
+
+        {%endif%}
+    </form>
+
+            <td>{{ checkout.time_stamp }}</td>
+            <td>{{ checkout.is_checked_out }}</td>
+            
+        </tr>
+  
+            {% endfor %}
+    </table>
+
+
+
+
+    <p><a href="/">Return to main page</a></p>
+
+</body>
+
+</html>

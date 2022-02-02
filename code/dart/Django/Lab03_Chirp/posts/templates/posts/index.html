@@ -1,0 +1,57 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<main style="position:absolute; top:200px; bottom:100px; left:0px; right:0px; overflow:auto;">
+    <div class="pb-2 pt-4 w-50 mx-auto">
+        <form class="row" action="{% url 'posts:chirp' %}" method="POST">
+            {% csrf_token %}
+            <div class="ps-5 mb-3">
+                <textarea name="chirp" class="textarea is-large has-fixed-size form-control border-0 is-primary"
+                    id="chrip" rows="3"></textarea>
+            </div>
+    </div>
+    <div class="is-flex is-justify-content-center pt-4">
+        <button class="button is-success" type="submit">
+            <span>Send chirp</span>
+            <span class="icon is-small">
+                <i class="far fa-paper-plane"></i>
+            </span>
+        </button>
+        {% endif %}
+    </div>
+    </form>
+
+    <div class="container w-50">
+        {% for chirp in chirps %}
+        <div class="card mt-4">
+            <header class="card-header">
+                <p class="card-header-title is-centered">
+                    {{chirp.user}} - {{ chirp.created_at|timesince}} ago
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content has-text-centered">
+                    {{ chirp.chirp }}
+                    <br>
+                </div>
+            </div>
+            <footer class="card-footer is-flex is-justify-content-center">
+                {% if user.is_authenticated %}
+                {% if user.id == chirp.user.id %}
+                <a href="{% url 'posts:delete' chirp.id %}" style="text-decoration:none">
+                    <button class="button is-danger is-outlined">
+                        <span>Delete</span>
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </button>
+                </a>
+                {% endif %}
+                {% endif %}
+            </footer>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

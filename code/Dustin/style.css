@@ -1,9 +1,12 @@
-body {background-color: silver;}
+body {background-color: silver;
+    background-image: url(http://farm9.staticflickr.com/8355/8436548745_9402230f1a_o.jpg);
+    background-position: center}
 h2 {
     color: cyan;
     font-size: 65px;
     margin: 0px;
     text-align: center;
+    font-family: Broadway;
 }
 .center {
   display: block;
@@ -14,15 +17,22 @@ h2 {
 img {
   border-radius: 20%;
 }
-
+.wp-block-quote.is-style-default p {
+    font-family: Arial;
+    font-size: 22px;
+}
 
 p {
-    color: midnightblue;
+    color: white;
+    padding: 15px 100px 15px;
+
 }
 ul {
     columns: 2;
     max-width: 500px;
     list-style-image: url(http://farm9.staticflickr.com/8368/8440559840_ceee49dc91_o.png);
+    font-size: 120%;
+    color: whitesmoke;
 }
 ul:before{
     content:attr(list-label);
@@ -30,15 +40,45 @@ ul:before{
     font-weight:bold;
     text-align: center;
     display: block;
-    color: darkcyan;
+    color: whitesmoke;
 
 }
 li {
-	margin: 0;
-	padding: 16px  16px 14px;
-	list-style: none;
-	background-image: url(http://farm9.staticflickr.com/8368/8440559840_ceee49dc91_o.png);
-	background-repeat: no-repeat;
-	background-position: left center;
-	background-size: 10px;
+
+    margin: 0;
+    padding: 16px 16px 14px;
+    list-style: none;
+    background-image: url(http://farm9.staticflickr.com/8368/8440559840_ceee49dc91_o.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 10px;
+}
+"CSS pelow this point is still trial, trying to figure out from webhelp"
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+.navbar a:hover {
+  background-color: #800000;
+  color: Maroon;
+}
+
+.navbar a.active {
+  background-color: #00ffff;
+  color: Cyan;
 }

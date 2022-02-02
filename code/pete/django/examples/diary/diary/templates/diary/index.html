@@ -1,0 +1,18 @@
+<h1>Diary</h1>
+
+<h2>New Entry:</h2>
+<form action="/" method="POST">
+	{% csrf_token %}
+	<p>Title</p>
+	<input type="text" name="title">
+	<p>Body</p>
+	<textarea name="body" cols="120" rows="15"></textarea>
+	<button type="submit">click me</button>
+</form>
+
+<ul>
+	{% for entry in entries %}
+	<li><a href="{% url 'diary:entry' entry.id %}">{{ entry }}</a></li>
+	<!-- <li><a href="/entry/{{entry.id}}">{{ entry }}</a></li> -->
+	{% endfor %}
+</ul>
