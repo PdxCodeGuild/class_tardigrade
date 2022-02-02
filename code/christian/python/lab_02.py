@@ -1,22 +1,19 @@
-# import random
+import random
 
-# numbers = [5, 0, 8, 3, 4, 1, 6]
+numbers = [5, 0, 8, 3, 4, 1, 6]
 
-# def sum(numbers):
-
-#     total_sum = 0
+def sum(numbers):
+    total_sum = 0
     
-#     for x in numbers:
-#      total_sum += x
+    for x in numbers:
+     total_sum += x
      
-#     return total_sum
-# result = sum(numbers)
-# # print(result)
+    return total_sum
+result = sum(numbers)
+# print(result)
+avg = result / len(numbers)
 
-
-# avg = result / len(numbers)
-
-# print(f"The average is {avg}")
+print(f"The average is {avg}")
 
     
 
