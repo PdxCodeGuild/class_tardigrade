@@ -12,15 +12,14 @@
 
 <body>
     <div id="app">
-        <div v-bind:class="{box: isComplete}"></div>
-        <button @click= "handleToggle"> Toggles </button>
+        
         {{ message }}
         <form @submit.prevent="newItem"></form>
         <input v-model="newItem" type="text" placeholder="what do you want to do?" />
 
         <button type="submit" id="enter" @click="buttonClick">Enter</button>
         </form>
-        <p>List: {{ newItem }} </p>
+        <p>entering: {{ newItem }} </p>
 
         <ul>
 

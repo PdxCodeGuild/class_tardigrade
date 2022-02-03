@@ -6,9 +6,8 @@ const App = {
             newItem: '',
             itemsComplete: [],
             completedItem: '',
-            isComplete: true
+           
         }
-
 
     },
     methods: {
@@ -27,7 +26,7 @@ const App = {
         buttonComplete (item) {
             this.buttonDelete(item)
             console.log(item)
-            completed: true
+
             this.itemsComplete.push(item)
             // console.log(cItem)
             // console.log(this.itemsComplete)
@@ -48,9 +47,6 @@ const App = {
 
         },
 
-        toggleComplete () {
-            this.isComplete =! this.isComplete
-        },
 
     }
 
@@ -58,3 +54,4 @@ const App = {
 
 
 Vue.createApp(App).mount('#app')
+// ttps://reactgo.com/vue-toggle-class/
