@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab06: FavQs in Vue</title>
+</head>
+<body>
+    
+
+    <div id="app" >
+
+
+        <ul v-for ="info in quoteList">
+            <li>
+                {{info.quote}}<br><br>
+                {{info.name}}
+            </li>
+        </ul>
+
+
+        <input type="text">
+        <button @click=getQuotes() >Get quotes</button>
+
+      </div>
+
+
+    <!-- Include Vue from a CDN of your choice, I chose unpkg -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Include your code here... -->
+    <script src="js/site.js"></script>
+
+</body>
+</html>
