@@ -5,21 +5,21 @@ from typing import List
 def cc_valid( ):
     num_list = []
     string = input('enter: ')
-    num_list=list( string)
+    num_list=list(string)
+    print(1, num_list)
     num_list.pop(-1)
     num_list.reverse()
-    t = num_list[::2] * 2
-    print(t)
+    t = int(num_list[::2]) * 2
+    print(2,t)
     for i in num_list:
-        num_list[i][::2] * 2
-        print(i)
+        num_list[::2][i] * 2
+        
         print(num_list[i])
-    print(type(num_list))
     
     
     
     
-    print(num_list)
+    print(44,num_list)
     return num_list
     ist=[int(i) for i in input().split()]
     

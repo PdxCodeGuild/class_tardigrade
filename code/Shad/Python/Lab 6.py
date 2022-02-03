@@ -2,16 +2,16 @@ from math import exp, pi
 import random
 
 def pick6():
-    """creates a list of 6 random numbers and returns it"""
+#     """creates a list of 6 random numbers and returns it"""
     tickets = []
     ter =0
     
-#     while ter < 6:
-#         ter = ter + 1
-#         tick = randint(0,99)
-#         tickets.append(tick)
-#         if ter == 6:
-#             return tickets
+    while ter < 6:
+        ter = ter + 1
+        tick = random.randint(0,99)
+        tickets.append(tick)
+        if ter == 6:
+            return tickets
 
 
 ticket = []
@@ -19,9 +19,8 @@ def pick6_2():
     
 
     for _ in range(6):
-        ticket.append(ran
-        dint(1, 99))
-
+        ticket.append(randint(1, 99))
+        
     return ticket
             
 
@@ -34,8 +33,12 @@ pick6()
 
 def num_match(winning_ticket, ticket):
     """compare 1 random ticket to the winning ticket. return the number of matches"""
-
+    winning_ticket = pick6()
+    ticket_cost = 2
+    total_tickets = 100000
+    all_tickets= []
     match = 0 
+    
     for i, num in enumerate(winning_ticket):
         if num == ticket[i]:
             match += 1
