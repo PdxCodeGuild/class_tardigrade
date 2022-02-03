@@ -80,6 +80,6 @@ for ticket in all_tickets:
 
 print(f' it costed {expenses}')
 results = (earn - expenses) / expenses
-print(results)
+print('results', results)
 print(f'You earned {earn}')
    

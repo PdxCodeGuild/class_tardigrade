@@ -11,11 +11,9 @@ tens = user//10%10
 ones = user%10
 teeen = user%100
 # print(hundred)
-print(tens)
+
 # print(ones)
-print(1,teens)
-print(3,teen.get(teeen))
-print(4, teeen)
+
 
 
 # if user < 10:
@@ -31,7 +29,7 @@ print(4, teeen)
 if user >= 110 and user <= 119:
     print(f'{hun.get(hundred)} {teen.get(teeen)}' ) 
 elif user >= 100:
-    print(f'{hun.get(hundred)} {teen.get(teeen)} {two.get(tens)} {single.get(ones)}' )
+    print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones)}' )
 elif user > 10 and user > 19 and user <= 99:
     print(f'{two.get(tens)} {single.get(ones)}' )
 elif user < 10:

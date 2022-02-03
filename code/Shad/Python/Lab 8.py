@@ -11,10 +11,10 @@ def cc_valid( ):
     num_list.reverse()
     t = int(num_list[::2]) * 2
     print(2,t)
-    for i in num_list:
-        num_list[::2][i] * 2
+    # for i in num_list:
+    #     num_list[i][::2] * 2
         
-        print(num_list[i])
+    #     print(num_list[i])
     
     
     
