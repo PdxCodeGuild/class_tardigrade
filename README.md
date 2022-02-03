@@ -15,6 +15,8 @@ M-F 9:30 am – 4:30 pm
 - December 30th (Day Off)
 - December 31st (New Years Eve)
 - January 17th (MLK Day)
+- February 14th (Valentine's Day)
+- February 21st (President's Day)
 
 ### Staff
 
