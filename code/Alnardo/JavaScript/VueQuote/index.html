@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quotes</title>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="quotes.js" defer></script>
+    
 </head>
 <body>
+    <div id="app">
+        <article>
+            <h1>Quote of the Day</h1>
+            <h3>{{ randomQuote }}</h3>
+        </article>
+
+        <form id="keyword" @submit.prevent="getQuoteByKeyword">
+            <div>
+                <label>Search Keyword:</label>
+                <input type="text" v-model="keyword">
+                <button>Submit</button>
+            </div>
+        </form>
+        <form id="tag" @submit.prevent="getQuoteByTag">
+            <div>
+                <label>Search Tag:</label>
+                <input type="text" v-model="tag">
+                <button>Submit</button>
+            </div>
+        </form>        
+        <form id="author" @submit.prevent="getQuoteByAuthor">
+            <div>
+                <label>Search Author:</label>
+                <input type="text" v-model="author">
+                <button>Submit</button>
+            </div>
+        </form>
+        <article v-for = "quote in quotes">
+            <p>"{{ quote.body }}"" by {{ quote.author }}</p>
+        </article>
+        <div v-if="lastPage == false"><button @click="nextPage">Next</button></div>
+    </div>
     
 </body>
 </html>
