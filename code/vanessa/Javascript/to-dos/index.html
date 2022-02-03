@@ -12,6 +12,8 @@
 
 <body>
     <div id="app">
+        <div v-bind:class="{box: isComplete}"></div>
+        <button @click= "handleToggle"> Toggles </button>
         {{ message }}
         <form @submit.prevent="newItem"></form>
         <input v-model="newItem" type="text" placeholder="what do you want to do?" />
@@ -19,21 +21,36 @@
         <button type="submit" id="enter" @click="buttonClick">Enter</button>
         </form>
         <p>List: {{ newItem }} </p>
-        <p>List: {{ completedItem }} </p>
 
         <ul>
 
             <li v-for="item in itemsToDo">{{ item }}
-                <span> 
-                    <button type="submit" id="enter" @click="buttonComplete">complete</button>
+                <span>
+                    <button type="submit" id="enter" @click="buttonComplete(item)">complete</button>
                 </span>
-                <span> 
-                    <button type="submit" id="enter" @click="buttonDelete">Delete</button>
+                <span>
+                    <button type="submit" id="enter" @click="buttonDelete(item)">Delete</button>
                 </span>
             </li>
 
 
         </ul>
+
+        <p> List: {{ completedItem }}</p>
+        <ul>
+            <li v-for="item in itemsComplete"> {{item}}
+                <span>
+                    <button type="submit" id="enter" @click="buttonIncomplete(item)">incomplete</button>
+                </span>
+                <span>
+                    <button type="submit" id="enter" @click="buttonDelete(item)">Delete</button>
+                </span>
+
+
+
+            </li>
+        </ul>
+
     </div>
 
 
