@@ -28,7 +28,7 @@ M-F 9:30 am – 4:30 pm
 
 ## Capstone Dates:
 
-Capstone proposal due: TBD
+Capstone proposal due: February 8th, 2022 
 Presentation Day: February 25th, 2022  
 
 ## JavaScript Labs Assigned:
