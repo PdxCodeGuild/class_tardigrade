@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab06: FavQs in Vue</title>
 </head>
-<body>
+<body >
     
-
+<h1>Vue Quotes</h1>
     <div id="app" >
-
-
+        <h3>Quote of the day</h3>
+        {{qotdQuote}}<br>
+        {{qotdAuthor}}<br><br><br><br>
+        <h3>Search</h3>
         <ul v-for ="info in quoteList">
             <li>
                 {{info.quote}}<br><br>
@@ -21,10 +23,70 @@
         </ul>
 
 
-        <input type="text">
-        <button @click=getQuotes() >Get quotes</button>
+
+    <input v-model="searchText"  type="text"><br>
+
+    <label for="selectSearch">Search by: </label>
+
+<select v-model="selected" id="selectSearch">
+  <option disabled value="">Please select one</option>
+  <option>Keyword</option>
+  <option>Author</option>
+  <option>Tag</option>
+</select>
+
+{{selected}}
+
+
+
+<ul v-for ="search in searchList">
+    <li>
+        {{search.quote}}<br><br>
+        {{search.name}}
+    </li>
+</ul>
+
+        <button @click = searchQuotes()>Search</button>
+
+        <br>
+
+
+
+       <!-- {{quotesSearch}}
+        {{responseSearch}}-->
+
+
+        <br><br>
+        <button @click=getQuotes() >Get random quotes</button>
+
+
+        <div id="pagination" v-for="">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+          </div>
+
+
+
+
+
 
       </div>
+
+
+
+
+
+
+
+
+
+
 
 
     <!-- Include Vue from a CDN of your choice, I chose unpkg -->
