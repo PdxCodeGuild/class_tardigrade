@@ -27,7 +27,7 @@ const App = {
                 headers: {Accept: 'application/json'}
             })
             .then(response => {
-                // console.log(response.data.quote)
+                console.log(response.data)
                 this.randomQuote = response.data.quote.body
             })
         },
