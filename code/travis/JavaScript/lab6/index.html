@@ -11,6 +11,9 @@
     
 <h1>Vue Quotes</h1>
     <div id="app" >
+
+
+
         <h3>Quote of the day</h3>
         {{qotdQuote}}<br>
         {{qotdAuthor}}<br><br><br><br>
@@ -24,9 +27,9 @@
 
 
 
-    <input v-model="searchText"  type="text"><br>
+<input v-model="searchText"  type="text"><br>
 
-    <label for="selectSearch">Search by: </label>
+<label for="selectSearch">Search by: </label>
 
 <select v-model="selected" id="selectSearch">
   <option disabled value="">Please select one</option>
@@ -34,8 +37,7 @@
   <option>Author</option>
   <option>Tag</option>
 </select>
-
-{{selected}}
+<button @click = searchQuotes()>Search</button>
 
 
 
@@ -44,20 +46,21 @@
         {{search.quote}}<br><br>
         {{search.name}}
     </li>
+
+
+
 </ul>
 
-        <button @click = searchQuotes()>Search</button>
+    
 
         <br>
 
-
-
-       <!-- {{quotesSearch}}
-        {{responseSearch}}-->
+        last page {{lastPage}} <br>
+        page num {{quotesPage}}
 
 
         <br><br>
-        <button @click=getQuotes() >Get random quotes</button>
+        <button @click=numPages() >testpages</button>
 
 
         <div id="pagination" v-for="">
