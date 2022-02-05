@@ -12,12 +12,13 @@
 
 
 
+from sqlite3 import Row
 import sys
 import csv
 
-k=i = 'code/Shad/contact.csv'
+k = 'contact.csv'
 
-with open(i, 'r',encoding='utf-8') as file:
+with open('contact.csv', encoding='utf-8') as file:
     lines = file.read().split('\n')
     # print(lines)
 
@@ -110,23 +111,26 @@ def read_file():
         
 
         print(con[-1] )
-     
-        file.close()
+        print('contact.csv')
+        
     
     
     
 def Add_File():
     
     new = []
-    diction = {}
+    # diction = {}
+    # h = open('contact.csv', 'w')
+    # nu = csv.writer(h)
+    # nu.writerow(Row)
 
-   
-        # names=input('Please enter name: ')
-        # fruits=input('Please enter fruit: ')
-        # colors=input('Please enter color: ')
-        # dict
-        # view1.writerow(input(f"{names}\n{fruits}\n{colors} "))
-        # return names and fruits and colors
+    names=input('Please enter name: ')
+    fruits=input('Please enter fruit: ')
+    colors=input('Please enter color: ')
+    
+    new.append(input(f"{names}\n{fruits}\n{colors} "))
+    
+    # return names and fruits and colors
         
 def delete():
     con = []  
@@ -144,7 +148,7 @@ def delete():
 
             person=lines[i].split(',')
             contact[headers[h]] = person[h]
-    con.append(contact)
+    con.append(con)
     d = input('please enter name to delete: ')
     del contact[ d ]      
 def update():
