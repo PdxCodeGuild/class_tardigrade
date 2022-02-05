@@ -32,8 +32,11 @@ elif user >= 110 and user <= 119:
     print(f'{hun.get(hundred)} {teen.get(teeen)}' ) 
 elif user >= 100:
     print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones)}' )
+
 elif user > 10 and user > 19 and user <= 99:
     print(f'{two.get(tens)} {single.get(ones)}' )
+elif user > 10 and user < 20:
+    print(teen.get(teeen))
 elif user < 10:
     print(f'{single.get(ones)}')
 
