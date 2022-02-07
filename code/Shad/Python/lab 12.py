@@ -124,12 +124,25 @@ def Add_File():
     # nu = csv.writer(h)
     # nu.writerow(Row)
 
+
     names=input('Please enter name: ')
+    new.append(names)    
     fruits=input('Please enter fruit: ')
+    new.append(fruits)    
     colors=input('Please enter color: ')
+    new.append(colors)
+    for i in range(len(new) + 1):
+        print(i)
+        new[i]
     
-    new.append(input(f"{names}\n{fruits}\n{colors} "))
-    
+    # new.append(input(f"{names}\n{fruits}\n{colors} "))
+    with open("contact.csv", "a", newline='') as p:
+
+        wr = csv.writer(p, dialect='excel')
+        wr.writerow(new)
+
+        
+        
     # return names and fruits and colors
         
 def delete():

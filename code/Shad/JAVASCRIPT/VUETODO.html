@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="todovue.css"> -->
+</head>
+
+<body bgcolor="navy">
+    <div id="app" class="app">
+    
+        <div id="butt">
+            <input style="align-content: center;" id="input" type="text" v-model="input">
+         
+            
+            <button style="background-color: black; color: lightyellow; " id="butt" @click='add()'>ADD</button>
+
+            <button style="background-color: red; color: yellow;"  id="butt2" @click='complete()'>DONE</button>
+
+            <button style="background-color:orangered; color: purple;"  id="butt3" @click='cancel()'>RID</button>
+
+
+        </div>
+
+        <div id="lis" class="list">
+            <li>
+
+                <ul style="color: magenta;">{{lis}}</ul>
+            </li>
+
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="VUETODO.js"></script>
+
+</body>
+
+</html>

@@ -43,8 +43,8 @@ class ATM:
         return self.balance * .001
     
     def print_transactions(self):
-
-
+        # if __name__ == "__main__":
+            
         for i in self.transactions:
             print(i)
         return self.transactions 
@@ -75,6 +75,8 @@ while True:
         else:
             print('Insufficient funds')
     elif command == "transactions":
+        
+        
         print(ATM.print_transactions)
     elif command == 'interest':
         amount = atm.calc_interest()  # call the calc_interest() method
