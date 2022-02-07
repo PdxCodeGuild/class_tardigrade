@@ -77,7 +77,7 @@ while True:
     elif command == "transactions":
         
         
-        print(ATM.print_transactions)
+        print(atm.print_transactions())
     elif command == 'interest':
         amount = atm.calc_interest()  # call the calc_interest() method
         # atm.calc_interest(amount)
