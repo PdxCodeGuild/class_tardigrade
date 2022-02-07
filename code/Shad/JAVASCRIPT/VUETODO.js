@@ -7,8 +7,8 @@ const App = {
 
         return {
 
-            lis:'midori, aoi,shiro,kuro',
-            
+            lis: 'midori, aoi,shiro,kuro',
+
             write: '',
 
 
@@ -30,14 +30,14 @@ const App = {
             let form = document.querySelector('#form')
 
 
-            let p= lis.push(user)
-            console.log(p)
+            this.lis.push(this.write)
+            console.log()
         },
 
 
         cancel() {
 
-            lis.push('input')
+            this.lis.remove(this.write)
             console.log(lis)
         },
 
