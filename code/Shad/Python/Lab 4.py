@@ -41,7 +41,7 @@ elif user >= 100 and ones == 0 and tens == 0  and teeen == 0:
 
 
 
-elif user >= 100 and ones == 0 and tens > 1: 
+elif user >= 100 and ones == 0 and tens >= 1: 
     print(f'{hun.get(hundred)} {two.get(tens)}'  )
 
     
