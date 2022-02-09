@@ -10,55 +10,73 @@ hundred = user//100
 tens = user//10%10
 ones = user%10
 teeen = user%100
-# print(hundred)
 
-# print(ones)
+print(hundred)
+print(tens)
+print(teeen)
+print(ones)
 
 
 
-# if user < 10:
-#     print(f'{single.get(ones)}')
-# elif user > 10 and user > 19 and user <= 99:
-#     print(f'{two.get(tens)} {single.get(ones)}' )
-# elif user >= 100:
-#     print(f'{hun.get(hundred)} {teen.get(teeen)} {two.get(tens)} {single.get(ones)}' )
-# elif user >= 110:
-#     print(f'{hun.get(hundred)} {teen.get(teeen)}  {two.get(tens)} {single.get(ones)}')
-
-if user >= 100 and user <= 110:
-    print(f'{hun.get(hundred)}  {single.get(ones)}' )
-elif user == 10:
-    print(f'{two.get(tens)}')
-
-elif user > 110 and user <= 119:
-    print(f'{hun.get(hundred)} {teen.get(teeen)}' ) 
-
-elif user > 110 and user < 120:
-    print(f'{hun.get(hundred)} {teen.get(teeen)}' )
-
-elif user >= 119 and user == 121 :
-    print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones)}' )
-elif user >= 120:
-
-    print(f'{hun.get(hundred)} {two.get(tens)} ' )
 
     
 
+if user < 10:
+    print(f'{single.get(ones)}')
 
 elif user > 10 and user < 20:
-    print(f'{teen.get(teeen)} ' )
-elif user > 19 and user <= 99:
-    print(f'{two.get(tens)}' )
-elif user > 10 and user > 19 and user <= 99:
-    print(f'{two.get(tens)} {single.get(ones)}' )
-elif user > 10 or user < 20:
-    print(teen.get(teeen))
-elif user < 10:
-    print(f'{single.get(ones)}')
+     print(f'{teen.get(teeen)} ' )
+elif user > 19 and user <= 99 and ones ==0:
+     print(f'{two.get(tens)}' )     
+
+elif user > 19 and user <= 99 and ones > 1:
+     print(f'{two.get(tens)} {single.get(ones)}' )
+
+
+elif user >= 100 and ones == 0 and tens == 0  and teeen == 0: 
+    print(f'{hun.get(hundred)}  '  )
+
+
+
+
+elif user >= 100 and ones == 0 and tens > 1: 
+    print(f'{hun.get(hundred)} {two.get(tens)}'  )
+
+    
+
+elif user >= 100 and ones > 1  and  tens == 0: 
+    print(f'{hun.get(hundred)}  {single.get(ones)}'  )
+
+elif user >= 100 and ones > 1 and tens== 0: 
+    print(f'{hun.get(hundred)}  {single.get(ones)}'  )
+
+
+elif user >= 100 and ones > 1 and teeen <1  and tens<1 and ones<1: 
+    print(f'{hun.get(hundred)}  {single.get(ones)}'  )
+
+elif user > 100 and  teeen > 1 and ones==0 and tens==0 :
+     print(f'{hun.get(hundred)} {teen.get(teeen)}')
+
+
+
+elif user >= 100 and ones ==0 and tens > 1 and teeen < 1 : 
+    print(f'{hun.get(hundred)} {two.get(tens)}'  )
+
+elif user >= 100 and ones > 1 and tens > 1 : 
+    print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones)}'  )
+
+
+elif user >= 100 and ones > 1 and tens > 1 : 
+    print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones)}'  )
 
 
 else:
-    print(f'{hun.get(hundred)} + {teeen}' )
+   print(f'{hun.get(hundred)} {teen.get(teeen)}')
+
+
+
+
+
 
 
 

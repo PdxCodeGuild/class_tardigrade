@@ -17,7 +17,6 @@ import sys
 import csv
 
 k = 'contact.csv'
-
 with open('contact.csv', encoding='utf-8') as file:
     lines = file.read().split('\n')
     # print(lines)
@@ -29,32 +28,34 @@ print(f'lines{lines}')
 headers = lines[0].split(',')
 
 
-# con = [] 
+con = [] 
 
-# for i in range(1,len(lines)):
-#     #iterate over the people
-#     #make a dictionary for each person
-#     contact = {}
-#     for h in range(len(headers)):
-#         #itereate over person contact details
-#         #turn details into a list
-#         #match hearder with corresponding details
+for i in range(1,len(lines)):
+    #iterate over the people
+    #make a dictionary for each person
+    contact = {}
+    # for h in range(len(headers)):
+    #     #itereate over person contact details
+    #     #turn details into a list
+    #     #match hearder with corresponding details
         
-#         person=lines[i].split(',')
-#         contact[headers[h]] = person[h]
-#     con.append(contact)
-        # print(headers[h])
+    #     person=lines[i].split(',')
+    #     contact[headers[h]] = person[h]
+    # con.append(contact)
+    
+    # print(headers[h])
 
-# print(con)
+    # print(con)
     # print(lines[i])
+
 # for lis in lines:
-#     
-#     # contact_list=lis.split(',')
-#     # print(contact_list[1])
-#     # for i, u in enumerate(contact_list):
-#     #     print(u,i)
-#     # contact_list=lis.split(',')
-# print(con)
+    
+    # contact_list=lis.split(',')
+    # print(contact_list[1])
+    # for i, u in enumerate(contact_list):
+    #     print(u,i)
+    # contact_list=lis.split(',')
+print(con)
 
 print(f'lines{lines}')
 

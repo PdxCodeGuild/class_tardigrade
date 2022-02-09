@@ -39,7 +39,7 @@ def jok(term):
     headers = {'Accept': 'application/json'}
     url = 'https://icanhazdadjoke.com/search'
     
-    params = {'words': words }
+    params = {'term': term }
     response = requests.get(url, headers=headers, params=params)
     response = response.json()
   
