@@ -47,8 +47,7 @@ elif user >= 100 and ones == 0 and tens >= 1:
 
 
 
-# elif user >= 100 and ones >=1 and tens >=1   : 
-#     print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones) } 73', 'l'  )
+
 
 elif user > 100 and  teeen >= 10 and ones ==1 and tens ==1 :
      print(f'{hun.get(hundred)} {teen.get(teeen)}')
@@ -57,7 +56,7 @@ elif user > 100 and  teeen >= 10 and ones ==1 and tens ==1 :
     
 
 elif user >= 100 and ones > 0 and tens >= 1  : 
-    print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones) } 43', 'l'  )
+    print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones) }  ')
 
 
 elif user >= 100 and ones >=1 and tens == 0 : 
