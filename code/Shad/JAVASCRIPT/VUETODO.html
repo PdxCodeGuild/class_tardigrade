@@ -11,25 +11,30 @@
 
 <body bgcolor="navy">
     <div id="app" class="app">
-    
-        <div id="butt">
-            <input style="align-content: center;" id="input" type="text" v-model="input">
-         
-            
-            <button style="background-color: black; color: lightyellow; " id="butt" @click='add()'>ADD</button>
 
-            <button style="background-color: red; color: yellow;"  id="butt2" @click='complete()'>DONE</button>
-
-            <button style="background-color:orangered; color: purple;"  id="butt3" @click='cancel()'>RID</button>
+        <form @submit.prevent=  action="" id="butt">
+            <input style="align-content: center;" type="text" v-model="write" >
 
 
-        </div>
+            <button type="submit" style="background-color: black; color: lightyellow; " id="butt" @click='add()'
+                >ADD</button>
+
+            <button type="submit" style="background-color: red; color: yellow;" id="butt2" @click='complete'>DONE</button>
+
+            <button type="submit" style="background-color:orangered; color: purple;" id="butt3" @click='cancel(index)'>RID</button>
+
+
+        </form>
 
         <div id="lis" class="list">
-            <li>
+            
+            <button type="submit" style="background-color:orangered; color: purple;" id="butt3" @click='cancel(index)'>RID</button>
+            <ul v-for="(l, index) in lis" :key="index">
+                
 
-                <ul style="color: magenta;">{{lis}}</ul>
-            </li>
+                <li style="color: magenta;">{{l}}</ul>
+            </ul>
+            
 
         </div>
 

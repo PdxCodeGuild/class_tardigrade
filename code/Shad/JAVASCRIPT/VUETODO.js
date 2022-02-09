@@ -7,7 +7,7 @@ const App = {
 
         return {
 
-            lis: 'midori, aoi,shiro,kuro',
+            lis: [ 'midori', 'aoi','shiro','kuro'],
 
             write: '',
 
@@ -24,21 +24,19 @@ const App = {
 
         add() {
 
-
-
-
-            let form = document.querySelector('#form')
-
-
             this.lis.push(this.write)
-            console.log()
+            this.write = ''
         },
 
 
-        cancel() {
+        cancel(lis) {
 
-            this.lis.remove(this.write)
-            console.log(lis)
+            // this.lis.pop(write)
+            // this.delete lis[this.write]
+            
+
+            this.lis.splice(this.index, 1);
+
         },
 
         complete() {

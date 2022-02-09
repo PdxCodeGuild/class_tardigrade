@@ -1,4 +1,8 @@
+from time import time
+from timeit import timeit
+import time
 import requests
+import sys
 
 url = 'https://icanhazdadjoke.com/'
 
@@ -14,16 +18,47 @@ url = 'https://icanhazdadjoke.com/'
 # print(data) # {'id': 'zkO7wHJmrc', 'joke': 'What did the calculator say to the student? You can count on me.', 'status': 200} # this is a python dictionary
 # print(data['joke']) # What did the calculator say to the student? You can count on me. # this is the joke
 
-url = 'https://icanhazdadjoke.com/search'
-headers = {
-    'accept': 'application/json'
-}
-params = {
-    'limit': 1
-}
+# url = 'https://icanhazdadjoke.com/search'
+# headers = {
+#     'accept': 'application/json'
+# }
+# params = {
+#     'limit': 1
+# }
 
 
-response = requests.get(url, headers=headers, params=params)
-response = response.json()
-results = response['results'][0]
-print(results['joke'])
+# response = requests.get(url, headers=headers, params=params)
+# response = response.json()
+
+# results = response['results'][0]
+# print(response.get('joke'))
+# print(results['joke'])
+
+
+def jok(term):
+    headers = {'Accept': 'application/json'}
+    url = 'https://icanhazdadjoke.com/search'
+    
+    params = {'words': words }
+    response = requests.get(url, headers=headers, params=params)
+    response = response.json()
+  
+    
+    for i, oke in enumerate(response.get('results')):
+        print(oke.get('joke'))
+        time.sleep(4)
+        
+        
+
+
+
+while True:
+    words = input('search or type exit:')
+    if words == 'exist':
+
+        break
+        # sys.exit
+    jok(words)
+    time.sleep(4)
+
+    

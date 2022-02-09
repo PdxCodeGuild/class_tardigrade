@@ -39,6 +39,7 @@ elif user > 110 and user < 120:
 elif user >= 119 and user == 121 :
     print(f'{hun.get(hundred)} {two.get(tens)} {single.get(ones)}' )
 elif user >= 120:
+
     print(f'{hun.get(hundred)} {two.get(tens)} ' )
 
     
