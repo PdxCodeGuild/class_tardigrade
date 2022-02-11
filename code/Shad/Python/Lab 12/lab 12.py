@@ -1,31 +1,42 @@
 
-# with open('code/pete/python/examples/csv/cities.csv', 'r') as f:
-#     lines = f.read().split('\n')
-# print(lines)
-
-# cities = [ # you want to build a list of dictionaries (like this)
-#            # from the string you get from the csv file
-#     {'name': 'portland', 'food': 'jojos', 'climate': 'temperate'},
-#     {'name': 'kansas city', 'food': 'bbq', 'climate': 'temperate'},
-#     {'name': 'lima', 'food': 'ceviche', 'climate': 'tropical'},
-# ]
-
-
-
 import sys
 import csv
 
 i = './contact.csv'
+k='contact.csv'
 
-with open(i, newline='') as file:
-    lines = file.read().split('\n')
-    # print(lines)
+# with open(i, newline='') as file:
+# k='contact.csv'
 
-    # print('\n')
-print(f'lines{lines}')
+with open('contact.csv', 'r') as f:
+    
+    read_ = f.read().split('\n')
+contact = []
+    # reader_obj = csv.DictReader(f)
+    # # ames = reader_obj.fieldnames
+    # # print(ames)
+    # for row in reader_obj:
 
 
-headers = lines[0].split(',')
+    #     print(row)
+      
+
+
+rows = read_[1:]
+
+banner = read_[0].split(',')
+for row in rows: 
+    row = row.split(',') 
+    con = {} 
+    for i, header in enumerate(banner):
+        con[header] = row[0]
+        
+    for value, header in zip(row, banner):
+
+        con[header] =  value
+    con = dict(zip(banner, row))
+    contact.append(con) 
+    print(contact[-1])
 
 
 # con = [] 
@@ -42,7 +53,7 @@ headers = lines[0].split(',')
 #         person=lines[i].split(',')
 #         contact[headers[h]] = person[h]
 #     con.append(contact)
-        # print(headers[h])
+        #  print(header[h])
 
 # print(con)
     # print(lines[i])
@@ -55,15 +66,16 @@ headers = lines[0].split(',')
 #     # contact_list=lis.split(',')
 # print(con)
 
-print(f'lines{lines}')
+# print(f'lines{lines}')
 
-# k = 'code/Shad/contact.csv'
+# k = 'Lab 12\contact.csv'
 
 def main():
    menu()
 
 def menu():
     print()
+    
 
     choice = int(input("""
                       1: Read File
@@ -74,20 +86,28 @@ def menu():
                       Please choose: """))
 
     if choice == 1:
-        read_file()
+        name = input('enter nam')
+        for con in contact:
+            if con['Name'] == name:
+                for header in banner:
+                    print(f'{header}:{con[header]}', )
+        read_file(name)
     elif choice == 2:
         Add_File()
     elif choice == 3:
-        delete()
+        name = input(f'enter name ')
+        
+        
+        delete(name)
+        
     elif choice == 4:
         sys.exit
     else:
         print("Please try again")
         menu()
 
-def read_file():
-    """reads .csv-formatted file and returns list of dictionaries
-    contacts_list = read_file()"""
+def read_file(name):
+    
     with open(k, 'r',encoding='utf-8') as file:
         lines = file.read().split('\n')
     headers = lines[0].split(',')
@@ -111,7 +131,7 @@ def read_file():
 
         print(con[-1] )
      
-        file.close()
+       
     
     
     
@@ -119,34 +139,39 @@ def Add_File():
     
     new = []
     diction = {}
-
-   
-        # names=input('Please enter name: ')
-        # fruits=input('Please enter fruit: ')
-        # colors=input('Please enter color: ')
-        # dict
-        # view1.writerow(input(f"{names}\n{fruits}\n{colors} "))
-        # return names and fruits and colors
+    Names=input('Please enter name: ')
+    new.append(Names)    
+    Fruits=input('Please enter fruit: ')
+    new.append(Fruits)    
+    colors=input('Please enter color: ')
+    new.append(colors)
+    with open("contact.csv", "a+", newline=' ') as p:
         
-def delete():
-    con = []  
-    with open(k, 'r',encoding='utf-8') as file:
-        lines = file.read().split('\n')
+        wr = csv.writer(p)
+        
+        wr.writerow(new)
+   
+         
+    # for header in banner:
+    #     user = input(f'enter name ')
+    #     con[header] = user
+    # contact.append(diction)
+        
+def delete(name):
     
-    headers = lines[0].split(',')
-
-    for i in range(1,len(lines)):
+    user2= read_file(name)
+    contact.pop(contact.index(user2))
 
         #iterate over the people
         #make a dictionary for each person
-        contact = {}
-        for h in range(len(headers)):
+        # contact = {}
+    #     for h in range(len(headers)):
 
-            person=lines[i].split(',')
-            contact[headers[h]] = person[h]
-    con.append(contact)
-    d = input('please enter name to delete: ')
-    del contact[ d ]      
+    #         person=lines[i].split(',')
+    #         contact[headers[h]] = person[h]
+    # con.append(contact)
+    # d = input('please enter name to delete: ')
+    # del contact[ d ]      
 def update():
     con = []  
     with open(k, 'r',encoding='utf-8') as file:
