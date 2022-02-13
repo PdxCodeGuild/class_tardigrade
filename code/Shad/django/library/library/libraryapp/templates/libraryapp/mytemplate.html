@@ -7,6 +7,11 @@
 </head>
 
 <body>
+  <form action="{% url 'myapp:mycreate' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="myfield" />
+    <button type="submit">submit</button>
+  </form>
   <ul>
     {% for boo in books %}
     <li>{{ boo }}</li>
