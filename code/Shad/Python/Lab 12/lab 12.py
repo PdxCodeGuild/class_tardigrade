@@ -65,7 +65,7 @@ def menu():
                     print(f'{header}:{con[header]}', )
         read_file(name)
     elif choice == 2:
-        Add_File()
+        Add_File(contact)
     elif choice == 3:
                     
         delete()
@@ -110,7 +110,7 @@ def read_file(name):
         contact.append(con) 
              
     
-def Add_File():
+def Add_File(contact):
 
     
      
@@ -123,9 +123,9 @@ def Add_File():
     # contact.append(colors)
 
 
-    with open('contact.csv', 'r') as f:
+    # with open('contact.csv', 'r') as f:
     
-            read_ = f.read().split('\n')
+    #         read_ = f.read().split('\n')
 
     
 
@@ -135,21 +135,23 @@ def Add_File():
     # for row in reader_obj:
     #     print(row)
 
-    rows = read_[1:]
+    # rows = read_[1:]
 
-    banner = read_[0].split(',')
+    # banner = read_[0].split(',')
     
-    for head in header: 
-        # row = row.split(',') 
-        con = {} 
-        diction = {}
+    # for head in header: 
+    #     # row = row.split(',') 
+    #     con = {} 
+        
         # for i, header in enumerate(banner):
         #     con[header] = row[0]
 
            
         # for people, header in zip(row, banner):
         Names=input('Please enter contact info: ')
-        diction[header] = Names
+        Fruit=input('Please enter contact fruit: ')
+        color=input('Please enter contact color: ')
+        diction = {'Name': Names,'Fruit': Fruit,'color': color}
 
       
         #     con = dict(zip(banner, row))
