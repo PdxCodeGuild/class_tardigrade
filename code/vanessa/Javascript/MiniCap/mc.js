@@ -28,3 +28,5 @@ const App = {
 
 
 Vue.createApp(App).mount('#app')
+
+// empty git folder fixing
