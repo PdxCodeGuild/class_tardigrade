@@ -7,7 +7,7 @@ const addButton = document.querySelector('#add-button')
 const task = document.querySelector('#tasks')
 
 const completedTask = document.querySelector('#completed')
-
+ 
 form.addEventListener('submit', function(event) {
     event.preventDefault()
 
