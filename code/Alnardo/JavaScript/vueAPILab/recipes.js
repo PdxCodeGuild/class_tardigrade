@@ -2,6 +2,9 @@ const App = {
     data() {
         return {
             randomRecipeInstructions: '',
+            randomRecipePhoto: '',
+            randomRecipeTitle: '',
+            randomRecipeSummary: '',
         }
     },
 
@@ -20,6 +23,9 @@ const App = {
             .then(response => {
                 console.log(response.data.recipes)
                 this.randomRecipeInstructions = response.data.recipes[0].instructions
+                this.randomRecipePhoto = response.data.recipes[0].image
+                this.randomRecipeTitle = response.data.recipes[0].title
+                this.randomRecipeSummary = response.data.recipes[0].summary
             })
         }
     }
