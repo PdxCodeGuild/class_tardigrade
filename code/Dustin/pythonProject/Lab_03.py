@@ -10,7 +10,7 @@ nickels = user_input//5
 user_input = user_input%5
 pennies = user_input
 
-"""print(quarters, dimes, nickels, pennies)"""
+print(quarters, dimes, nickels, pennies)
 
 """Below is dictionary for version 2 assuming i get back to it"""
 

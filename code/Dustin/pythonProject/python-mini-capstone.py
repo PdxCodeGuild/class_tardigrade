@@ -1,6 +1,6 @@
 """Crypto buying app
  Idea is to be able to ask the user for a Cyrpto that they are interested in.
- Then the user can set a "buy" price and a sell price.
+ Then the user can set a "buy" price and a "sell" price.
  The program should notify the user when the Crypto is at their buy or sale price.
  """
 #import required api
@@ -34,12 +34,12 @@ x = price[coin]['USD']
 # This section here will be for running the program unitl a text is sent then terminate.
 
 def text_notify (condition, text): #defines function
-   text_sent = True
+    text_sent = True
     while text_sent == True:
        if condition: #checks the condition
-            text
-           text_sent = False
-       time.sleep(600) #waits 10 min to run again
+        text
+        text_sent = False
+        time.sleep(600) #waits 10 min to run again
 
 
 #check for price and sends message
