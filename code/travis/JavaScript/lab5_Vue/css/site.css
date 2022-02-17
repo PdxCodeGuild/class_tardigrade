@@ -1,0 +1,41 @@
+body{
+    
+    margin: 60px;}
+
+h1{
+    margin: 20px;
+}
+
+
+#todo-list-app{  
+    background-color: grey; 
+    min-height: 20vh;
+    height: fit-content;
+    min-width: fit-content;
+    max-width: 30vw;
+}
+
+
+
+#add-textbox{
+    margin-right: 25px;
+    margin-left: 25px;
+
+}
+
+#form-buttons{
+    margin-top: 30px;
+    margin-left: 25px;
+    margin-bottom: 10px;
+    margin-right: 25px;
+}
+
+table{
+padding: 15px;
+}
+
+button{
+
+    padding:5px;
+    margin:5px
+}
