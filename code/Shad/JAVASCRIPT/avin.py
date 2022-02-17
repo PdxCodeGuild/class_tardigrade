@@ -3,37 +3,21 @@
 
 # print('hello world'.find('l'))
 
+from itertools import count
+from typing import Counter
+import textstat
 
 
 
-with open ('book.txt','r', encoding='utf-8') as b:
-    book = b.read()
-
-
-characters = len(book)
 
 m = 'book.txt'
 
 
-sentences = len(book.split('.' ))
 
-words = len(book.split(' '))
 
-# book = book.replace(' ','')
-# book = book.replace('\n','')
-# book = book.replace('.','')
-# print(book.replace(' ',''))
-# print(book.replace('\n',''))
-# print(book.replace('.',''))
 
 
 score = 4.71*(characters/words) + .5*(words/sentences) - 21.43
-print(characters)
-print(words)
-print(sentences)
-# print(sentences_ex, '!')
-# print(sentences_ques, '?')
-print(score)
 scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
      2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
@@ -52,34 +36,24 @@ scale = {
 }
 
 
-
-age_14 =scale[14]['ages']
-grade_14=scale[14]['grade_level']
-if score  > 14:
-    print(f"this book is suitable for ages {age_14} and grade level {grade_14}")
-else:
-    age = scale[score]['ages']
-    grade=scale[score]['grade_level']
-    print(f"this book is suitable for ages {age} and grade level {grade}")
-
-
-
-
-
+with open ('book.txt','r', encoding='utf-8') as b:
+    words = b.read()
+    
    
 
 
-# m = 'book.txt'
+m = 'book.txt'
+ari_score = textstat.automated_readability_index('book.txt')
+print(ari_score)
 
 
 
 
-
-# # Counter = 1
-# for letter in range(len(words)):
-#     Counter+= 1
-#     print(f'{Counter } {letter}')
-#     print(words)
-#     # print('book.txt'.find('  '))
-#     # print('book.txt'.split( " "))
+# Counter = 1
+for letter in range(len(words)):
+    Counter+= 1
+    print(f'{Counter } {letter}')
+    print(words)
+    # print('book.txt'.find('  '))
+    # print('book.txt'.split( " "))
   

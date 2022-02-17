@@ -9,12 +9,22 @@
 <body>
   <form action="{% url 'myapp:mycreate' %}" method="post">
     {% csrf_token %}
-    <input type="text" name="myfield" />
+    <input type="text" name="user" />
+    <input type="checkbox" name="checkout">
+    <select name="book">
+
+      {% for boo in books %}
+      <option value="{{boo.id}}">{{ boo }}</option>
+
+      {% endfor %}
+    </select>
     <button type="submit">submit</button>
   </form>
+
   <ul>
-    {% for boo in books %}
-    <li>{{ boo }}</li>
+
+    {% for chec in checkout %}
+    <li>{{ chec }}</li>
 
     {% endfor %}
   </ul>

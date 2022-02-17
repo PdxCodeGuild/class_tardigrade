@@ -79,11 +79,13 @@ const App = {
         },
 
 
-        cancel(lis) {
+        cancel(index) {
 
             // this.lis.pop(write)
             // this.delete lis[this.write]
             let index = this.lis.indexOf(lis)
+            console.log(index)
+            console.log(lis)
 
             this.lis.splice(this.index, 1);
             

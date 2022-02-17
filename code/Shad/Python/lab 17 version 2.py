@@ -17,24 +17,24 @@ pageword = input("enter next page or done:")
 while True:
 
     for i in range(len(key['quotes'])):
-        print(key['quotes'][i]['body'])
-        print(urlkeyword)
-        print('\n \n')
-        print(f"{len(key['quotes'])} quotes of word {word} and page {page}")
+        urlkeyword 
+        key['quotes'][i]['body']
+        
+        print('\n \n \n')
+      
 
 
         
-        if pageword=='done':
+        if pageword =='done':
             break  
         else:
             page = page + 1
             urlkeyword = f' https://favqs.com/api/quotes?page={page}&filter={word}'
             params = {'filter': word }  
-
+            
             response = requests.get(urlkeyword, headers=headers,params=params  )
             key = response.json()
-            # print(f"{len(key['quotes'])} quotes of word {word} and page {page}")
+            # print(key['quotes'][i]['body'])
+            print('\n \n \n')
+            print(f"{urlkeyword }\n\n\n {len(key['quotes'])} quotes {word} and page {page}")
             print(key['quotes'][i]['body'])
-            print(urlkeyword)
-            print('\n \n')
-            print(f"{len(key['quotes'])} quotes of word {word} and page {page}")
