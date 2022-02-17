@@ -14,3 +14,55 @@
 	{% endfor %}
 </ul>
 
+<head>
+	<style>
+		.completed {
+			text-decoration: line-through;
+		}
+		li > form {
+			display: inline;
+		}
+	</style>
+</head>
+
+<h1>chirp</h1>
+<p>Welcome
+	{% if request.user.is_authenticated %}
+		{{ request.user.username }}
+	{% else %}
+		Guest
+	{% endif %}
+</p>
+
+<form action="/add/" method="post">
+	{% csrf_token %}
+	<label for="description-input">Description:</label>
+	<input type="text" id="description-input" name="description">
+	<input type="submit" value="Submit">
+	<!-- <button type="submit">Submit</button> -->
+</form>
+
+<ul>
+	{% for chirp in chirps %}
+	<li>
+		<span
+		{% if chirp.completed %}
+		class="completed"
+		{% endif %}
+		>
+		{{ chirp.description }}
+		</span>
+		<form action="/delete/{{ chirp.id }}/" method="POST">
+			{% csrf_token %}
+			<input type="submit" value="delete">
+		</form>
+		<form action="/complete/{{ chirp.id }}/" method="POST">
+			{% csrf_token %}
+			<input
+				type="submit"
+				value="{% if chirp.completed %}in{% endif %}complete"
+			>
+		</form>
+	</li>
+	{% endfor %}
+</ul>
