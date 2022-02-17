@@ -1,8 +1,4 @@
 
-
-
-
-
 let numbers=[]
 
 let inputNumbers = prompt("please enter your number")
