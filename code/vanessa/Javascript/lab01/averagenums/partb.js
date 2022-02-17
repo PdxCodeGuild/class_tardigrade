@@ -1,6 +1,4 @@
 
-
-
 let numberInput = document.querySelector('#number-input')
 
 const averageBtn = document.querySelector('#average-btn')
@@ -14,17 +12,10 @@ addBtn.addEventListener('click', function (event) {
     let numberInputVal = numberInput.value
     numbers.push(numberInputVal)
     //need to add numbers together and divide by length
-
-
-
-
-
-
     console.log(numberInputVal)
     console.log(numbers)
 
 })
-
 
 averageBtn.addEventListener('click', function (event) {
 
@@ -46,7 +37,3 @@ averageBtn.addEventListener('click', function (event) {
 })
 
 
-
-
-
-// console.log(output)

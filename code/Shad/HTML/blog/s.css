@@ -1,0 +1,63 @@
+flex-container{
+    
+    display: flex;
+    height: 1000px;
+    width: 400px;
+    background-color: blueviolet;
+    flex-direction: row;
+
+
+
+
+}
+
+.top{
+    border: 20cm;
+    border-color:black ;
+    align-self: flex-start;
+    color:yellow;
+    flex-wrap: nowrap;
+    flex-direction: row; 
+    height: 100px;
+    width: 100px;
+    
+
+
+}
+
+
+
+#left{
+    border: 20cm;
+    border-color:black ;
+    align-self: flex-start;
+    color:red;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    height: 100px;
+    width: 100px;
+
+
+
+}
+
+
+main{
+background-color: black; 
+display: flex;
+border: 2px;
+border-color: blue;
+height: 100px;
+width: 100px;
+
+
+}
+
+
+
+
+.right{
+
+
+
+}

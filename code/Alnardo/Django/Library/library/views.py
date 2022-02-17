@@ -1,5 +1,3 @@
-from asyncio.windows_events import NULL
-from operator import not_
 from django.utils import timezone
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
