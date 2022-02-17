@@ -1,0 +1,22 @@
+body {
+    background-image: url("images/mortal.jpg");
+    
+    /* background-color: black; */
+    color: #33FFFF;
+  }
+.my-paragraph{ 
+    border: 1px solid blue ;
+    font-weight: bolder;
+}
+
+.bord {
+  border-radius: 20px;
+  border: 3px dotted orangered
+
+}
+
+
+
+ol {
+  list-style-type:armenian;
+}

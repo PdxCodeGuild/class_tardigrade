@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fav Quotes</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- vue and axios -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- my JavaScript file -->
+    <script src="main.js" defer></script>
+    <style>
+        div>strong {
+            margin-left: 225px;
+        }
+
+        img {
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="tc pv4 pv5-ns" style="background-color: black;">
+        <img src="https://www.kindpng.com/picc/m/17-179131_quote-rdquo-quote-icon-png-free-transparent-png.png"
+            class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar">
+        <h1 class="f5 f4-ns fw6 mid-gray" style="color: white;">Fav Quotes</h1>
+    </header>
+
+    <div id="app" class="container w-50 my-4">
+
+        <article class="is-flex is-justify-content-center">
+            <strong class="mr-1">Random Quote of the Day</strong>
+        </article>
+
+        <div class="pa4" class="is-flex is-justify-content-center">
+            <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--blue">
+                <p class="f5 f4-m f3-l lh-copy measure mt0">
+                    {{ randomQuote.body }}
+                </p>
+                <cite class="f6 ttu tracked fs-normal">― {{ randomQuote.author }}</cite>
+            </blockquote>
+        </div>
+
+        <br>
+
+        <div>
+            <strong>Search by Keyword</strong>
+        </div>
+        <form @submit.prevent="searchKeyword" class="is-flex is-justify-content-center">
+            <div class="field has-addons">
+                <div class="control">
+                    <input v-model="Keyword" class="input" type="text" placeholder="Keyword">
+                </div>
+                <div class="control">
+                    <button class="button is-info">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        <div>
+            <strong>Search by Author</strong>
+        </div>
+        <form @submit.prevent="searchAuthor" class="is-flex is-justify-content-center">
+            <div class="field has-addons">
+                <div class="control">
+                    <input class="input" type="text" placeholder="Author" v-model="Author">
+                </div>
+                <div class="control">
+                    <button class="button is-info">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        <div>
+            <strong>Search by Tag</strong>
+        </div>
+        <form @submit.prevent="searchTag" class="is-flex is-justify-content-center">
+            <div class="field has-addons">
+                <div class="control">
+                    <input class="input" type="text" placeholder="Tag" v-model="Tag">
+                </div>
+                <div class="control">
+                    <button class="button is-info">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        <div class="pa4" v-for="quote in foundQuotes" class="is-flex is-justify-content-center">
+            <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--blue">
+                <p class="f5 f4-m f3-l lh-copy measure mt0">
+                    {{ quote.body }}
+                </p>
+                <cite class="f6 ttu tracked fs-normal">―{{ quote.author }}</cite>
+            </blockquote>
+        </div>
+
+        <div class="is-flex is-justify-content-center">
+            <i class="far fa-arrow-alt-circle-left fa-2x mr-3" @click="previousPage" style="cursor: pointer"></i>
+            <i class="far fa-arrow-alt-circle-right fa-2x ms-3" @click="nextPage" style="cursor: pointer"></i>
+        </div>
+    </div>
+</body>
+
+</html>

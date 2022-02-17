@@ -1,3 +1,6 @@
+from ast import Str
+
+
 class ATM:
 
     def __init__(self, balance=0, interest_rate=0.1):
@@ -32,11 +35,16 @@ class ATM:
 
         return self.balance
 
-    def calc_interest(self):
+    def calc_interest(self, ):
+
         """calculate and return interest gained on account"""
-        self.check_balance * self.calc_interest
+
+        
+        return self.balance * .001
     
     def print_transactions(self):
+        # if __name__ == "__main__":
+            
         for i in self.transactions:
             print(i)
         return self.transactions 
@@ -67,10 +75,12 @@ while True:
         else:
             print('Insufficient funds')
     elif command == "transactions":
-        print(ATM.print_transactions)
+        
+        
+        print(atm.print_transactions())
     elif command == 'interest':
         amount = atm.calc_interest()  # call the calc_interest() method
-        atm.deposit(amount)
+        # atm.calc_interest(amount)
         print(f'Accumulated ${amount} in interest')
     elif command == 'help':
         print('Available commands:')
