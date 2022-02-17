@@ -1,0 +1,13 @@
+<body style="color:Red;       background-color:lightpink">
+    <title >Books</title>
+    <h1 style="color:white">Library</h1>
+    <h6>Checkout <a href="{% url 'bookshelf:checkout_page' %}"> HERE</a></h6>
+    <h6>Return <a href="{% url 'bookshelf:index' %}"> Home</a></h6>
+    <h1 style="color:white"> Books </h1>
+
+    {% for book in books %}
+   <h2 >{{ book.title }}</h2>
+    <h4 >{{ book.author }}</h4>
+    Published:{{ book.publish_date }}
+
+    {%endfor%}

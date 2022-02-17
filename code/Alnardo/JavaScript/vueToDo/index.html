@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Vue To Do</title>
+    <style>
+        button {
+            margin-left: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        #completeMe {
+            margin-left: 10px
+        }
+    </style>
+</head>
+<body>
+    <main id="toDoList">
+        <h1>Vue Do List</h1>
+        <form @submit.prevent="addNewTask">
+            <input type="text" v-model="addTask">
+            <button type="submit">Add Task</button>
+        </form>
+        <p>New Task: {{ addTask }}</p>
+        <hr/>
+        <ul id="taskList">
+            <h2>To Do Tasks</h2>
+            <li v-for="task in tasks">
+            {{ task }}
+            <input type="checkbox" id="completeMe" v-model="completedTasks" :value="task">
+            <label for="completeMe">Complete Task</label>
+            <button @click="deleteTask(task)"> Delete </button>
+            </li>
+        </ul>
+        <hr/>
+        <ul>
+            <h2>Completed Tasks</h2>
+            <li v-for="completed in completedTasks">
+                {{ completed }}
+            </li>
+        </ul>
+    </main>
+    <script>
+        const toDoList = {
+            data() {
+                return {
+                    addTask: '',
+                    tasks: [],
+                    completedTasks: []
+                }
+            },
+            methods: {
+                addNewTask() {
+                    this.tasks.push(this.addTask)
+                    this.addTask = ''
+                },
+
+                deleteTask(task) {
+                    task = this.tasks.indexOf(task)
+                    this.tasks.splice(task,1) 
+                },
+            }
+        }
+
+        Vue.createApp(toDoList).mount('#toDoList')
+    </script>
+</body>
+</html>
