@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Basic Renders -->
+        <div>{{ hello }}</div>
+        <div>{{ doggos }}</div>
+        <div>{{ cats }}</div>
+
+        <!-- Text Input -->
+        <div>
+            <span>Enter pupper snack here:</span>
+            <input type="text" v-model="snack" />
+            <button @click='snackTime()'>Go</button>
+            {{snack}}
+        </div>
+        
+        <!-- Button -->
+        <div>
+            <button @click='sayWoof' >bark</button>
+        </div>
+
+        <!-- For Loops -->
+        <ol>
+            <li v-for='cat in cats'>
+                {{cat}}
+                <button @click='sayMeow(cat)'>meow</button>
+            </li>
+        </ol>
+
+        <select v-model='selectedCat'>
+            <option v-for='cat in cats'>{{cat}}</option>
+        </select>
+        {{selectedCat}}
+
+
+    </div>
+    
+    <!-- Vue CDN Must come before your js -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Custom javascript with the vue app -->
+    <script src="script.js"></script>
+</body>
+</html>

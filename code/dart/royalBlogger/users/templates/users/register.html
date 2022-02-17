@@ -1,0 +1,47 @@
+{% extends 'posts/base.html' %}
+
+{% block content %}
+
+<body>
+    <h3 class="flex items-center justify-center mt-4 is-size-3 has-text-weight-bold">Create your account</h3>
+    <br>
+    <div class="container w-50 flex items-center justify-center ml7px">
+        <form action="{% url 'users:register' %}" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <label for="username" class="has-text-weight-bold">Username</label>
+                    <br>
+                    <input type="text" id="username" name="username" placeholder="Username">
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <label for="password1" class="has-text-weight-bold">Password</label>
+                    <br>
+                    <input type="password" id="password1" name="password1" placeholder="Password">
+
+                </p>
+            </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                    <label for="password2" class="has-text-weight-bold">Password</label>
+                    <br>
+                    <input type="password" id="password1" name="password2" placeholder="Password">
+
+                </p>
+            </div>
+            <div class="field flex items-center justify-center">
+                <p class="control">
+                    <button class="button is-primary" style="cursor: pointer;">
+                        <span>Sign up</span>
+                        <span class="icon is-small">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </span>
+                    </button>
+                </p>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}
