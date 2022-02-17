@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="todovue.css"> -->
+</head>
+
+<body bgcolor="navy">
+    <div id="app" class="app">
+
+        <form @submit.prevent=  action="" id="butt">
+            <input style="align-content: center;" type="text" v-model="write" >
+
+
+            <button type="submit" style="background-color: black; color: lightyellow; " id="butt" @click='add()'
+                >ADD</button>
+
+            <button type="submit" style="background-color: red; color: yellow;" id="butt2" @click='complete'>DONE</button>
+
+            <button type="submit" style="background-color:orangered; color: purple;" id="butt3" @click='cancel(index)'>RID</button>
+
+
+        </form>
+
+        <div id="lis" class="list">
+            
+            <button type="submit" style="background-color:orangered; color: purple;" id="butt3" @click='cancel(index)'>RID</button>
+            <ul v-for="(l, index) in lis" :key="index">
+                
+
+                <li style="color: magenta;">{{l}}</ul>
+            </ul>
+            
+
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="VUETODO.js"></script>
+
+</body>
+
+</html>
