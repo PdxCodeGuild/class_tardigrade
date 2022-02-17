@@ -7,18 +7,30 @@ from itertools import count
 from typing import Counter
 import textstat
 
+with open ('book.txt','r', encoding='utf-8') as b:
+    book = b.read()
 
 
+characters = len(book)
 
 m = 'book.txt'
-ari_score = textstat.automated_readability_index('book.txt')
-print(ari_score)
 
 
+sentences = len(book.split('. '))
+words = len(book.split(' '))
+# book = book.replace(' ','')
+# book = book.replace('\n','')
+# book = book.replace('.','')
+# print(book.replace(' ',''))
+# print(book.replace('\n',''))
+# print(book.replace('.',''))
 
 
-
-# score = 4.71*(characters/words) + .5*(words/sentences) - 21.43
+score = 4.71*(characters/words) + .5*(words/sentences) - 21.43
+print(characters)
+print(words)
+print(sentences)
+print(score)
 scale = {
      1: {'ages':   '5-6', 'grade_level': 'Kindergarten'},
      2: {'ages':   '6-7', 'grade_level':    '1st Grade'},
@@ -37,53 +49,25 @@ scale = {
 }
 
 
-# if score == 1:
-#     print(' this book is suitable for ages '   + scale[1]['ages']  + ' and grades ' + scale[1]['grade_level'] )
-# elif score == 2:
-#     print(' this book is suitable for ages '   + scale[2]['ages']  + ' and grades ' + scale[2]['grade_level'] )
-# elif score == 3:
-#     print(' this book is suitable for ages '   + scale[3]['ages']  + ' and grades ' + scale[3]['grade_level'] )
-# elif score == 4:
-#     print(' this book is suitable for ages '   + scale[4]['ages']  + ' and grades ' + scale[4]['grade_level'] )
 
-# elif score == 5:
-#     print(' this book is suitable for ages '   + scale[5]['ages']  + ' and grades ' + scale[5]['grade_level'] )
-# elif score == 6:
-#     print(' this book is suitable for ages '   + scale[6]['ages']  + ' and grades ' + scale[6]['grade_level'] )
-# elif score == 7:
-#     print(' this book is suitable for ages '   + scale[7]['ages']  + ' and grades ' + scale[7]['grade_level'] )
-# elif score == 8:
-#     print(' this book is suitable for ages '   + scale[8]['ages']  + ' and grades ' + scale[8]['grade_level'] )
-# elif score == 9:
-#     print(' this book is suitable for ages '   + scale[9]['ages']  + ' and grades ' + scale[9]['grade_level'] )
-# elif score == 10:
-#     print(' this book is suitable for ages '   + scale[10]['ages']  + ' and grades ' + scale[10]['grade_level'] )
-# elif score == 11:
-#     print(' this book is suitable for ages '   + scale[11]['ages']  + ' and grades ' + scale[11]['grade_level'] )
-# elif score == 12:
-#     print(' this book is suitable for ages '   + scale[12]['ages']  + ' and grades ' + scale[12]['grade_level'] )
-# elif score == 13:
-#     print(' this book is suitable for ages '   + scale[13]['ages']  + ' and grades ' + scale[13]['grade_level'] )
-# else:
-#     print(' this book is suitable for ages '   + scale[14]['ages']  + ' and grades ' + scale[14]['grade_level'] )
-with open ('book.txt','r', encoding='utf-8') as b:
-    words = b.read()
-    
+age =scale[score]['ages']
+grade=scale[score]['grade_level']
+
+print(f'yourbook is suitable for {age} and {grade}')
    
 
 
-m = 'book.txt'
-ari_score = textstat.automated_readability_index('book.txt')
-print(ari_score)
+# m = 'book.txt'
 
 
 
 
-# Counter = 1
-for letter in range(len(words)):
-    Counter+= 1
-    print(f'{Counter } {letter}')
-    print(words)
-    # print('book.txt'.find('  '))
-    # print('book.txt'.split( " "))
+
+# # Counter = 1
+# for letter in range(len(words)):
+#     Counter+= 1
+#     print(f'{Counter } {letter}')
+#     print(words)
+#     # print('book.txt'.find('  '))
+#     # print('book.txt'.split( " "))
   
