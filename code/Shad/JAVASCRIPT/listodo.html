@@ -19,18 +19,12 @@
                     @click='add()'>ADD</button>
             </form>
             <ul>
-                <!-- <li v-for="(l, index) in lis" :key="index">{{lis.item}} -->
-                <li v-for="hu in lis" style="color: magenta;">{{hu.item}}
-
-                    <!-- <button type="submit" style="background-color: red; color: yellow;" id="butt2"
-                        @click='complete(lis) '>DONE</button> -->
-
-
+                <li style="color: magenta;" v-for="(li, index) in lis">
+                    {{ li.item }}
                     <button class="done" type="submit" style="background-color:orangered; color: purple;" id="butt3"
-                        @click='cancel(lis)'>RID</button>
-                    <label v-for="check" style="color:gold;">CHECK IF COMPLETE!  
-                        <input style="color: aqua;" type="checkbox" v-model="status" id="check" > 
-                    </label>  
+                        @click='cancel(index)'>RID</button>
+                    <label for="check" style="color:gold;">CHECK IF COMPLETE!</label>  
+                    <input style="color: aqua;" v-model="li.completed" type="checkbox" id="check" > 
                 </li>
             </ul>
 

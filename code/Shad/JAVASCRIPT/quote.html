@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <div>
-        <div v-for="post in quote" v-bind:key="quote">
-          <h2>{{ post.title }}</h2>
-          <p>{{ post.body }}</p>
-        </div>
-      </div>
-    
+  <div id="app">
+    <div v-for="quote in quotes" v-bind:key="quote">
+      <h2>{{ quote.author }}</h2>
+      <p>{{ quote.body }}</p>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="quote.js"></script>
 </body>
+
 </html>

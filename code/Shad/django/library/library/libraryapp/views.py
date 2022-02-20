@@ -22,9 +22,10 @@ def mycreate(request):
     if request.method == 'POST':
         data = dict(request.POST)
         book_id=request.POST.get('book')
+        checkout_value = request.POST.get('checkout')
         book_object=book.objects.get(id=book_id)
         print(book_object)
-        checkout.objects.create(book=book_object, user=data['user'])
+        checkout.objects.create(book=book_object, user=data['user'], checkout=checkout_value == 'on')
         print(request.POST)
     return redirect('myapp:myview')
 

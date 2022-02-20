@@ -1,42 +1,32 @@
+
+const axiosInstance = axios.create({
+    baseURL: 'https://favqs.com/api/',
+    headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'
+    }
+})
+
+
 const App = {
     data() {
         return {
             term: '',
-            QUOTES: '',
-            quote: [],
+            // QUOTES: '',
+            quotes: [],
         }
     },
-    created() {
-        this.fetch()
+    async mounted() {
+        let data = await this.getQuotes()
+        console.log(data.page)
+        console.log(data.last_page)
+        console.log(data.quotes)
+        this.quotes = data.quotes
     },
     methods: {
-        fetch() {
-            axios({
-                method: 'get',
-                url: 'https://favqs.com/api/qotd',
-                headers: { Accept: 'application/json' }
-            })
-            .then(response =>{console.log(response.data) 
-				
-                console.log(this)
-			})
-
-    },
-
-    getJokes() { // part 2 from the python lab
-        axios({
-            method: 'get',
-            url: 'https://favqs.com/api/qotd',
-            headers: { Accept: 'application/json',
-                      'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'},
-            
-        })
-            .then(response =>{
-                
-			    this.quote = response.data.results
-			})
-
-}
+        getQuotes() { // part 2 from the python lab
+            return axiosInstance.get('quotes/').then(response => response.data)
+        }
 	}
 }
 
