@@ -10,16 +10,31 @@
 
 <body>
   <div id="app">
+    <form @submit.prevent="updateQuotePages">
+      <input type="text" v-model="filter">
+      <select name="" id="" v-model="searchType">
+        <option v-for="type in searchTypes" :value="type">{{ type }}</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+    <div>Total quotes: {{ quotes.length }}</div>
+    <div>Current page: {{ currentPage }}</div>
+    <div>PageCount: {{ pages.length }}</div>
     <div v-for="quote in quotes" v-bind:key="quote">
       <h2>{{ quote.author }}</h2>
       <p>{{ quote.body }}</p>
-      <pagination v-model="page" :records="500" @paginate="myCallback"/>
+      <!-- <pagination v-model="page" :records="500" @paginate="myCallback"/> -->
     </div>
   </div>
+<!-- 
+  <ul style="list-style: none; display: flex; gap: 5px; ">
+    <li v-for="page in allPages">
+      <a href="#" @click="getPage"></a>
+    </li>
+  </ul> -->
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@next"></script>
-  
   <script src="quote.js"></script>
 </body>
 

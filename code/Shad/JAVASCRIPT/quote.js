@@ -1,4 +1,6 @@
 
+
+
 const axiosInstance = axios.create({
     baseURL: 'https://favqs.com/api/',
     headers: {
@@ -8,27 +10,71 @@ const axiosInstance = axios.create({
 })
 
 
+function getQuotePage(params) {
+    // Return response with quotes from quotes api
+    return axiosInstance.get('quotes/', { params: params }).then(response => response.data)
+}
+
+
 const App = {
     data() {
         return {
-            term: '',
-            // QUOTES: '',
+            pages: [],
             quotes: [],
+            currentPage: 1,
+            lastPage: false,
+
+            searchTypes: [
+                'keyword',
+                'author',
+                'tag',
+            ],
+            filter: '',
+            searchType: 'keyword',
         }
     },
     async mounted() {
-        let data = await this.getQuotes()
-        console.log(data.page)
-        console.log(data.last_page)
-        console.log(data.quotes)
-        this.quotes = data.quotes
+        this.updateQuotePages()
     },
     methods: {
-        getQuotes() { // part 2 from the python lab
-            return axiosInstance.get('quotes/').then(response => response.data)
+        async updateQuotePages() {
+            let page
+            let pageIndex = 1
+            if (this.filter.length === 0) {
+                page = await getQuotePage({ page: pageIndex })
+            }
+            else if (this.searchType === 'keyword') {
+                page = await getQuotePage({ filter: this.filter, page: pageIndex })
+            }
+            else {
+                page = await getQuotePage({ filter: this.filter, type: this.searchType, page: pageIndex })
+            }
+            this.currentPage = page.page
+            this.quotes = page.quotes
+            this.pages.push(page)
+            this.lastPage = page.lastPage
+            while (this.lastPage === false) {
+                pageIndex++
+                if (this.filter.length === 0) {
+                    page = await getQuotePage()
+                }
+                else if (this.searchType === 'keyword') {
+                    page = await getQuotePage({ filter: this.filter })
+                }
+                else {
+                    page = await getQuotePage({ filter: this.filter, type: this.searchType})
+                }
+                this.pages.push(page)
+
+            }
         }
-	}
+    }
 }
+
+
+
+
+
 
 Vue.createApp(App).mount('#app')
 

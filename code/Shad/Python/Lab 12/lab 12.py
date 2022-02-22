@@ -1,6 +1,6 @@
-
+f = 'contact.csv'
 def read_contact():
-    with open('contacts.csv', 'r') as file:
+    with open('contact.csv', 'r') as file:
         lines = file.read().split('\n')
     head = lines[0].split(',')
     contact_list = []
@@ -82,7 +82,7 @@ def update():
         else:
             print('Wrong input..')
         
-        file = open('contacts.csv','w')
+        file = open('contact.csv','w')
         header = list(contact[0])
         head = header[0] + ',' + header[1] + ',' + header[2]
         file.write(head)
@@ -101,7 +101,8 @@ def retrieve(name):
 #     print(contact)
     for i in contact:
         if i['Name']==name:
-            print(f"Name: {name} Fruit: {i['Fruit']} Color: {i['color']}")
+            print({i['Fruit']})
+            # print(f"Name: {name}, Fruit: {i['Fruit']}, Color: {i['color']}")
     
 def Add_File():
 
@@ -136,7 +137,7 @@ def delete():
     if indx_del!=-1:
         _ = contact.pop(indx_del)
     
-        file = open('contacts.csv','w')
+        file = open('contact.csv','w')
         header = list(contact[0])
         head = header[0] + ',' + header[1] + ',' + header[2]
         file.write(head)
