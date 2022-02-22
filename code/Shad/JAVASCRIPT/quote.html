@@ -13,10 +13,13 @@
     <div v-for="quote in quotes" v-bind:key="quote">
       <h2>{{ quote.author }}</h2>
       <p>{{ quote.body }}</p>
+      <pagination v-model="page" :records="500" @paginate="myCallback"/>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@next"></script>
+  
   <script src="quote.js"></script>
 </body>
 

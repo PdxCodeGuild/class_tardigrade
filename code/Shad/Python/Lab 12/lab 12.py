@@ -1,203 +1,161 @@
-from numpy import save
 
+def read_contact():
+    with open('contacts.csv', 'r') as file:
+        lines = file.read().split('\n')
+    head = lines[0].split(',')
+    contact_list = []
+    for i in lines[1:]:
+        contact_dict = {}
+        info = i.split(',')
+        if len(info)!=1:
+            name = info[0]
+            fruit = info[1]
+            color = info[2]
 
-i = './contact.csv'
-k='contact.csv'
-
-# with open(i, newline='') as file:
-# k='contact.csv'
-
-with open('contact.csv', 'r') as f:
-    
-    read_ = f.read().split('\n')
-
-contact = []
-
-    # reader_obj = csv.DictReader(f)
-    # # ames = reader_obj.fieldnames
-    # # print(ames)
-    # for row in reader_obj:
-    #     print(row)
-
-rows = read_[1:]
-
-banner = read_[0].split(',')
-for row in rows: 
-    row = row.split(',') 
-    con = {} 
-    for i, header in enumerate(banner):
-        con[header] = row[0]
-        
-    for people, header in zip(row, banner):
-
-        con[header] =  people
-    con = dict(zip(banner, row))
-    contact.append(con) 
-    print(contact[-1])
-
-# con = []      
-#     # contact_list=lis.split(',')
-#     # print(contact_list[1])
-#     # for i, u in enumerate(contact_list):
-#     #     print(u,i)
-#     # contact_list=lis.split(',')
-
-
-def main():
-   menu()
+            contact_dict[head[0]] = name
+            contact_dict[head[1]] = fruit
+            contact_dict[head[2]] = color
+            contact_list.append(contact_dict)
+    return contact_list
 
 def menu():
-    print()
     
-    choice = int(input("""
-                      1: Read File
-                      2: Add file
-                      3: Delete
-                      4: Quit
+    while True:
+        print()
 
-                      Please choose: """))
+        choice = int(input("""
+                          1: Read File
+                          2: Add file
+                          3: Delete
+                          4: Update
+                        
+                          Please choose: """))
 
-    if choice == 1:
-        name = input('enter name: ')
-        for con in contact:
-            if con['Name'] == name:
-                for header in banner:
-                    print(f'{header}:{con[header]}', )
-        read_file(name)
-    elif choice == 2:
-        Add_File(contact)
-    elif choice == 3:
-                    
-        delete()
-        
-    # elif choice == 4:
-
-    #     Quit()
-    else:
-        print("goodbye")
-        menu()
-
-def read_file(name):
-    
-    with open(k, 'r',encoding='utf-8') as file:
-        lines = file.read().split('\n')
-    headers = lines[0].split(',')
-    
-    con = [] # return con
-
-    
-        #iterate over the people
-        #make a dictionary for each person
-        
-       #itereate over person contact details
-            #turn details into a list
-            #match hearder with corresponding details 
-
-    
-    rows = read_[1:]
-
-    banner = read_[0].split(',')
-    for row in rows: 
-        row = row.split(',') 
-        con = {} 
-        for i, header in enumerate(banner):
-            con[header] = row[0]
+        if choice == 1:
+            name = input('enter name: ')
+            retrieve(name)
             
-        for people, header in zip(row, banner):
+        elif choice == 2:
+            Add_File()
+            
+        elif choice == 3:
 
-            con[header] =  people
-        con = dict(zip(banner, row))
-        contact.append(con) 
-             
-    
-def Add_File(contact):
+            delete()
 
-    
-     
-
-    # contact = []
-      
-    # Fruits=input('Please enter fruit: ')
-    # contact.append(Fruits)    
-    # colors=input('Please enter color: ')
-    # contact.append(colors)
-
-
-    # with open('contact.csv', 'r') as f:
-    
-    #         read_ = f.read().split('\n')
-
-    
-
-    # reader_obj = csv.DictReader(f)
-    # # ames = reader_obj.fieldnames
-    # # print(ames)
-    # for row in reader_obj:
-    #     print(row)
-
-    # rows = read_[1:]
-
-    # banner = read_[0].split(',')
-    
-    # for head in header: 
-    #     # row = row.split(',') 
-    #     con = {} 
+        elif choice == 4:
+            update()
         
-        # for i, header in enumerate(banner):
-        #     con[header] = row[0]
+        select = input('Do you want to continue y/n: ')
+        if select.upper() == 'Y':
+            continue
+        else:
+            print('GoodBye')
+            break
 
-           
-        # for people, header in zip(row, banner):
-        Names=input('Please enter contact info: ')
-        Fruit=input('Please enter contact fruit: ')
-        color=input('Please enter contact color: ')
+def update():
+    name =  input('Enter the Name: ')
+    attrb = int(input("""
+                          1: Name
+                          2: Fruit
+                          3: Color
+                        
+                          Please choose to update: """))
+    
+    contact = read_contact()
+    indx_update = -1
+    for i in range(len(contact)):
+        if contact[i]['Name']== name:
+            indx_update = i
+            break
+
+    if indx_update!=-1:
+        if attrb == 1:
+            name = input('Enter New Name: ')
+            contact[indx_update]['Name'] = name          
+
+        elif attrb==2:
+            fruit = input('Enter New fruit: ')
+            contact[indx_update]['Fruit'] = fruit
+        elif attrb==3:
+            color = input('Enter New color: ')
+            contact[indx_update]['color'] = color
+        else:
+            print('Wrong input..')
+        
+        file = open('contacts.csv','w')
+        header = list(contact[0])
+        head = header[0] + ',' + header[1] + ',' + header[2]
+        file.write(head)
+        file.write('\n')
+        for info in contact:
+            line = info['Name'] +','+info['Fruit'] +','+ info['color']
+            file.write(line)
+            file.write('\n')
+        file.close()
+    else:
+        print('No Such Name found')
+
+         
+def retrieve(name):
+    contact = read_contact()
+#     print(contact)
+    for i in contact:
+        if i['Name']==name:
+            print(f"Name: {name} Fruit: {i['Fruit']} Color: {i['color']}")
+    
+def Add_File():
+
+        Names=input('Please enter Name: ')
+        Fruit=input('Please enter fruit: ')
+        color=input('Please enter color: ')
         diction = {'Name': Names,'Fruit': Fruit,'color': color}
 
-      
-        #     con = dict(zip(banner, row))
-        
+        contact = read_contact()
         contact.append(diction)
-        print(diction)
         
-        print(contact[-1])
-            
-        # for header in banner:
-       
+        file = open('contacts.csv','w')
+        header = list(contact[0])
+        head = header[0] + ',' + header[1] + ',' + header[2]
+        file.write(head)
+        file.write('\n')
+        for info in contact:
+            line = info['Name'] +','+info['Fruit'] +','+ info['color']
+            file.write(line)
+            file.write('\n')
+        file.close()
         
 def delete():
-
-    Name = input('enter nam')
-    with open('contact.csv', 'r') as readFile:
-
-        reader = csv.reader(readFile)
-        for row in reader:
-            contact.append(row)
-            for field in row:
-                if field == Name:
-                    contact.remove(row)
-
-                         
-def update():
-    con = []  
-    with open(k, 'r',encoding='utf-8') as file:
-        lines = file.read().split('\n')
+    name = input('Enter the Name: ')
+    contact = read_contact()
+    indx_del = -1
+    for i in range(len(contact)):
+        if contact[i]['Name']== name:
+            indx_del = i
+            break
+        
+    if indx_del!=-1:
+        _ = contact.pop(indx_del)
     
-    headers = lines[0].split(',')
+        file = open('contacts.csv','w')
+        header = list(contact[0])
+        head = header[0] + ',' + header[1] + ',' + header[2]
+        file.write(head)
+        file.write('\n')
+        for info in contact:
+            line = info['Name'] +','+info['Fruit'] +','+ info['color']
+            file.write(line)
+            file.write('\n')
+        file.close()
+    else:
+        print('No Such Name found')
 
-    for i in range(1,len(lines)):
+menu()
 
-        #iterate over the people
-        #make a dictionary for each person
-        contact = {}
-        for h in range(len(headers)):
 
-            person=lines[i].split(',')
-            contact[headers[h]] = person[h]
-    con.append(contact)
-    contact.update()
-   
-   
-main()
+
+
+
+
         
 # be on your branch git checkout [[branch-name]] to switch between branches
 # git pull origin main pulls main and merges it into your branch
