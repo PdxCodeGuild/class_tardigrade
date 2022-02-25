@@ -59,7 +59,7 @@ Example: `index.html`
 ### How to start a simple Vue app:
 ```js
 const App = {
-    data: {
+    data () {
         return {
             message: 'Hello world!'
         }

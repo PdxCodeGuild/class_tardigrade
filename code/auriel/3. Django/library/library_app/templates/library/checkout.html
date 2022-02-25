@@ -32,7 +32,7 @@
         </h1>
     </header>
 
-    <form action="/checkouted/{{ books.id }}/" method="POST">
+    <form action="checkedout/" method="POST">
       {% csrf_token %}
 
       <input class="w-1/2 h-10 px-3 mb-2 text-base text-gray-700 placeholder-gray-600 border rounded-lg focus:shadow-outline" type="text" name="user" placeholder="Jane Doe"/>
