@@ -29,95 +29,53 @@
 </head>
 
 <body>
-    <header class="tc pv4 pv5-ns" style="background-color: black;">
+    <header class="tc pv4 pv2-ns" >
         <img src="https://www.kindpng.com/picc/m/17-179131_quote-rdquo-quote-icon-png-free-transparent-png.png"
             class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar">
-        <h1 class="f5 f4-ns fw6 mid-gray" style="color: white;">Fav Quotes</h1>
+        <h1 class="f5 f4-ns fw6 mid-gray" >Fav Quotes</h1>
     </header>
 
     <div id="app" class="container w-50 my-4">
 
         <article class="is-flex is-justify-content-center">
-            <strong class="mr-1">Random Quote of the Day</strong>
+            <strong class="mr-1">Here Are Some Randoms Quotes</strong>
         </article>
 
         <div class="pa4" class="is-flex is-justify-content-center">
             <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--blue">
-                <p class="f5 f4-m f3-l lh-copy measure mt0">
-                    {{ randomQuote.body }}
-                </p>
-                <cite class="f6 ttu tracked fs-normal">― {{ randomQuote.author }}</cite>
+                <p v-for="quote in random" class="f5 f4-m f3-l lh-copy measure mt0">"{{ quote.body }}" - {{ quote.author }} </p>
             </blockquote>
         </div>
 
         <br>
 
-        <div>
-            <strong>Search by Keyword</strong>
-        </div>
-        <form @submit.prevent="searchKeyword" class="is-flex is-justify-content-center">
-            <div class="field has-addons">
-                <div class="control">
-                    <input v-model="Keyword" class="input" type="text" placeholder="Keyword">
-                </div>
-                <div class="control">
-                    <button class="button is-info">
-                        Search
-                    </button>
-                </div>
-            </div>
-        </form>
+        <p class="tc"><strong>Search for Quotes</strong></p>
 
         <br>
 
-        <div>
-            <strong>Search by Author</strong>
-        </div>
-        <form @submit.prevent="searchAuthor" class="is-flex is-justify-content-center">
-            <div class="field has-addons">
-                <div class="control">
-                    <input class="input" type="text" placeholder="Author" v-model="Author">
-                </div>
-                <div class="control">
-                    <button class="button is-info">
-                        Search
-                    </button>
-                </div>
-            </div>
+        <form @submit.prevent="searchKeyword" class="is-flex is-justify-content-center mt-2">
+            <input type="text" v-model="searchKeywords">
+            <button type="submit">Search Keyword</button>
         </form>
 
-        <br>
-
-        <div>
-            <strong>Search by Tag</strong>
-        </div>
-        <form @submit.prevent="searchTag" class="is-flex is-justify-content-center">
-            <div class="field has-addons">
-                <div class="control">
-                    <input class="input" type="text" placeholder="Tag" v-model="Tag">
-                </div>
-                <div class="control">
-                    <button class="button is-info">
-                        Search
-                    </button>
-                </div>
-            </div>
+        <form @submit.prevent="searchAuthor" class="is-flex is-justify-content-center mt-2">
+            <input type="text" v-model="searchAuthors">
+            <button type="submit">Search Author</button>
         </form>
 
-        <br>
+        <form @submit.prevent="searchTag" class="is-flex is-justify-content-center mt-2">
+            <input type="text" v-model="searchTags">
+            <button type="submit">Search Tag</button>
+        </form>
 
-        <div class="pa4" v-for="quote in foundQuotes" class="is-flex is-justify-content-center">
-            <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--blue">
-                <p class="f5 f4-m f3-l lh-copy measure mt0">
-                    {{ quote.body }}
-                </p>
-                <cite class="f6 ttu tracked fs-normal">―{{ quote.author }}</cite>
-            </blockquote>
-        </div>
 
-        <div class="is-flex is-justify-content-center">
-            <i class="far fa-arrow-alt-circle-left fa-2x mr-3" @click="previousPage" style="cursor: pointer"></i>
-            <i class="far fa-arrow-alt-circle-right fa-2x ms-3" @click="nextPage" style="cursor: pointer"></i>
+        <p v-for="search in searchResults">"{{ search.body }}" - {{ search.author }}</p>
+
+        <div class="is-flex is-justify-content-center mt-2">
+            
+            <button @click="prevPage">Previous</button>
+            <button @click="nxtPage" class="ml-2">Next page</button>
+    
         </div>
     </div>
 </body>
