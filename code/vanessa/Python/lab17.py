@@ -28,7 +28,7 @@ def get_quotes(quote_type):
     data = response.json()
    
 
-    for i, quote in enumerate(data.get('quotes', [])): # person.get('name', 'John Doe') returns the name if it exists as a key, if not returns 'John Doe'
+    for i, quote in enumerate(data.get('quotes', [])): 
         print(f'\n{i + 1}:')
         print(quote.get('body','author'))
 
