@@ -22,30 +22,38 @@
         <h1>Random Quotes</h1>
         <p v-for="quote in random">"{{ quote.body }}" -By. {{ quote.author }} </p>
 
-        <form @submit.prevent="searchKeyword">
-            <input type="text" v-model="searchKeywords">
-            <button type="submit">Search Keyword</button>
+        <br>
+
+        
+        <h2>Search Quotes</h2>
+        
+        <form @submit.prevent="searchQuotes">
+
+            <input type="text" v-model="searchTerm" />
+            <select name="searchType" id="searchType">
+              <option value="keyword">Keyword</option>
+              <option value="author">Author</option>
+              <option value="tag">Tag</option>
+            </select>
+            <input type="submit" value="Search" />
+
         </form>
-
-        <form @submit.prevent="searchAuthor">
-            <input type="text" v-model="searchAuthors">
-            <button type="submit">Search Author(s)</button>
-        </form>
-
-        <form @submit.prevent="searchTag">
-            <input type="text" v-model="searchTags">
-            <button type="submit">Search Tag(s)</button>
-        </form>
-
-
-        <p v-for="search in searchResults">"{{ search.body }}" - {{ search.author }}</p>
 
         <div>
-            
-            <button @click="prevPage">Previous page</button>
-            <button @click="nxtPage">Next page</button>
-    
+            <div v-for="search in searchResults">
+                <p class="text">"{{ search.body }}"</p>
+                <p class="author">{{ search.author }}</p>
+                <hr>
+            </div>
+
+            <div>
+
+                <button @click="prevPage">Prev. Page</button>
+                <button @click="nxtPage">Next Page</button>
+            </div>
         </div>
+
+    </div>
 
 
     </div>
