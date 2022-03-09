@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+    
+
+    {% extends 'posts/base.html' %}
+
+    {% block content %}
+
+    {% if user.is_authenticated %}
+
+            <div class='container'>
+
+                {% for post in posts %} 
+
+                    <div class='post'>
+
+                        <h3 class="text-red-500 text-3xl">{{ post.author }} Chirp:</h3>
+
+                        <br>
+
+                        <p id="quote" class="font-bold text-2xl">{{ post.chirp }}</p>
+
+                        <br>
+
+                        <p class="text-sm">{{ post.time }}</p>
+
+                        <br>
+
+                        {% if user.id == post.author.id %}
+
+                            <a href="{% url 'posts:delete' post.id %}"> <button  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button> </a>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>  
+
+    {% else %}
+
+    <div class='container'>
+
+        <h1>Please login or singup</h1>
+        
+    </div>
+    {% endif %}
+    
+    {% endblock %}
+
+</body>
+
+<footer class="bg-gray-100 text-center">
+  
+    <div class="text-center text-gray-700 p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-gray-800">Auriel Cofield Labs</a>
+    </div>
+
+</footer>
+
+</html>

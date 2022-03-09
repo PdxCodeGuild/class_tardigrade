@@ -11,3 +11,7 @@ def myview(request):
     }
     
     return render(request, 'libraryapp/mytemplate.html', context)
+
+def mycreate(request):
+    print(request.POST)
+    return HttpResponse('form received')

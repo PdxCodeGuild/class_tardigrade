@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+        <nav class="container flex justify-around py-8 mx-auto bg-white">
+
+            {% if user.is_authenticated %}
+
+            <div class="space-x-8">
+
+                <a href="/">Home</a>
+                <a href="{% url 'users:logout' %}">Logout</a> </p>
+
+            </div>
+
+            <p class="text-blue-500 hover:text-blue-800"> Welcome <a href="{% url 'posts:profile' user.id %}"></a> {{ user.username }} </a> </p>
+
+            {% else %}
+
+            <div class="space-x-8">
+
+                <a class="text-blue-500 hover:text-blue-800" href="{% url 'users:login' %}">LOGIN</a>
+                
+                 <a class="text-blue-500 hover:text-blue-800" href="{% url 'users:register' %}">SIGNUP</a>
+
+            </div>
+
+            {% endif %}
+            
+        </nav>
+    
+
+    <div class="header">
+
+            {% if user.is_authenticated %}  
+
+            <h2 class="text-xl font-medium uppercase mb-4">Post something</h2>  
+             
+                <form action="{% url 'posts:home' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="words" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-1/6 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"/>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">Post</button>
+                </form>
+
+            {% endif %}
+
+    <div class='posts'>
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+    
+</body>
+
+
+<footer class="bg-gray-100 text-center">
+  
+    <div class="text-center text-gray-700 p-4" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright:
+      <a class="text-gray-800">Auriel Cofield Labs</a>
+    </div>
+
+</footer>
+
+
+</html>

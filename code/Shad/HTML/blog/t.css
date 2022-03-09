@@ -1,0 +1,69 @@
+
+.grid {
+   display: grid; 
+
+   grid-template-rows: 4rem auto 45px;
+   grid-template-columns: 16rem auto;
+   height: 100vh;
+   width: 100%;
+   
+}
+  
+#tophead {
+    color: whitesmoke;
+
+   background-color: black; 
+   grid-row-start: 1;
+   grid-column-start: 1;
+   grid-row-end: 2;
+   grid-column-end: 3;
+   font-size: large;
+   font-style: normal;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-weight: 900;
+   font-stretch: expanded;
+   font-variant-caps: normal;
+   font-family: Arial; 
+   justify-content: center;  
+}
+   
+
+#leftlink {
+   -ms-grid-column-align: center; 
+   flex-direction: column; 
+   justify-content: center; 
+   justify-items: right; 
+   background-color: black; 
+   grid-row-start: 2;
+   grid-column-start: 1;
+   
+   grid-row-end: 4;
+   grid-column-end: 2;
+}
+   
+
+#maincontent {
+
+        
+    background-image: url("Sappho_NewBioImage.jpg ");
+    text-align: center;
+   background-image: cross-fade(); 
+   background-color: #d0d9e6; 
+   grid-row-start: 2;
+   grid-column-start: 2;
+   align-content: center; 
+   grid-row-end: 3;
+   grid-column-end: 3;
+   font-display: center;
+   justify-content: center;  
+}
+#foot {
+
+   background-color: black; 
+   grid-row-start: 3;
+   grid-column-start: 2;
+   color: whitesmoke; 
+   grid-row-end: 4;
+   grid-column-end: 3;
+   
+}

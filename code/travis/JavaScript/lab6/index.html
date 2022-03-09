@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab06: FavQs in Vue</title>
+</head>
+<body >
+    
+<h1>Vue Quotes</h1>
+    <div id="app" >
+
+
+
+        <h3>Quote of the day</h3>
+        {{qotdQuote}}<br>
+        {{qotdAuthor}}<br><br><br><br>
+        <h3>Search</h3>
+        <ul v-for ="info in quoteList">
+            <li>
+                {{info.quote}}<br><br>
+                {{info.name}}
+            </li>
+        </ul>
+
+
+
+<input v-model="searchText"  type="text"><br>
+
+<label for="selectSearch">Search by: </label>
+
+<select v-model="selected" id="selectSearch">
+  <option disabled value="">Please select one</option>
+  <option>Keyword</option>
+  <option>Author</option>
+  <option>Tag</option>
+</select>
+<button @click = searchQuotes()>Search</button>
+
+
+
+<ul v-for ="search in searchList">
+    <li>
+        {{search.quote}}<br><br>
+        {{search.name}}
+    </li>
+
+
+
+</ul>
+
+    
+
+        <br>
+
+        last page {{lastPage}} <br>
+        page num {{quotesPage}}
+
+
+        <br><br>
+        <button @click=numPages() >testpages</button>
+
+
+        <div id="pagination" v-for="">
+            <a href="#">&laquo;</a>
+            <a href="#">1</a>
+            <a class="active" href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">&raquo;</a>
+          </div>
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Include Vue from a CDN of your choice, I chose unpkg -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- Include your code here... -->
+    <script src="js/site.js"></script>
+
+</body>
+</html>
