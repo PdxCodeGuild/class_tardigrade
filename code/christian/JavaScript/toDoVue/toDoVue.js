@@ -1,44 +1,47 @@
 const App = {
-    data() {
-        return {
-            message: 'Hello world!',
-            taskList: [],
-            newTask: '',
-            completeList: []
-        }
-    },
-
-    methods: {
-        addTask() {
-            this.taskList.push(this.newTask)
-
-            this.newTask = ''
-        },
-        logEvent(event) {
-            console.log(event, 'event')
-            console.log(this.taskList)
-        },
-        removeTask(task) {
-            let finished = this.taskList.indexOf(task)
-            this.taskList.splice(finished)
-            console.log(finished)
-            console.log(task)
-            console.log(this.taskList)
-        },
-        deleteTask(delete) {
-            let done = this.completeList.indexOf(delete)
-            this.completeList.splice(done)
-        },
-
-        completeTask() {
-        this.completeList.push(this.newTask)
+	data () {
+		return {
+			todos: [
+				{
+					text: 'Eat',
+					completed: true
+				},
+				{
+					text: 'Sleep',
+					completed: false
+				}
+			],
+			newTodo: '',
+		}
+	},
+	computed: { 
+		incompleteTodos () {
+			return this.todos.filter(todo => todo.completed === false)
+		},
+		completedTodos () {
+			return this.todos.filter(todo => todo.completed === true)
+		}
+	},
+	methods: {
+		addNewTodo () {
+			this.todos.push({
+				text: this.newTodo,
+				completed: false
+			})
+			this.newTodo = ''
+		},
+		toggleComplete (todo) {
+			todo.completed = !todo.completed
+		},
+		deleteTodo (todo) {
+			console.log(todo)
+			console.log(this.todos.indexOf(todo))
+			const index = this.todos.indexOf(todo)
+			this.todos.splice(index, 1)
+		}
+	}
 }
-}
 
+const app = Vue.createApp(App)
+app.mount('#app')
 
-
-
-
-
-
-Vue.createApp(App).mount('#app')

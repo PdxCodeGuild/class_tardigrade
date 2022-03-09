@@ -8,6 +8,9 @@ const App = {
 
            }
     },
+    created() {
+        this.getRandomQuote()
+    },
     methods: {
 
         getRandomQuote() {

@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <script src="https://unpkg.com/vue@next"></script>
+	<script src="toDoVue.js" defer></script>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Todo List</title>
-    <!-- <style>
-		.completed {
-			text-decoration: line-through;
-		}
-	</style> -->
-
+    <title>Document</title>
 </head>
-
 <body>
     <div id="app">
-        {{ message }}
-        <h1> Todo List</h1>
-        <form @submit.prevent='addTask' action="">
-            <input @change="logEvent" type="text" v-model="newTask">
-            <button type="submit">ToDo</button>
-        </form>
 
-        <ul>
-            <li v-for="task in taskList">
-                <span>{{ task }}</span>
-                <button @click="completeTask">Complete</button>
-                <button v-on:click="removeTask(task)">Remove</button>
-            </li>
-        </ul>
-        <h2> Completed</h2>
-        <ul>
-            <li v-for="task in completeList">
-                <span>{{ task }}</span>
-                <button v-on:click="deleteTask(delete)">Remove</button>
-            </li>  
-            
-        </ul>
+		<h1>Todos</h1>
+		<form @submit.prevent="addNewTodo" action="">
+			<label for="todo">New Things To Do</label>
+			<input type="text" id="todo" v-model="newTodo">
+			<button type="submit">Add Todo</button>
+		</form>
 
+		<h3>Todo</h3>
+		<ul>
+			<li v-for="todo in incompleteTodos">
+				<span>
+					{{ todo.text }}
+				</span>
+				<button @click="toggleComplete(todo)">Completed</button>
+				<button @click="deleteTodo(todo)">Remove</button>
+			</li>
+		</ul>
 
-    </div>
+		<h3>Completed</h3>
+		<ul>
+			<li v-for="todo in completedTodos">
+				<span>
+					{{ todo.text }}
+				</span>
+				<button @click="toggleComplete(todo)">Not Completed</button>
+				<button @click="deleteTodo(todo)">Delete</button>
+			</li>
+		</ul>
 
-
-
-
-
-    <!-- Include Vue from a CDN of your choice, I chose unpkg -->
-    <script src="https://unpkg.com/vue@next"></script>
-    <!-- Include your code here... -->
-    <script src="toDoVue.js"></script>
+	</div>
+    
 </body>
-
 </html>
