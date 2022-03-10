@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+
+        <form name="todo-form" method="post" action="" v-on:submit.prevent="addTask">
+            <input name="add-todo" type="text" v-model="addTaskInput" placeholder="Enter Task Here..."/>
+            
+            <button type="submit">Add</button>
+        </form>
+
+        <div class="todo-lists" v-if="lists.length">
+            <h3>My Tasks</h3>
+            <ul>
+              <li v-for="list in lists" :key="list.id">
+                <input type="checkbox" v-on:change="completeTask(list)" v-bind:checked="list.isComplete"/>
+                <span class="title" contenteditable="true" v-bind:class="{completed: list.isComplete}">{{list.title}}</span>
+                <span class="remove" v-on:click="removeTask(list)">Delete</span>
+              </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="todovue.js"></script>
+
+</body>
+
+</html>

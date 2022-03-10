@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> To Do List</title>
+    <!-- Add your styles here! -->
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+
+<body>
+    <div id="app">
+        
+        {{ message }}
+        <form @submit.prevent="newItem"></form>
+        <input v-model="newItem" type="text" placeholder="what do you want to do?" />
+
+        <button type="submit" id="enter" @click="buttonClick">Enter</button>
+        </form>
+        <p>entering: {{ newItem }} </p>
+
+        <ul>
+
+            <li v-for="item in itemsToDo">{{ item }}
+                <span>
+                    <button type="submit" id="enter" @click="buttonComplete(item)">complete</button>
+                </span>
+                <span>
+                    <button type="submit" id="enter" @click="buttonDelete(item)">Delete</button>
+                </span>
+            </li>
+
+
+        </ul>
+
+        <p> List: {{ completedItem }}</p>
+        <ul>
+            <li v-for="item in itemsComplete"> {{item}}
+                <span>
+                    <button type="submit" id="enter" @click="buttonIncomplete(item)">incomplete</button>
+                </span>
+                <span>
+                    <button type="submit" id="enter" @click="buttonDelete(item)">Delete</button>
+                </span>
+
+
+ 
+            </li>
+        </ul>
+
+    </div>
+
+
+
+    <!-- Include Vue from a CDN of your choice, I chose unpkg -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Include your code here... -->
+    <script src="js/site.js"></script>
+</body>
+
+</html>
