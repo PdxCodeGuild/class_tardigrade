@@ -22,24 +22,30 @@ for persons_data in traveler_history[1:]:
     
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 print("Welcome to Vanessa's and friend's travel history repository")
-
+print(total_histories)
 def create():
     input_name = input("What is your name? ")
     input_relation = input("What is your relation to Vanessa? ")
     input_origin = input("What is your country of origin? ")
+    input_residence = input("What is the country of residence? ")
     input_number = input("How many countries have you visited? (digit only) ")
     input_countries = input("Which countries have you visited (including home country if travel has been done domestically)? please separate by comma: ")
-    created_record=(f'{input_name},{input_relation},{input_origin},{input_number},{input_countries}')
+    
+    # created_record=(f'{input_name},{input_relation},{input_origin},{input_number},{input_countries}')
+    
     # created_record= created_record.split(", \n")
-    # created_record= {
-    #             header[0]: input_name,
-    #             header[1]: input_relation,
-    #             header[3]: input_origin,
-    #             header[3]: input_number,
-    #             header[4]: input_countries,
-    #                 use total_histories.update()???
-    # total_histories.append(created_record)
-    with open('Python\contactupdate.csv','a') as travel_doc:
+    created_record= {
+                'name': input_name,
+                'relation': input_relation,
+                'country of origin': input_origin,
+                'country of residence': input_residence,
+                'number of countries visited': input_number,
+                'countries visited': input_countries
+                }
+                   # use total_histories.update()???
+    total_histories.append(created_record)
+    print(total_histories)
+    with open('Python\contactupdate.csv','w') as travel_doc:
         travel_doc.write(created_record)
 
     with open('Python\contactupdate.csv', 'r') as travel_doc:
