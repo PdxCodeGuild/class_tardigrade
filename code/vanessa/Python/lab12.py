@@ -133,12 +133,7 @@ def save():
 
       
 def quit():
-    with open('contacts2.csv','w') as travel_doc:
-        travel_doc.write(total_histories)
-
-    with open('contacts2.csv', 'r') as travel_doc:
-        test = travel_doc.read().split("\n")
-    print(test)
+    
     print("Thanks- Safe travels!")
     return
 
