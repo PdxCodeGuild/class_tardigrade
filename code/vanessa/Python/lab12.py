@@ -22,7 +22,7 @@ for persons_data in traveler_history[1:]:
     
 #---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 print("Welcome to Vanessa's and friend's travel history repository")
-print(total_histories)
+
 def create():
     input_name = input("What is your name? ")
     input_relation = input("What is your relation to Vanessa? ")
@@ -45,12 +45,6 @@ def create():
                    # use total_histories.update()???
     total_histories.append(created_record)
     print(total_histories)
-    with open('Python\contactupdate.csv','w') as travel_doc:
-        travel_doc.write(created_record)
-
-    with open('Python\contactupdate.csv', 'r') as travel_doc:
-        test = travel_doc.read().split("\n")
-    print(test)
     
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
 def update():
@@ -123,15 +117,35 @@ def delete_items():
     for each in total_histories:
         if each["name"] == delete_record:
             total_histories.pop((total_histories.index(each)))
+
+def save():
+    string = ''.join([str(item) for item in total_histories])
+    print('converting list to string')
+    print(string)
+
+    with open('contacts2.csv','w') as travel_doc:
+        travel_doc.write(string)
+
+    with open('contacts2.csv', 'r') as travel_doc:
+        test = travel_doc.read().split("\n")
+    print(test)
+    return
+
       
 def quit():
+    with open('contacts2.csv','w') as travel_doc:
+        travel_doc.write(total_histories)
+
+    with open('contacts2.csv', 'r') as travel_doc:
+        test = travel_doc.read().split("\n")
+    print(test)
     print("Thanks- Safe travels!")
     return
 
 while True:
-    command = input('Would you like to [c]reate [u]pdate, [r]etrieve individual record, [p]rint all, [d]elete or [q]uit? ').lower()
+    command = input('Would you like to [c]reate [u]pdate, [r]etrieve individual record, [p]rint all, [d]elete, [s]ave or [q]uit? ').lower()
     if command not in ["c","u","r","d","q"]:
-        print("please enter 'c' 'u' 'r' 'd' 'p' or 'q' commands only.")
+        print("please enter 'c' 'u' 'r' 'd' 'p' 'q' 's' commands only.")
     if command == 'c':
         create()
     if command == 'u':
@@ -143,6 +157,9 @@ while True:
         print_all()
     if command == 'd':
         delete_items()
+    if command == 's':
+        save()
+        print("changes saved")
     if command == 'q':
         quit()
         break
