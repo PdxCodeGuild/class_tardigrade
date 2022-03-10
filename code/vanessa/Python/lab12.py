@@ -20,7 +20,7 @@ for persons_data in traveler_history[1:]:
         
     total_histories.append(profile)
     
-
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 print("Welcome to Vanessa's and friend's travel history repository")
 
 def create():
@@ -37,7 +37,7 @@ def create():
     #             header[3]: input_origin,
     #             header[3]: input_number,
     #             header[4]: input_countries,
-    #                 }
+    #                 use total_histories.update()???
     # total_histories.append(created_record)
     with open('Python\contactupdate.csv','a') as travel_doc:
         travel_doc.write(created_record)
@@ -46,38 +46,63 @@ def create():
         test = travel_doc.read().split("\n")
     print(test)
     
-
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------
 def update():
     update_record1= input("Whose record would you like to update? ")
     for person in total_histories:
         if person['name'] == update_record1:
-            update= input("What would you like to update? [n]ame, [r]elation, [c]ountry of origin, country of [r]esidence, n[u]mber of countries visited, or countries [v]?').lower() ")
+            update= input("What would you like to update? [n]ame, [r]elation, [c]ountry of origin, country of r[e]sidence, n[u]mber of countries visited, or countries [v]?').lower() ")
             if update == 'n':
-                print("n")
-                print(total_histories[4]["name"])
+                new_name= input('please enter replacement name: ')
+                person['name']= new_name
+                print(person['name'])
+                print(person)
+                break
+
             if update == 'r':
-                print("r")
+                new_relation= input('please enter relationship type: ')
+                person['relation']= new_relation
+                print(person['relation'])
+                print(person)
+                break
+
             if update == 'c':
-                print("c")
-            if update == 'r':
-                print("r")
+                new_origin= input('please enter new country of origin: ')
+                person['country of origin']= new_origin
+                print(person['country of origin'])
+                print(person)
+                break
+            if update == 'e':
+                new_residence= input('please enter new country of residence: ')
+                person['country of residence']= new_residence
+                print(person['country of residence'])
+                print(person)
+                break
             if update ==  'u':
-                print("u")
+                new_number= input('please enter new number of countries visited: ')
+                person['number of countries visited']= new_number
+                print(person['number of countries visited'])
+                print(person)
+                break
             if update == 'v':
-                print("v")
-            print(update)
-    print(total_histories(update))
+                country = input('please enter correct country/ies visited. Seperate by comma: ')
+                person['countries visited']= country
+                print(person['countries visited'])
+                print(person)
+                break
+            # print(update)
+            # print(total_histories(update))
 
 def print_all():
     for each in total_histories:
         print(each['name'], each ['relation'], each['country of origin'], each['country of residence'], each['number of countries visited'], each ['countries visited'])
+        
 
 def retrieve():
     print("Options: ")
     for each in total_histories:
         print(each["name"])
     retrieve_record = input("Whose travel history would you like to see? ")
-    # print(total_histories)
     for person in total_histories:
         if person['name'] == retrieve_record:
             return person
@@ -104,7 +129,8 @@ while True:
     if command == 'c':
         create()
     if command == 'u':
-        print(update())
+        update()
+        print(" update complete")
     if command == 'r':
         print(retrieve())
     if command == 'p':
