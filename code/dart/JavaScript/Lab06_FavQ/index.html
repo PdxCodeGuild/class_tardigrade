@@ -7,77 +7,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fav Quotes</title>
 
-    <!-- css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <!-- vue and axios -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- my JavaScript file -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <script src="main.js" defer></script>
+
     <style>
-        div>strong {
-            margin-left: 225px;
+        input {
+
+            padding: 5px;
+            margin: 5px;
         }
 
-        img {
-            filter: invert(1);
+        #searching {
+            margin-left: 175px;
         }
     </style>
+
 </head>
 
 <body>
-    <header class="tc pv4 pv2-ns" >
-        <img src="https://www.kindpng.com/picc/m/17-179131_quote-rdquo-quote-icon-png-free-transparent-png.png"
-            class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar">
-        <h1 class="f5 f4-ns fw6 mid-gray" >Fav Quotes</h1>
-    </header>
 
     <div id="app" class="container w-50 my-4">
 
-        <article class="is-flex is-justify-content-center">
-            <strong class="mr-1">Here Are Some Randoms Quotes</strong>
-        </article>
+        <header class="tc pv4 pv2-ns">
+            <img src="https://www.kindpng.com/picc/m/17-179131_quote-rdquo-quote-icon-png-free-transparent-png.png"
+                class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar">
+            <h1 class="f5 f4-ns fw6 mid-gray">Fav Quotes</h1>
+        </header>
 
-        <div class="pa4" class="is-flex is-justify-content-center">
-            <blockquote class="athelas ml0 mt0 pl4 black-90 bl bw2 b--blue">
-                <p v-for="quote in random" class="f5 f4-m f3-l lh-copy measure mt0">"{{ quote.body }}" - {{ quote.author }} </p>
-            </blockquote>
+        <h3><strong>Random Quotes</strong></h3>
+
+        <p v-for="quote in favQuote" class="my-3">"{{ quote.body }}" - {{ quote.author }} </p>
+
+        <h3 id="searching">Search for a quote</h3>
+
+        <form @submit.prevent="findKeyword">
+            <input type="text" placeholder="Enter keyword" v-model="userKeyword">
+            <button type="submit">Search</button>
+        </form>
+
+        <form @submit.prevent="findTag">
+            <input type="text" placeholder="Enter tag" v-model="userTag">
+            <button type="submit">Search</button>
+        </form>
+
+        <form @submit.prevent="findAuthor">
+            <input type="text" placeholder="Enter author" v-model="userAuthor">
+            <button type="submit">Search</button>
+        </form>
+
+        <p v-for="found in foundQuotes">"{{ found.body }}" - {{ found.author }}</p>
+
+        <div>
+            <button @click="previousPage" class="mr-2">Previous</button>
+            <button @click="nextPage">Next page</button>
+
         </div>
 
-        <br>
-
-        <p class="tc"><strong>Search for Quotes</strong></p>
-
-        <br>
-
-        <form @submit.prevent="searchKeyword" class="is-flex is-justify-content-center mt-2">
-            <input type="text" v-model="searchKeywords">
-            <button type="submit">Search Keyword</button>
-        </form>
-
-        <form @submit.prevent="searchAuthor" class="is-flex is-justify-content-center mt-2">
-            <input type="text" v-model="searchAuthors">
-            <button type="submit">Search Author</button>
-        </form>
-
-        <form @submit.prevent="searchTag" class="is-flex is-justify-content-center mt-2">
-            <input type="text" v-model="searchTags">
-            <button type="submit">Search Tag</button>
-        </form>
-
-
-        <p v-for="search in searchResults">"{{ search.body }}" - {{ search.author }}</p>
-
-        <div class="is-flex is-justify-content-center mt-2">
-            
-            <button @click="prevPage">Previous</button>
-            <button @click="nxtPage" class="ml-2">Next page</button>
-    
-        </div>
     </div>
+
+
 </body>
 
 </html>

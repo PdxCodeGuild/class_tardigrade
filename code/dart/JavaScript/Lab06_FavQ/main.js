@@ -1,20 +1,20 @@
 const App = {
-    data () {
+    data() {
         return {
-            searchKeywords: '',
-            searchAuthors: '',
-            searchTags: '',
-            random: '',
-            searchFilter: '',
-            pages: '',
-            searchResults: [],
-            nextPage: ''
+            favQuote: '',
+            userKeyword: '',
+            userTag: '',
+            userAuthor: '',
+            foundQuotes: [],
+            pageNumber: '',
+            nextPageUrl: '',
+            myFilter: ''
         }
     },
 
     methods: {
 
-        randomQuotes() {
+        randomQuote() {
             axios({
                 method: 'get',
                 url: 'https://favqs.com/api/quotes',
@@ -22,118 +22,157 @@ const App = {
                     'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"',
                 }
             }).then(response => {
-                this.random = response.data.quotes
+                // console.log(response.data)
+                this.favQuote = response.data.quotes
             })
         },
 
-        searchKeyword() {
+        findKeyword() {
             axios({
                 method: 'get',
-                url: 'https://favqs.com/api/quotes',
-                headers: {'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'},
-                params: { filter: this.searchKeywords, type: 'searchKeywords' },
-            }).then(response => {
-                this.searchResults = response.data.quotes
-                this.pages = response.data.page
-            })
-        },
-
-        searchAuthor() {
-            axios({
-                method: 'get',
-                url: 'https://favqs.com/api/quotes',
-                headers: {'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'},
-                params: { filter: this.searchAuthors, type: 'searchAuthors' },
-            }).then(response => {
-                this.searchResults = response.data.quotes
-                this.pages = response.data.page
-            })
-        },
-
-        searchTag() {
-            axios({
-                method: 'get',
-                url: 'https://favqs.com/api/quotes',
-                headers: {'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'},
-                params: { filter: this.searchTags, type: 'searchTags' },
-            }).then(response => {
-                this.searchResults = response.data.quotes
-                this.pages = response.data.page
-            })
-        },
-
-        nxtPage() {
-            this.pages += 1
-
-            if (this.searchrKeywords != '') {
-                this.nextPage = 'https://favqs.com/api/quotes/?'
-                this.searchFilter = this.searchKeywords
-            } 
-            else if (this.searchTags != '') {
-                this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
-                this.searchFilter = this.searchTags
-            }
-            else if (this.searchAuthors != '') {
-                this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=author'
-                this.searchFilter = this.searchAuthors
-            }
-
-            axios({
-                method: 'get',
-                url: this.nextPage,
+                url: 'https://favqs.com/api/quotes/?',
                 headers: {
                     'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"',
                 },
                 params: {
-                    filter: this.searchFilter,
-                    page: this.pages
+                    filter: this.userKeyword,
                 },
             }).then(response => {
-                this.searchResults = response.data.quotes
-                this.pages = response.data.page
-
+                console.log(response.data)
+                this.foundQuotes = response.data.quotes
+                this.pageNumber = response.data.page
+                console.log(this.pageNumber)
             })
         },
 
-        prevPage() {
-            this.pages -= 1
-
-            if (this.searchrKeywords != '') {
-                this.nextPage = 'https://favqs.com/api/quotes/?'
-                this.searchFilter = this.searchKeywords
-            } 
-            else if (this.searchTags != '') {
-                this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
-                this.searchFilter = this.searchTags
-            }
-            else if (this.searchAuthors != '') {
-                this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=author'
-                this.searchFilter = this.searchAuthors
-            }
-
+        findTag() {
             axios({
                 method: 'get',
-                url: this.nextPage,
+                url: 'https://favqs.com/api/quotes/?filter=filter&type=tag',
                 headers: {
                     'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"',
                 },
                 params: {
-                    filter: this.searchFilter,
-                    page: this.pages
+                    filter: this.userTag,
                 },
             }).then(response => {
-                this.searchResults = response.data.quotes
-                this.pages = response.data.page
+                console.log(response.data)
+                this.foundQuotes = response.data.quotes
+                this.pageNumber = response.data.page
+            })
+        },
+
+        findAuthor() {
+            axios({
+                method: 'get',
+                url: 'https://favqs.com/api/quotes/?filter=filter&type=author',
+                headers: {
+                    'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"',
+                },
+                params: {
+                    filter: this.userAuthor,
+                },
+            }).then(response => {
+                console.log(response.data)
+                this.foundQuotes = response.data.quotes
+                this.pageNumber = response.data.page
 
             })
+        },
+
+        nextPage: function () {
+
+            this.pageNumber += 1
+            console.log(this.pageNumber)
+
+            // userKeyword: '',
+            // userTag: '',
+            // userAuthor: '', 
+
+            if (this.userKeyword != '') {
+                // console.log('userKeyword is truthy')
+                this.nextPageUrl = 'https://favqs.com/api/quotes/?'
+                this.myFilter = this.userKeyword
+            }
+            else if (this.userTag != '') {
+                this.nextPageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
+                this.myFilter = this.userTag
+            }
+            else if (this.userAuthor != '') {
+                this.nextPageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=author'
+                this.myFilter = this.userAuthor
+            }
+
+
+
+            axios({
+                method: 'get',
+                url: this.nextPageUrl,
+                headers: {
+                    'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"',
+                },
+                params: {
+                    filter: this.myFilter,
+                    page: this.pageNumber
+                },
+            }).then(response => {
+                console.log(response.data)
+                this.foundQuotes = response.data.quotes
+                this.pageNumber = response.data.page
+
+            })
+
+
+        },
+
+        previousPage: function () {
+
+            this.pageNumber -= 1
+            console.log(this.pageNumber)
+
+            // userKeyword: '',
+            // userTag: '',
+            // userAuthor: '', 
+
+            if (this.userKeyword != '') {
+                // console.log('userKeyword is truthy')
+                this.nextPageUrl = 'https://favqs.com/api/quotes/?'
+                this.myFilter = this.userKeyword
+            }
+            else if (this.userTag != '') {
+                this.nextPageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
+                this.myFilter = this.userTag
+            }
+            else if (this.userAuthor != '') {
+                this.nextPageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=author'
+                this.myFilter = this.userAuthor
+            }
+
+
+
+            axios({
+                method: 'get',
+                url: this.nextPageUrl,
+                headers: {
+                    'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"',
+                },
+                params: {
+                    filter: this.myFilter,
+                    page: this.pageNumber
+                },
+            }).then(response => {
+                console.log(response.data)
+                this.foundQuotes = response.data.quotes
+                this.pageNumber = response.data.page
+
+            })
+
         }
 
-
-
     },
-    
+
     created() {
-        this.randomQuotes()
+        this.randomQuote()
     }
 }
 
