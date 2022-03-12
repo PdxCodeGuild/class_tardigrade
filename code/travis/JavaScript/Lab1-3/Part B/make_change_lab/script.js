@@ -4,7 +4,7 @@
 
 
 // coin constant values
-let coin_amount_dic = {
+let coinAmountArray = {
 
     quarter: 0,
     dime: 0,
@@ -13,76 +13,79 @@ let coin_amount_dic = {
 };
 
 
-let list_change = document.getElementById("list-change");
+let listChange = document.getElementById("list-change");
 
 
-function calc_coins(coin_amount_dic, user_input) {
+function calcCoins(coinAmountArray, userEntry) {
 
-    let total_remaining = user_input * 100
+    let totalRemaining = userEntry * 100
 
 
     //quarters
-    let quarter_calc = Math.floor(total_remaining / 25)
+    let quarterCalc = Math.floor(totalRemaining / 25)
 
-    total_remaining = total_remaining - (quarter_calc * 25)
+    totalRemaining = totalRemaining - (quarterCalc * 25)
 
-    coin_amount_dic.quarter = quarter_calc
+    coinAmountArray.quarter = quarterCalc
 
     //dimes
 
-    let dime_calc = Math.floor(total_remaining / 10)
+    let dimeCalc = Math.floor(totalRemaining / 10)
 
-    total_remaining = total_remaining - (dime_calc * 10)
+    totalRemaining = totalRemaining - (dimeCalc * 10)
 
-    coin_amount_dic.dime = dime_calc
+    coinAmountArray.dime = dimeCalc
 
     //nickels
 
-    let nickel_calc = Math.floor(total_remaining / 5)
+    let nickelCalc = Math.floor(totalRemaining / 5)
 
-    total_remaining = total_remaining - (nickel_calc * 5)
+    totalRemaining = totalRemaining - (nickelCalc * 5)
 
-    coin_amount_dic.nickel = nickel_calc
+    coinAmountArray.nickel = nickelCalc
 
     //pennies
 
-    let penny_calc = Math.floor(total_remaining / 1)
+    let pennyCalc = Math.floor(totalRemaining / 1)
 
-    total_remaining = total_remaining - (penny_calc * 1)
+    totalRemaining = totalRemaining - (pennyCalc * 1)
 
-    coin_amount_dic.penny = penny_calc
+    coinAmountArray.penny = pennyCalc
 
 
-    return coin_amount_dic
+    return coinAmountArray
 }
 
 
 
-submit_dollar.addEventListener('click', function (e) {
+submitDollar.addEventListener('click', function (e) {
     e.preventDefault()
 
+    listChange.innerText = ""
+
+    
 
     //Get text entry
-    let text_entry = document.querySelector("#text-entry");
-    let user_input = text_entry.value;
+    let textEntry = document.querySelector("#text-entry");
+    let userEntry = textEntry.value;
 
 
     //Calls calculate function. passes input
-    calc_coins(coin_amount_dic, user_input);
+    calcCoins(coinAmountArray, userEntry);
 
 
-    for (let key in coin_amount_dic) {
-        let value = coin_amount_dic[key];
-        let coin_name = key;
+    for (let key in coinAmountArray) {
+        let value = coinAmountArray[key];
+        let coinName = key;
 
-        let li_element = document.createElement("li");
+        let liElement = document.createElement("li");
 
 
-        test = (coin_name + ": " + value);
+        output = (coinName + ": " + value);
 
-        li_element.innerText = test;
+        liElement.innerText = output;
 
-        list_change.appendChild(li_element);
+        listChange.appendChild(liElement);
 
     }
 

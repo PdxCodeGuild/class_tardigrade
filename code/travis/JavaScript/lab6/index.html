@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab06: FavQs in Vue</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body >
     
@@ -37,8 +41,7 @@
   <option>Author</option>
   <option>Tag</option>
 </select>
-<button @click = searchQuotes()>Search</button>
-
+<button @click = searchQuotes(1)>Search</button>
 
 
 <ul v-for ="search in searchList">
@@ -48,46 +51,15 @@
     </li>
 
 
-
 </ul>
-
     
-
-        <br>
-
-        last page {{lastPage}} <br>
-        page num {{quotesPage}}
-
-
-        <br><br>
-        <button @click=numPages() >testpages</button>
-
-
-        <div id="pagination" v-for="">
-            <a href="#">&laquo;</a>
-            <a href="#">1</a>
-            <a class="active" href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">&raquo;</a>
+    pagination may be slow to load...
+        <div class ="pagination" id="pagination" v-for = "page in paginationArray" >
+            <a @click = searchQuotes(page.pageNum)>{{page.pageNum}}</a>
+           
           </div>
 
-
-
-
-
-
       </div>
-
-
-
-
-
-
-
-
 
 
 

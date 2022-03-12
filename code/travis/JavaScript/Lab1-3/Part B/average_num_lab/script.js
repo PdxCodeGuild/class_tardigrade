@@ -40,6 +40,8 @@ averOut.innerText = average
     add = 0;
     arrayNum = 0;
 
+    
+
 }
 
 
