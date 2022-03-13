@@ -19,12 +19,12 @@
         <br>
 
         <h1>Quotes</h1>
-        <p v-for="quote in quotes">{{ quote.body }} </p>
+        <p v-for="quote in rQuote">{{ quote.body }} </p>
          <p>{{ quote.author }} </p>
         <br>
         
-        <form @submit.prevent="type">
-            <input type="text" v-model="type">
+        <form @submit.prevent="searchType">
+            <input type="text" v-model="searchType">
             <button type="submit">search by type</button>
         </form>
         <br>
