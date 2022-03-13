@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes</title>
+    <script src="https://unpkg.com/vue@next"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="quotes.js" defer></script>
+
+</head>
+
+<body>
+    <div id="app">
+        
+        <br>
+
+        <h1>Quotes</h1>
+        <p v-for="quotes">{{ quotes.body }} </p>
+         <p>{{ quotes.author }} </p>
+        <br>
+        
+        <form @submit.prevent="type">
+            <input type="text" v-model="type">
+            <button type="submit">search by type</button>
+        </form>
+        <br>
+
+        <form @submit.prevent="authorSearch">
+            <input type="text" v-model="authorSearch">
+            <button type="submit">search by author</button>
+        </form>
+        <br>
+
+        <form @submit.prevent="tagsSearch">
+            <input type="text" v-model="tagsSearch">
+            <button type="submit">search by tag</button>
+        </form>
+
+
+
+        
+    </div>
+
+   
+    
+</body>
