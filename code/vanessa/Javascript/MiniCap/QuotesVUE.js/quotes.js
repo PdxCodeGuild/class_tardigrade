@@ -1,11 +1,12 @@
 const App = {
+    // delimiters: ['[[', ']]'],
     data () {
         return {
-            message: 'Hello',
+            message: 'Hello World!',
             type: '',
             authorSearch: '',
             tagsSearch: '',
-            quote: '',
+            quote: [],
             filter: '',
             pages: '',
             nextPg: '',
@@ -20,10 +21,11 @@ const App = {
                 method: 'get',
                 url: 'https://favqs.com/api/quotes',
                 headers: {
-                    'Authorization': 'Token token="881fdd4c7756328328ec3545c4508c6a"',
+                    'Authorization': 'Token token="	855df50978dc9afd6bf86579913c9f8b"',
                 }
             }).then(response => {
                 this.quote = response.data.quotes
+                console.log(response.data.quotes)
             })
         },
 
@@ -32,7 +34,7 @@ const App = {
                 method: 'get',
                 url: 'https://favqs.com/api/quotes',
                 headers: {
-                    'Authorization': 'Token token="881fdd4c7756328328ec3545c4508c6a"',
+                    'Authorization': 'Token token="	855df50978dc9afd6bf86579913c9f8b"',
                 },
                 params: {
                     filter: this.type,
@@ -48,7 +50,7 @@ const App = {
                 method: 'get',
                 url: 'https://favqs.com/api/quotes',
                 headers: {
-                    'Authorization': 'Token token="881fdd4c7756328328ec3545c4508c6a"',
+                    'Authorization': 'Token token="	855df50978dc9afd6bf86579913c9f8b"',
                 },
                 params: {
                     filter: this.authorSearch,
@@ -63,11 +65,8 @@ const App = {
             axios({
                 method: 'get',
                 url: 'https://favqs.com/api/quotes',
-                // headers: {
-                //     'Authorization': 'Token token="881fdd4c7756328328ec3545c4508c6a"',
-                // },
-                headers = {
-                    'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'
+                headers:  {
+                    'Authorization': 'Token token="	855df50978dc9afd6bf86579913c9f8b"'
                 },
                 
             }).then(response => {
@@ -75,7 +74,7 @@ const App = {
                 this.pages = response.data.page
             })
         },
-//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------"accept": "application/json",'Authorization': 'Token token="855df50978dc9afd6bf86579913c9f8b"'
        
 
 
