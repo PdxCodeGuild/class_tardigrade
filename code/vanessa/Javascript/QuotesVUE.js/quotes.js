@@ -3,10 +3,17 @@ const App = {
     data() {
         return {
             message: 'Hello World!',
-            searchType: '',
-            authorSearch: '',
-            tagsSearch: '',
-            quote: [],
+            //------------------------------------------------------------------
+
+            quotes: [],
+            //-----------------------------------------------------------------
+
+            searchTypes: '',
+            authorSearches: '',
+            tagsSearches: '',
+
+            //------------------------------------------------------------------
+
             filter: '',
             pages: '',
             nextPg: '',
@@ -29,7 +36,8 @@ const App = {
 
                 }
             }).then(response => {
-                this.quote = response.data.quote.body
+                this.quotes = response.data.quote
+                console.log(response.data.quote)
                 console.log(response.data.quote.body)
                 console.log(response.data.quote.author)
             })

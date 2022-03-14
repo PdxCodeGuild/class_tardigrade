@@ -15,28 +15,27 @@
 
 <body>
     <div id="app">
-        <!-- {{ message }} -->
+        {{ message }}
         <br>
 
         <h1>Quotes</h1>
-        <p v-for="quote in rQuote">{{ quote.body }} </p>
-         <p>{{ quote.author }} </p>
+        <p v-for="quote in quotes">{{ quotes.body }} - {{ quotes.author }} </p>
         <br>
         
         <form @submit.prevent="searchType">
-            <input type="text" v-model="searchType">
+            <input type="text" v-model="searchTypes">
             <button type="submit">search by type</button>
         </form>
         <br>
 
         <form @submit.prevent="authorSearch">
-            <input type="text" v-model="authorSearch">
+            <input type="text" v-model="authorSearches">
             <button type="submit">search by author</button>
         </form>
         <br>
 
         <form @submit.prevent="tagsSearch">
-            <input type="text" v-model="tagsSearch">
+            <input type="text" v-model="tagsSearches">
             <button type="submit">search by tag</button>
         </form>
 
