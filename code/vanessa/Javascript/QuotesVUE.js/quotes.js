@@ -31,8 +31,9 @@ const App = {
             axios({
                 method: 'get',
                 url: 'https://favqs.com/api/qotd',
+                //url will not work with end written as quotes. get access error. 
                 headers: {
-                    "Accept": "application/json",
+                    "Accept": "application/json",'Authorization': 'Token token="	6e5ddc77bb286cc39e07c4ffcd0f0db8"'
 
                 }
             }).then(response => {
@@ -52,7 +53,7 @@ const App = {
                     'Authorization': 'Token token="	6e5ddc77bb286cc39e07c4ffcd0f0db8"',
                 },
                 params: {
-                    filter: this.searchType, page:1
+                    filter: this.searchType, page: 1
                 },
             }).then(response => {
                 this.results = response.data.quotes
@@ -94,9 +95,77 @@ const App = {
                 this.pages = response.data.page
             })
         },
-     
+
 
     },
+
+    next() {
+        this.pages += 1
+
+        if (this.searchTypes != '') {
+            this.nextPg = 'https://favqs.com/api/quotes/?'
+            this.filter = this.searchTypes
+        }
+        else if (this.tagsSearches != '') {
+            this.nextPg = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
+            this.filter = this.tagsSearches
+        }
+        else if (this.authorSearches != '') {
+            this.nextPg = 'https://favqs.com/api/quotes/?filter=filter&type=author'
+            this.filter = this.authorSearches
+        }
+
+        axios({
+            method: 'get',
+            url: this.nextPg,
+            headers: {
+                'Authorization': 'Token token="6e5ddc77bb286cc39e07c4ffcd0f0db8"',
+            },
+            params: {
+                filter: this.filter,
+                page: this.pages
+            },
+        }).then(response => {
+            this.results = response.data.quotes
+            this.pages = response.data.page
+
+        })
+    },
+
+    previous() {
+        this.pages -= 1
+
+        if (this.searchrKeywords != '') {
+            this.nextPg = 'https://favqs.com/api/quotes/?'
+            this.filter = this.searchTypes
+        }
+        else if (this.tagsSearches != '') {
+            this.nextPg = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
+            this.filter = this.tagsSearches
+        }
+        else if (this.authorSearches != '') {
+            this.nextPg = 'https://favqs.com/api/quotes/?filter=filter&type=author'
+            this.filter = this.authorSearches
+        }
+
+        axios({
+            method: 'get',
+            url: this.nextPg,
+            headers: {
+                'Authorization': 'Token token="6e5ddc77bb286cc39e07c4ffcd0f0db8"',
+            },
+            params: {
+                filter: this.filter,
+                page: this.pages
+            },
+        }).then(response => {
+            this.results = response.data.quotes
+            this.pages = response.data.page
+
+        })
+    }
+
+
 
 }
 
