@@ -89,13 +89,9 @@ def delete():
     for each in total_histories:
         print(each["name"])
     delete_record= input('Whose travel history do you wish to delete? warning: this will delete entire record... ')
-    print(delete_record)
-    print(type(delete_record))
     for each in total_histories:
         if (each["name"]) == delete_record:
-            print(each["name"])
-            total_histories.pop(delete_record)
-
+          total_histories.pop(delete_record)
         #     print(total_histories)
            
     #         print(total_histories)
@@ -139,3 +135,55 @@ while True:
     if command == 'q':
         quit()
         break
+# with open('Python\contacts2.csv','r') as file:
+#     line = file.read().split('\n')  #getting list of individual lines
+#     header = (line[0].split(","))
+# travel_history = []                 #making a list to loop lines for new list of dictionaries
+# name=(header[0])
+# color=(header[1])
+# fruit=(header[2])
+# print(name, color, fruit)
+
+
+# input_name= input("write something: ")
+# input_relation = input("write something: ")
+# input_origin = input("write something: ")
+# input_number = input("write something: ")
+# input_countries= input("write something: ")
+
+# new_dict =  {name: input_name,
+#             color: input_countries,
+#             fruit:  input_origin,
+#                     }
+# print(new_dict)
+# travel_history.append(new_dict)
+# print(travel_history)
+
+# profile=[]
+
+# counter = 0
+# for row in line:
+#     if counter == 0:
+#         counter +=1
+#     else:
+#         current_row= row.split(",")
+        
+#         name_dict= {name: current_row[0],
+#                     color: current_row[1],
+#                     fruit: current_row[2]
+#                     }
+#         profile.append(name_dict)
+# print(profile)
+
+
+
+ # created_record=(f'{input_name},{input_relation},{input_origin},{input_number},{input_countries}')
+    # created_record= created_record.split(", \n")
+    # print(created_record)
+    # make_dict = [header[0]]
+    # #NEED to turn input into dictionary first before appending to list. Then add to csv w/out spaces.
+    # print(new_record.split(", \n"))
+    # # total_histories.append(new_record)
+    # # print(total_histories)
+    # # with open('vanessa\contactupdate.csv','a') as travel_doc:
+    # #     travel_doc.write(new_record)
