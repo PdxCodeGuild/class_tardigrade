@@ -37,7 +37,7 @@ const App = {
                 method: 'get',
                 url: `https://favqs.com/api/quotes/?filter=${this.keyWord}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
-                params: { filter: this.keyWord },
+                params: { filter: this.keyWord, type: 'user' },
             })
             .then(response => {
                 console.log('!!!!',response.data)
@@ -50,7 +50,7 @@ const App = {
                 method: 'get',
                 url: `https://favqs.com/api/quotes/?filter=${this.authorSearch}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
-                params: { filter: this.authorSearch },
+                params: { filter: this.authorSearch, type: 'author' },
             })
             .then(response => {
                 console.log(response.data)
@@ -62,7 +62,7 @@ const App = {
                 method: 'get',
                 url: `https://favqs.com/api/quotes/?filter=${this.tagSearch}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
-                params: { filter: this.tagSearch },
+                params: { filter: this.tagSearch, type: 'tag' },
 
             })
             .then(response => {
