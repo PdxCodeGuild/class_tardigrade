@@ -1,7 +1,7 @@
 const App = {
     data () {
         return {
-            message: 'Welcome To Quote Search',
+            message: 'Welcome To The Quote Search',
             searchKeywords: '',
             searchAuthors: '',
             searchTags: '',
