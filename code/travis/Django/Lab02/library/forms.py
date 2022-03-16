@@ -1,11 +1,11 @@
 from django import forms
-from .models import CheckoutBook 
+from .models import Book 
 
 
 class CheckoutForm(forms.ModelForm):
     user = forms.CharField(label=False)
     
     class Meta:        
-        model = CheckoutBook
+        model = Book
 
         fields = ('user',)

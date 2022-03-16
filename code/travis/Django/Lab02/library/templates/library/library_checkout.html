@@ -17,7 +17,7 @@
 
     
     <h1>Check Out Page</h1>
-    <body>
+
 
         <table >
         <tr>
@@ -32,7 +32,7 @@
         
             <td>{{ checkout.title }}</td>
 
-            {% if checkout.is_checked_out == False%}
+            {% if checkout.is_checked_out == False %}
 
             <td>
                 <form action="{% url 'library:checkout' checkout.id %}" method="post" aenctype="multipart/form-data">

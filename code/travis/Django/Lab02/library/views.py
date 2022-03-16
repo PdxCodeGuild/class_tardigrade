@@ -6,7 +6,7 @@ from library.forms import CheckoutForm
 
 from django.contrib import messages
 from library.models import Book
-from library.models import CheckoutBook
+
 
 
 
@@ -19,10 +19,9 @@ def library(request):
 
 
 def checkout(request):
-
-    if request.method == "GET":
-
-        checkout_list = CheckoutBook.objects.all()
+    
+    if request.method == "GET":        
+        checkout_list = Book.objects.all()
         checkout_form = CheckoutForm()
 
         return render(request=request, template_name="library/library_checkout.html", context={'checkout_form': checkout_form, 'checkout_list': checkout_list})
@@ -30,7 +29,7 @@ def checkout(request):
 
 def checkout_book(request, id):
 
-    instance = get_object_or_404(CheckoutBook, id=id)
+    instance = get_object_or_404(Book, id=id)
 
     if request.method == "POST":
 
@@ -40,8 +39,8 @@ def checkout_book(request, id):
 
             checkout_form.save()
 
-            CheckoutBook.objects.filter(id=id).update(is_checked_out=True)
-            CheckoutBook.objects.filter(id=id).update(time_stamp=datetime.now())
+            Book.objects.filter(id=id).update(is_checked_out=True)
+            Book.objects.filter(id=id).update(time_stamp=datetime.now())
 
             messages.success(
                 request, ('Your book was successfully checked out!'))
@@ -60,7 +59,7 @@ def checkin(request, id):
     if request.method == "POST":
 
         print(id)
-        CheckoutBook.objects.filter(id=id).update(is_checked_out=False)
-        CheckoutBook.objects.filter(id=id).update(time_stamp=datetime.now())
+        Book.objects.filter(id=id).update(is_checked_out=False)
+        Book.objects.filter(id=id).update(time_stamp=datetime.now())
 
     return redirect("/library-checkout/")
