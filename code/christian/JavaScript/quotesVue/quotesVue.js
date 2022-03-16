@@ -48,7 +48,7 @@ const App = {
         getAuthor(){
             axios({
                 method: 'get',
-                url: 'https://favqs.com/api/quotes',
+                url: `https://favqs.com/api/quotes/?filter=${this.authorSearch}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
                 params: { filter: this.authorSearch },
             })
@@ -60,7 +60,7 @@ const App = {
         getTag(){
             axios({
                 method: 'get',
-                url: 'https://favqs.com/api/quotes',
+                url: `https://favqs.com/api/quotes/?filter=${this.tagSearch}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
                 params: { filter: this.tagSearch },
 
