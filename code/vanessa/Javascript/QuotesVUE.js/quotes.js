@@ -47,7 +47,7 @@ const App = {
                     'Authorization': 'Token token="6e5ddc77bb286cc39e07c4ffcd0f0db8"',
                 },
                 params: {
-                    filter: this.searchType, page: this.pages
+                    filter: this.searchTypes, page: this.pages
                 },
             }).then(response => {
                 this.results = response.data.quotes
@@ -92,7 +92,7 @@ const App = {
 
     nextP() {
         this.pages += 1
-        alert("test")
+        // alert("test")
 
         if (this.searchTypes != '') {
             this.nextPg = 'https://favqs.com/api/quotes/?'
