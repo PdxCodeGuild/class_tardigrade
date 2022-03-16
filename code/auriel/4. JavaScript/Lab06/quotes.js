@@ -14,7 +14,6 @@ const App = {
     },
 
     methods: {
-
         randomQuotes() {
             axios({
                 method: 'get',
@@ -46,7 +45,7 @@ const App = {
         searchAuthor() {
             axios({
                 method: 'get',
-                url: 'https://favqs.com/api/quotes',
+                url: 'https://favqs.com/api/quotes/?filter=filter&type=author',
                 headers: {
                     'Authorization': 'Token token="881fdd4c7756328328ec3545c4508c6a"',
                 },
@@ -62,7 +61,7 @@ const App = {
         searchTag() {
             axios({
                 method: 'get',
-                url: 'https://favqs.com/api/quotes',
+                url: 'https://favqs.com/api/quotes/?filter=filter&type=tag',
                 headers: {
                     'Authorization': 'Token token="881fdd4c7756328328ec3545c4508c6a"',
                 },
@@ -75,6 +74,7 @@ const App = {
             })
         },
 
+
         nxtPage() {
             this.pages += 1
 
@@ -82,11 +82,11 @@ const App = {
                 this.nextPage = 'https://favqs.com/api/quotes/?'
                 this.searchFilter = this.searchKeywords
             } 
-            else if (this.searchTags != '') {
+            if (this.searchTags != '') {
                 this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
                 this.searchFilter = this.searchTags
             }
-            else if (this.searchAuthors != '') {
+            if (this.searchAuthors != '') {
                 this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=author'
                 this.searchFilter = this.searchAuthors
             }
@@ -115,11 +115,11 @@ const App = {
                 this.nextPage = 'https://favqs.com/api/quotes/?'
                 this.searchFilter = this.searchKeywords
             } 
-            else if (this.searchTags != '') {
+            if (this.searchTags != '') {
                 this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
                 this.searchFilter = this.searchTags
             }
-            else if (this.searchAuthors != '') {
+            if (this.searchAuthors != '') {
                 this.nextPage = 'https://favqs.com/api/quotes/?filter=filter&type=author'
                 this.searchFilter = this.searchAuthors
             }
@@ -149,5 +149,4 @@ const App = {
         this.randomQuotes()
     }
 }
-
 Vue.createApp(App).mount('#app')
