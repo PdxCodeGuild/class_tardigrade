@@ -8,9 +8,13 @@ const App = {
             tagSearch: '',
             randomQuote: [],
             dataBase: [],
-            nextPage: '',
+            nextPage: 1,
             pageUrl: '',
             myFilter: '',
+
+            authorCheck: false,
+            keyWordCheck: false,
+            tagCheck: false,
 
 
            }
@@ -33,36 +37,47 @@ const App = {
             })
         },
         getWord(){
+      
+            authorCheck = false
+            tagCheck = false
+            keyWordCheck = true
             axios({
                 method: 'get',
                 url: `https://favqs.com/api/quotes/?filter=${this.keyWord}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
-                params: { filter: this.keyWord, type: 'user' },
+                params: { filter: this.keyWord, page: this.nextPage },
             })
             .then(response => {
                 console.log('!!!!',response.data)
                 this.dataBase = response.data.quotes
-                alert('heloooooo')
+                // alert('heloooooo')
             })
         },
         getAuthor(){
+            authorCheck = true
+            tagCheck = false
+            keyWordCheck = false
             axios({
                 method: 'get',
                 url: `https://favqs.com/api/quotes/?filter=${this.authorSearch}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
-                params: { filter: this.authorSearch, type: 'author' },
+                params: { filter: this.authorSearch, type: 'author', page: this.nextPage  },
             })
             .then(response => {
                 console.log(response.data)
                 this.dataBase = response.data.quotes
+                
             })
         },
         getTag(){
+            authorCheck = false
+            tagCheck = true
+            keyWordCheck = false
             axios({
                 method: 'get',
                 url: `https://favqs.com/api/quotes/?filter=${this.tagSearch}`,
                 headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"` },
-                params: { filter: this.tagSearch, type: 'tag' },
+                params: { filter: this.tagSearch, type: 'tag', page: this.nextPage },
 
             })
             .then(response => {
@@ -71,67 +86,38 @@ const App = {
             })
 
         },
-        changePage() {
+        addPage() {
+            console.log(this.nextPage)
             this.nextPage += 1
-            if (this.getWord != '') {
-                this.pageUrl = 'https://favqs.com/api/quotes'
-                this.myFilter = this.getWord
+            if (authorCheck == true){
+                this.getAuthor()
 
             }
-            else if(this.getTag != '') {
-                this.pageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
-                this.myFilter = this.getTag
+            else if (tagCheck == true){
+                this.getTag()
             }
-            else if (this.getAuthor != '') {
-                this.pageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=author'
-                this.myFilter = this.getAuthor
+            else if (keyWordCheck == true){
+                this.getWord()
             }
-            axios({
-                methos: 'get',
-                url: this.pageUrl,
-                headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"`},
 
-                params: {
-                    filter: this.myFilter,
-                    page: this.nextPage
-                },
-                
-            }).then(response => {
-                this.dataBase = response.data.quotes
-                this.nextPage = response.data.page
-
-            })
 
         },
-        backPage() {
+        minusPage() {
             this.nextPage -= 1
-            if (this.getWord != '') {
-                this.pageUrl = 'https://favqs.com/api/quotes/?'
-                this.myFilter = this.getWord
-            }
-            else if(this.getTag != '') {
-                this.pageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=tag'
-                this.myFilter = this.getTag 
-            }
-            else if (this.getAuthor != '') {
-                this.pageUrl = 'https://favqs.com/api/quotes/?filter=filter&type=author'
-                this.myFilter = this.getAuthor 
-            }
-            axios({
-                method: 'get',
-                url: this.pageUrl,
-                headers: { Authorization: `Token token="5510ab1b4e8a619951eeb35eb4025603"`},
-                
-                params: {
-                    filter: this.myfilter,
-                    page: this.nextPage
-                },
+            if (authorCheck == true){
+                this.getAuthor()
 
-            }).then(response => {
-                this.dataBase = response.data.quotes
-                this.nextPage = response.data.page
-            })
-        }
+            }
+            else if (tagCheck == true){
+                this.getTag()
+            }
+            else if (keyWordCheck == true){
+                this.getWord()
+            }
+            
+        },
+        
+        
     },
     mounted() {
         this.getRandomQuote()
