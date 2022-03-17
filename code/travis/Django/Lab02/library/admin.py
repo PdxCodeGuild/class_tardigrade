@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Author, Book
+from .models import Author, Book, CheckoutBook
 
 
 class AuthorAdmin(admin.ModelAdmin):
@@ -8,12 +8,12 @@ class AuthorAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
-    fields = ['title', 'publish_date', 'author_name', "is_checked_out", "user", "time_stamp" ]
+    fields = ['title', 'publish_date', 'author_name' ]
 
-#class CheckoutBookAdmin(admin.ModelAdmin):
- #   fields = ['title', 'user', 'is_checked_out', 'time_stamp']
+class CheckoutBookAdmin(admin.ModelAdmin):
+    fields = ['title', 'user', 'is_checked_out', 'time_stamp']
 
 
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
-#admin.site.register(CheckoutBook)
+admin.site.register(CheckoutBook, CheckoutBookAdmin)
