@@ -25,37 +25,27 @@ def checkout(request):
 
     if request.method == "GET":
 
-        bempty = CheckoutBook.objects.all()
-        if bempty.exists():
-            ...
-        else:
             book_list = Book.objects.all()
 
             for book in book_list:
-                test1 = Book.objects.filter(title = book.title)         
                 add_book = CheckoutBook( title = Book.objects.get(title = book.title) )
-                b = CheckoutBook.objects.all()
-              
-                if not b:           
-                    add_book.save()                
-                else:
-                    for checkbook in b:  
-                       
-                        test1 = Book.objects.filter(title = book.title)              
-                       
-                        if test1.contains(checkbook.title):
-                            print("test1")
-                            
-                        else:    
-                            add_book.save()                            
-                                    
 
-        checkout_list = CheckoutBook.objects.all()
+                test1 = CheckoutBook.objects.filter(title = book.id)
+
+
+                if test1.exists():
+                    print("exists")
+
+                else:    
+
+                    add_book.save() 
+
+            checkout_list = CheckoutBook.objects.all()
       
         
-        checkout_form = CheckoutForm()
+            checkout_form = CheckoutForm()
 
-        return render(request=request, template_name="library/library_checkout.html", context={'checkout_form': checkout_form, 'checkout_list': checkout_list})
+            return render(request=request, template_name="library/library_checkout.html", context={'checkout_form': checkout_form, 'checkout_list': checkout_list})
 
 
 def checkout_book(request, id):
