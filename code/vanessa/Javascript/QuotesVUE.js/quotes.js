@@ -64,7 +64,7 @@ const App = {
                     'Authorization': 'Token token="6e5ddc77bb286cc39e07c4ffcd0f0db8"',
                 },
                 params: {
-                    filter: this.author, page: 1, type: 'author'
+                    filter: this.authorSearches, page: 1, type: 'author'
                 },
             }).then(response => {
                 this.results = response.data.quotes
@@ -80,7 +80,7 @@ const App = {
                     "Accept": "application/json",
                     'Authorization': 'Token token="6e5ddc77bb286cc39e07c4ffcd0f0db8"',
                     params: {
-                        filter: this.tag, page: 1, type: 'tag'
+                        filter: this.tagsSearches, page: 1, type: 'tag'
                     }
                 },
 
