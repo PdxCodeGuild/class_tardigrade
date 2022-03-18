@@ -6,7 +6,7 @@ lines of text into a list of dictionaries, one dictionary for each user. The tex
 the text in the other lines represent the values.
   """
 
-with open(r"C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\jedi-sith.txt", "r") as file:
+with open("C:\Users\dhols\Documents\GitHub\class_tardigrade\code\Dustin\jedi-sith.txt", "r") as file:
     lines = file.read().split('\n')
 
 
@@ -26,7 +26,14 @@ for user in force_users:
     print(jedi_dict)
 
 #for line in lines
+# part 2
+def create():
+    name = input('enter a name here: ')
+    afiliation = input('Are the a Sith or a Jedi: ')
+    color = input('What color is their lightsaber: ')
 
+    new_entry = {headers[0]: name, headers[1]: afiliation, headers[2]: color}
+    contact_list.append(new_entry)
 
 
 

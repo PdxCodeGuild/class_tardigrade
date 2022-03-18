@@ -1,6 +1,7 @@
 """Credit card validation"""
 """
 proof number 4 5 5 6 7 3 7 5 8 6 8 9 9 8 5 5
+4556737586899855
 
     Convert the input string into a list of ints
     Slice off the last digit. That is the check digit.
@@ -21,7 +22,9 @@ proof number 4 5 5 6 7 3 7 5 8 6 8 9 9 8 5 5
 5
 """
 tested_num = input("enter credit card number here: ")
-list_num = tested_num.split()
+list_num = " ".join(tested_num)
+list_num = list_num.split()
+
 for i in range(0, len(list_num)):
     list_num[i] = int(list_num[i])
 
@@ -44,7 +47,7 @@ for num in list_num:
     else:
         num == num
     total = total + num
-print(total)
+#print(total)
 "85"
 total = total%10
 #print(total)

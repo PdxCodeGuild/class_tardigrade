@@ -2,12 +2,33 @@ body {
   background-color: crimson;
 }
 
+.topnav {
+  background-color: black;
+  overflow: hidden;
+}
+
+
+.topnav a {
+  float: left;
+  color: whitesmoke;
+  text-align: left;
+  padding: 12px 18px;
+  font-size: 20px;
+}
+
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: navy;
+  color: whitesmoke;
+}
 h1 {
   color: navy;
   margin-left: 20px;
 }
 .header {
-  padding: 60px;
+    font-family: "Book Antiqua";
+  padding: 30px;
   text-align: center;
   background: maroon;
   color: black;
@@ -23,13 +44,16 @@ h1 {
 .flexcontainer div {
     width: 200px; height: 200px; margin: 5px;
     border: 10px solid darkslateblue;
-    font-size: 3em; text-align: center; color: whitesmoke;
+    font-size: 2em; text-align: center; color: whitesmoke;
+    justify-content: center;
+    display: flex;
+
     padding-top: 1em;
     position: relative;
 }
 .flexcontainer span {
     position: absolute; bottom: 5px; right: 5px;
-    font-size: 18px; color: cyan;
+    font-size: 10px; color: cyan;
 }
 .flexcontainer div:nth-child(1) {
     flex: 1 0 calc(100% - 10px);
@@ -51,4 +75,7 @@ h1 {
 }
 
 
-bottom_bar
+.bottom_bar{
+    background-color: black;
+  overflow: hidden;
+}
