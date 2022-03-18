@@ -1,12 +1,14 @@
 
+from asyncio.windows_events import NULL
 from datetime import datetime
 from django.shortcuts import render, redirect, get_object_or_404
+
 
 from library.forms import CheckoutForm
 
 from django.contrib import messages
-from library.models import Book
-from library.models import CheckoutBook
+from library.models import Book, CheckoutBook
+
 
 
 
@@ -18,28 +20,47 @@ def library(request):
     return render(request, 'library/library.html', context)
 
 
-def checkout(request):
+def checkout(request):   
+
 
     if request.method == "GET":
 
-        checkout_list = CheckoutBook.objects.all()
-        checkout_form = CheckoutForm()
+            book_list = Book.objects.all()
 
-        return render(request=request, template_name="library/library_checkout.html", context={'checkout_form': checkout_form, 'checkout_list': checkout_list})
+            for book in book_list:
+                add_book = CheckoutBook( title = Book.objects.get(title = book.title) )
+
+                test1 = CheckoutBook.objects.filter(title = book.id)
+
+
+                if test1.exists():
+                    print("exists")
+
+                else:    
+
+                    add_book.save() 
+
+            checkout_list = CheckoutBook.objects.all()
+      
+        
+            checkout_form = CheckoutForm()
+
+            return render(request=request, template_name="library/library_checkout.html", context={'checkout_form': checkout_form, 'checkout_list': checkout_list})
 
 
 def checkout_book(request, id):
 
-    instance = get_object_or_404(CheckoutBook, id=id)
+    instance = get_object_or_404(Book, id=id)
 
     if request.method == "POST":
 
         checkout_form = CheckoutForm(request.POST, instance=instance)
 
         if checkout_form.is_valid():
-
-            checkout_form.save()
-
+ 
+            userform = checkout_form.cleaned_data.get("user")
+   
+            CheckoutBook.objects.filter(id=id).update(user = userform)
             CheckoutBook.objects.filter(id=id).update(is_checked_out=True)
             CheckoutBook.objects.filter(id=id).update(time_stamp=datetime.now())
 
@@ -58,8 +79,7 @@ def checkout_book(request, id):
 def checkin(request, id):
 
     if request.method == "POST":
-
-        print(id)
+        CheckoutBook.objects.filter(id=id).update(user=None)
         CheckoutBook.objects.filter(id=id).update(is_checked_out=False)
         CheckoutBook.objects.filter(id=id).update(time_stamp=datetime.now())
 

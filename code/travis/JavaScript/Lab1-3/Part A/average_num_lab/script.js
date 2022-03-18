@@ -1,3 +1,7 @@
+
+
+
+
 // nums = [5, 0, 8, 3, 4, 1, 6]
 
 // # loop over the elements
@@ -49,53 +53,47 @@ for (num of nums){
 // > enter a number, or 'done': done
 // average: 4
 
-let ave_num_array = []
 
 
-let add_button = document.getElementById("add-button");
+let aveNumArray = []
+let addMore = true
+window.alert("Find the Average!")
 
+while (addMore == true){
 
-add_button.onclick = function(e){
-    e.preventDefault()
-    let entry_field = document.getElementById("entry-field").value;
+  let entry = window.prompt("Enter number:", "")
 
-    ave_num_array.push(parseInt(entry_field))
+  aveNumArray.push(parseInt(entry))
+  alert(`Entered numbers, ${aveNumArray}`);
 
-    alert(ave_num_array);
-    
+  let calc = window.confirm("Add more numbers?")
+
+  if (calc == true){
+
+    addMore = true
+
+  }
+  else{
+
+    addMore = false
+
+  }
 
 }
-
 
 
 let add = 0
-let done_button = document.getElementById("done-button");
+let arrayNum = aveNumArray.length;
 
-done_button.onclick = function(e){
-    e.preventDefault();
+for(let k = 0; k < arrayNum; k++){
 
-    let array_num = ave_num_array.length;
-    
-    console.log(array_num)
- for(let k = 0; k < array_num; k++){
-
-    add += ave_num_array.pop();
-
- }
- console.log(add)
-
- average = add / array_num
- console.log(average)
-  alert( average)
-
-    ave_num_array = [];
-    add = 0;
-    array_num = 0;
-
-
+  add += aveNumArray.pop();
 
 }
 
+average = add / arrayNum
+
+window.alert(`The average is: ${average}`)
 
 
 

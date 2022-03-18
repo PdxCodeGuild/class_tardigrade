@@ -6,9 +6,9 @@ Vue.createApp({
 
       newTodo: "",
       selectedRadio: "",
-      id_num: 0,
+      idNum: 0,
       items: [],
-      is_completed: false,
+      isCompleted: false,
 
     }
   },
@@ -16,12 +16,12 @@ Vue.createApp({
 
     addToList() {
       
-      this.is_completed = false
+      this.isCompleted = false
 
-      this.items.push({ id: this.id_num, todo: this.newTodo, completed: this.is_completed })
+      this.items.push({ id: this.idNum, todo: this.newTodo, completed: this.isCompleted })
 
       this.newTodo = "";
-      this.id_num += 1
+      this.idNum += 1
 
     },
 

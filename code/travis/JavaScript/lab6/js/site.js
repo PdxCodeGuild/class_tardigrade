@@ -16,6 +16,7 @@ Vue.createApp({
       response: {},
       quotesData: [],
       quoteList: [],
+      paginationArray: [],
 
       searchText: "",
 
@@ -32,8 +33,11 @@ Vue.createApp({
 
       lastPage: false,
       quotesPage: "",
-
-      pageCountTest: 0
+      pageCount: 1,
+      pageNum: 1,
+      setPageNum: 1,
+      quotesLength: 0,
+      searchEntry: ""
     }
   },
 
@@ -74,11 +78,12 @@ Vue.createApp({
 
 
     getQuotes() {
+
       console.log("start load")
+
       let len = this.quotesData.length
 
       for (let i = 0; i < 1; i++) {
-
 
         //adds quote and author name to list
         this.quoteList.push({ name: this.quotesData[i].author, quote: this.quotesData[i].body })
@@ -86,15 +91,16 @@ Vue.createApp({
       }
     },
 
+
     //Searches API
-    searchQuotes() {
+    searchQuotes(setPageNum) {
 
 
       // Search for quotes containing the word "funny":
       // GET https://favqs.com/api/quotes/?filter=funny
       if (this.selected == "Keyword") {
 
-        searchEntry= this.searchText
+        this.searchEntry= this.searchText
       }
 
 
@@ -102,7 +108,7 @@ Vue.createApp({
       // GET https://favqs.com/api/quotes/?filter=Mark+Twain&type=author
 
       else if (this.selected == "Author") {
-        searchEntry = this.searchText + "&type=author"
+        this.searchEntry = this.searchText + "&type=author"
 
       }
 
@@ -111,76 +117,110 @@ Vue.createApp({
       // GET https://favqs.com/api/quotes/?filter=funny&type=tag
 
       else if (this.selected == "Tag") {
-        searchEntry = this.searchText + "&type=tag"
+        this.searchEntry = this.searchText + "&type=tag"
 
       }
 
       axios
-        .get(`https://favqs.com/api/quotes/?filter=${searchEntry}`, {
+        .get(`https://favqs.com/api/quotes/?filter=${this.searchEntry}&page=${setPageNum}`, {
           headers: {
             Authorization: "Token 15bcef41b1ec53efab73ce5f67267269"
           }
         })
         .then(responseSearch => (this.responseSearch = responseSearch,
           this.searchData = responseSearch.data.quotes,
-
+          
           //pagation test
           this.lastPage = responseSearch.data.last_page,
-          this.quotesPage = responseSearch.data.page
+          this.quotesPage = responseSearch.data.page,
+          this.quotesLength = responseSearch.data.quotes.length   
+
 
         )).finally(() => {
-
+          console.log(this.responseSearch)
           this.searchDisplay()
 
-          this.numPages()      
+          if (this.pageCount === 1){
 
+            this.numPages()
 
+          }
 
-          
-
+  
         })
     },
 
 
-  //pagination
+
+
   numPages() {
 
+    
 
-
-    if(this.lastPage === true){
-      console.log("test last page" + this.lastPage)
-
-
-
-
-
-    // quotesData[i]. 
-    // pageCount = 1
-    // while(pageCount < 5){
-
-
-    // axios
-    // .get(`https://favqs.com/api/quotes/?page=${pageCount}`, {
-    //   headers: {
-    //     Authorization: "Token 15bcef41b1ec53efab73ce5f67267269"
-    //   }
-    // })
-    // .then(responseLastPage => (this.lastPage = responseLastPage.data.last_page,
-    //   this.quotesPage = responseLastPage.data.page
-    // )).finally(() =>{
+    if (this.lastPage === true){
       
-    //   console.log(" finally page num:" + this.quotesPage)
-    //   console.log("finally last page:" + this.lastPage)
-    //   pageCount += 1
-    // })
+      this.pageNum = 0
+
+    //  console.log("last page check: " + this.lastPage)
+      this.pagination(this.pageCount)
+
+    }
+
+    else if(this.pageCount > 50){
+
+     // console.log("pagecount > 10")
+
+    }
+
+   // else if(this.quotesLength < 25){
+
+    //  console.log("no Quotes")
+  // }
+
+    else if (this.lastPage === false){
+
+    //  console.log("Not last page")
+
+    axios
+    .get(`https://favqs.com/api/quotes/?filter=${this.searchEntry}&page=${this.pageCount}`, {
+      headers: {
+        Authorization: "Token 15bcef41b1ec53efab73ce5f67267269"
+      }
+    })
+    .then(responseLastPage => (this.lastPage = responseLastPage.data.last_page,
+      
+      this.quotesPage = responseLastPage.data.page
+     // this.quotesLength = response.data.quotes.length     
+    )
+      
+    ).finally(() =>{
+      
+
+      this.pageCount += 1
+      this.numPages()
+
+    })   
 
 
-
-    //console.log("page num:" + this.quotesPage)
-  //  console.log("last page:" + this.lastPage)
- 
 }
+
+
   },
+
+    //pagination
+    pagination(pageCount){
+
+      this.paginationArray = []
+
+      for (let i = 1; i < pageCount; i++){
+
+        this.paginationArray.push({pageNum: i, })
+
+      }
+      
+
+
+    },
 
   //waits for axios response and then displays results
   searchDisplay() {
@@ -197,10 +237,11 @@ Vue.createApp({
 
     }
 
+  },
+
+
+
 
   }
-
-  }
-
 
 }).mount('#app')
