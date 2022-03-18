@@ -1,0 +1,124 @@
+body {
+
+    box-sizing: border-box;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+#submitBody {
+
+    display: flex;
+    align-content: center;
+    height: 100%;
+}
+
+header {
+
+    min-height: 5h;
+    text-align: center;
+    background-color: darkblue;
+    color: white;
+}
+
+footer {
+
+    background-color: lightblue;
+    text-align: center;
+}
+
+
+
+nav {
+
+    min-height: 5h;
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: lightblue;
+}
+
+a {
+
+    padding: 10px;
+}
+
+
+.chirpPost {
+
+    background-color: lightblue;
+    margin: auto;
+    width: 30vw;
+    height: 20vh;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 1px solid black;
+
+}
+
+.chirpSubmit {
+
+    background-color: lightblue;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin-bottom: 50px;
+
+}
+
+
+.title {
+    
+    background-color: lightblue;
+    font-size: 1.1em;
+    height: 13%;
+}
+
+.chirpText {
+    background-color: white;
+    height: 70%;
+}
+
+
+
+
+.userName {
+    background-color: lightblue;
+    height: 7%;
+}
+
+.postDate {
+    background-color: lightblue;
+    margin-top: 1px;
+    height: 5%;
+    font-size: .8em;
+}
+
+#chirpSubmitText {
+
+    font-size: 1em;
+}
+
+
+#chirpLogin {
+
+    background-color: lightblue;
+    margin: auto;
+    width: 25vh;
+    height: 20vh;
+    text-align: center;
+    border: 1px solid black;
+    margin-bottom: 50px;
+}
+
+#userNamePass {
+    background-color: lightblue;
+    height: 7%;
+}
+
+#password {
+    background-color: lightblue;
+    font-size: 1.1em;
+    height: 13%;
+}

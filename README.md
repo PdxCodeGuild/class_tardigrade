@@ -14,6 +14,9 @@ M-F 9:30 am – 4:30 pm
 - December 27th (Long Xmas Weekend)
 - December 30th (Day Off)
 - December 31st (New Years Eve)
+- January 17th (MLK Day)
+- February 14th (Valentine's Day)
+- February 21st (President's Day)
 
 ### Staff
 
@@ -25,10 +28,10 @@ M-F 9:30 am – 4:30 pm
 
 ## Capstone Dates:
 
-Capstone proposal due: TBD
+Capstone proposal due: February 8th, 2022 
 Presentation Day: February 25th, 2022  
 
-<!-- ## JavaScript Labs Assigned:
+## JavaScript Labs Assigned:
 
  * [Labs 01-03 Pick3](5%20JavaScript/labs/01-03%20Pick%203.md)
  * [Lab 04 Mob Todo List](5%20JavaScript/labs/04%20Todo%20List.md)
@@ -36,10 +39,10 @@ Presentation Day: February 25th, 2022
  * [Lab 06 JavaScript Mini-Capstone](5%20JavaScript/labs/07%20Mini-Capstone.md)
 
 #### Optional JavaScript Labs
-[Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md) -->
+[Bouncing Ball](5%20JavaScript/labs/Bouncing%20Ball.md), [Clock](5%20JavaScript/labs/Clock.md), [Hacker Typer](5%20JavaScript/labs/Hacker%20Typer.md), [Random Redirector](5%20JavaScript/labs/Random%20Redirector.md)
  
 
-<!-- ## Django Labs Assigned:
+## Django Labs Assigned:
 
  * [Lab 00 Polls](4%20Django/labs/00%20Polls.md)
  * [Lab 01 Grocery List](4%20Django/labs/01%20Grocery%20List.md)
@@ -48,7 +51,7 @@ Presentation Day: February 25th, 2022
 
 #### Optional Django Labs  
 
-[URL Shortener](4%20Django/labs/02%20URL%20Shortener.md) -->
+[URL Shortener](4%20Django/labs/Optional%20URL%20Shortener.md)
 
 ## HTML/CSS Labs Assigned:
 

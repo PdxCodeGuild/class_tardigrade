@@ -1,0 +1,18 @@
+ul{
+	list-style-type: none;
+	padding: 0;
+	border: 1px solid #ddd;
+}
+li{
+	display:inline-block;
+	border-left:1px solid #ccc;	
+	padding:0px 10px;
+}
+li:first-child{
+	border-left:none;
+	padding:0px 10px 0px 0px;
+}
+li:hover{
+	cursor:pointer;	
+	text-decoration:underline;
+}
