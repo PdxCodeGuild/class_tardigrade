@@ -43,26 +43,28 @@
 </form>
 
 <ul>
-	{% for chirp in chirps %}
-	<li>
+	{% for x in chirp %}
+	<div class= 'chirps'>
 		<span
-		{% if chirp.completed %}
+		{% comment %} {% if chirp.completed %}
 		class="completed"
-		{% endif %}
+		{% endif %} {% endcomment %}
 		>
-		{{ chirp.description }}
+		{{ x.body }}
+
+		{% comment %} where would I enter {{chirp.body}}, {{chirp.date}} {{chirp.user}}? {% endcomment %}
 		</span>
 		<form action="/delete/{{ chirp.id }}/" method="POST">
 			{% csrf_token %}
 			<input type="submit" value="delete">
 		</form>
-		<form action="/complete/{{ chirp.id }}/" method="POST">
+		{% comment %} <form action="/complete/{{ chirp.id }}/" method="POST">
 			{% csrf_token %}
 			<input
 				type="submit"
 				value="{% if chirp.completed %}in{% endif %}complete"
 			>
-		</form>
-	</li>
+		</form> {% endcomment %}
+	</div>
 	{% endfor %}
 </ul>
