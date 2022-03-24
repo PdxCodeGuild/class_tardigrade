@@ -1,70 +1,86 @@
-<h1>CHIRP</h1>
-
-<h2>New chirp:</h2>
-<form action="/" method="POST">
-	{% csrf_token %}
-	<textarea name="body" cols="120" rows="15"></textarea>
-	<button type="submit">click me</button>
-</form>
-
-<ul>
-	{% for chirp in chirps %}
-	<li><a href="{% url 'chirp:chirp' chirp.id %}">{{ chirp }}</a></li>
-	hello!
-	{% endfor %}
-</ul>
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<style>
-		.completed {
-			text-decoration: line-through;
-		}
-		li > form {
-			display: inline;
-		}
-	</style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'chirp\styling.css' %}">
+	{% load static %}
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@1.1.0/modern-normalize.min.css">
+	<title>CHIRP</title>
 </head>
 
-<h1>chirp</h1>
-<p>Welcome
-	{% if request.user.is_authenticated %}
-		{{ request.user.username }}
-	{% else %}
-		Guest
-	{% endif %}
-</p>
+<body>
+	<header>
+		<h1>CHIRP</h1>
+	</header>
 
-<form action="/add/" method="post">
-	{% csrf_token %}
-	<label for="description-input">Description:</label>
-	<input type="text" id="description-input" name="description">
-	<input type="submit" value="Submit">
-	<!-- <button type="submit">Submit</button> -->
-</form>
+	<div class="flex-container">
+		<nav>
+			<h3 style="color:purple">LINKS</h3>
+			<h3>Account</h3>
+			<a href="login.html">login</a>
+			<a href="logout.html">logout</a>
+		</nav>
+		
 
-<ul>
-	{% for x in chirp %}
-	<div class= 'chirps'>
-		<span
-		{% comment %} {% if chirp.completed %}
-		class="completed"
-		{% endif %} {% endcomment %}
-		>
-		{{ x.body }}
+			<div>
+				<h2>New chirp:</h2>
+				<form action="/" method="POST">
+					{% csrf_token %}
+					<textarea name="body" cols="120" rows="15"></textarea>
+					<button type="submit">click me</button>
+				</form>
+				<div>
+					{% comment %} <article>
+						{% for chirp in chirps %}
+						<li><a href="{% url 'chirp:chirp' chirp.id %}">{{ chirp }}</a></li>
+						hello!
+						{% endfor %}
+					</article> {% endcomment %}
 
-		{% comment %} where would I enter {{chirp.body}}, {{chirp.date}} {{chirp.user}}? {% endcomment %}
-		</span>
-		<form action="/delete/{{ chirp.id }}/" method="POST">
-			{% csrf_token %}
-			<input type="submit" value="delete">
-		</form>
-		{% comment %} <form action="/complete/{{ chirp.id }}/" method="POST">
-			{% csrf_token %}
-			<input
-				type="submit"
-				value="{% if chirp.completed %}in{% endif %}complete"
-			>
-		</form> {% endcomment %}
+
+
+					<p>Welcome
+						{% if request.user.is_authenticated %}
+						<h2>{{ request.user.username }}</h2>
+						{% else %}
+						Guest
+						{% endif %}
+					</p>
+
+					<h1>Chirps: </h1>
+					<article>
+
+						{% for x in chirp %}
+						<div class='chirps'>
+							<span>
+								{{ x.body }} <tab> | {{ x.user }} - {{ x.date }}
+							</span>
+							<br>
+							<form action="/delete/{{ chirp.id }}/" method="POST">
+								{% csrf_token %}
+								<input type="submit" value="delete">
+							</form>
+							<br>
+
+						</div>
+						<br>
+						{% endfor %}
+
+					</article>
+		
 	</div>
-	{% endfor %}
-</ul>
+	<footer>
+		Copyright something 2021
+		
+		Last updated: 12/22/2021
+		
+	</footer>
+</body>
+
+</html>
