@@ -8,11 +8,12 @@
 </head>
 <body>
     <p>hello world</p>
-    { % for post in posts % }
-        {{post.title}}
-        {{post.user}}
-        {{post.body}}
+<ul>
+    { % for post in object_list % }
+        <li>{{post.title}}
+        {{post.author}}
+        {{post.body}}</li>
     { % end for %}
-
+</ul>
 </body>
 </html>
