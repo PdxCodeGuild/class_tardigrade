@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<script src="quotesVue.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <article class="random">
+            <h3>Random Quotes</h3>
+            <p v-for=" quote in randomQuote">{{ quote.body }}</p>
+        </article>
+    
+    <form id="keyWord" @submit.prevent="getWord" class="forms">
+        <div>
+            <h3>Enter word for quote:</h3>
+            <input type="text" v-model="keyWord">
+            <button>Enter</button>
+        </div>
+    </form> 
+    <form id="authorSearch" @submit.prevent="getAuthor" class="forms">
+        <div>
+            <h3>Enter author for quote:</h3>
+            <input type="text" v-model="authorSearch">
+            <button>Enter</button>
+        </div>
+    </form>
+    <form id="tagSearch" @submit.prevent="getTag" class="forms">
+        <div>
+            <h3>Enter tag for quote:</h3>
+            <input type="text" v-model="tagSearch">
+            <button>Enter</button>
+        </div>
+    </form>
+    <p v-for="data in dataBase">{{ data.body }}</p>
+
+    <button v-on:click="minusPage">Back</button> <button v-on:click="addPage">Next</button>
+
+
+    </div>
+</body>
+</html>
