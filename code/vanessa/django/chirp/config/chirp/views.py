@@ -5,6 +5,13 @@ from .models import chirp
 from webbrowser import get
 
 def index(request):
+    # if request.user.is_authenticated:
+    #     chirps=request.chirp.groceries.all()
+    #     print(chirps)
+    #     context = {"chirps" : chirps}
+    #     print(request.user)
+    #     return render (request, 'index.html')
+
     if request.method == 'POST':
         body = request.POST['body']
         chirp.objects.create(body=body)
@@ -18,7 +25,7 @@ def detail(request, id):
     chirps = get_object_or_404(chirp, id=id)
     context = {'chirp': chirps}
     return render(request, 'chirp/entry.html', context)
-
+#----------------------------------------------------------------
 def add(request):
     print(request.POST)
     description_form = request.POST.get('description', '')
@@ -29,16 +36,19 @@ def add(request):
     return redirect ('/')
 
 @require_http_methods(['POST'])
+#----------------------------------------------------------------
 def delete(request, id):
-    chirp = get_object_or_404 (chirp, id=id, user=request)
+    chirp = get_object_or_404 (chirp, id=id, user=request.user)
     chirp.delete()
     return redirect('/')
 @require_http_methods(['POST'])
+
+#----------------------------------------------------------------
 def complete(request,id):
     chirp=get_object_or_404(chirp,id=id, user=request.user)
     if chirp.completed:
         chirp.completed = False
-        chirp.completed = None
+        chirp.completed_date = None
     else:
         chirp.completed = True
         chirp.completed_date = timezone.now( )

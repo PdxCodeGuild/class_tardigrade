@@ -1,0 +1,76 @@
+body{
+    font-family: 'Cairo', sans-serif;
+    color:#003cff;
+}
+h2{ text-align: center;
+    background-color:#ffff;
+    margin:0%
+
+}
+main{
+    text-align: center;
+    width: 120vw;
+	height: 40vh;
+	overflow-y: scroll;
+	background-color:#ffff;
+	padding: 1rem;
+	display: flex; 
+    flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: space-around;
+    
+}
+header{
+    background-color:#099981 ;
+    height: 20vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+div{
+    text-align: center;
+    background-color:#ffff;
+    margin:auto;
+    padding:auto;
+    height: auto;
+    
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; 
+    align-items: left;
+    width: fit-content;
+    background-color: #4f4fa0;
+}
+footer{
+    height: 5vh;
+    background-color: #099981;
+    height: auto;
+}
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffff;
+    justify-content: space-evenly;
+
+}
+img{
+    /* width:75%;
+    height:75%; */
+    object-fit: contain;
+    /* was looking for object-fit cover but found contain and it worked for my purposes on w3docs */
+
+}
+
+.flex-container{
+    display: flex;
+}
+.item {
+    flex-basis: auto; 
+  }
+
+  
